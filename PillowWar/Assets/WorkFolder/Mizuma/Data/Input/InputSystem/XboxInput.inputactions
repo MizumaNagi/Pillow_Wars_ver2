@@ -1,0 +1,115 @@
+{
+    "name": "XboxInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "08818c88-8eed-41ce-9900-7b9395d9225e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "3e3fcfcf-da59-4af5-b65e-06becd205525",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ViewMove",
+                    "type": "Value",
+                    "id": "2c79686a-5e6a-46ba-af14-f9e28e923401",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ToADS",
+                    "type": "Button",
+                    "id": "631bc9ff-985d-45b1-a752-47093d8f4443",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4204e43c-a3c3-498a-b6b9-913a7fa008fd",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6add857-8bf2-4f93-99ce-f62487b55d6c",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ViewMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77f21ea0-59ff-48de-a69c-9907257093cf",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ToADS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "de1809de-ef81-46aa-9346-ac2bc33dccd2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "efdca84c-9727-45f9-994e-de22bbc7af73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29b26f55-e0c7-4b3b-8ad9-d4381cfe5012",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "GamePad",
+            "bindingGroup": "GamePad",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<DualShockGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

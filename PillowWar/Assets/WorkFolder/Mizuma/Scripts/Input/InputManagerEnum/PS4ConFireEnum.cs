@@ -1,0 +1,20 @@
+public enum PS4ConFireEnum
+{
+    PS4_Fire_Square,
+    PS4_Fire_Cross,
+    PS4_Fire_Circle,
+    PS4_Fire_Triangle,
+    PS4_Fire_L3,
+    PS4_Fire_R3,
+    PS4_Fire_L1,
+    PS4_Fire_R1,
+    PS4_Fire_L2,
+    PS4_Fire_R2,
+    PS4_Fire_Share,
+    PS4_Fire_Option,
+    PS4_Fire_PS,
+    PS4_Fire_TrackPad,
+    PS4_Trigger_L2,
+    PS4_Trigger_R2,
+    Not_Use
+}
