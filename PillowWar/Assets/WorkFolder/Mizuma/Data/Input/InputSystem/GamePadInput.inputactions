@@ -44,6 +44,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a9ebbc46-c6ae-4173-98e0-097bd7caf6b6",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f6add857-8bf2-4f93-99ce-f62487b55d6c",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
@@ -101,12 +112,12 @@
             "devices": [
                 {
                     "devicePath": "<XInputController>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 },
                 {
                     "devicePath": "<DualShockGamepad>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

@@ -8,7 +8,7 @@ public class PlayerMover : MonoBehaviour
 {
     //public CharacterController characterController;
     private PlayerInput playerInput;
-    private Camera myCamera;
+    public Camera myCamera;
 
     private Vector3 moveInput;
     private Vector3 viewInput;
@@ -25,8 +25,15 @@ public class PlayerMover : MonoBehaviour
 
     public void Update()
     {
-        Vector3 movVec = gameObject.transform.rotation * moveInput * walkSpeed;
-        transform.position += movVec * Time.deltaTime;
+        if (moveInput.magnitude > 0.2f)
+        {
+            Vector3 movVec = gameObject.transform.rotation * moveInput * walkSpeed;
+            transform.position += movVec * Time.deltaTime;
+        }
+        else
+        {
+            moveInput = Vector3.zero;
+        }
 
         if (viewInput.magnitude > 0.1f)
         {
@@ -40,6 +47,15 @@ public class PlayerMover : MonoBehaviour
         {
             viewInput = Vector3.zero;
         }
+
+        float rotX = myCamera.transform.rotation.x;
+        if(rotX < -15f || rotX > 15f)
+        {
+            if (rotX < -15f) rotX = -15f;
+            else rotX = 15f;
+            myCamera.transform.rotation = Quaternion.Euler(new Vector3(rotX, transform.rotation.y, transform.rotation.z));
+        }
+
     }
 
     public void OnMove(InputValue value)

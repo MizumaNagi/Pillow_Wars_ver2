@@ -56,15 +56,15 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConFireEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestDisplayDivision\PlayerMover.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestInputSystem.cs" />
+    <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAxisEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAxisEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestInputSystem.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestDisplayDivision\PlayerMover.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
