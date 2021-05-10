@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class MyHeavyMethod : MonoBehaviour
 {
+    public void Awake()
+    {
+        isPlayHeavyMethod = CrashTest.isAddHeavyMethodClass;
+    }
+
+    public bool isPlayHeavyMethod = false;
+
     private int loop = 10;
 
     private int frameCnt;
     private int movSwitchVecPerFrame = 30;
     private bool isMoveRight = true;
 
-    private float movSpd = 5;
+    private float movSpd = 0.5f;
 
     void Update()
     {
-        for (int i = 0; i < loop; i++)
+        if(isPlayHeavyMethod)
         {
-            gameObject.AddComponent<Rigidbody>();
-            Destroy(GetComponent<Rigidbody>());
+        for (int i = 0; i < loop; i++)
+            {
+                gameObject.AddComponent<Rigidbody>();
+                Destroy(GetComponent<Rigidbody>());
+            }
         }
 
         transform.Translate(1 * BoolToInt(isMoveRight) * movSpd, 0, 0);

@@ -62,11 +62,17 @@
     <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAxisEnum.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputSystem\KeyboardInput.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputSystem\InputStatus.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputSystem\Test.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManager.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\GamePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
