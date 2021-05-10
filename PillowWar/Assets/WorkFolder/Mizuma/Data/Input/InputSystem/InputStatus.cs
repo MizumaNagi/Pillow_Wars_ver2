@@ -8,7 +8,7 @@ public enum ButtonStatus
     Hold
 }
 
-public class InputStatus : SingletonMonoBehaviour<InputStatus>
+public class InputStatus
 {
     public Vector2 leftStickVec;
     public Vector2 rightStickVec;

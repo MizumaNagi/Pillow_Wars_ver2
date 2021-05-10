@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5429045757431886181}
   - component: {fileID: 5429045757431886178}
   - component: {fileID: 5429045757431886179}
-  - component: {fileID: 5429045757431886176}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -80,21 +79,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 5429045758658835853}
---- !u!114 &5429045757431886176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5429045757431886177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc10e0f8aaa02424e8130b859d533aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDontDestroy: 1
-  leftStickVec: {x: 0, y: 0}
-  rightStickVec: {x: 0, y: 0}
 --- !u!1 &5429045758658835850
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +160,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5429045757431886181}
     m_Modifications:
+    - target: {fileID: 412705661743232817, guid: 42283234f0e443349b85a1119c37ff15, type: 3}
+      propertyPath: m_Size.y
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 412705661743232817, guid: 42283234f0e443349b85a1119c37ff15, type: 3}
+      propertyPath: m_Size.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 412705661743232817, guid: 42283234f0e443349b85a1119c37ff15, type: 3}
+      propertyPath: m_Center.y
+      value: 0.77
+      objectReference: {fileID: 0}
     - target: {fileID: 1214969200118549018, guid: 42283234f0e443349b85a1119c37ff15, type: 3}
       propertyPath: m_Name
       value: bahaeltre

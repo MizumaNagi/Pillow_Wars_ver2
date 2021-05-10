@@ -1,6 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public class CharacterMover : MonoBehaviour
+{
+    private Transform myTransform;
+
+    public CharacterMover(Transform _transform)
+    {
+        myTransform = _transform;
+    }
+
+    public void Move(Vector2 _moveVec)
+    {
+
+    }
+}
+
+// input system を使用した動き
+/*
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
@@ -24,8 +45,8 @@ public class PlayerMover : MonoBehaviour
 
     public void Update()
     {
-        moveInput = InputStatus.Instance.leftStickVec;
-        viewInput = InputStatus.Instance.rightStickVec;
+        moveInput = InputManager.Instance.inputStatuses[0].leftStickVec;
+        viewInput = InputManager.Instance.inputStatuses[0].rightStickVec;
 
         if (moveInput.magnitude > 0.2f)
         {
@@ -64,3 +85,4 @@ public class PlayerMover : MonoBehaviour
     }
 
 }
+*/
