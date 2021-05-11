@@ -5,5 +5,5 @@ using UnityEngine;
 public class InputManager : SingletonMonoBehaviour<InputManager>
 {
     [SerializeField] private InputData[] player;
-    [SerializeField] private MoveData moveData;
+    public MoveData moveData;
 }

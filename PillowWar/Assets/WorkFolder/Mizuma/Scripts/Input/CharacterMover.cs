@@ -2,16 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMover : MonoBehaviour
+// キャラクター移動の基底クラス
+public class CharacterMover
 {
-    private Transform myTransform;
-
-    public CharacterMover(Transform _transform)
+    public void Move(Vector3 _movVec, PlayerData playerData)
     {
-        myTransform = _transform;
+        Transform movTransform = playerData.myBodyTransform;
+        Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
+
+        movTransform.position += movVec * Time.deltaTime;
     }
 
-    public void Move(Vector2 _moveVec)
+    public void ViewMove(Vector3 _viewMovVec, PlayerData playerData)
+    {
+        Vector3 rotVec = _viewMovVec * InputManager.Instance.moveData.viewMoveSpd * Time.deltaTime;
+
+        playerData.myBodyTransform.Rotate(0, rotVec.x, 0);
+        playerData.myCameraTransform.Rotate(-rotVec.z, 0, 0);
+    }
+
+    public void Jump(Vector3 _jumpVec)
+    {
+
+    }
+
+    public void PillowThrow()
     {
 
     }

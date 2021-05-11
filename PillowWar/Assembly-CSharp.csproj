@@ -66,16 +66,16 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\InputManager.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\InputData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\MoveData.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAllTypeEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAllTypeEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\InputData.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManager.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\PlayerMover.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\NpcMover.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\MoveData.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\IMover.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\PlayerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
