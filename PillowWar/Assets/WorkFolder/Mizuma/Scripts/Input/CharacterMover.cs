@@ -23,17 +23,20 @@ public class CharacterMover
 
     public void Jump(CharacterData data)
     {
-        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce, 0);
+        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce * data.myBodyTransform.forward.y, 0);
     }
 
-    public void PillowThrow()
+    public void PillowThrow(CharacterData data)
     {
-
+        Debug.Log("throw");
+        data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
+        data.myPillowRigidbody.isKinematic = false;
+        data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce);
     }
 
     public void ToNonADS(CharacterData data)
     {
-        if (data.myCamera.fieldOfView >= InputManager.Instance.moveData.maxFOV) return;
+        if (data.myCamera.fieldOfView >= InputManager.Instance.moveData.maxFOV) { return; }
 
         float frameChgValueADS = InputManager.Instance.moveData.fovChangeSpd * Time.deltaTime;
         if (data.myCamera.fieldOfView + frameChgValueADS > InputManager.Instance.moveData.maxFOV)
@@ -48,7 +51,7 @@ public class CharacterMover
 
     public void ToADS(CharacterData data)
     {
-        if (data.myCamera.fieldOfView <= InputManager.Instance.moveData.minFOV) return;
+        if (data.myCamera.fieldOfView <= InputManager.Instance.moveData.minFOV) { return; }
 
         float frameChgValueADS = InputManager.Instance.moveData.fovChangeSpd * Time.deltaTime;
         if (data.myCamera.fieldOfView - frameChgValueADS < InputManager.Instance.moveData.minFOV)

@@ -27,8 +27,9 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             if (viewMoveInput.magnitude > 0.2f) characterMover.ViewMove(viewMoveInput, c);
 
             if (Input.GetButtonDown(playerInput[i].Jump)) characterMover.Jump(c);
-            if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f) characterMover.ToADS(c);
+            if (Input.GetAxis(playerInput[i].SwitchToADS) < -0.2f) characterMover.ToADS(c);
             else characterMover.ToNonADS(c);
+            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && PlayerManager.Instance.charaDatas[i].remainthrowCT < 0) characterMover.PillowThrow(c);
         }
 
         // ※テスト用※ キーボード移動操作 1Pのみ移動
@@ -40,6 +41,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
         KeyboardInputMove(c);
         if (Input.GetKeyDown(KeyCode.Space)) characterMover.Jump(c);
+        if (Input.GetMouseButton(1)) characterMover.ToADS(c);
+        else characterMover.ToNonADS(c);
     }
 
     private void KeyboardInputMove(CharacterData c)

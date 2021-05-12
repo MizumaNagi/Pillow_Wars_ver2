@@ -12,7 +12,7 @@ public class CharacterData
         myPillowTransform = t.GetChild(2).transform;
         myCameraTransform = t.GetChild(3).transform;
         myBodyRigidbody = myObject.GetComponent<Rigidbody>();
-        myPillowRigidbody = null;
+        myPillowRigidbody = t.GetChild(2).GetComponent<Rigidbody>();
         myCamera = t.GetChild(3).GetComponent<Camera>();
         hp = GameManager.Instance.ruleData.maxHp;
     }
@@ -26,4 +26,5 @@ public class CharacterData
     public Camera myCamera;
 
     public int hp;
+    public float remainthrowCT;
 }

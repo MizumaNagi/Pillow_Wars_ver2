@@ -15,6 +15,7 @@ MonoBehaviour:
   moveSpd: 5
   viewMoveSpd: 250
   jumpForce: 450
+  throwForce: 700
   minFOV: 45
   maxFOV: 65
   fovChangeSpd: 90

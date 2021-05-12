@@ -23,4 +23,17 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             charaDatas.Add(new CharacterData(obj));
         }
     }
+
+    public void UpdateMethod()
+    {
+        CoolTimeElapse();
+    }
+
+    private void CoolTimeElapse()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            charaDatas[i].remainthrowCT -= Time.deltaTime;
+        }
+    }
 }

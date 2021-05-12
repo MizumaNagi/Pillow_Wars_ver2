@@ -9,6 +9,8 @@ public class MoveData : ScriptableObject
     public float moveSpd;
     public float viewMoveSpd;
     public float jumpForce;
+    public float throwForce;
+
     [Header("ƒJƒƒ‰‘€ì")]
     public float minFOV;
     public float maxFOV;

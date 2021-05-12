@@ -63,8 +63,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\DontUse\InputStatus.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\DebugInput.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Character\CharacterData.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Main.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Data.cs" />
     <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Camera\CameraController.cs" />

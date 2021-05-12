@@ -11,4 +11,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         PlayerManager.Instance.Init();
     }
+
+    private void Update()
+    {
+        PlayerManager.Instance.UpdateMethod();
+    }
 }
