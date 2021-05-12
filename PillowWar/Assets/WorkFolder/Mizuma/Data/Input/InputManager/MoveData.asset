@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpd: 5
   viewMoveSpd: 250
-  jumpForce: 5
+  jumpForce: 450
+  minFOV: 45
+  maxFOV: 65
+  fovChangeSpd: 90
+  limitRotY: 16

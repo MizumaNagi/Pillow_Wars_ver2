@@ -9,26 +9,56 @@ public class CharacterMover
     {
         Transform movTransform = data.myBodyTransform;
         Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
-        
+
         movTransform.position += movVec * Time.deltaTime;
     }
 
-    public void ViewMove(Vector3 _viewMovVec, CharacterData playerData)
+    public void ViewMove(Vector3 _viewMovVec, CharacterData data)
     {
         Vector3 rotVec = _viewMovVec * InputManager.Instance.moveData.viewMoveSpd * Time.deltaTime;
 
-        playerData.myBodyTransform.Rotate(0, rotVec.x, 0);
-        playerData.myCameraTransform.Rotate(-rotVec.z, 0, 0);
+        data.myBodyTransform.Rotate(0, rotVec.x, 0);
+        data.myCameraTransform.Rotate(-rotVec.z, 0, 0);
     }
 
-    public void Jump(Vector3 _jumpVec)
+    public void Jump(CharacterData data)
     {
-
+        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce, 0);
     }
 
     public void PillowThrow()
     {
 
+    }
+
+    public void ToNonADS(CharacterData data)
+    {
+        if (data.myCamera.fieldOfView >= InputManager.Instance.moveData.maxFOV) return;
+
+        float frameChgValueADS = InputManager.Instance.moveData.fovChangeSpd * Time.deltaTime;
+        if (data.myCamera.fieldOfView + frameChgValueADS > InputManager.Instance.moveData.maxFOV)
+        {
+            data.myCamera.fieldOfView = InputManager.Instance.moveData.maxFOV;
+        }
+        else
+        {
+            data.myCamera.fieldOfView += frameChgValueADS;
+        }
+    }
+
+    public void ToADS(CharacterData data)
+    {
+        if (data.myCamera.fieldOfView <= InputManager.Instance.moveData.minFOV) return;
+
+        float frameChgValueADS = InputManager.Instance.moveData.fovChangeSpd * Time.deltaTime;
+        if (data.myCamera.fieldOfView - frameChgValueADS < InputManager.Instance.moveData.minFOV)
+        {
+            data.myCamera.fieldOfView = InputManager.Instance.moveData.minFOV;
+        }
+        else
+        {
+            data.myCamera.fieldOfView -= frameChgValueADS;
+        }
     }
 }
 
@@ -98,6 +128,5 @@ public class PlayerMover : MonoBehaviour
         //    myCamera.transform.rotation = Quaternion.Euler(new Vector3(rotX, transform.rotation.y, transform.rotation.z));
         //}
     }
-
 }
 */

@@ -82,7 +82,7 @@ public class InputData : ScriptableObject
 
     private string GetKeyName<T>(T key)
     {
-        return $"{Enum.GetName(typeof(T), key)}_P{this.playerNo}";
+        return $"{Enum.GetName(typeof(T), key)}_P{playerNo}";
     }
 
     private Vector3 GetAxisValue(string xAxisName, string yAxisName, int xAxisMulti, int yAxismulti)

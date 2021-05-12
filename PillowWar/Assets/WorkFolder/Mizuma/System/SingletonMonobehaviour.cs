@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
+public class SingletonMonoBehaviour<T> : MonoBehaviour
 {
     [SerializeField]
     protected bool isDontDestroy = true;
@@ -24,20 +24,22 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (instance != null && instance != this)
+        if (instance != null)
         {
+            Debug.Log("重複しているので削除しました。");
             Destroy(gameObject);
             return;
         }
-        instance = GetComponent<T>();
-        transform.parent = null;
-        if (isDontDestroy == false) { return; }
-        StartCoroutine(nameof(StartDontDestroy));
-    }
 
-    private IEnumerator StartDontDestroy()
-    {
-        yield return null;
+        instance = GetComponent<T>();
+        if (instance == null)
+        {
+            Debug.Log("取得に失敗しました。");
+        }
+        transform.parent = null;
+
+        if (isDontDestroy == false) { return; }
         DontDestroyOnLoad(gameObject);
+
     }
 }

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private float limitRotY = 14f;
-
     void Update()
     {
-        var localAngle = transform.localEulerAngles;
+        Vector3 rot = transform.localEulerAngles;
+        float limitRotY = InputManager.Instance.moveData.limitRotY;
 
-        if (localAngle.x > limitRotY && localAngle.x < 180) localAngle.x = limitRotY;
-        if (localAngle.x < 360 - limitRotY && localAngle.x > 180) localAngle.x = 360 - limitRotY;
+        if (rot.x > limitRotY && rot.x < 180) rot.x = limitRotY;
+        if (rot.x < 360 - limitRotY && rot.x > 180) rot.x = -limitRotY;
 
-        transform.localEulerAngles = localAngle;
+        transform.localEulerAngles = rot;
     }
 }

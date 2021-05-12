@@ -13,6 +13,7 @@ public class CharacterData
         myCameraTransform = t.GetChild(3).transform;
         myBodyRigidbody = myObject.GetComponent<Rigidbody>();
         myPillowRigidbody = null;
+        myCamera = t.GetChild(3).GetComponent<Camera>();
         hp = GameManager.Instance.ruleData.maxHp;
     }
 
@@ -22,6 +23,7 @@ public class CharacterData
     public Transform myCameraTransform;
     public Rigidbody myBodyRigidbody;
     public Rigidbody myPillowRigidbody;
+    public Camera myCamera;
 
     public int hp;
 }
