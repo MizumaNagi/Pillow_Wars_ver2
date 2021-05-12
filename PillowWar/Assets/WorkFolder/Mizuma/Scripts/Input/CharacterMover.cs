@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// キャラクター移動の基底クラス
+// キャラクター移動クラス
 public class CharacterMover
 {
-    public void Move(Vector3 _movVec, PlayerData playerData)
+    public void Move(Vector3 _movVec, CharacterData data)
     {
-        Transform movTransform = playerData.myBodyTransform;
+        Transform movTransform = data.myBodyTransform;
         Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
-
+        
         movTransform.position += movVec * Time.deltaTime;
     }
 
-    public void ViewMove(Vector3 _viewMovVec, PlayerData playerData)
+    public void ViewMove(Vector3 _viewMovVec, CharacterData playerData)
     {
         Vector3 rotVec = _viewMovVec * InputManager.Instance.moveData.viewMoveSpd * Time.deltaTime;
 

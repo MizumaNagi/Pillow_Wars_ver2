@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e1e20e70f099b478daed73e6e448f0, type: 3}
   m_Name: Player4InputData
   m_EditorClassIdentifier: 
-  playerNo: 3
-  moveX: 17
-  moveY: 17
-  viewpointMoveX: 17
-  viewpointMoveY: 17
-  run: 17
-  squat: 17
-  jump: 17
-  interact: 17
-  switchToADS: 17
-  pillowThrow: 17
-  option: 17
-  cursolMoveX: 17
-  cursolMoveY: 17
-  ok: 17
-  cancel: 17
+  playerNo: 4
+  moveX: 10
+  moveY: 11
+  viewpointMoveX: 12
+  viewpointMoveY: 13
+  run: 8
+  squat: 1
+  jump: 0
+  interact: 2
+  switchToADS: 16
+  pillowThrow: 16
+  option: 7
+  cursolMoveX: 10
+  cursolMoveY: 11
+  ok: 0
+  cancel: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e1e20e70f099b478daed73e6e448f0, type: 3}
   m_Name: Player1InputData
   m_EditorClassIdentifier: 
-  playerNo: 0
+  playerNo: 1
   moveX: 10
   moveY: 11
   viewpointMoveX: 12

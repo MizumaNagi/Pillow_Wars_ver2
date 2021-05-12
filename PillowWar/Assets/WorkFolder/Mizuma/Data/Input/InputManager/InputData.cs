@@ -9,29 +9,29 @@ public class InputData : ScriptableObject
     [SerializeField] private int playerNo;
 
     [Header("ゲーム中操作")]
-    [SerializeField] private XboxConAllTypeEnum moveX = XboxConAllTypeEnum.Not_Use;          // 移動 (座標X)
-    [SerializeField] private XboxConAllTypeEnum moveY = XboxConAllTypeEnum.Not_Use;          // 移動 (座標Y)
-    [SerializeField] private XboxConAllTypeEnum viewpointMoveX = XboxConAllTypeEnum.Not_Use; // 座標移動 (座標X)
-    [SerializeField] private XboxConAllTypeEnum viewpointMoveY = XboxConAllTypeEnum.Not_Use; // 座標移動 (座標Y)
+    [SerializeField] private XboxConAllTypeEnum moveX = XboxConAllTypeEnum.Xbox_Axis_L_Horizontal;          // 移動 (座標X)
+    [SerializeField] private XboxConAllTypeEnum moveY = XboxConAllTypeEnum.Xbox_Axis_L_Vertical;          // 移動 (座標Y)
+    [SerializeField] private XboxConAllTypeEnum viewpointMoveX = XboxConAllTypeEnum.Xbox_Axis_R_Horizontal; // 座標移動 (座標X)
+    [SerializeField] private XboxConAllTypeEnum viewpointMoveY = XboxConAllTypeEnum.Xbox_Axis_R_Vertical; // 座標移動 (座標Y)
                                  
-    [SerializeField] private XboxConAllTypeEnum run = XboxConAllTypeEnum.Not_Use;           // 走る
-    [SerializeField] private XboxConAllTypeEnum squat = XboxConAllTypeEnum.Not_Use;         // しゃがむ
-    [SerializeField] private XboxConAllTypeEnum jump = XboxConAllTypeEnum.Not_Use;          // ジャンプ
-    [SerializeField] private XboxConAllTypeEnum interact = XboxConAllTypeEnum.Not_Use;      // インタラクト
-    [SerializeField] private XboxConAllTypeEnum switchToADS = XboxConAllTypeEnum.Not_Use;   // ADS状態へ移行
-    [SerializeField] private XboxConAllTypeEnum pillowThrow = XboxConAllTypeEnum.Not_Use;   // 枕投げ
-    [SerializeField] private XboxConAllTypeEnum option = XboxConAllTypeEnum.Not_Use;        // オプション画面
+    [SerializeField] private XboxConAllTypeEnum run = XboxConAllTypeEnum.Xbox_Fire_L_Stick;           // 走る
+    [SerializeField] private XboxConAllTypeEnum squat = XboxConAllTypeEnum.Xbox_Fire_B;         // しゃがむ
+    [SerializeField] private XboxConAllTypeEnum jump = XboxConAllTypeEnum.Xbox_Fire_A;          // ジャンプ
+    [SerializeField] private XboxConAllTypeEnum interact = XboxConAllTypeEnum.Xbox_Fire_X;      // インタラクト
+    [SerializeField] private XboxConAllTypeEnum switchToADS = XboxConAllTypeEnum.Xbox_Trigger_LR_Trigger;   // ADS状態へ移行
+    [SerializeField] private XboxConAllTypeEnum pillowThrow = XboxConAllTypeEnum.Xbox_Trigger_LR_Trigger;   // 枕投げ
+    [SerializeField] private XboxConAllTypeEnum option = XboxConAllTypeEnum.Xbox_Fire_Menu;        // オプション画面
 
     [Header("ゲーム外操作")]
-    [SerializeField] private XboxConAllTypeEnum cursolMoveX = XboxConAllTypeEnum.Not_Use;
-    [SerializeField] private XboxConAllTypeEnum cursolMoveY = XboxConAllTypeEnum.Not_Use;
+    [SerializeField] private XboxConAllTypeEnum cursolMoveX = XboxConAllTypeEnum.Xbox_Axis_L_Horizontal;
+    [SerializeField] private XboxConAllTypeEnum cursolMoveY = XboxConAllTypeEnum.Xbox_Axis_L_Vertical;
     //[SerializeField] private XboxConAllTypeEnum up = XboxConAllTypeEnum.Not_Use;      // 上移動
     //[SerializeField] private XboxConAllTypeEnum down = XboxConAllTypeEnum.Not_Use;    // 下移動
     //[SerializeField] private XboxConAllTypeEnum left = XboxConAllTypeEnum.Not_Use;    // 左移動
     //[SerializeField] private XboxConAllTypeEnum right = XboxConAllTypeEnum.Not_Use;   // 右移動
 
-    [SerializeField] private XboxConAllTypeEnum ok = XboxConAllTypeEnum.Not_Use;      // 決定
-    [SerializeField] private XboxConAllTypeEnum cancel = XboxConAllTypeEnum.Not_Use;  // キャンセル
+    [SerializeField] private XboxConAllTypeEnum ok = XboxConAllTypeEnum.Xbox_Fire_A;      // 決定
+    [SerializeField] private XboxConAllTypeEnum cancel = XboxConAllTypeEnum.Xbox_Fire_B;  // キャンセル
 
     //[Header("ゲーム中操作")]
     //[Header("キーボード操作(テスト用)")]
@@ -57,8 +57,10 @@ public class InputData : ScriptableObject
 
     public string MoveX { get => GetKeyName(moveX); }
     public string MoveY { get => GetKeyName(moveY); }
+    public Vector3 MoveAxis { get => GetAxisValue(MoveX, MoveY, 1, -1); }
     public string ViewpointMoveX { get => GetKeyName(viewpointMoveX); }
     public string ViewpointMoveY { get => GetKeyName(viewpointMoveY); }
+    public Vector3 ViewPointMoveAxis { get => GetAxisValue(ViewpointMoveX, ViewpointMoveY, 1, -1); }
     public string Run { get => GetKeyName(run); }
     public string Squat { get => GetKeyName(squat); }
     public string Jump { get => GetKeyName(jump); }
@@ -69,6 +71,8 @@ public class InputData : ScriptableObject
     public string Option { get => GetKeyName(option); }
     public string CursolMoveX { get => GetKeyName(cursolMoveX); }
     public string CursolMoveY { get => GetKeyName(cursolMoveY); }
+    public Vector3 CursolMoveAxis { get => GetAxisValue(CursolMoveY, CursolMoveY, 1, 1); }
+
     //public string Up { get => GetKeyName(up); }
     //public string Down { get => GetKeyName(down); }
     //public string Left { get => GetKeyName(left); }
@@ -79,5 +83,13 @@ public class InputData : ScriptableObject
     private string GetKeyName<T>(T key)
     {
         return $"{Enum.GetName(typeof(T), key)}_P{this.playerNo}";
+    }
+
+    private Vector3 GetAxisValue(string xAxisName, string yAxisName, int xAxisMulti, int yAxismulti)
+    {
+        Vector3 vec = Vector3.zero;
+        vec.x = Input.GetAxis(xAxisName) * xAxisMulti;
+        vec.z = Input.GetAxis(yAxisName) * yAxismulti;
+        return vec;
     }
 }
