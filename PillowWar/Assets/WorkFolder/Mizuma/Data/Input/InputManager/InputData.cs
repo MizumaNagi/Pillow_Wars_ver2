@@ -8,52 +8,52 @@ public class InputData : ScriptableObject
 {
     [SerializeField] private int playerNo;
 
-    [Header("ƒQ[ƒ€’†‘€ì")]
-    [SerializeField] private XboxConAllTypeEnum moveX = XboxConAllTypeEnum.Xbox_Axis_L_Horizontal;          // ˆÚ“® (À•WX)
-    [SerializeField] private XboxConAllTypeEnum moveY = XboxConAllTypeEnum.Xbox_Axis_L_Vertical;          // ˆÚ“® (À•WY)
-    [SerializeField] private XboxConAllTypeEnum viewpointMoveX = XboxConAllTypeEnum.Xbox_Axis_R_Horizontal; // À•WˆÚ“® (À•WX)
-    [SerializeField] private XboxConAllTypeEnum viewpointMoveY = XboxConAllTypeEnum.Xbox_Axis_R_Vertical; // À•WˆÚ“® (À•WY)
+    [Header("ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField] private XboxConAllTypeEnum moveX = XboxConAllTypeEnum.Xbox_Axis_L_Horizontal;          // ï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WX)
+    [SerializeField] private XboxConAllTypeEnum moveY = XboxConAllTypeEnum.Xbox_Axis_L_Vertical;          // ï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WY)
+    [SerializeField] private XboxConAllTypeEnum viewpointMoveX = XboxConAllTypeEnum.Xbox_Axis_R_Horizontal; // ï¿½ï¿½ï¿½Wï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WX)
+    [SerializeField] private XboxConAllTypeEnum viewpointMoveY = XboxConAllTypeEnum.Xbox_Axis_R_Vertical; // ï¿½ï¿½ï¿½Wï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WY)
                                  
-    [SerializeField] private XboxConAllTypeEnum run = XboxConAllTypeEnum.Xbox_Fire_L_Stick;           // ‘–‚é
-    [SerializeField] private XboxConAllTypeEnum squat = XboxConAllTypeEnum.Xbox_Fire_B;         // ‚µ‚á‚ª‚Þ
-    [SerializeField] private XboxConAllTypeEnum jump = XboxConAllTypeEnum.Xbox_Fire_A;          // ƒWƒƒƒ“ƒv
-    [SerializeField] private XboxConAllTypeEnum interact = XboxConAllTypeEnum.Xbox_Fire_X;      // ƒCƒ“ƒ^ƒ‰ƒNƒg
-    [SerializeField] private XboxConAllTypeEnum switchToADS = XboxConAllTypeEnum.Xbox_Trigger_LR_Trigger;   // ADSó‘Ô‚ÖˆÚs
-    [SerializeField] private XboxConAllTypeEnum pillowThrow = XboxConAllTypeEnum.Xbox_Trigger_LR_Trigger;   // –“Š‚°
-    [SerializeField] private XboxConAllTypeEnum option = XboxConAllTypeEnum.Xbox_Fire_Menu;        // ƒIƒvƒVƒ‡ƒ“‰æ–Ê
+    [SerializeField] private XboxConAllTypeEnum run = XboxConAllTypeEnum.Xbox_Fire_L_Stick;           // ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private XboxConAllTypeEnum squat = XboxConAllTypeEnum.Xbox_Fire_B;         // ï¿½ï¿½ï¿½á‚ªï¿½ï¿½
+    [SerializeField] private XboxConAllTypeEnum jump = XboxConAllTypeEnum.Xbox_Fire_A;          // ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
+    [SerializeField] private XboxConAllTypeEnum interact = XboxConAllTypeEnum.Xbox_Fire_X;      // ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½Nï¿½g
+    [SerializeField] private XboxConAllTypeEnum switchToADS = XboxConAllTypeEnum.Xbox_Trigger_LT;   // ADSï¿½ï¿½Ô‚ÖˆÚs
+    [SerializeField] private XboxConAllTypeEnum pillowThrow = XboxConAllTypeEnum.Xbox_Trigger_RT;   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private XboxConAllTypeEnum option = XboxConAllTypeEnum.Xbox_Fire_Menu;        // ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    [Header("ƒQ[ƒ€ŠO‘€ì")]
+    [Header("ï¿½Qï¿½[ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private XboxConAllTypeEnum cursolMoveX = XboxConAllTypeEnum.Xbox_Axis_L_Horizontal;
     [SerializeField] private XboxConAllTypeEnum cursolMoveY = XboxConAllTypeEnum.Xbox_Axis_L_Vertical;
-    //[SerializeField] private XboxConAllTypeEnum up = XboxConAllTypeEnum.Not_Use;      // ãˆÚ“®
-    //[SerializeField] private XboxConAllTypeEnum down = XboxConAllTypeEnum.Not_Use;    // ‰ºˆÚ“®
-    //[SerializeField] private XboxConAllTypeEnum left = XboxConAllTypeEnum.Not_Use;    // ¶ˆÚ“®
-    //[SerializeField] private XboxConAllTypeEnum right = XboxConAllTypeEnum.Not_Use;   // ‰EˆÚ“®
+    //[SerializeField] private XboxConAllTypeEnum up = XboxConAllTypeEnum.Not_Use;      // ï¿½ï¿½Ú“ï¿½
+    //[SerializeField] private XboxConAllTypeEnum down = XboxConAllTypeEnum.Not_Use;    // ï¿½ï¿½ï¿½Ú“ï¿½
+    //[SerializeField] private XboxConAllTypeEnum left = XboxConAllTypeEnum.Not_Use;    // ï¿½ï¿½ï¿½Ú“ï¿½
+    //[SerializeField] private XboxConAllTypeEnum right = XboxConAllTypeEnum.Not_Use;   // ï¿½Eï¿½Ú“ï¿½
 
-    [SerializeField] private XboxConAllTypeEnum ok = XboxConAllTypeEnum.Xbox_Fire_A;      // Œˆ’è
-    [SerializeField] private XboxConAllTypeEnum cancel = XboxConAllTypeEnum.Xbox_Fire_B;  // ƒLƒƒƒ“ƒZƒ‹
+    [SerializeField] private XboxConAllTypeEnum ok = XboxConAllTypeEnum.Xbox_Fire_A;      // ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private XboxConAllTypeEnum cancel = XboxConAllTypeEnum.Xbox_Fire_B;  // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½
 
-    //[Header("ƒQ[ƒ€’†‘€ì")]
-    //[Header("ƒL[ƒ{[ƒh‘€ì(ƒeƒXƒg—p)")]
-    //[SerializeField] private KeyCode key_moveX;          // ˆÚ“® (À•WX)
-    //[SerializeField] private KeyCode key_moveY;          // ˆÚ“® (À•WY)
-    //[SerializeField] private string key_viewpointMoveX = ; // À•WˆÚ“® (À•WX)
-    //[SerializeField] private string key_viewpointMoveY = ; // À•WˆÚ“® (À•WY)
+    //[Header("ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    //[Header("ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½(ï¿½eï¿½Xï¿½gï¿½p)")]
+    //[SerializeField] private KeyCode key_moveX;          // ï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WX)
+    //[SerializeField] private KeyCode key_moveY;          // ï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WY)
+    //[SerializeField] private string key_viewpointMoveX = ; // ï¿½ï¿½ï¿½Wï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WX)
+    //[SerializeField] private string key_viewpointMoveY = ; // ï¿½ï¿½ï¿½Wï¿½Ú“ï¿½ (ï¿½ï¿½ï¿½WY)
     //
-    //[SerializeField] private KeyCode key_run;           // ‘–‚é
-    //[SerializeField] private KeyCode key_squat;         // ‚µ‚á‚ª‚Þ
-    //[SerializeField] private KeyCode key_jump;          // ƒWƒƒƒ“ƒv
-    //[SerializeField] private KeyCode key_interact;      // ƒCƒ“ƒ^ƒ‰ƒNƒg
-    //[SerializeField] private KeyCode key_switchToADS;   // ADSó‘Ô‚ÖˆÚs
-    //[SerializeField] private KeyCode key_pillowThrow;   // –“Š‚°
-    //[SerializeField] private KeyCode key_option;        // ƒIƒvƒVƒ‡ƒ“‰æ–Ê
+    //[SerializeField] private KeyCode key_run;           // ï¿½ï¿½ï¿½ï¿½
+    //[SerializeField] private KeyCode key_squat;         // ï¿½ï¿½ï¿½á‚ªï¿½ï¿½
+    //[SerializeField] private KeyCode key_jump;          // ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½v
+    //[SerializeField] private KeyCode key_interact;      // ï¿½Cï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½Nï¿½g
+    //[SerializeField] private KeyCode key_switchToADS;   // ADSï¿½ï¿½Ô‚ÖˆÚs
+    //[SerializeField] private KeyCode key_pillowThrow;   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //[SerializeField] private KeyCode key_option;        // ï¿½Iï¿½vï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     //
-    //[Header("ƒQ[ƒ€ŠO‘€ì")]
-    //[SerializeField] private KeyCode key_up_down;      // ã‰ºˆÚ“®
-    //[SerializeField] private KeyCode key_left_right;   // ¶‰EˆÚ“®
+    //[Header("ï¿½Qï¿½[ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½")]
+    //[SerializeField] private KeyCode key_up_down;      // ï¿½ã‰ºï¿½Ú“ï¿½
+    //[SerializeField] private KeyCode key_left_right;   // ï¿½ï¿½ï¿½Eï¿½Ú“ï¿½
     //
-    //[SerializeField] private KeyCode key_ok;           // Œˆ’è
-    //[SerializeField] private KeyCode key_cancel;       // ƒLƒƒƒ“ƒZƒ‹
+    //[SerializeField] private KeyCode key_ok;           // ï¿½ï¿½ï¿½ï¿½
+    //[SerializeField] private KeyCode key_cancel;       // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½
 
     public string MoveX { get => GetKeyName(moveX); }
     public string MoveY { get => GetKeyName(moveY); }

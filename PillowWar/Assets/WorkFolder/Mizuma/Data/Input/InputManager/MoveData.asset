@@ -16,7 +16,8 @@ MonoBehaviour:
   viewMoveSpd: 250
   jumpForce: 450
   throwForce: 700
+  pillowSpawnPos: {x: 0.4, y: 1.6, z: 0.5}
   minFOV: 45
   maxFOV: 65
   fovChangeSpd: 90
-  limitRotY: 16
+  limitRotY: 45

@@ -23,15 +23,15 @@ public class CharacterMover
 
     public void Jump(CharacterData data)
     {
-        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce * data.myBodyTransform.forward.y, 0);
+        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce/* * data.myBodyTransform.forward.y*/, 0);
     }
 
     public void PillowThrow(CharacterData data)
     {
-        Debug.Log("throw");
+        data.myPillowTransform.SetParent(PlayerManager.Instance.pillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
-        data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce);
+        data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce);
     }
 
     public void ToNonADS(CharacterData data)

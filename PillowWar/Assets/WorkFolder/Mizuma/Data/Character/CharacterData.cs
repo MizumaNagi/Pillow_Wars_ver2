@@ -6,18 +6,19 @@ public class CharacterData
 {
     public CharacterData(GameObject _myObject)
     {
-        myObject = _myObject;
-        Transform t = myObject.transform;
+        character = _myObject;
+        Transform t = character.transform;
         myBodyTransform = t;
-        myPillowTransform = t.GetChild(2).transform;
-        myCameraTransform = t.GetChild(3).transform;
-        myBodyRigidbody = myObject.GetComponent<Rigidbody>();
-        myPillowRigidbody = t.GetChild(2).GetComponent<Rigidbody>();
-        myCamera = t.GetChild(3).GetComponent<Camera>();
+        myPillowTransform = t.GetChild(3).transform;
+        myCameraTransform = t.GetChild(2).transform;
+        myBodyRigidbody = character.GetComponent<Rigidbody>();
+        myPillowRigidbody = t.GetChild(3).GetComponent<Rigidbody>();
+        myCamera = t.GetChild(2).GetComponent<Camera>();
         hp = GameManager.Instance.ruleData.maxHp;
     }
 
-    public GameObject myObject;
+    public GameObject character;
+    public GameObject myPillow;
     public Transform myBodyTransform;
     public Transform myPillowTransform;
     public Transform myCameraTransform;
@@ -26,5 +27,5 @@ public class CharacterData
     public Camera myCamera;
 
     public int hp;
-    public float remainthrowCT;
+    public float remainthrowCT = 0;
 }

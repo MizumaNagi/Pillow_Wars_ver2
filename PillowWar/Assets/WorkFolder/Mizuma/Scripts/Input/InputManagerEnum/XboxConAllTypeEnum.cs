@@ -20,6 +20,7 @@ public enum XboxConAllTypeEnum
     Xbox_Axis_R_Vertical,
     Xbox_Axis_DPad_Horizontal,
     Xbox_Axis_DPad_Vertical,
-    Xbox_Trigger_LR_Trigger,
+    Xbox_Trigger_LT,
+    Xbox_Trigger_RT,
     Not_Use
 }

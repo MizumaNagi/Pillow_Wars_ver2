@@ -27,12 +27,12 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             if (viewMoveInput.magnitude > 0.2f) characterMover.ViewMove(viewMoveInput, c);
 
             if (Input.GetButtonDown(playerInput[i].Jump)) characterMover.Jump(c);
-            if (Input.GetAxis(playerInput[i].SwitchToADS) < -0.2f) characterMover.ToADS(c);
+            if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f) characterMover.ToADS(c);
             else characterMover.ToNonADS(c);
-            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && PlayerManager.Instance.charaDatas[i].remainthrowCT < 0) characterMover.PillowThrow(c);
+            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && c.remainthrowCT < 0) characterMover.PillowThrow(c);
         }
 
-        // ¦ƒeƒXƒg—p¦ ƒL[ƒ{[ƒhˆÚ“®‘€ì 1P‚Ì‚ÝˆÚ“®
+        // ï¿½ï¿½ï¿½eï¿½Xï¿½gï¿½pï¿½ï¿½ ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ 1Pï¿½Ì‚ÝˆÚ“ï¿½
         if (isUseKeyboard == false) return;
         c = PlayerManager.Instance.charaDatas[0];
 

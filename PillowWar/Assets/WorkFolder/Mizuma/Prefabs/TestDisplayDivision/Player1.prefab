@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -615.5158
       objectReference: {fileID: 0}
+    - target: {fileID: 2233052110415192277, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233052110415192277, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233052110415192277, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2233052110492404332, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
       propertyPath: field of view
       value: 65

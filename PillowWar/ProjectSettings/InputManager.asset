@@ -550,7 +550,7 @@ InputManager:
     axis: 6
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Xbox_Trigger_LR_Trigger_P1
+    m_Name: Xbox_Trigger_LT_P1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -563,7 +563,23 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 2
+    axis: 8
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Xbox_Trigger_RT_P1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 9
     joyNum: 1
   - serializedVersion: 3
     m_Name: Xbox_Fire_A_P2
@@ -822,7 +838,7 @@ InputManager:
     axis: 6
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Xbox_Trigger_LR_Trigger_P2
+    m_Name: Xbox_Trigger_LT_P2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -835,7 +851,23 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 2
+    axis: 8
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Xbox_Trigger_RT_P2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 9
     joyNum: 2
   - serializedVersion: 3
     m_Name: Xbox_Fire_A_P3
@@ -1094,7 +1126,7 @@ InputManager:
     axis: 6
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Xbox_Trigger_LR_Trigger_P3
+    m_Name: Xbox_Trigger_LT_P3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -1107,7 +1139,23 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 2
+    axis: 8
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: Xbox_Trigger_RT_P3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 9
     joyNum: 3
   - serializedVersion: 3
     m_Name: Xbox_Fire_A_P4
@@ -1366,7 +1414,7 @@ InputManager:
     axis: 6
     joyNum: 4
   - serializedVersion: 3
-    m_Name: Xbox_Trigger_LR_Trigger_P4
+    m_Name: Xbox_Trigger_LT_P4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -1379,5 +1427,21 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 2
+    axis: 8
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: Xbox_Trigger_RT_P4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.1
+    sensitivity: 3
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 9
     joyNum: 4

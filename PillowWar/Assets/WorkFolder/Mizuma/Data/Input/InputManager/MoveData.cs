@@ -9,7 +9,9 @@ public class MoveData : ScriptableObject
     public float moveSpd;
     public float viewMoveSpd;
     public float jumpForce;
+    [Header("ƒ}ƒNƒ‰‘€ì")]
     public float throwForce;
+    public Vector3 pillowSpawnPos;
 
     [Header("ƒJƒƒ‰‘€ì")]
     public float minFOV;
