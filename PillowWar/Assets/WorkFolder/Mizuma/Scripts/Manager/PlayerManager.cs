@@ -8,7 +8,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     [SerializeField] private GameObject pillowPrefab;
     [SerializeField] private Transform charctersParent;
 
-
     private Vector3[] spawnPos = { new Vector3(-10, 0, -10), new Vector3(10, 0, 10), new Vector3(-10, 0, 10), new Vector3(10, 0, -10) };
 
     public Transform pillowParent;
@@ -38,6 +37,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public void UpdateMethod()
     {
         CoolTimeElapse();
+    }
+
+    private void Damage()
+    {
+        
     }
 
     private void CoolTimeElapse()

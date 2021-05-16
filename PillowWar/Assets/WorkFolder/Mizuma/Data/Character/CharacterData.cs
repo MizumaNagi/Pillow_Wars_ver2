@@ -28,4 +28,13 @@ public class CharacterData
 
     public int hp;
     public float remainthrowCT = 0;
+
+    public bool isDeath = false;
+    public bool isHavePillow = true;
+
+    public void Damage()
+    {
+        hp--;
+        if (hp <= 0) isDeath = true;
+    }
 }

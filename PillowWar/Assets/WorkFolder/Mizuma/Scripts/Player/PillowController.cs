@@ -13,12 +13,18 @@ public class PillowController : MonoBehaviour
 
     public void OnCollisionEnter(Collision collison)
     {
-        if (collison.gameObject.tag == "Ground")
+        if (collison.gameObject.tag == "Ground" || collison.gameObject.tag == "Player")
         {
-            transform.SetParent(characterData.character.transform);
-            transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            characterData.myPillowRigidbody.isKinematic = true;
-            characterData.myPillowRigidbody.velocity = Vector3.zero;
+            ReturnPillow();
         }
-    }  
+    }
+    
+    private void ReturnPillow()
+    {
+        characterData.isHavePillow = true;
+        transform.SetParent(characterData.character.transform);
+        transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
+        characterData.myPillowRigidbody.isKinematic = true;
+        characterData.myPillowRigidbody.velocity = Vector3.zero;
+    }
 }

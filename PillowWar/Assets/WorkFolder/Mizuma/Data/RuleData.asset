@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RuleData
   m_EditorClassIdentifier: 
   maxHp: 10
-  pillowThrowCT: 5
+  pillowThrowCT: 0.1
   pillowHeadShotStunLength: 3

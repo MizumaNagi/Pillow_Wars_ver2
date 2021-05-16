@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : SingletonMonoBehaviour<InputManager>
 {
     [SerializeField] private bool isUseKeyboard = false;
+    [SerializeField] private int keyboardMovePlayerId;
 
     [SerializeField] private InputData[] playerInput;
 
@@ -20,6 +21,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             c = p.charaDatas[i];
+            if (c.isDeath == true) continue;
+
             Vector3 moveInput = playerInput[i].MoveAxis;
             Vector3 viewMoveInput = playerInput[i].ViewPointMoveAxis;
 
@@ -29,12 +32,18 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             if (Input.GetButtonDown(playerInput[i].Jump)) characterMover.Jump(c);
             if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f) characterMover.ToADS(c);
             else characterMover.ToNonADS(c);
-            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && c.remainthrowCT < 0) characterMover.PillowThrow(c);
+            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && c.remainthrowCT < 0 && c.isHavePillow) characterMover.PillowThrow(c);
         }
 
-        // ���e�X�g�p�� �L�[�{�[�h�ړ����� 1P�݈̂ړ�
-        if (isUseKeyboard == false) return;
-        c = PlayerManager.Instance.charaDatas[0];
+        // ※テスト用※ キーボード操作
+        if (isUseKeyboard == true) KeyboardMove();
+        
+    }
+
+    private void KeyboardMove()
+    {
+        CharacterData c = PlayerManager.Instance.charaDatas[keyboardMovePlayerId];
+        if (c.isDeath == true) return;
 
         KeyboardInputViewMove(c);
         if (Input.anyKey == false) return;

@@ -28,6 +28,7 @@ public class CharacterMover
 
     public void PillowThrow(CharacterData data)
     {
+        data.isHavePillow = false;
         data.myPillowTransform.SetParent(PlayerManager.Instance.pillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
