@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HpUiDisplay : MonoBehaviour
+public class TemporaryUiManager : MonoBehaviour
 {
     private PlayerManager p;
     private int txtLen;

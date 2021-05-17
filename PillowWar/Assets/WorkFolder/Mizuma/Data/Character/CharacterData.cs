@@ -34,7 +34,9 @@ public class CharacterData
 
     public void Damage()
     {
+        if (isDeath) return;
         hp--;
+        GameManager.Instance.remainCharacters--;
         if (hp <= 0) isDeath = true;
     }
 }
