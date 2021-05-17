@@ -59,7 +59,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         {
             if (Input.GetButtonDown(playerInput[i].Option)) gameManager.isPause = !gameManager.isPause;
         }
-        if (isUseKeyboard == true) KeyboardMove();
+
+        if (isUseKeyboard == true) KeyboardGeneralInputMethod();
     }
 
     public void UiInputUpdateMethod()
@@ -68,9 +69,11 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         {
 
         }
+
+        if (isUseKeyboard == true) KeyboardUiInputUpdateMethod();
     }
 
-    public void MoveInputUpdateMethpod()
+    public void MoveInputUpdateMethod()
     {
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
@@ -87,9 +90,21 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             else characterMover.ToNonADS(characterDatas[i]);
             if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow) characterMover.PillowThrow(characterDatas[i]);
         }
+
+        if (isUseKeyboard == true) KeyboardMoveInputUpdateMethod();
     }
 
-    private void KeyboardMove()
+    private void KeyboardGeneralInputMethod()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) gameManager.isPause = !gameManager.isPause;
+    }
+
+    private void KeyboardUiInputUpdateMethod()
+    {
+
+    }
+
+    private void KeyboardMoveInputUpdateMethod()
     {
         CharacterData c = characterDatas[keyboardMovePlayerId];
         if (c.isDeath == true) return;
@@ -101,8 +116,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (Input.GetKeyDown(KeyCode.Space)) characterMover.Jump(c);
         if (Input.GetMouseButton(1)) characterMover.ToADS(c);
         else characterMover.ToNonADS(c);
+        if (Input.GetKeyDown(KeyCode.F) && c.isHavePillow) characterMover.PillowThrow(c);
     }
-
     private void KeyboardInputMove(CharacterData c)
     {
         if (Input.GetKey(KeyCode.W)) characterMover.Move(Vector3.forward, c);

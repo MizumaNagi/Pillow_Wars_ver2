@@ -31,12 +31,16 @@ public class CharacterData
 
     public bool isDeath = false;
     public bool isHavePillow = true;
+    public bool isProtect = false;
 
     public void Damage()
     {
-        if (isDeath) return;
+        if (isDeath || isProtect) return;
         hp--;
-        GameManager.Instance.remainCharacters--;
-        if (hp <= 0) isDeath = true;
+        if (hp <= 0)
+        {
+            GameManager.Instance.remainCharacters--;
+            isDeath = true;
+        }
     }
 }

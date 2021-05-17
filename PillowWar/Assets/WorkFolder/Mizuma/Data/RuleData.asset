@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa4f9b5f9360e43bd44dc48c820abb, type: 3}
   m_Name: RuleData
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 100
   pillowThrowCT: 0.1
   pillowHeadShotStunLength: 3

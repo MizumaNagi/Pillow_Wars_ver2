@@ -7,7 +7,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] public int joinPlayers;
     [SerializeField] public RuleData ruleData;
 
-    [System.NonSerialized] public int remainCharacters;
+     public int remainCharacters;
     [System.NonSerialized] public bool isPause = false;
 
     private bool isPlayTheGame = false;
@@ -19,8 +19,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Update()
     {
-        PlayerManager.Instance.UpdateMethod();
-
         InputManager.Instance.UpdateMethod();
         InputManager.Instance.GeneralInputUpdateMethod();
         if (isPlayTheGame == false)
@@ -31,7 +29,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             if (isPause == false)
             {
-                InputManager.Instance.MoveInputUpdateMethpod();
+                InputManager.Instance.MoveInputUpdateMethod();
+                PlayerManager.Instance.UpdateMethod();
+                GameEventScript.Instance.UpdateMethod();
             }
             else
             {
@@ -44,16 +44,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void GameStart()
     {
-        Debug.Log("Start");
-
+        Debug.Log("Game Start");
         isPlayTheGame = true;
         PlayerManager.Instance.Init();
+        GameEventScript.Instance.Init();
         remainCharacters = joinPlayers;
     }
 
     private void GameEnd()
     {
         isPlayTheGame = false;
-        Debug.Log("End");
+        Debug.Log("Game End");
     }
 }
