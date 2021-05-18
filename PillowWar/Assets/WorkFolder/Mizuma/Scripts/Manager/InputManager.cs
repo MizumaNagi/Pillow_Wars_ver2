@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [System.Serializable]
 public class InputManager : SingletonMonoBehaviour<InputManager>
 {
@@ -27,6 +28,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     public void GeneralInputUpdateMethod()
     {
+        // オプション画面
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
             if (Input.GetButtonDown(playerInput[i].Option)) gameManager.isPause = !gameManager.isPause;
@@ -54,13 +56,39 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             Vector3 moveInput = playerInput[i].MoveAxis;
             Vector3 viewMoveInput = playerInput[i].ViewPointMoveAxis;
 
-            if (moveInput.magnitude > 0.2f) characterMover.Move(moveInput, characterDatas[i]);
-            if (viewMoveInput.magnitude > 0.2f) characterMover.ViewMove(viewMoveInput, characterDatas[i]);
+            // 移動
+            if (moveInput.magnitude > 0.2f)
+            {
+                characterMover.Move(moveInput, characterDatas[i]);
+            }
 
-            if (Input.GetButtonDown(playerInput[i].Jump) && characterDatas[i].canJump == true) characterMover.Jump(characterDatas[i]);
-            if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f) characterMover.ToADS(characterDatas[i]);
-            else characterMover.ToNonADS(characterDatas[i]);
-            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow) characterMover.PillowThrow(characterDatas[i]);
+            // 視点移動
+            if (viewMoveInput.magnitude > 0.2f)
+            {
+                characterMover.ViewMove(viewMoveInput, characterDatas[i]);
+            }
+
+            // ジャンプ
+            if (Input.GetButtonDown(playerInput[i].Jump) && characterDatas[i].canJump == true)
+            {
+                characterMover.Jump(characterDatas[i]);
+            }
+
+            // ADS/非ADS
+            if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f)
+            {
+                characterMover.ToADS(characterDatas[i]);
+            }
+            else
+            { 
+                characterMover.ToNonADS(characterDatas[i]);
+            }
+
+            // 枕投げ
+            if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow)
+            {
+                characterMover.PillowThrow(characterDatas[i]);
+            }
         }
 
         if (isUseKeyboard == true) KeyboardMoveInputUpdateMethod();
@@ -68,7 +96,11 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     private void KeyboardGeneralInputMethod()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) gameManager.isPause = !gameManager.isPause;
+        // キーボード-オプション画面
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameManager.isPause = !gameManager.isPause;
+        }
     }
 
     private void KeyboardUiInputUpdateMethod()
