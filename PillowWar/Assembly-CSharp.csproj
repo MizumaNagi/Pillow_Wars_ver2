@@ -47,7 +47,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\WorkFolder\Sasaki\Script\Makura.cs" />
      <Compile Include="Assets\WorkFolder\Mizuma\Scripts\TestDisplayDivision\PlayerMover.cs" />
+     <Compile Include="Assets\WorkFolder\Sasaki\Script\HP.cs" />
+     <Compile Include="Assets\WorkFolder\Sasaki\Script\Player.cs" />
      <Compile Include="Assets\UI\Title\StartButton.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
