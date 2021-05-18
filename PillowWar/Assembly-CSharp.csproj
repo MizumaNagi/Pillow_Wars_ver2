@@ -59,6 +59,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConFireEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\CharacterMover.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\IMover.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\GameEventScript.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\NewBehaviourScript.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Player.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Data\GameEventData.cs" />
     <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HitPillowController.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HitCharacterController.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Makura.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
@@ -85,7 +86,8 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\GameEventScript.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\SceneManagement.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Title\GotoGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

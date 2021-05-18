@@ -23,6 +23,7 @@ public class CharacterMover
 
     public void Jump(CharacterData data)
     {
+        data.canJump = false;
         data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce/* * data.myBodyTransform.forward.y*/, 0);
     }
 

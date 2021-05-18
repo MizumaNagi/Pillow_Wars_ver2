@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Text;
 
-public class HitPillowController : MonoBehaviour
+public class HitCharacterController : MonoBehaviour
 {
     private int objNum;
     private void Start()
@@ -19,6 +19,11 @@ public class HitPillowController : MonoBehaviour
         {
             string name = gameObject.name;
             PlayerManager.Instance.charaDatas[objNum].Damage();
+        }
+
+        if (collison.gameObject.tag == "Ground")
+        {
+            PlayerManager.Instance.charaDatas[objNum].canJump = true;
         }
     }
 }

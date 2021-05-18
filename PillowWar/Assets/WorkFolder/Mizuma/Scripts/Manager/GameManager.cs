@@ -7,14 +7,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] public int joinPlayers;
     [SerializeField] public RuleData ruleData;
 
-     public int remainCharacters;
+    [System.NonSerialized] public int remainCharacters;
     [System.NonSerialized] public bool isPause = false;
 
     private bool isPlayTheGame = false;
 
     private void Start()
     {
-        GameStart();
+        Init();
     }
 
     private void Update()
@@ -37,14 +37,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             {
                 InputManager.Instance.UiInputUpdateMethod();
             }
-        }
 
-        if (remainCharacters <= 1) GameEnd();
+            if (remainCharacters <= 1) GameEnd();
+        }
     }
 
-    private void GameStart()
+    private void Init()
     {
-        Debug.Log("Game Start");
+    }
+
+    public void GameStart()
+    {
         isPlayTheGame = true;
         PlayerManager.Instance.Init();
         GameEventScript.Instance.Init();
@@ -54,6 +57,5 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void GameEnd()
     {
         isPlayTheGame = false;
-        Debug.Log("Game End");
     }
 }

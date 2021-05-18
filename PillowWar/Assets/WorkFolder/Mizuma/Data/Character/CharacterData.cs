@@ -29,6 +29,7 @@ public class CharacterData
     public int hp;
     public float remainthrowCT = 0;
 
+    public bool canJump = true;
     public bool isDeath = false;
     public bool isHavePillow = true;
     public bool isProtect = false;

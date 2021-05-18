@@ -31,6 +31,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             //pillow.AddComponent<PillowController>();
             pillow.GetComponent<PillowController>().characterData = charaDatas[i];
         }
+
+        InputManager.Instance.characterDatas = charaDatas;
     }
 
 
