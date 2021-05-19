@@ -1,3 +1,5 @@
+#pragma warning disable 0114
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

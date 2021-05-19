@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4391112567409234224
+--- !u!1001 &3397585093600318384
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2233052110492404332, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2233052110492404332, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -69,7 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2233052110994310899, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
       propertyPath: m_Name
-      value: Player4
+      value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3837851857900399398, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: objNum
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}

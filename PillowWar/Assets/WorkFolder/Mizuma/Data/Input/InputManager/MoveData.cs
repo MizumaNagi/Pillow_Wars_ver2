@@ -6,9 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObject/MoveData", order = 2)]
 public class MoveData : ScriptableObject
 {
+    [Header("ˆÚ“®‘€ì")]
     public float moveSpd;
+    public float dashMovMulti;
     public float viewMoveSpd;
     public float jumpForce;
+
     [Header("ƒ}ƒNƒ‰‘€ì")]
     public float throwForce;
     public Vector3 pillowSpawnPos;

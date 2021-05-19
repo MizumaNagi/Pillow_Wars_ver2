@@ -8,8 +8,8 @@ public class CharacterMover
     public void Move(Vector3 _movVec, CharacterData data)
     {
         Transform movTransform = data.myBodyTransform;
-        Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
 
+        Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
         movTransform.position += movVec * Time.deltaTime;
     }
 
@@ -30,6 +30,8 @@ public class CharacterMover
     public void PillowThrow(CharacterData data)
     {
         data.isHavePillow = false;
+        Vector3 v = new Vector3(0.4f,1.5f,1.6f);
+        data.myPillowTransform.localPosition = v;
         data.myPillowTransform.SetParent(PlayerManager.Instance.pillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;

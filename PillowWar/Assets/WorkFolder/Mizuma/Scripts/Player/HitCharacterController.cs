@@ -4,20 +4,22 @@ using System.Text;
 public class HitCharacterController : MonoBehaviour
 {
     private int objNum;
+
     private void Start()
     {
         StringBuilder sb = new StringBuilder(gameObject.name);
         sb.Replace("Player","");
         objNum = int.Parse(sb.ToString());
         sb.Clear();
-        objNum--;
     }
 
     public void OnCollisionEnter(Collision collison)
     {
         if (collison.gameObject.tag == "Pillow")
         {
-            string name = gameObject.name;
+            int pillowNum = int.Parse(collison.gameObject.name);
+            if (pillowNum == objNum) { Debug.Log("guard"); return; }
+
             PlayerManager.Instance.charaDatas[objNum].Damage();
         }
 

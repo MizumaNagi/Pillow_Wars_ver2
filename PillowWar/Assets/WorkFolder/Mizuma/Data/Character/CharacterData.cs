@@ -33,6 +33,7 @@ public class CharacterData
     public bool isDeath = false;
     public bool isHavePillow = true;
     public bool isProtect = false;
+    public bool isRun = false;
 
     public void Damage()
     {

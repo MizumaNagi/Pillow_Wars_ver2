@@ -19,10 +19,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         {
             GameObject obj = Instantiate(playerPrefabs[i], spawnPos[i], Quaternion.identity);
             obj.transform.GetChild(0).localPosition = Vector3.zero;
-            obj.name = "Player" + (i + 1);
+            obj.name = "Player" + i;
             obj.transform.SetParent(charctersParent, true);
 
             GameObject pillow = Instantiate(pillowPrefab);
+            pillow.name = i.ToString();
             pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
             charaDatas.Add(new CharacterData(obj));

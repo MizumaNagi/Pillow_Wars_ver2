@@ -56,24 +56,29 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             Vector3 moveInput = playerInput[i].MoveAxis;
             Vector3 viewMoveInput = playerInput[i].ViewPointMoveAxis;
 
-            // 移動
+            // 移動/ダッシュ解除判定
             if (moveInput.magnitude > 0.2f)
             {
-                characterMover.Move(moveInput, characterDatas[i]);
+                if(characterDatas[i].isRun) characterMover.Move(moveInput * moveData.dashMovMulti, characterDatas[i]);
+                else characterMover.Move(moveInput, characterDatas[i]);
             }
+            else characterDatas[i].isRun = false;
 
+            // ダッシュ判定
+            if (Input.GetButtonDown(playerInput[i].Run))
+            {
+                characterDatas[i].isRun = true;
+            }
             // 視点移動
-            if (viewMoveInput.magnitude > 0.2f)
+            if (viewMoveInput.magnitude > 0.05f)
             {
                 characterMover.ViewMove(viewMoveInput, characterDatas[i]);
             }
-
             // ジャンプ
             if (Input.GetButtonDown(playerInput[i].Jump) && characterDatas[i].canJump == true)
             {
                 characterMover.Jump(characterDatas[i]);
             }
-
             // ADS/非ADS
             if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f)
             {
@@ -83,7 +88,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             { 
                 characterMover.ToNonADS(characterDatas[i]);
             }
-
             // 枕投げ
             if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow)
             {
@@ -94,6 +98,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (isUseKeyboard == true) KeyboardMoveInputUpdateMethod();
     }
 
+    // ※テスト用※ キーボード操作
     private void KeyboardGeneralInputMethod()
     {
         // キーボード-オプション画面
@@ -113,22 +118,32 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         CharacterData c = characterDatas[keyboardMovePlayerId];
         if (c.isDeath == true) return;
 
+        // キーボード-視点移動
         KeyboardInputViewMove(c);
-        if (Input.anyKey == false) return;
 
+        if (Input.anyKey == false) return;
+        // キーボード-移動
         KeyboardInputMove(c);
+        // キーボード-ダッシュ判定/解除判定
+        if (Input.GetKey(KeyCode.LeftShift)) c.isRun = true;
+        else c.isRun = false;
+        // キーボード-ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true) characterMover.Jump(c);
+        // キーボード-ADS/非ADS
         if (Input.GetMouseButton(1)) characterMover.ToADS(c);
         else characterMover.ToNonADS(c);
+        // キーボード-枕投げ
         if (Input.GetKeyDown(KeyCode.F) && c.isHavePillow) characterMover.PillowThrow(c);
     }
 
     private void KeyboardInputMove(CharacterData c)
     {
-        if (Input.GetKey(KeyCode.W)) characterMover.Move(Vector3.forward, c);
-        if (Input.GetKey(KeyCode.A)) characterMover.Move(Vector3.left, c);
-        if (Input.GetKey(KeyCode.S)) characterMover.Move(Vector3.back, c);
-        if (Input.GetKey(KeyCode.D)) characterMover.Move(Vector3.right, c);
+        float spdMulti = (c.isRun == true) ? moveData.dashMovMulti : 1;
+
+        if (Input.GetKey(KeyCode.W)) characterMover.Move(spdMulti * Vector3.forward, c);
+        if (Input.GetKey(KeyCode.A)) characterMover.Move(spdMulti * Vector3.left, c);
+        if (Input.GetKey(KeyCode.S)) characterMover.Move(spdMulti * Vector3.back, c);
+        if (Input.GetKey(KeyCode.D)) characterMover.Move(spdMulti * Vector3.right, c);
     }
 
     private void KeyboardInputViewMove(CharacterData c)
