@@ -6,18 +6,28 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 {
     [SerializeField] private GameObject[] playerPrefabs;
     [SerializeField] private GameObject pillowPrefab;
-    [SerializeField] private Transform charctersParent;
 
     private Vector3[] spawnPos = { new Vector3(-10, 0, -10), new Vector3(10, 0, 10), new Vector3(-10, 0, 10), new Vector3(10, 0, -10) };
+    private Transform charctersParent;
+    public Transform PillowParent { get; private set; }
 
-    public Transform pillowParent;
     public List<CharacterData> charaDatas = new List<CharacterData>();
 
     public void Init()
     {
-        Debug.Log("MAKE");
+        Debug.Log("Init");
 
-        for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        //GameObject emptyObj = Instantiate(new GameObject());
+        GameObject emptyObj = new GameObject();
+        charctersParent = emptyObj.transform;
+        emptyObj.name = "CharaParent";
+        
+        //GameObject emptyObj2 = Instantiate(new GameObject());
+        GameObject emptyObj2 = new GameObject();
+        PillowParent = emptyObj2.transform;
+        emptyObj2.name = "PillowParent";
+
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             GameObject obj = Instantiate(playerPrefabs[i], spawnPos[i], Quaternion.identity);
             obj.transform.GetChild(0).localPosition = Vector3.zero;

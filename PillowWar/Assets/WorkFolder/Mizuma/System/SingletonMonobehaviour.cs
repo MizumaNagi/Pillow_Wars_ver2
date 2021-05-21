@@ -26,7 +26,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("重複しているので削除しました。");
+            Debug.Log("重複しているので削除しました。\n" + "type: " + typeof(T).ToString());
             Destroy(gameObject);
             return;
         }

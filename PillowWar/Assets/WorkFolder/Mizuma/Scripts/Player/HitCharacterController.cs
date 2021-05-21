@@ -28,4 +28,20 @@ public class HitCharacterController : MonoBehaviour
             PlayerManager.Instance.charaDatas[objNum].canJump = true;
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bed")
+        {
+            PlayerManager.Instance.charaDatas[objNum].isInBedRange = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Bed")
+        {
+            PlayerManager.Instance.charaDatas[objNum].isInBedRange = false;
+        }
+    }
 }

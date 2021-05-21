@@ -55,21 +55,31 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             if (characterDatas[i].isDeath == true) continue;
             if (i == keyboardMovePlayerId && isUseKeyboard) continue;
 
+            if (characterDatas[i].isInBed == true)
+            {
+                // 布団から出る
+                if (Input.GetButtonDown(playerInput[i].Interact))
+                {
+                    characterMover.InteractBed(characterDatas[i], false);
+                }
+                continue;
+            }
+
             Vector3 moveInput = playerInput[i].MoveAxis;
             Vector3 viewMoveInput = playerInput[i].ViewPointMoveAxis;
 
             // 移動/ダッシュ解除判定
             if (moveInput.magnitude > 0.2f)
             {
-                if(characterDatas[i].isRun) characterMover.Move(moveInput * moveData.dashMovMulti, characterDatas[i]);
+                if(characterDatas[i].isDash) characterMover.Move(moveInput * moveData.dashMovMulti, characterDatas[i]);
                 else characterMover.Move(moveInput, characterDatas[i]);
             }
-            else characterDatas[i].isRun = false;
+            else characterMover.Dash(characterDatas[i], false);
 
             // ダッシュ判定
             if (Input.GetButtonDown(playerInput[i].Run))
             {
-                characterDatas[i].isRun = true;
+                characterMover.Dash(characterDatas[i], true);
             }
             // 視点移動
             if (viewMoveInput.magnitude > 0.05f)
@@ -94,6 +104,11 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow)
             {
                 characterMover.PillowThrow(characterDatas[i]);
+            }
+            // 布団に入る
+            if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true)
+            {
+                characterMover.InteractBed(characterDatas[i], true);
             }
         }
 
@@ -120,6 +135,13 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         CharacterData c = characterDatas[keyboardMovePlayerId];
         if (c.isDeath == true) return;
 
+        if (c.isInBed == true)
+        {
+            // キーボード-布団から出る
+            if (Input.GetKeyDown(KeyCode.E)) characterMover.InteractBed(c, false);
+            return;
+        }
+
         // キーボード-視点移動
         KeyboardInputViewMove(c);
 
@@ -127,8 +149,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-移動
         KeyboardInputMove(c);
         // キーボード-ダッシュ判定/解除判定
-        if (Input.GetKey(KeyCode.LeftShift)) c.isRun = true;
-        else c.isRun = false;
+        if (Input.GetKey(KeyCode.LeftShift)) characterMover.Dash(c, true);
+        else characterMover.Dash(c, false);
         // キーボード-ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true) characterMover.Jump(c);
         // キーボード-ADS/非ADS
@@ -136,11 +158,13 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         else { characterMover.ToNonADS(c); }
         // キーボード-枕投げ
         if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c);
+        // キーボード-布団に入る
+        if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true) characterMover.InteractBed(c, true);
     }
 
     private void KeyboardInputMove(CharacterData c)
     {
-        float spdMulti = (c.isRun == true) ? moveData.dashMovMulti : 1;
+        float spdMulti = (c.isDash == true) ? moveData.dashMovMulti : 1;
 
         if (Input.GetKey(KeyCode.W)) characterMover.Move(spdMulti * Vector3.forward, c);
         if (Input.GetKey(KeyCode.A)) characterMover.Move(spdMulti * Vector3.left, c);

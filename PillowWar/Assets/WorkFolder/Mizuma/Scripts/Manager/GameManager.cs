@@ -13,6 +13,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public bool isPlayTheGame { get; private set; } = false;
     public List<int> resultIDs = new List<int>();
 
+    // ‰¼ƒŠƒUƒ‹ƒgî•ñ“ü—Í
     private void Start()
     {
         for (int i = 0; i < joinPlayers; i++) resultIDs.Add(i);

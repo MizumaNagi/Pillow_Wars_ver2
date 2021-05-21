@@ -14,7 +14,7 @@ public class CharacterData
         myBodyRigidbody = character.GetComponent<Rigidbody>();
         myPillowRigidbody = t.GetChild(3).GetComponent<Rigidbody>();
         myCamera = t.GetChild(2).GetComponent<Camera>();
-        hp = GameManager.Instance.ruleData.maxHp;
+        HP = GameManager.Instance.ruleData.maxHp;
 
         playerID = _playerID;
     }
@@ -28,22 +28,23 @@ public class CharacterData
     public Rigidbody myPillowRigidbody;
     public Camera myCamera;
 
-    public int hp;
+    public int HP { get; private set; }
     public float remainthrowCT = 0;
 
     public bool canJump = true;
     public bool isDeath = false;
     public bool isHavePillow = true;
-    public bool isProtect = false;
-    public bool isRun = false;
+    public bool isInBedRange = false;
+    public bool isInBed = false;
+    public bool isDash = false;
 
     public int playerID;
 
     public void Damage()
     {
-        if (isDeath || isProtect) return;
-        hp--;
-        if (hp <= 0)
+        if (isDeath || isInBed) return;
+        HP--;
+        if (HP <= 0)
         {
             GameManager.Instance.remainCharacters--;
             isDeath = true;
