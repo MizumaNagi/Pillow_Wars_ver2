@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterData
 {
-    public CharacterData(GameObject _myObject)
+    public CharacterData(GameObject _myObject, int _playerID)
     {
         character = _myObject;
         Transform t = character.transform;
@@ -15,6 +15,8 @@ public class CharacterData
         myPillowRigidbody = t.GetChild(3).GetComponent<Rigidbody>();
         myCamera = t.GetChild(2).GetComponent<Camera>();
         hp = GameManager.Instance.ruleData.maxHp;
+
+        playerID = _playerID;
     }
 
     public GameObject character;
@@ -34,6 +36,8 @@ public class CharacterData
     public bool isHavePillow = true;
     public bool isProtect = false;
     public bool isRun = false;
+
+    public int playerID;
 
     public void Damage()
     {

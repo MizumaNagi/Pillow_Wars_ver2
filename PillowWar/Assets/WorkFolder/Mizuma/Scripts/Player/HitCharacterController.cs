@@ -18,7 +18,7 @@ public class HitCharacterController : MonoBehaviour
         if (collison.gameObject.tag == "Pillow")
         {
             int pillowNum = int.Parse(collison.gameObject.name);
-            if (pillowNum == objNum) { Debug.Log("guard"); return; }
+            if (pillowNum == objNum) return;
 
             PlayerManager.Instance.charaDatas[objNum].Damage();
         }

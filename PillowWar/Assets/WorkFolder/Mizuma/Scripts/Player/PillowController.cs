@@ -28,6 +28,7 @@ public class PillowController : MonoBehaviour
         else if (collison.gameObject.tag == "Player")
         {
             StringBuilder sb = new StringBuilder(collison.gameObject.name);
+            sb.Replace("Player", "");
             int playerNum = int.Parse(sb.ToString());
             sb.Clear();
 

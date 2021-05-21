@@ -31,6 +31,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // オプション画面
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
+            if (i == keyboardMovePlayerId && isUseKeyboard) continue;
             if (Input.GetButtonDown(playerInput[i].Option)) gameManager.isPause = !gameManager.isPause;
         }
 
@@ -41,7 +42,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     {
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
-
+            if (i == keyboardMovePlayerId && isUseKeyboard) continue;
         }
 
         if (isUseKeyboard == true) KeyboardUiInputUpdateMethod();
@@ -52,6 +53,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
             if (characterDatas[i].isDeath == true) continue;
+            if (i == keyboardMovePlayerId && isUseKeyboard) continue;
 
             Vector3 moveInput = playerInput[i].MoveAxis;
             Vector3 viewMoveInput = playerInput[i].ViewPointMoveAxis;
@@ -130,10 +132,10 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true) characterMover.Jump(c);
         // キーボード-ADS/非ADS
-        if (Input.GetMouseButton(1)) characterMover.ToADS(c);
-        else characterMover.ToNonADS(c);
+        if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
+        else { characterMover.ToNonADS(c); }
         // キーボード-枕投げ
-        if (Input.GetKeyDown(KeyCode.F) && c.isHavePillow) characterMover.PillowThrow(c);
+        if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c);
     }
 
     private void KeyboardInputMove(CharacterData c)

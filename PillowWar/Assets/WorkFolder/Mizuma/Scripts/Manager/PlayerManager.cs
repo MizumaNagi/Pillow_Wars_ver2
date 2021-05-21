@@ -15,6 +15,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
     public void Init()
     {
+        Debug.Log("MAKE");
+
         for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             GameObject obj = Instantiate(playerPrefabs[i], spawnPos[i], Quaternion.identity);
@@ -26,7 +28,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             pillow.name = i.ToString();
             pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            charaDatas.Add(new CharacterData(obj));
+            charaDatas.Add(new CharacterData(obj,i));
 
             // TODO:–³‘Ê‚ÈGetcomponent...
             //pillow.AddComponent<PillowController>();

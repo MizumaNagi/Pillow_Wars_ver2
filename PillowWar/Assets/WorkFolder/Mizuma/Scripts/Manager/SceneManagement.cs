@@ -12,8 +12,9 @@ public enum SCENE_NAME
 
 public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
 {
-    private void Awake()
+    private void Start()
     {
+        Debug.Log("Scene/Awake");
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
@@ -27,6 +28,7 @@ public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
         }
         if (name == "Game")
         {
+            Debug.Log("Scene/OnSceneLoaded");
             GameManager.Instance.GameStart();
         }
         if (name == "Result")

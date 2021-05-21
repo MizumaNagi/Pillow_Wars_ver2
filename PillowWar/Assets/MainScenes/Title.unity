@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ca46882cfecdff1419352ed36fce5338, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -533,6 +533,7 @@ MonoBehaviour:
   isDontDestroy: 1
   joinPlayers: 4
   ruleData: {fileID: 11400000, guid: 2080411983f880249bcafb70ae7ab1e3, type: 2}
+  resultIDs: 
 --- !u!4 &1691247937
 Transform:
   m_ObjectHideFlags: 0
