@@ -21,14 +21,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Update()
     {
-        InputManager.Instance.UpdateMethod();
-        InputManager.Instance.GeneralInputUpdateMethod();
         if (isPlayTheGame == false)
         {
             InputManager.Instance.UiInputUpdateMethod();
         }
         else
         {
+            InputManager.Instance.GeneralInputUpdateMethod();
             if (isPause == false)
             {
                 InputManager.Instance.MoveInputUpdateMethod();
@@ -46,6 +45,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void GameStart()
     {
+        Debug.Log("start");
         isPlayTheGame = true;
         PlayerManager.Instance.Init();
         GameEventScript.Instance.Init();
@@ -54,6 +54,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void GameEnd()
     {
+        FindWinCharacterID();
+        PlayerManager.Instance.DataReset();
         SceneManagement.Instance.LoadScene(SCENE_NAME.RESULT);
         isPlayTheGame = false;
     }
@@ -62,5 +64,24 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         resultIDs.Clear();
         remainCharacters = joinPlayers;
+    }
+
+    private void FindWinCharacterID()
+    {
+        var IDLists = new List<int>();
+        for(int i = 0; i < joinPlayers; i++)
+        {
+            IDLists.Add(i);
+        }
+        foreach(int loseID in resultIDs.ToArray())
+        {
+            IDLists.Remove(loseID);
+        }
+        if(IDLists.Count > 1)
+        {
+            Debug.LogError("èüóòÉvÉåÉCÉÑÅ[ÇÃåüçıé∏îs");
+            return;
+        }
+        resultIDs.Add(IDLists[0]);
     }
 }

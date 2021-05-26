@@ -73,8 +73,9 @@ public class CharacterMover
         }
     }
 
-    public void InteractBed(CharacterData data, bool isInBed)
+    public void InteractBed(CharacterData data, bool isInBed, Vector3 bedPos)
     {
         data.isInBed = isInBed;
+        if (isInBed == true) data.myBodyTransform.localPosition = bedPos;
     }
 }

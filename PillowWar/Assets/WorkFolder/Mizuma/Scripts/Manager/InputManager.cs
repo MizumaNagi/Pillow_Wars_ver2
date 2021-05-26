@@ -8,7 +8,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     [SerializeField] private bool isUseKeyboard = false;
     [SerializeField] private int keyboardMovePlayerId;
 
-    [SerializeField] private InputData[] playerInput;
+    public InputData[] playerInput;
 
     private CharacterMover characterMover = new CharacterMover();
     private GameManager gameManager;
@@ -19,11 +19,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     private void Start()
     {
         gameManager = GameManager.Instance;
-    }
-
-    public void UpdateMethod()
-    {
-
     }
 
     public void GeneralInputUpdateMethod()
@@ -60,7 +55,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 // 布団から出る
                 if (Input.GetButtonDown(playerInput[i].Interact))
                 {
-                    characterMover.InteractBed(characterDatas[i], false);
+                    characterMover.InteractBed(characterDatas[i], false, characterDatas[i].inBedPos);
                 }
                 continue;
             }
@@ -108,7 +103,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             // 布団に入る
             if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true)
             {
-                characterMover.InteractBed(characterDatas[i], true);
+                characterMover.InteractBed(characterDatas[i], true, characterDatas[i].inBedPos);
             }
         }
 
@@ -138,7 +133,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (c.isInBed == true)
         {
             // キーボード-布団から出る
-            if (Input.GetKeyDown(KeyCode.E)) characterMover.InteractBed(c, false);
+            if (Input.GetKeyDown(KeyCode.E)) characterMover.InteractBed(c, false, c.inBedPos);
             return;
         }
 
@@ -159,7 +154,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-枕投げ
         if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c);
         // キーボード-布団に入る
-        if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true) characterMover.InteractBed(c, true);
+        if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true) characterMover.InteractBed(c, true, c.inBedPos);
     }
 
     private void KeyboardInputMove(CharacterData c)

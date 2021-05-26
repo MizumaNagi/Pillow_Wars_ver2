@@ -65,7 +65,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\InputManager.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Title\GotoGame.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Scene\TestSceneLoader.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\GameEventScript.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\SceneManagement.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\GameManager.cs" />
@@ -85,9 +85,9 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
     <Compile Include="Assets\UI\Title\StartButton.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\BedScript.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Result\GotoTitle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

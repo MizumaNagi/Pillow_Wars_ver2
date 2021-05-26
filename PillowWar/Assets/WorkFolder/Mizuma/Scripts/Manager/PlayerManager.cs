@@ -15,14 +15,10 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
     public void Init()
     {
-        Debug.Log("Init");
-
-        //GameObject emptyObj = Instantiate(new GameObject());
         GameObject emptyObj = new GameObject();
         charctersParent = emptyObj.transform;
         emptyObj.name = "CharaParent";
         
-        //GameObject emptyObj2 = Instantiate(new GameObject());
         GameObject emptyObj2 = new GameObject();
         PillowParent = emptyObj2.transform;
         emptyObj2.name = "PillowParent";
@@ -48,15 +44,14 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         InputManager.Instance.characterDatas = charaDatas;
     }
 
+    public void DataReset()
+    {
+        charaDatas.Clear();
+    }
 
     public void UpdateMethod()
     {
         CoolTimeElapse();
-    }
-
-    private void Damage()
-    {
-        
     }
 
     private void CoolTimeElapse()

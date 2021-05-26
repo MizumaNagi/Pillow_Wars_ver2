@@ -34,6 +34,7 @@ public class HitCharacterController : MonoBehaviour
         if (other.gameObject.tag == "Bed")
         {
             PlayerManager.Instance.charaDatas[objNum].isInBedRange = true;
+            PlayerManager.Instance.charaDatas[objNum].inBedPos = other.transform.position;
         }
     }
 
