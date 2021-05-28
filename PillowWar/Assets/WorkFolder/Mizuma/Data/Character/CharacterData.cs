@@ -29,6 +29,8 @@ public class CharacterData
     public Rigidbody myPillowRigidbody;
     public Camera myCamera;
 
+    public BedJudgement bedJudgement;
+
     public int HP { get; private set; }
     public float remainthrowCT = 0;
 

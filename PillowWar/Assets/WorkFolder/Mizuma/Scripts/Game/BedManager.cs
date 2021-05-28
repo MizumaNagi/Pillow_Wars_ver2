@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class BedScript : MonoBehaviour
+public class BedManager : MonoBehaviour
 {
     private int activeBeds = 5;
 

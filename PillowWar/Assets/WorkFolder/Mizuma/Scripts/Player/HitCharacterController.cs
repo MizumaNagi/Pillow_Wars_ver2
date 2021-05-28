@@ -35,6 +35,9 @@ public class HitCharacterController : MonoBehaviour
         {
             PlayerManager.Instance.charaDatas[objNum].isInBedRange = true;
             PlayerManager.Instance.charaDatas[objNum].inBedPos = other.transform.position;
+            BedJudgement bed = other.GetComponent<BedJudgement>();
+            PlayerManager.Instance.charaDatas[objNum].bedJudgement = bed;
+            bed.ChangeEnableCollider(false);
         }
     }
 

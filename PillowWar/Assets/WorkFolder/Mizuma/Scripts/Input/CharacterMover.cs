@@ -76,6 +76,14 @@ public class CharacterMover
     public void InteractBed(CharacterData data, bool isInBed, Vector3 bedPos)
     {
         data.isInBed = isInBed;
-        if (isInBed == true) data.myBodyTransform.localPosition = bedPos;
+        if (isInBed == true)
+        {
+            data.myBodyTransform.localPosition = bedPos;
+        }
+        else
+        {
+            data.bedJudgement.ChangeEnableCollider(true);
+            data.bedJudgement = null;
+        }
     }
 }
