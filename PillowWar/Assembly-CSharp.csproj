@@ -74,6 +74,7 @@
     <Compile Include="Assets\WorkFolder\Sasaki\Script\HP.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\PillowController.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Player.cs" />
+    <Compile Include="Assets\UI\Title\ExitButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\PlayerManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\DebugInput.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\UI\Title\ExitButton.cs" />
+    <Compile Include="Assets\UI\Result\ScoreManegement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
