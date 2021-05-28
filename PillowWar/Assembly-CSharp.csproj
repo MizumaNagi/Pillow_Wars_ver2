@@ -90,6 +90,8 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\UI\Result\ScoreManegement.cs" />
+    <Compile Include="Assets\UI\Title\ButtonSelect.cs" />
+    <Compile Include="Assets\UI\Result\CameraZoom.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

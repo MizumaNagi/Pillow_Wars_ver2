@@ -6,7 +6,7 @@ public class GotoTitle : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManagement.Instance.LoadScene(SCENE_NAME.TITLE);
         }
