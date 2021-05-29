@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CharacterData
 {
     public CharacterData(GameObject _myObject, int _playerID)
@@ -28,6 +29,8 @@ public class CharacterData
     public Rigidbody myPillowRigidbody;
     public Camera myCamera;
 
+    public BedJudgement bedJudgement;
+
     public int HP { get; private set; }
     public float remainthrowCT = 0;
 
@@ -38,6 +41,8 @@ public class CharacterData
     public bool isInBed = false;
     public bool isDash = false;
 
+    public Vector3 inBedPos = Vector3.zero;
+
     public int playerID;
 
     public void Damage()
@@ -47,6 +52,7 @@ public class CharacterData
         if (HP <= 0)
         {
             GameManager.Instance.remainCharacters--;
+            GameManager.Instance.resultIDs.Add(playerID);
             isDeath = true;
         }
     }

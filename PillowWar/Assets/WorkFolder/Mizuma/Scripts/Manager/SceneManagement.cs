@@ -14,7 +14,6 @@ public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
 {
     private void Start()
     {
-        Debug.Log("Scene/Awake");
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;

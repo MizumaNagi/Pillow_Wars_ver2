@@ -26,7 +26,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("重複しているので削除しました。\n" + "type: " + typeof(T).ToString());
+            Debug.Log("重複しているので削除しました\n" + "type: " + typeof(T).ToString());
             Destroy(gameObject);
             return;
         }
@@ -34,7 +34,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour
         instance = GetComponent<T>();
         if (instance == null)
         {
-            Debug.Log("取得に失敗しました。");
+            Debug.LogError("取得に失敗しました");
         }
         transform.parent = null;
 
