@@ -65,7 +65,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
         {
             for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
-                PlayerManager.Instance.charaDatas[i].Damage();
+                PlayerManager.Instance.charaDatas[i].Damage(false);
             }
         }
     }

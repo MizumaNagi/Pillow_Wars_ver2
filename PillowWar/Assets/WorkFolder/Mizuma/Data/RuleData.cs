@@ -8,5 +8,6 @@ public class RuleData : ScriptableObject
 {
     public int maxHp;
     public float pillowThrowCT;
-    public float pillowHeadShotStunLength;
+    public float pillowHeadShotStunTime;
+    public float inBedDamageTime;
 }

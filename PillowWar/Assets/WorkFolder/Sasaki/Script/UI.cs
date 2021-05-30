@@ -15,7 +15,6 @@ public class UI : MonoBehaviour
     void Start()
     {
         Pausetext.enabled = false;
-        Debug.Log("è¡Ç¶Ç‹ÇµÇΩ");
 
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
@@ -31,9 +30,6 @@ public class UI : MonoBehaviour
         {
             playerhp[i] = 0;
             playerhp[i] = (float)PlayerManager.Instance.charaDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
-
-            Debug.Log(hp[0] + "HPÇÕOK");
-            Debug.Log(playerhp[0] + "playerHPÇÕOK");
 
             hp[i].value = playerhp[i];
             Pause();

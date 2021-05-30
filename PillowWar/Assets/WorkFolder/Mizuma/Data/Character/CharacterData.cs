@@ -29,7 +29,7 @@ public class CharacterData
     public Rigidbody myPillowRigidbody;
     public Camera myCamera;
 
-    public BedJudgement bedJudgement;
+    public BedStatus bedStatus;
 
     public int HP { get; private set; }
     public float remainthrowCT = 0;
@@ -45,15 +45,24 @@ public class CharacterData
 
     public int playerID;
 
-    public void Damage()
+    public void Damage(bool pieceDamage)
     {
-        if (isDeath || isInBed) return;
+        if (isDeath) { return; }
+        if (isInBed && pieceDamage == false) { return; }
         HP--;
+
         if (HP <= 0)
         {
-            GameManager.Instance.remainCharacters--;
-            GameManager.Instance.resultIDs.Add(playerID);
-            isDeath = true;
+            Death();
         }
+    }
+
+    private void Death()
+    {
+        bedStatus.ChangeEnableCollider(true);
+        isInBed = false;
+        isDeath = true;
+        GameManager.Instance.remainCharacters--;
+        GameManager.Instance.resultIDs.Add(playerID);
     }
 }
