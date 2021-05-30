@@ -20,7 +20,7 @@ public class HitCharacterController : MonoBehaviour
             int pillowNum = int.Parse(collison.gameObject.name);
             if (pillowNum == objNum) return;
 
-            PlayerManager.Instance.charaDatas[objNum].Damage();
+            PlayerManager.Instance.charaDatas[objNum].Damage(false);
         }
 
         if (collison.gameObject.tag == "Ground")
@@ -35,9 +35,8 @@ public class HitCharacterController : MonoBehaviour
         {
             PlayerManager.Instance.charaDatas[objNum].isInBedRange = true;
             PlayerManager.Instance.charaDatas[objNum].inBedPos = other.transform.position;
-            BedJudgement bed = other.GetComponent<BedJudgement>();
-            PlayerManager.Instance.charaDatas[objNum].bedJudgement = bed;
-            bed.ChangeEnableCollider(false);
+            BedStatus bed = other.GetComponent<BedStatus>();
+            PlayerManager.Instance.charaDatas[objNum].bedStatus = bed;
         }
     }
 

@@ -45,7 +45,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void GameStart()
     {
-        Debug.Log("start");
         isPlayTheGame = true;
         PlayerManager.Instance.Init();
         GameEventScript.Instance.Init();

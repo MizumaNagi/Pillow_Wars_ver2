@@ -27,7 +27,6 @@ public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
         }
         if (name == "Game")
         {
-            Debug.Log("Scene/OnSceneLoaded");
             GameManager.Instance.GameStart();
         }
         if (name == "Result")

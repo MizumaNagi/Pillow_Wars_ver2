@@ -78,12 +78,14 @@ public class CharacterMover
         data.isInBed = isInBed;
         if (isInBed == true)
         {
+            data.bedStatus.ChangeEnableCollider(false);
             data.myBodyTransform.localPosition = bedPos;
+            data.bedStatus.cd = data;
         }
         else
         {
-            data.bedJudgement.ChangeEnableCollider(true);
-            data.bedJudgement = null;
+            data.bedStatus.ChangeEnableCollider(true);
+            data.bedStatus = null;
         }
     }
 }
