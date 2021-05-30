@@ -47,6 +47,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\UI\Result\ScoreManegement.cs" />
      <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HitCharacterController.cs" />
      <Compile Include="Assets\WorkFolder\Sasaki\Script\Makura.cs" />
      <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Camera\CameraController.cs" />
