@@ -8,6 +8,9 @@ public class UI : MonoBehaviour
     [SerializeField] private Slider[] hp;
     [SerializeField] private Image[] image;
     [SerializeField] private Text[] Futontext;
+    [SerializeField] private Text Titlereturntext;
+    [SerializeField] private Text Gamereturntext;
+
     public UnityEngine.UI.Text Pausetext;
     public List<float> playerhp = new List<float>();
 
@@ -40,10 +43,14 @@ public class UI : MonoBehaviour
     {
         if (GameManager.Instance.isPause == true)
         {
+            Titlereturntext.enabled = true;
+            Gamereturntext.enabled = true;
             Pausetext.enabled = true;
         }
         else
         {
+            Titlereturntext.enabled = false;
+            Gamereturntext.enabled = false;
             Pausetext.enabled = false;
         }
     }
