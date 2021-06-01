@@ -15,6 +15,8 @@ public class CharacterData
         myBodyRigidbody = character.GetComponent<Rigidbody>();
         myPillowRigidbody = t.GetChild(3).GetComponent<Rigidbody>();
         myCamera = t.GetChild(2).GetComponent<Camera>();
+        myLoserCamera = GameObject.FindGameObjectWithTag("LoserCamera").transform.GetChild(_playerID).GetComponent<Camera>();
+        myLoserCamera.enabled = false;
         HP = GameManager.Instance.ruleData.maxHp;
 
         playerID = _playerID;
@@ -28,6 +30,7 @@ public class CharacterData
     public Rigidbody myBodyRigidbody;
     public Rigidbody myPillowRigidbody;
     public Camera myCamera;
+    public Camera myLoserCamera;
 
     public BedStatus bedStatus;
 
@@ -64,6 +67,9 @@ public class CharacterData
             bedStatus.ChangeEnableCollider(true);
             bedStatus = null;
         }
+        myCamera.enabled = false;
+        myLoserCamera.enabled = true;
+
         isInBed = false;
         isDeath = true;
         GameManager.Instance.remainCharacters--;

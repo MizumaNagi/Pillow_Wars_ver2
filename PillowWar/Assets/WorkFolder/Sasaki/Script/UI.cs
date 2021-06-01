@@ -28,7 +28,6 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             playerhp[i] = 0;

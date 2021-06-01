@@ -44,8 +44,8 @@ public class TemporaryUiManager : MonoBehaviour
         }
 
         // イベントTxt更新
-        remainEventStopTxt.text = $"残りイベント静止時間: <size=70>{gameEventScript.remainEventStopTime:000.0}</size>秒";
-        remainEventActiveTxt.text = $"残りイベント継続時間: <size=70>{gameEventScript.remainEventActiveTime:000.0}</size>秒";
+        remainEventStopTxt.text = $"次イベント開始時間: <size=70>{gameEventScript.remainEventStopTime:000.0}</size>秒";
+        remainEventActiveTxt.text = $"残りイベント発生時間: <size=70>{gameEventScript.remainEventActiveTime:000.0}</size>秒";
 
         // ポーズ中Txt更新
         if (gameManager.isPause == true) isPauseTxt.enabled = true;
