@@ -59,7 +59,11 @@ public class CharacterData
 
     private void Death()
     {
-        bedStatus.ChangeEnableCollider(true);
+        if (bedStatus != null)
+        {
+            bedStatus.ChangeEnableCollider(true);
+            bedStatus = null;
+        }
         isInBed = false;
         isDeath = true;
         GameManager.Instance.remainCharacters--;

@@ -95,6 +95,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\BedManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\HPGauge.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
