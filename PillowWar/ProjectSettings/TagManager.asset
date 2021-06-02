@@ -8,6 +8,7 @@ TagManager:
   - Pillow
   - Bed
   - LoserCamera
+  - Door
   layers:
   - Default
   - TransparentFX

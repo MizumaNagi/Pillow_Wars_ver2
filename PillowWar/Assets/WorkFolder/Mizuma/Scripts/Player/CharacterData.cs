@@ -33,6 +33,7 @@ public class CharacterData
     public Camera myLoserCamera;
 
     public BedStatus bedStatus;
+    public DoorAnimation doorAnimation;
 
     public int HP { get; private set; }
     public float remainthrowCT = 0;
@@ -43,6 +44,7 @@ public class CharacterData
     public bool isInBedRange = false;
     public bool isInBed = false;
     public bool isDash = false;
+    public bool isInDoor = false;
 
     public Vector3 inBedPos = Vector3.zero;
 

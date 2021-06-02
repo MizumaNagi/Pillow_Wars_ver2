@@ -38,6 +38,12 @@ public class HitCharacterController : MonoBehaviour
             BedStatus bed = other.GetComponent<BedStatus>();
             PlayerManager.Instance.charaDatas[objNum].bedStatus = bed;
         }
+
+        if (other.gameObject.tag == "Door")
+        {
+            PlayerManager.Instance.charaDatas[objNum].isInDoor = true;
+            PlayerManager.Instance.charaDatas[objNum].doorAnimation = other.GetComponent<DoorAnimation>();
+        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -45,6 +51,13 @@ public class HitCharacterController : MonoBehaviour
         if(other.gameObject.tag == "Bed")
         {
             PlayerManager.Instance.charaDatas[objNum].isInBedRange = false;
+            PlayerManager.Instance.charaDatas[objNum].bedStatus = null;
+        }
+
+        if(other.gameObject.tag == "Door")
+        {
+            PlayerManager.Instance.charaDatas[objNum].isInDoor = false;
+            PlayerManager.Instance.charaDatas[objNum].doorAnimation = null;
         }
     }
 }

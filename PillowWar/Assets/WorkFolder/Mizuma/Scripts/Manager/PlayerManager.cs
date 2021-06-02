@@ -7,7 +7,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     [SerializeField] private GameObject[] playerPrefabs;
     [SerializeField] private GameObject pillowPrefab;
 
-    private Vector3[] spawnPos = { new Vector3(-10, 0, -10), new Vector3(10, 0, 10), new Vector3(-10, 0, 10), new Vector3(10, 0, -10) };
+    private Vector3[] spawnPos = { new Vector3(-5.5f, 0, -5.5f), new Vector3(5.5f, 0, 5.5f), new Vector3(-5.5f, 0, 5.5f), new Vector3(5.5f, 0, -5.5f) };
     private Transform charctersParent;
     public Transform PillowParent { get; private set; }
 

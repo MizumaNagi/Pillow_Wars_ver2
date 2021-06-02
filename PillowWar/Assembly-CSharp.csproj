@@ -74,6 +74,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\SceneManagement.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\NewBehaviourScript.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\HPGauge.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\InputData.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\HP.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\PillowController.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\PlayerManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\DebugInput.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Data\Character\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\TemporaryUiManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Result\GotoTitle.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\MoveData.cs" />
@@ -93,9 +93,10 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
     <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\BedManager.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\HPGauge.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\DoorAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
