@@ -26,7 +26,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     public void UpdateMethod()
     {
-        if (remainEventStopTime < 0)
+        if (remainEventStopTime < remainEventActiveTime)
         {
             if (isEventStart == false) isEventStart = true;
             remainEventActiveTime -= Time.deltaTime;
@@ -43,7 +43,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private void NextEventStart()
     {
-        if(finishEventsNum < detailEventsNum)
+        if(finishEventsNum <= detailEventsNum)
         {
             remainEventStopTime = gameEventData.gameEvents[finishEventsNum].stopEventInterval;
             remainEventActiveTime = gameEventData.gameEvents[finishEventsNum].eventActiveTime;
@@ -65,7 +65,12 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
         {
             for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
-                PlayerManager.Instance.charaDatas[i].Damage(false);
+                PlayerManager.Instance.playerDatas[i].Damage(false);
+            }
+
+            for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
+            {
+                PlayerManager.Instance.npcDatas[i].Damage(false);
             }
         }
     }

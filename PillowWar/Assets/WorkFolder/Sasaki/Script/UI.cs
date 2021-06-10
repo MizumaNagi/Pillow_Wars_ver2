@@ -36,7 +36,7 @@ public class UI : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
-            float playerhp = (float)PlayerManager.Instance.charaDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+            float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
 
             for (int j = 0; j < iconChild; j++)
             {
@@ -75,7 +75,7 @@ public class UI : MonoBehaviour
     {
         for (int i = 0; i < Futontimage.Length; i++)
         {
-            if (PlayerManager.Instance.charaDatas[i].isInBed == true)
+            if (PlayerManager.Instance.playerDatas[i].isInBed == true)
             {
                 Futontext[i].enabled = true;
                 Futontimage[i].enabled = true;
@@ -90,7 +90,6 @@ public class UI : MonoBehaviour
 
     private void hpicon()
     {
-
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             List<Image> images = new List<Image>();
@@ -101,5 +100,4 @@ public class UI : MonoBehaviour
             hpIcons.Add(images);
         }
     }
-
 }

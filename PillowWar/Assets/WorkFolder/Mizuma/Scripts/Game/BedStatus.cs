@@ -8,6 +8,7 @@ public class BedStatus : MonoBehaviour
     public float remainDamagetime;
 
     public CharacterData cd;
+    public Event dmgEvent;
 
     private void Start()
     {

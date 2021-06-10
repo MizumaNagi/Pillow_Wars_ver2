@@ -39,6 +39,18 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2233052110492404334, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233052110492404334, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233052110492404334, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2233052110994310896, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -85,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2233052110994310899, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: Player0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ca42d2d8d64292458d24cf75c90d004, type: 3}

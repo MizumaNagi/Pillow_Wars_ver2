@@ -31,7 +31,7 @@ public class TemporaryUiManager : MonoBehaviour
         // HPTxt更新
         for (int i = 0; i < hpTxts.Length; i++)
         {
-            int hp = playerManager.charaDatas[i].HP;
+            int hp = playerManager.playerDatas[i].HP;
             if (hp <= 0) hpTxts[i].text = "死(行動不可)";
             else hpTxts[i].text = hp.ToString();
         }
@@ -39,13 +39,13 @@ public class TemporaryUiManager : MonoBehaviour
         // In お布団 Txt更新
         for (int i = 0; i < isInBedTxts.Length; i++)
         {
-            if (playerManager.charaDatas[i].isInBed == true) isInBedTxts[i].enabled = true;
+            if (playerManager.playerDatas[i].isInBed == true) isInBedTxts[i].enabled = true;
             else isInBedTxts[i].enabled = false;
         }
 
         // イベントTxt更新
-        remainEventStopTxt.text = $"残りイベント静止時間: <size=70>{gameEventScript.remainEventStopTime:000.0}</size>秒";
-        remainEventActiveTxt.text = $"残りイベント継続時間: <size=70>{gameEventScript.remainEventActiveTime:000.0}</size>秒";
+        remainEventStopTxt.text = $"次イベント開始時間: <size=70>{gameEventScript.remainEventStopTime:000.0}</size>秒";
+        remainEventActiveTxt.text = $"残りイベント発生時間: <size=70>{gameEventScript.remainEventActiveTime:000.0}</size>秒";
 
         // ポーズ中Txt更新
         if (gameManager.isPause == true) isPauseTxt.enabled = true;

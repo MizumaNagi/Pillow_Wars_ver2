@@ -105,6 +105,11 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             {
                 characterMover.InteractBed(characterDatas[i], true, characterDatas[i].inBedPos);
             }
+            // ドア開閉
+            if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInDoor == true)
+            {
+                PlayerManager.Instance.playerDatas[i].doorAnimation.InteractDoor();
+            }
         }
 
         if (isUseKeyboard == true) KeyboardMoveInputUpdateMethod();
@@ -155,6 +160,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c);
         // キーボード-布団に入る
         if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true) characterMover.InteractBed(c, true, c.inBedPos);
+        // キーボード-ドア開閉
+        if (Input.GetKeyDown(KeyCode.E) && c.isInDoor == true) PlayerManager.Instance.playerDatas[keyboardMovePlayerId].doorAnimation.InteractDoor();
     }
 
     private void KeyboardInputMove(CharacterData c)
