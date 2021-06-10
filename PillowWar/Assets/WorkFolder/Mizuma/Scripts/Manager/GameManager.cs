@@ -26,7 +26,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Start()
     {
         for (int i = 0; i < joinPlayers; i++) resultIDs.Add(i);
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Game") GameStart();
+        //if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Game") GameStart();
     }
 
     private void Update()
@@ -49,7 +49,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 InputManager.Instance.UiInputUpdateMethod();
             }
 
-            if (remainCharacters <= 1) GameEnd();
+            if (remainCharacters <= 1) GoResult();
         }
     }
 
@@ -61,12 +61,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Init();
     }
 
-    private void GameEnd()
+    public void GameEnd()
+    {
+        PlayerManager.Instance.DataReset();
+        isPlayTheGame = false;
+    }
+
+    private void GoResult()
     {
         FindWinCharacterID();
-        PlayerManager.Instance.DataReset();
+        GameEnd();
         SceneManagement.Instance.LoadScene(SCENE_NAME.RESULT);
-        isPlayTheGame = false;
     }
 
     private void Init()
@@ -80,11 +85,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         var IDLists = new List<int>();
         for(int i = 0; i < joinPlayers; i++)
         {
-            IDLists.Add(i);
+            IDLists.Add(i + 1);
         }
         for(int i = 0; i < joinNpcs; i++)
         {
-            IDLists.Add(-i);
+            IDLists.Add(-i - 1);
         }
 
         foreach(int loseID in resultIDs.ToArray())
@@ -94,6 +99,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if(IDLists.Count != 1)
         {
             Debug.LogError("èüóòÉvÉåÉCÉÑÅ[ÇÃåüçıé∏îs");
+            foreach(int i in IDLists.ToArray())
+            {
+                Debug.Log(i);
+            }
             return;
         }
         resultIDs.Add(IDLists[0]);

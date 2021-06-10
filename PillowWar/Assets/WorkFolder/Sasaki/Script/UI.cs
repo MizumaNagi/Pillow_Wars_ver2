@@ -45,7 +45,7 @@ public class UI : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
-
+        
             for (int j = 0; j < iconChild; j++)
             {
                 hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
@@ -65,6 +65,7 @@ public class UI : MonoBehaviour
 
     private void PauseTitle()
     {
+        GameManager.Instance.GameEnd();
         SceneManagement.Instance.LoadScene(SCENE_NAME.TITLE);
     }
 
@@ -116,4 +117,6 @@ public class UI : MonoBehaviour
             hpIcons.Add(images);
         }
     }
+
+
 }
