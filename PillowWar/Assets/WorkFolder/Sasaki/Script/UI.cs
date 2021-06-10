@@ -2,32 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
     //[SerializeField] private Slider[] hp;
     [SerializeField] private Image[] Futontimage;
     [SerializeField] private Text[] Futontext;
+    [SerializeField] private Text Titlereturntext;
+    [SerializeField] private Text Gamereturntext;
     [SerializeField] private Transform[] hpIconParents;
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private Button resumeButton;
-    [SerializeField] private Button titleButton;
 
     public UnityEngine.UI.Text Pausetext;
     //public List<float> playerhp = new List<float>();
     private int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
-    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
-
-        resumeButton.onClick.AddListener(PauseResume);
-        titleButton.onClick.AddListener(PauseTitle);
-
         Pausetext.enabled = false;
 
         iconChild = hpIconParents[0].childCount;
@@ -63,29 +55,19 @@ public class UI : MonoBehaviour
         //}
     }
 
-    private void PauseTitle()
-    {
-        SceneManagement.Instance.LoadScene(SCENE_NAME.TITLE);
-    }
-
-    private void PauseResume()
-    {
-        gameManager.isPause = !gameManager.isPause;
-    }
-
     public void Pause()
     {
         if (GameManager.Instance.isPause == true)
         {
+            Titlereturntext.enabled = true;
+            Gamereturntext.enabled = true;
             Pausetext.enabled = true;
-            pausePanel.SetActive(true);
-
         }
         else
         {
+            Titlereturntext.enabled = false;
+            Gamereturntext.enabled = false;
             Pausetext.enabled = false;
-            pausePanel.SetActive(false);
-
         }
     }
 
@@ -119,4 +101,5 @@ public class UI : MonoBehaviour
             hpIcons.Add(images);
         }
     }
+
 }
