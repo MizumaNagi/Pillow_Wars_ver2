@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2943871946252741233}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -49,4 +49,7 @@ MonoBehaviour:
   - {fileID: 1083227336374037543, guid: 97068079f6c161642b186dc134f24c80, type: 3}
   - {fileID: 3592677008812086595, guid: 3cf545d018d2e5948bfef3bceec4300d, type: 3}
   - {fileID: 2453679551267395523, guid: 1ced8900ca368a448a0d97746f24a19e, type: 3}
+  npcPrefabs:
+  - {fileID: 5858371983849001437, guid: 440eea1dd88f2ff428d7f26933dceb4c, type: 3}
   pillowPrefab: {fileID: 4407689812196193053, guid: d8e99c000fd684b4e8761a2131cd014b, type: 3}
+  charaDatas: []

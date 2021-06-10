@@ -108,7 +108,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             // ドア開閉
             if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInDoor == true)
             {
-                PlayerManager.Instance.charaDatas[i].doorAnimation.InteractDoor();
+                PlayerManager.Instance.playerDatas[i].doorAnimation.InteractDoor();
             }
         }
 
@@ -161,7 +161,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-布団に入る
         if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true) characterMover.InteractBed(c, true, c.inBedPos);
         // キーボード-ドア開閉
-        if (Input.GetKeyDown(KeyCode.E) && c.isInDoor == true) PlayerManager.Instance.charaDatas[keyboardMovePlayerId].doorAnimation.InteractDoor();
+        if (Input.GetKeyDown(KeyCode.E) && c.isInDoor == true) PlayerManager.Instance.playerDatas[keyboardMovePlayerId].doorAnimation.InteractDoor();
     }
 
     private void KeyboardInputMove(CharacterData c)

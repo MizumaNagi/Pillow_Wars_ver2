@@ -34,7 +34,7 @@ public class HPGauge : MonoBehaviour
         for(int i = 0; i < joinPlayers; i++)
         {
             // i ”Ô–Ú‚ÌPlayer‚ÌŒ»ÝHPŠ„‡‚ðŽZo‚·‚é
-            float hpPercentage = (float)PlayerManager.Instance.charaDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+            float hpPercentage = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
 
             // HPŠ„‡‚ð‚à‚Æ‚ÉIcon‚ðí‚é
             for(int j = 0; j < iconChildCount; j++)
