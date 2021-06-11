@@ -13,6 +13,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     public float remainEventStopTime;
     public float remainEventActiveTime;
+    public bool canBedIn = false;
 
     private void Start()
     {
@@ -36,6 +37,11 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 NextEventStart();
                 EventActive(nextEventType);
             }
+            canBedIn = true;
+        }
+        else
+        {
+            canBedIn = false;
         }
 
         remainEventStopTime -= Time.deltaTime;
