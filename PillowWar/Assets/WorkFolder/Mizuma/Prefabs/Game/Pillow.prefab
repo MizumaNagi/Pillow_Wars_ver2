@@ -126,3 +126,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4245074352b6a54383442481f343fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterData:
+    character: {fileID: 0}
+    myBodyTransform: {fileID: 0}
+    myPillowTransform: {fileID: 0}
+    myCameraTransform: {fileID: 0}
+    myBodyRigidbody: {fileID: 0}
+    myPillowRigidbody: {fileID: 0}
+    myCamera: {fileID: 0}
+    myLoserCamera: {fileID: 0}
+    bedStatus: {fileID: 0}
+    doorAnimation: {fileID: 0}
+    remainthrowCT: 0
+    isNpc: 0
+    canJump: 0
+    isDeath: 0
+    isHavePillow: 0
+    isInBedRange: 0
+    isInBed: 0
+    isDash: 0
+    isInDoor: 0
+    inBedPos: {x: 0, y: 0, z: 0}
