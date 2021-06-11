@@ -13,17 +13,21 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button titleButton;
+    [SerializeField] private Image[] Futont1image;
+    [SerializeField] private Image[] Futont2image;
 
     public UnityEngine.UI.Text Pausetext;
     //public List<float> playerhp = new List<float>();
     private int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private GameManager gameManager;
+    private GameEventScript gameEventScript;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
+        gameEventScript = GameEventScript.Instance;
 
         resumeButton.onClick.AddListener(PauseResume);
         titleButton.onClick.AddListener(PauseTitle);
@@ -42,6 +46,20 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
+            {
+                Futont1image[i].enabled = true;
+                Futont2image[i].enabled = true;
+            }
+            else
+            {
+                Futont1image[i].enabled = false;
+                Futont2image[i].enabled = false;
+            }
+        }
+
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
@@ -96,6 +114,8 @@ public class UI : MonoBehaviour
             {
                 Futontext[i].enabled = true;
                 Futontimage[i].enabled = true;
+                Futont1image[i].enabled = false;
+                Futont2image[i].enabled = false;
             }
             else
             {
