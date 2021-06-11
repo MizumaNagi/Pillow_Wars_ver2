@@ -22,7 +22,8 @@ public class HitCharacterController : MonoBehaviour
             int pillowNum = int.Parse(collison.gameObject.name);
             if (pillowNum == objNum) return;
 
-            PlayerManager.Instance.playerDatas[objNum].Damage(false);
+            if (isNpc == true) PlayerManager.Instance.npcDatas[objNum - 100].Damage(false);
+            else PlayerManager.Instance.playerDatas[objNum].Damage(false);
         }
 
         if (collison.gameObject.tag == "Ground")

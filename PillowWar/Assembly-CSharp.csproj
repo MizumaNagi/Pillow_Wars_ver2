@@ -98,6 +98,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NavMeshSurfaceUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

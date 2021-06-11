@@ -9,7 +9,6 @@ public class PillowController : MonoBehaviour
     public void Start()
     {
         StringBuilder sb = new StringBuilder(gameObject.name);
-        sb.Replace("Pillow", "");
         objNum = int.Parse(sb.ToString());
         sb.Clear();
     }
@@ -28,7 +27,8 @@ public class PillowController : MonoBehaviour
         else if (collison.gameObject.tag == "Player")
         {
             StringBuilder sb = new StringBuilder(collison.gameObject.name);
-            sb.Replace("Player", "");
+            sb.Replace("Player","");
+            sb.Replace("Npc", "");
             int playerNum = int.Parse(sb.ToString());
             sb.Clear();
 

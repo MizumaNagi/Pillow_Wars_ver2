@@ -53,15 +53,15 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             charaIndex++;
         }
 
-        for(int i = 0; i < GameManager.Instance.joinNpcs; i++)
+        for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
         {
             GameObject obj = Instantiate(npcPrefabs[i], spawnPos[charaIndex], Quaternion.identity);
             obj.transform.GetChild(0).localPosition = Vector3.zero;
-            obj.name = "Npc" + i;
+            obj.name = "Npc" + (i + 100);
             obj.transform.SetParent(npcsParent, true);
 
             GameObject pillow = Instantiate(pillowPrefab);
-            pillow.name = i + 100.ToString();
+            pillow.name = (i + 100).ToString();
             pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
             npcDatas.Add(new CharacterData(obj, i, true));

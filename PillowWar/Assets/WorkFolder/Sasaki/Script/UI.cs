@@ -65,6 +65,8 @@ public class UI : MonoBehaviour
 
     private void PauseTitle()
     {
+        pausePanel.SetActive(false);
+        Pausetext.enabled = false;
         GameManager.Instance.GameEnd();
         SceneManagement.Instance.LoadScene(SCENE_NAME.TITLE);
     }
