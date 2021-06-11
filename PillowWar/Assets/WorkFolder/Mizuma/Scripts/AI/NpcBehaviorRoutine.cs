@@ -1,3 +1,4 @@
+using System.Text;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,23 +12,23 @@ public enum NPC_STATUS
 
 public class NpcBehaviorRoutine : MonoBehaviour
 {
-    [SerializeField] private GameObject targetMark;
-    [SerializeField] private Vector3 stageRange;
-    [SerializeField, Range(1f, 5f)] private float searchNavMeshRange;
+    [SerializeField] private NpcRoutineData routineData;
 
     private CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
-    private NPC_STATUS status = NPC_STATUS.NONE;
     private Transform targetTransform;
+
+    private int npcID;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        GetNpcID();
 
-        GameObject obj = Instantiate(targetMark);
+        GameObject obj = Instantiate(routineData.targetMark);
         targetTransform = obj.transform;
     }
-
+    
     private void Update()
     {
         if (agent.hasPath == false)
@@ -36,14 +37,23 @@ public class NpcBehaviorRoutine : MonoBehaviour
             agent.destination = pos;
             targetTransform.position = pos;
         }
+    
+    }
+
+    private void GetNpcID()
+    {
+        StringBuilder sb = new StringBuilder(gameObject.name);
+        sb.Replace("Npc", "");
+        if (int.TryParse(sb.ToString(), out npcID) == false) Debug.LogError("NpcIDの取得失敗、NpcObj名を確認してください。");
+        sb.Clear();
     }
 
     private Vector3 GetNextDestination()
     {
         NavMeshHit navMeshHit;
 
-        Vector3 rndPos = new Vector3(Random.Range(-stageRange.x, stageRange.x), 0, Random.Range(-stageRange.z, stageRange.z));
-        if (NavMesh.SamplePosition(rndPos, out navMeshHit, searchNavMeshRange, NavMesh.AllAreas))
+        Vector3 rndPos = new Vector3(Random.Range(-routineData.stageRange.x, routineData.stageRange.x), 0, Random.Range(-routineData.stageRange.z, routineData.stageRange.z));
+        if (NavMesh.SamplePosition(rndPos, out navMeshHit, routineData.searchNavMeshRange, NavMesh.AllAreas))
         {
             return navMeshHit.position;
         }
