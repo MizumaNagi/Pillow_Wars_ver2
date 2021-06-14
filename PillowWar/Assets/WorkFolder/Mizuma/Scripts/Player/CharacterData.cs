@@ -11,9 +11,9 @@ public class CharacterData
         character = _myObject;
         Transform t = character.transform;
         myBodyTransform = t;
-        myPillowTransform = t.GetChild(2).transform;
+        myPillowTransform = t.GetChild(3).transform;
         myBodyRigidbody = character.GetComponent<Rigidbody>();
-        myPillowRigidbody = t.GetChild(2).GetComponent<Rigidbody>();
+        myPillowRigidbody = t.GetChild(3).GetComponent<Rigidbody>();
         HP = GameManager.Instance.ruleData.maxHp;
 
         if (_isNpc == false)
@@ -41,6 +41,7 @@ public class CharacterData
     public DoorAnimation doorAnimation;
 
     public int HP { get; private set; }
+    public int hitPillowCount;
     public float remainthrowCT = 0;
 
     public bool isNpc = false;
@@ -60,7 +61,12 @@ public class CharacterData
     {
         if (isDeath) { return; }
         if (isInBed && pieceDamage == false) { return; }
-        HP--;
+        hitPillowCount++;
+        if (hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage)
+        {
+            HP--;
+            hitPillowCount = 0;
+        }
 
         if (HP <= 0)
         {
@@ -81,12 +87,12 @@ public class CharacterData
             myCamera.enabled = false;
             myLoserCamera.enabled = true;
         }
-        
+
         isInBed = false;
         isDeath = true;
         GameManager.Instance.remainCharacters--;
 
-        if(isNpc == false) GameManager.Instance.resultIDs.Add(characterID + 1);
+        if (isNpc == false) GameManager.Instance.resultIDs.Add(characterID + 1);
         else GameManager.Instance.resultIDs.Add(-characterID - 1);
     }
 }

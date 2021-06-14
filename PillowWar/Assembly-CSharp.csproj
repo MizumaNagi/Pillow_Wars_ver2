@@ -73,7 +73,9 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Scene\TestSceneLoader.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\GameEventScript.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\SceneManagement.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NpcBehaviorRoutine.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NavMeshSurfaceUpdate.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\NewBehaviourScript.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\HPGauge.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\InputData.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\DebugInput.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestNpc\TestNpcMove.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\NpcRoutineData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\TemporaryUiManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Result\GotoTitle.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\MoveData.cs" />
@@ -98,11 +101,14 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NavMeshSurfaceUpdate.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NpcBehaviorRoutine.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Data\NpcRoutineData.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
+     <None Include="Assets\Imports\Matuda_Sekidou\Dummy.txt" />
+     <None Include="Assets\Imports\I_DonJyu\Dummy.txt" />
+     <None Include="Assets\Imports\Akiba_Naoya\Dummy.txt" />
+     <None Include="Assets\Imports\Suzuki_Daiki\Dummy.txt" />
+     <None Include="Assets\Imports\Syudo_Saika\Dummy.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\2020.2.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

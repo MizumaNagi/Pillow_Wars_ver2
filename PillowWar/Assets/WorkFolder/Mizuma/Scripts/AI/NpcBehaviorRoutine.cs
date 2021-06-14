@@ -1,24 +1,28 @@
-using System.Text;
+Ôªøusing System.Text;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum NPC_STATUS
 {
-    SEARCH,
-    FIRE,
+    WALK,
+    GO_ENEMY,
     GO_BED,
-    NONE
+    THROW,
+    LENGTH
 }
 
 public class NpcBehaviorRoutine : MonoBehaviour
 {
-    [SerializeField] private NpcRoutineData routineData;
+    [SerializeField] public NpcRoutineData routineData;
+    [SerializeField] public SphereCollider searchCollider;
 
     private CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
     private Transform targetTransform;
 
     private int npcID;
+
+    public NPC_STATUS npcStatus = NPC_STATUS.WALK;
 
     private void Start()
     {
@@ -28,23 +32,20 @@ public class NpcBehaviorRoutine : MonoBehaviour
         GameObject obj = Instantiate(routineData.targetMark);
         targetTransform = obj.transform;
     }
-    
+
     private void Update()
     {
-        if (agent.hasPath == false)
+        if (GameManager.Instance.isPause == false)
         {
-            Vector3 pos = GetNextDestination();
-            agent.destination = pos;
-            targetTransform.position = pos;
+            UpdateActivity();
         }
-    
     }
 
     private void GetNpcID()
     {
         StringBuilder sb = new StringBuilder(gameObject.name);
         sb.Replace("Npc", "");
-        if (int.TryParse(sb.ToString(), out npcID) == false) Debug.LogError("NpcIDÇÃéÊìæé∏îsÅANpcObjñºÇämîFÇµÇƒÇ≠ÇæÇ≥Ç¢ÅB");
+        if (int.TryParse(sb.ToString(), out npcID) == false) Debug.LogError("NpcIDÔøΩÃéÊìæÔøΩÔøΩÔøΩsÔøΩANpcObjÔøΩÔøΩÔøΩÔøΩÔøΩmÔøΩFÔøΩÔøΩÔøΩƒÇÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩB");
         sb.Clear();
     }
 
@@ -59,8 +60,106 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
         else
         {
-            Debug.LogError("éüÇÃñ⁄ìIínåüçıé∏îs");
+            Debug.LogError("ÔøΩÔøΩÔøΩÃñ⁄ìIÔøΩnÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩs");
             return Vector3.zero;
         }
+    }
+
+    private void SetNpcStatus(NPC_STATUS status)
+    {
+        npcStatus = status;
+
+        switch (status)
+        {
+            case NPC_STATUS.WALK:
+                {
+                    agent.stoppingDistance = 0;
+                    break;
+                }
+            case NPC_STATUS.GO_ENEMY:
+                {
+                    agent.stoppingDistance = routineData.warRangeWithEnemy;
+                    break;
+                }
+            case NPC_STATUS.GO_BED:
+                {
+                    break;
+                }
+            case NPC_STATUS.THROW:
+                {
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+    }
+
+    private void UpdateActivity()
+    {
+        switch (npcStatus)
+        {
+            case NPC_STATUS.WALK:
+                {
+                    if (agent.hasPath == false)
+                    {
+                        Vector3 pos = GetNextDestination();
+                        agent.destination = pos;
+                        targetTransform.position = pos;
+                        SetNpcStatus(NPC_STATUS.WALK);
+                    }
+                    break;
+                }
+            case NPC_STATUS.GO_ENEMY:
+                {
+                    if (agent.hasPath == false)
+                    {
+                        SetNpcStatus(NPC_STATUS.THROW);
+                    }
+                    break;
+                }
+            case NPC_STATUS.GO_BED:
+                {
+                    break;
+                }
+            case NPC_STATUS.THROW:
+                {
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+
+            Vector3 targetPos = other.transform.position;
+            Vector3 playerDirection = targetPos - transform.position;
+            float angle = Vector3.Angle(transform.forward, playerDirection);
+            if (angle < routineData.maxSearchAngle)
+            {
+                agent.destination = targetPos;
+                targetTransform.position = targetPos;
+                SetNpcStatus(NPC_STATUS.GO_ENEMY);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        UnityEditor.Handles.color = Color.green;
+        UnityEditor.Handles.DrawSolidArc(
+            transform.position,
+            Vector3.up,
+            Quaternion.Euler(0f, -routineData.maxSearchAngle / 2, 0f) * transform.forward,
+            routineData.maxSearchAngle,
+            searchCollider.radius);
+        Debug.Log(Quaternion.Euler(0f, -routineData.maxSearchAngle, 0f) * transform.forward);
     }
 }

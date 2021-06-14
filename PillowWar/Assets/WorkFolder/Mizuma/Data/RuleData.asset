@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RuleData
   m_EditorClassIdentifier: 
   maxHp: 10
+  hitPillowCountOnDamage: 1
   pillowThrowCT: 0.1
   pillowHeadShotStunTime: 2
   inBedDamageTime: 5

@@ -7,6 +7,7 @@ using UnityEngine;
 public class RuleData : ScriptableObject
 {
     public int maxHp;
+    public int hitPillowCountOnDamage;
     public float pillowThrowCT;
     public float pillowHeadShotStunTime;
     public float inBedDamageTime;
