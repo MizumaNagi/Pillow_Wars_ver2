@@ -27,7 +27,11 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
             if (i == keyboardMovePlayerId && isUseKeyboard) continue;
-            if (Input.GetButtonDown(playerInput[i].Option)) gameManager.isPause = !gameManager.isPause;
+            if (Input.GetButtonDown(playerInput[i].Option))
+            {
+                Time.timeScale = gameManager.isPause ? 1 : 0;
+                gameManager.isPause = !gameManager.isPause;
+            }
         }
 
         if (isUseKeyboard == true) KeyboardGeneralInputMethod();
@@ -66,7 +70,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             // 移動/ダッシュ解除判定
             if (moveInput.magnitude > 0.2f)
             {
-                if(characterDatas[i].isDash) characterMover.Move(moveInput * moveData.dashMovMulti, characterDatas[i]);
+                if (characterDatas[i].isDash) characterMover.Move(moveInput * moveData.dashMovMulti, characterDatas[i]);
                 else characterMover.Move(moveInput, characterDatas[i]);
             }
             else characterMover.Dash(characterDatas[i], false);
@@ -92,13 +96,13 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 characterMover.ToADS(characterDatas[i]);
             }
             else
-            { 
+            {
                 characterMover.ToNonADS(characterDatas[i]);
             }
             // 枕投げ
             if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow)
             {
-                characterMover.PillowThrow(characterDatas[i]);
+                characterMover.PillowThrow(characterDatas[i], false);
             }
             // 布団に入る
             if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
@@ -157,7 +161,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
         else { characterMover.ToNonADS(c); }
         // キーボード-枕投げ
-        if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c);
+        if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c, false);
         // キーボード-布団に入る
         if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true && GameEventScript.Instance.canBedIn == true) characterMover.InteractBed(c, true, c.inBedPos);
         // キーボード-ドア開閉

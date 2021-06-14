@@ -11,9 +11,9 @@ public class CharacterData
         character = _myObject;
         Transform t = character.transform;
         myBodyTransform = t;
-        myPillowTransform = t.GetChild(3).transform;
+        myPillowTransform = t.GetChild(2).transform;
         myBodyRigidbody = character.GetComponent<Rigidbody>();
-        myPillowRigidbody = t.GetChild(3).GetComponent<Rigidbody>();
+        myPillowRigidbody = t.GetChild(2).GetComponent<Rigidbody>();
         HP = GameManager.Instance.ruleData.maxHp;
 
         if (_isNpc == false)
@@ -70,6 +70,7 @@ public class CharacterData
 
         if (HP <= 0)
         {
+            character.SetActive(false);
             Death();
         }
     }

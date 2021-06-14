@@ -7,7 +7,7 @@ public enum NPC_STATUS
     WALK,
     GO_ENEMY,
     GO_BED,
-    THROW,
+    PILLOW_THROW,
     LENGTH
 }
 
@@ -16,9 +16,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
     [SerializeField] public NpcRoutineData routineData;
     [SerializeField] public SphereCollider searchCollider;
 
+    private CharacterData characterData;
     private CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
-    private Transform targetTransform;
 
     private int npcID;
 
@@ -26,11 +26,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Start()
     {
+        characterData = PlayerManager.Instance.npcDatas[npcID];
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
 
         GameObject obj = Instantiate(routineData.targetMark);
-        targetTransform = obj.transform;
     }
 
     private void Update()
@@ -45,7 +45,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     {
         StringBuilder sb = new StringBuilder(gameObject.name);
         sb.Replace("Npc", "");
-        if (int.TryParse(sb.ToString(), out npcID) == false) Debug.LogError("NpcID�̎擾���s�ANpcObj�����m�F���Ă��������B");
+        if (int.TryParse(sb.ToString(), out npcID) == false) Debug.LogError("NpcID取得失敗");
         sb.Clear();
     }
 
@@ -60,7 +60,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
         else
         {
-            Debug.LogError("���̖ړI�n�������s");
+            Debug.LogError("Ai目的地の設定失敗");
             return Vector3.zero;
         }
     }
@@ -85,7 +85,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     break;
                 }
-            case NPC_STATUS.THROW:
+            case NPC_STATUS.PILLOW_THROW:
                 {
                     break;
                 }
@@ -104,18 +104,17 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     if (agent.hasPath == false)
                     {
-                        Vector3 pos = GetNextDestination();
-                        agent.destination = pos;
-                        targetTransform.position = pos;
+                        agent.destination = GetNextDestination();
                         SetNpcStatus(NPC_STATUS.WALK);
                     }
                     break;
                 }
             case NPC_STATUS.GO_ENEMY:
                 {
-                    if (agent.hasPath == false)
+                    if(agent.hasPath == true && agent.remainingDistance <= agent.stoppingDistance)
                     {
-                        SetNpcStatus(NPC_STATUS.THROW);
+                        LookAtTarget();
+                        SetNpcStatus(NPC_STATUS.PILLOW_THROW);
                     }
                     break;
                 }
@@ -123,8 +122,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     break;
                 }
-            case NPC_STATUS.THROW:
+            case NPC_STATUS.PILLOW_THROW:
                 {
+                    if (characterData.remainthrowCT < 0 && characterData.isHavePillow) characterMover.PillowThrow(characterData, true);
                     break;
                 }
             default:
@@ -134,10 +134,20 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
     }
 
+    private void LookAtTarget()
+    {
+        transform.LookAt(agent.destination);
+
+        //Vector3 distance = agent.destination - transform.localPosition;
+        //Quaternion targetRot = Quaternion.LookRotation(distance, Vector3.forward);
+        //transform.rotation = targetRot;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (npcStatus != NPC_STATUS.WALK) return;
 
             Vector3 targetPos = other.transform.position;
             Vector3 playerDirection = targetPos - transform.position;
@@ -145,12 +155,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
             if (angle < routineData.maxSearchAngle)
             {
                 agent.destination = targetPos;
-                targetTransform.position = targetPos;
                 SetNpcStatus(NPC_STATUS.GO_ENEMY);
             }
         }
     }
 
+    // デバッグ用
     private void OnDrawGizmos()
     {
         UnityEditor.Handles.color = Color.green;
@@ -160,6 +170,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
             Quaternion.Euler(0f, -routineData.maxSearchAngle / 2, 0f) * transform.forward,
             routineData.maxSearchAngle,
             searchCollider.radius);
-        Debug.Log(Quaternion.Euler(0f, -routineData.maxSearchAngle, 0f) * transform.forward);
+
+        Vector3 drawDir = transform.TransformDirection(Vector3.forward) * 5 / 2;
+        Debug.DrawRay(transform.position + new Vector3(0, 1.62f, 0f), drawDir, Color.red);
     }
 }

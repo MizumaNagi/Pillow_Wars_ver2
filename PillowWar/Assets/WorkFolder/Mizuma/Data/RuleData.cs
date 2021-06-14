@@ -10,5 +10,6 @@ public class RuleData : ScriptableObject
     public int hitPillowCountOnDamage;
     public float pillowThrowCT;
     public float pillowHeadShotStunTime;
+    public float stunPercent;
     public float inBedDamageTime;
 }
