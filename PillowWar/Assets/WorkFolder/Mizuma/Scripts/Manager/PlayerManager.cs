@@ -8,7 +8,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     [SerializeField] private GameObject[] npcPrefabs;
     [SerializeField] private GameObject pillowPrefab;
 
-    private Vector3[] spawnPos = { new Vector3(-5.5f, 0, -5.5f), new Vector3(5.5f, 0, 5.5f), new Vector3(-5.5f, 0, 5.5f), new Vector3(5.5f, 0, -5.5f), new Vector3(0, 0, 0) };
+    private Vector3[] spawnPos = { new Vector3(-6f, 0, -6f), new Vector3(6f, 0, 6f), new Vector3(-6f, 0, 6f), new Vector3(6f, 0, -6f), new Vector3(-3f, 0, -3f), new Vector3(3f, 0, 3f), new Vector3(-3f, 0, 3f), new Vector3(3f, 0, -3f)};
     private Transform playersParent;
     private Transform npcsParent;
 
@@ -32,6 +32,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
         int charaIndex = 0;
 
+        // player
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             GameObject obj = Instantiate(playerPrefabs[i], spawnPos[charaIndex], Quaternion.identity);
@@ -52,7 +53,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
             charaIndex++;
         }
-
+        // npc
         for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
         {
             GameObject obj = Instantiate(npcPrefabs[i], spawnPos[charaIndex], Quaternion.identity);

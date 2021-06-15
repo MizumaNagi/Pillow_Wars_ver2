@@ -29,7 +29,7 @@ public class TemporaryUiManager : MonoBehaviour
         if (Time.frameCount % 5 != 0) return;
 
         // HPTxt更新
-        for (int i = 0; i < hpTxts.Length; i++)
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             int hp = playerManager.playerDatas[i].HP;
             if (hp <= 0) hpTxts[i].text = "死(行動不可)";
@@ -37,7 +37,7 @@ public class TemporaryUiManager : MonoBehaviour
         }
 
         // In お布団 Txt更新
-        for (int i = 0; i < isInBedTxts.Length; i++)
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             if (playerManager.playerDatas[i].isInBed == true) isInBedTxts[i].enabled = true;
             else isInBedTxts[i].enabled = false;
