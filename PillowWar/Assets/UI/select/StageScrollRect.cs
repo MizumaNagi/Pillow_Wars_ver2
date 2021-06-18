@@ -47,6 +47,7 @@ public class StageScrollRect : ScrollRect
         float destX = pageIndex * pageWidth;
         content.anchoredPosition = new Vector2(destX, content.anchoredPosition.y);
 
-        //
+        // ページが変わっていないかの判定を行う為、前回スナップされたページの記憶。
+        prevPageIndex = pageIndex;
     }
 }
