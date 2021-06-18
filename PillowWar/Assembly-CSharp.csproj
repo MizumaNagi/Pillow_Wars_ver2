@@ -103,7 +103,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\UI\select\StageScrollRect.cs" />
     <Compile Include="Assets\UI\select\SelectMenu.cs" />
-    <Compile Include="Assets\UI\select\PlayLeftTextChange.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
