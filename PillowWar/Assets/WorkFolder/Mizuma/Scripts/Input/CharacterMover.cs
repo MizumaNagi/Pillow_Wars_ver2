@@ -35,15 +35,29 @@ public class CharacterMover
     public void PillowThrow(CharacterData data, bool isNpc)
     {
         data.isHavePillow = false;
-        Vector3 initPillowPos = new Vector3(0.4f,1.5f,1.6f);
+
+        Vector3 initPillowPos;
+        initPillowPos = new Vector3(0.4f,1.5f,1.6f);
+        // initPillowPos = Vector3.Scale(
+        //     new Vector3(0f, 1.5f, 2f), 
+        //     new Vector3(data.character.transform.forward.x, 1f, data.character.transform.forward.z));
+        // initPillowPos = data.character.transform.forward * 2 + new Vector3(0f,1.5f,0f);
+
         data.myPillowTransform.localPosition = initPillowPos;
         data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
 
-        if (isNpc) data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce);
-        else data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce);
-
+        if (isNpc) 
+        {
+            Debug.Log("BodyTransform: " + data.myBodyTransform.forward);
+            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce); 
+        }
+        else
+        {
+            Debug.Log("CameraTransform: " + data.myCameraTransform.forward);
+            data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce);
+        }
     }
 
     public void ToNonADS(CharacterData data)

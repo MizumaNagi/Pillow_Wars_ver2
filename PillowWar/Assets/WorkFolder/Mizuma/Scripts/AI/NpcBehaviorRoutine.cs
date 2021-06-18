@@ -20,6 +20,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
 
+    private GameObject targetMark;
+
     private int npcID;
 
     public NPC_STATUS npcStatus = NPC_STATUS.WALK;
@@ -30,7 +32,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
 
-        GameObject obj = Instantiate(routineData.targetMark);
+        targetMark = Instantiate(routineData.targetMark);
     }
 
     private void Update()

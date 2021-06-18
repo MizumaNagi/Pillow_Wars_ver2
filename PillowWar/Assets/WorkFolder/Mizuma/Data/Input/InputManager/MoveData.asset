@@ -15,7 +15,7 @@ MonoBehaviour:
   moveSpd: 5
   dashMovMulti: 2
   viewMoveSpd: 250
-  jumpForce: 450
+  jumpForce: 200
   throwForce: 10
   pillowSpawnPos: {x: 0.4, y: 1.6, z: 0.5}
   minFOV: 45
