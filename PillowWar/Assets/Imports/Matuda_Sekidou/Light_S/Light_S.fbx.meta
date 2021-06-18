@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 672291aca115d5b48bcb3a1d9fcdb5ed
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: hasira1_usiro
+    100002: hasira_mae
+    100004: hasira_yoko_
+    100006: hasira_yoko_1
+    100008: hontai
+    100010: //RootNode
+    100012: tate_hasira
+    100014: tate_hasira 1
+    100016: tate_hasira1
+    100018: tate_hasira1 1
+    100020: tate_hasira2
+    100022: tate_hasira2 1
+    100024: tatehasira
+    100026: tatehasira 1
+    100028: tatehasira1
+    100030: tatehasira1 1
+    100032: yokohasira
+    100034: yokohasira 1
+    100036: yokohasira 2
+    100038: yokohasira 3
+    100040: yokohasira1
+    100042: yokohasira1 1
+    100044: yokohasira1 2
+    100046: yokohasira1 3
+    100048: yokohasira_mae
+    100050: yokohasira_usiro
+    100052: yokohasira_usiro1
+    100054: yokohasira_usiro2
+    400000: hasira1_usiro
+    400002: hasira_mae
+    400004: hasira_yoko_
+    400006: hasira_yoko_1
+    400008: hontai
+    400010: //RootNode
+    400012: tate_hasira
+    400014: tate_hasira 1
+    400016: tate_hasira1
+    400018: tate_hasira1 1
+    400020: tate_hasira2
+    400022: tate_hasira2 1
+    400024: tatehasira
+    400026: tatehasira 1
+    400028: tatehasira1
+    400030: tatehasira1 1
+    400032: yokohasira
+    400034: yokohasira 1
+    400036: yokohasira 2
+    400038: yokohasira 3
+    400040: yokohasira1
+    400042: yokohasira1 1
+    400044: yokohasira1 2
+    400046: yokohasira1 3
+    400048: yokohasira_mae
+    400050: yokohasira_usiro
+    400052: yokohasira_usiro1
+    400054: yokohasira_usiro2
+    2100000: lambert2
+    2300000: hontai
+    2300002: tate_hasira
+    2300004: tate_hasira 1
+    2300006: tate_hasira1
+    2300008: tate_hasira1 1
+    2300010: tate_hasira2
+    2300012: tate_hasira2 1
+    2300014: tatehasira
+    2300016: tatehasira 1
+    2300018: tatehasira1
+    2300020: tatehasira1 1
+    2300022: yokohasira
+    2300024: yokohasira 1
+    2300026: yokohasira 2
+    2300028: yokohasira 3
+    2300030: yokohasira1
+    2300032: yokohasira1 1
+    2300034: yokohasira1 2
+    2300036: yokohasira1 3
+    3300000: hontai
+    3300002: tate_hasira
+    3300004: tate_hasira 1
+    3300006: tate_hasira1
+    3300008: tate_hasira1 1
+    3300010: tate_hasira2
+    3300012: tate_hasira2 1
+    3300014: tatehasira
+    3300016: tatehasira 1
+    3300018: tatehasira1
+    3300020: tatehasira1 1
+    3300022: yokohasira
+    3300024: yokohasira 1
+    3300026: yokohasira 2
+    3300028: yokohasira 3
+    3300030: yokohasira1
+    3300032: yokohasira1 1
+    3300034: yokohasira1 2
+    3300036: yokohasira1 3
+    4300000: hontai
+    4300002: tate_hasira2
+    4300004: tate_hasira1
+    4300006: tate_hasira
+    4300008: tate_hasira2
+    4300010: tate_hasira1
+    4300012: tate_hasira
+    4300014: tatehasira1
+    4300016: tatehasira
+    4300018: tatehasira1
+    4300020: tatehasira
+    4300022: yokohasira1
+    4300024: yokohasira
+    4300026: yokohasira1
+    4300028: yokohasira
+    4300030: yokohasira1
+    4300032: yokohasira
+    4300034: yokohasira1
+    4300036: yokohasira
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
