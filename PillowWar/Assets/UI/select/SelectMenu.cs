@@ -17,13 +17,6 @@ public class SelectMenu : MonoBehaviour
     {
         //StartButton‚ğ‰Šúó‘Ô‚Å‘I‘ğó‘Ô‚É‚·‚éB
         PlayLeftArrowSelect.Select();
-
-        text = GetComponent<Text>();
-    }
-
-    void FontChangeColor()
-    {
-        text.color = new Color(255.0f, 140.0f, 0.0f);
     }
 
 }
