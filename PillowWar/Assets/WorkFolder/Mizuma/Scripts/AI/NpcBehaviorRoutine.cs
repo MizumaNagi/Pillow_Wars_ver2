@@ -19,8 +19,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private CharacterData characterData;
     private CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
+    private Transform targetTransform;
 
-    private GameObject targetMark;
+    private GameObject targetMarkObj;
 
     private int npcID;
 
@@ -32,14 +33,20 @@ public class NpcBehaviorRoutine : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
 
-        targetMark = Instantiate(routineData.targetMark);
+        targetMarkObj = Instantiate(routineData.targetMark);
     }
 
     private void Update()
     {
         if (GameManager.Instance.isPause == false)
         {
+            agent.isStopped = false;
             UpdateActivity();
+        }
+        else
+        {
+            agent.velocity = Vector3.zero;
+            agent.isStopped = true;
         }
     }
 
@@ -80,7 +87,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_ENEMY:
                 {
-                    agent.stoppingDistance = routineData.warRangeWithEnemy;
+                    agent.stoppingDistance = routineData.distanceToEnemy;
                     break;
                 }
             case NPC_STATUS.GO_BED:
@@ -112,21 +119,25 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     break;
                 }
             case NPC_STATUS.GO_ENEMY:
+            case NPC_STATUS.PILLOW_THROW:
                 {
-                    if(agent.hasPath == true && agent.remainingDistance <= agent.stoppingDistance)
+                    agent.destination = targetTransform.position;
+                    LookAtTarget();
+
+                    if(agent.hasPath == false)
                     {
-                        LookAtTarget();
-                        SetNpcStatus(NPC_STATUS.PILLOW_THROW);
+                        Debug.LogWarning("経路なし");
+                        return;
                     }
+                    if (agent.remainingDistance <= routineData.warRangeToEnemy)
+                    {
+                        if (characterData.remainthrowCT < 0 && characterData.isHavePillow) characterMover.PillowThrow(characterData, true);
+                    }
+
                     break;
                 }
             case NPC_STATUS.GO_BED:
                 {
-                    break;
-                }
-            case NPC_STATUS.PILLOW_THROW:
-                {
-                    if (characterData.remainthrowCT < 0 && characterData.isHavePillow) characterMover.PillowThrow(characterData, true);
                     break;
                 }
             default:
@@ -157,6 +168,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
             if (angle < routineData.maxSearchAngle)
             {
                 agent.destination = targetPos;
+                targetTransform = other.transform;
                 SetNpcStatus(NPC_STATUS.GO_ENEMY);
             }
         }

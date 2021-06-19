@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetMark: {fileID: 615382248181381586, guid: c55952e7760613245971c7044450d6ae, type: 3}
   stageRange: {x: 8, y: 0, z: 8}
-  searchNavMeshRange: 2.49
-  warRangeWithEnemy: 5
+  searchNavMeshRange: 2.5
+  distanceToEnemy: 5
+  warRangeToEnemy: 8
   maxSearchAngle: 150

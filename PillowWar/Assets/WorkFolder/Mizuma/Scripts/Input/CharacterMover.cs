@@ -50,12 +50,10 @@ public class CharacterMover
 
         if (isNpc) 
         {
-            Debug.Log("BodyTransform: " + data.myBodyTransform.forward);
-            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce); 
+            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * Random.Range(0f,2f) * InputManager.Instance.moveData.throwForce); 
         }
         else
         {
-            Debug.Log("CameraTransform: " + data.myCameraTransform.forward);
             data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce);
         }
     }

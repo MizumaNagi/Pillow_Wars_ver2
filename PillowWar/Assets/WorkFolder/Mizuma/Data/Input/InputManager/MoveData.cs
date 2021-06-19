@@ -14,6 +14,7 @@ public class MoveData : ScriptableObject
 
     [Header("ƒ}ƒNƒ‰‘€ì")]
     public float throwForce;
+    public float updateVelocityCoeffcient;
     public Vector3 pillowSpawnPos;
 
     [Header("ƒJƒƒ‰‘€ì")]

@@ -13,9 +13,13 @@ public class PillowController : MonoBehaviour
         sb.Clear();
     }
 
-    public void UpdateMethod()
+    private void Update()
     {
-
+        if(GameManager.Instance.isPause == false)
+        {
+            float multi = InputManager.Instance.moveData.updateVelocityCoeffcient;
+            characterData.myPillowRigidbody.velocity = Vector3.Scale(characterData.myPillowRigidbody.velocity, new Vector3(multi, 1, multi));
+        }
     }
 
     public void OnCollisionEnter(Collision collison)
