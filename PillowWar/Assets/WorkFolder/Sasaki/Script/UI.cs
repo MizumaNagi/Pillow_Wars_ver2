@@ -16,8 +16,8 @@ public class UI : MonoBehaviour
     [SerializeField] private Image[] Futont1image;
     [SerializeField] private Image[] Futont2image;
 
-    public UnityEngine.UI.Text Pausetext;
     //public List<float> playerhp = new List<float>();
+    public UnityEngine.UI.Text Pausetext;
     private int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private GameManager gameManager;
