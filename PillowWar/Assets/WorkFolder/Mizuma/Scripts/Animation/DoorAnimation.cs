@@ -8,7 +8,7 @@ public class DoorAnimation : MonoBehaviour
 
     private void Start()
     {
-        animator = transform.parent.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     public void InteractDoor()
