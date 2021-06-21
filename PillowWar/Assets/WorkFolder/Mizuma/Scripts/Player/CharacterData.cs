@@ -18,8 +18,8 @@ public class CharacterData
 
         if (_isNpc == false)
         {
-            myCameraTransform = t.GetChild(3).transform;
-            myCamera = t.GetChild(3).GetComponent<Camera>();
+            myCameraTransform = t.GetChild(8).transform;
+            myCamera = t.GetChild(8).GetComponent<Camera>();
             myLoserCamera = GameObject.FindGameObjectWithTag("LoserCamera").transform.GetChild(_characterID).GetComponent<Camera>();
             myLoserCamera.enabled = false;
         }

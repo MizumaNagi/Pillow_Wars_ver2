@@ -45,10 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDontDestroy: 1
   playerPrefabs:
-  - {fileID: 7502040543702535251, guid: 910af695926df4243b37553e2e9d4df6, type: 3}
-  - {fileID: 1083227336374037543, guid: 97068079f6c161642b186dc134f24c80, type: 3}
-  - {fileID: 3592677008812086595, guid: 3cf545d018d2e5948bfef3bceec4300d, type: 3}
-  - {fileID: 2453679551267395523, guid: 1ced8900ca368a448a0d97746f24a19e, type: 3}
+  - {fileID: 8659058158001401765, guid: ecb574552b92e4a468019f0d87bf699c, type: 3}
+  - {fileID: 6541516384120876860, guid: aefbd4e879121894dab798e9c3bae9b1, type: 3}
+  - {fileID: 6776320758568855931, guid: 9840844886cee114183e8acb952117f4, type: 3}
+  - {fileID: 6160065371633453282, guid: e36382debdfb4b44b9b329b4dc2f454b, type: 3}
   npcPrefabs:
   - {fileID: 5858371983849001437, guid: 440eea1dd88f2ff428d7f26933dceb4c, type: 3}
   - {fileID: 6582151430622989457, guid: 0f96fe172e69c1344b15b651fe857eba, type: 3}
