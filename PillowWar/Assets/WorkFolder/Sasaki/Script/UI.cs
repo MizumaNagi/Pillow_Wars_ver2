@@ -46,31 +46,34 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        if (GameManager.Instance.isPlayTheGame == true)
         {
-            if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
+            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
-                Futont1image[i].enabled = true;
-                Futont2image[i].enabled = true;
+                if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
+                {
+                    Futont1image[i].enabled = true;
+                    Futont2image[i].enabled = true;
+                }
+                else
+                {
+                    Futont1image[i].enabled = false;
+                    Futont2image[i].enabled = false;
+                }
             }
-            else
-            {
-                Futont1image[i].enabled = false;
-                Futont2image[i].enabled = false;
-            }
-        }
 
-        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-        {
-            float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
-        
-            for (int j = 0; j < iconChild; j++)
+            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
-                hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+
+                for (int j = 0; j < iconChild; j++)
+                {
+                    hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                }
             }
+            Pause();
+            Image();
         }
-        Pause();
-        Image();
 
         //for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         //{
