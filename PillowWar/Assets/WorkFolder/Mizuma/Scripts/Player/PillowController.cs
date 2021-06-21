@@ -5,7 +5,7 @@ public class PillowController : MonoBehaviour
 {
     public CharacterData characterData;
     private int objNum;
-    private float returnLimitPosY = 2f;
+    private float returnLimitPosY = -2f;
 
     public void Start()
     {
@@ -22,7 +22,7 @@ public class PillowController : MonoBehaviour
             characterData.myPillowRigidbody.velocity = Vector3.Scale(characterData.myPillowRigidbody.velocity, new Vector3(multi, 1, multi));
         }
 
-        if (transform.position.y <= returnLimitPosY)
+        if (transform.localPosition.y <= returnLimitPosY)
         {
             ReturnPillow();
         }

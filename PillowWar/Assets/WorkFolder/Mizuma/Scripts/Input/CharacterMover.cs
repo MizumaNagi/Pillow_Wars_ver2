@@ -50,7 +50,7 @@ public class CharacterMover
 
         if (isNpc) 
         {
-            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * Random.Range(0f,2f) * InputManager.Instance.moveData.throwForce); 
+            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce); 
         }
         else
         {
