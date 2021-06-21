@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   hitPillowCountOnDamage: 1
-  pillowThrowCT: 10
+  pillowThrowCT: 1
   pillowHeadShotStunTime: 2
   stunPercent: 20
   inBedDamageTime: 5

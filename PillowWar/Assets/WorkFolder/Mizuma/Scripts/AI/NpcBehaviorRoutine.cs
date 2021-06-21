@@ -19,7 +19,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private CharacterData characterData;
     private CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
-    private Transform targetTransform;
+
+    private CharacterData targetData;
 
     private GameObject targetMarkObj;
 
@@ -32,6 +33,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         characterData = PlayerManager.Instance.npcDatas[npcID];
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
+        searchCollider.radius = routineData.warRangeToEnemy / 2;
 
         targetMarkObj = Instantiate(routineData.targetMark);
     }
@@ -113,7 +115,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     if (agent.hasPath == false)
                     {
-                        agent.destination = GetNextDestination();
+                        Vector3 nextPos = GetNextDestination();
+                        agent.destination = nextPos;
+                        targetMarkObj.transform.position = nextPos;
                         SetNpcStatus(NPC_STATUS.WALK);
                     }
                     break;
@@ -121,13 +125,19 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.GO_ENEMY:
             case NPC_STATUS.PILLOW_THROW:
                 {
-                    agent.destination = targetTransform.position;
+                    if (targetData.HP <= 0) 
+                    {
+                        ResetTarget(); 
+                        break; 
+                    }
+
+                    agent.destination = targetData.character.transform.position;
                     LookAtTarget();
 
                     if(agent.hasPath == false)
                     {
                         Debug.LogWarning("経路なし");
-                        return;
+                        break;
                     }
                     if (agent.remainingDistance <= routineData.warRangeToEnemy)
                     {
@@ -160,7 +170,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (npcStatus != NPC_STATUS.WALK) return;
+            //if (npcStatus != NPC_STATUS.WALK) return;
 
             Vector3 targetPos = other.transform.position;
             Vector3 playerDirection = targetPos - transform.position;
@@ -168,10 +178,29 @@ public class NpcBehaviorRoutine : MonoBehaviour
             if (angle < routineData.maxSearchAngle)
             {
                 agent.destination = targetPos;
-                targetTransform = other.transform;
+
+                StringBuilder sb = new StringBuilder(other.gameObject.name);
+                sb.Replace("Player","");
+                sb.Replace("Npc", "");
+                if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
+                targetData = GetChatacterData(id);
+
+                agent.destination = targetData.character.transform.position;
                 SetNpcStatus(NPC_STATUS.GO_ENEMY);
             }
         }
+    }
+
+    private CharacterData GetChatacterData(int id)
+    {
+        if (id < 100) return PlayerManager.Instance.playerDatas[id];
+        else return PlayerManager.Instance.npcDatas[id - 100];
+    }
+
+    private void ResetTarget()
+    {
+        targetData = null;
+        SetNpcStatus(NPC_STATUS.WALK);
     }
 
     // デバッグ用

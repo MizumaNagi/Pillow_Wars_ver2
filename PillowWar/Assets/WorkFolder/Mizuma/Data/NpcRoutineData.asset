@@ -16,5 +16,5 @@ MonoBehaviour:
   stageRange: {x: 8, y: 0, z: 8}
   searchNavMeshRange: 2.5
   distanceToEnemy: 5
-  warRangeToEnemy: 8
+  warRangeToEnemy: 9
   maxSearchAngle: 150
