@@ -9,7 +9,10 @@ public class CharacterMover
     {
         Transform movTransform = data.myBodyTransform;
 
-        Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
+        Vector3 movVec;
+        if(data.isSquat) movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.squatingMoveSpd;
+        else movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
+
         movTransform.position += movVec * Time.deltaTime;
     }
 
@@ -102,5 +105,21 @@ public class CharacterMover
             data.bedStatus = null;
         }
         data.HideCharacter(isInBed);
+    }
+
+    public void Squat(CharacterData data, bool isSquated)
+    {
+        if (isSquated)
+        {
+            data.myCameraTransform.localPosition = InputManager.Instance.moveData.standingCameraPos;
+            Debug.Log("しゃがみ解除");
+        }
+        else
+        {
+            data.myCameraTransform.localPosition = InputManager.Instance.moveData.squatingCameraPos;
+            Debug.Log("しゃがみ開始");
+        }
+
+        data.isSquat = !isSquated;
     }
 }

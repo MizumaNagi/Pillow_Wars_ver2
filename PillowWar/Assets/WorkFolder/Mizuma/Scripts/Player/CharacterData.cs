@@ -58,6 +58,7 @@ public class CharacterData
     public bool isInBed = false;
     public bool isDash = false;
     public bool isInDoor = false;
+    public bool isSquat = false;
 
     public Vector3 inBedPos = Vector3.zero;
 
