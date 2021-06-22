@@ -23,9 +23,12 @@ public class BedStatus : MonoBehaviour
         isTimeOver();
     }
 
-    public void ChangeEnableCollider(bool isOut)
+    public void ChangeEnableCollider(bool isOut, CharacterData data = null)
     {
+        if (data != null) SetCharacterData(data);
+
         myCollider.enabled = isOut;
+        HideCharacter(isOut);
 
         if(isOut == true)
         {
@@ -46,5 +49,21 @@ public class BedStatus : MonoBehaviour
     private void ResetTime()
     {
         remainDamagetime = GameManager.Instance.ruleData.inBedDamageTime;
+    }
+
+    private void HideCharacter(bool isOut)
+    {
+        if (cd == null)
+        {
+            Debug.LogError("CharacterData‚ª‚ ‚è‚Ü‚¹‚ñ");
+            return;
+        }
+
+        //cd.character.transform.GetChild(0).gameObject.SetActive(isOut);
+    }
+
+    private void SetCharacterData(CharacterData data)
+    {
+        cd = data;
     }
 }

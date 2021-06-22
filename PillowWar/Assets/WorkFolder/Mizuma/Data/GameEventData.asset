@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameEvents:
   - stopEventInterval: 999
-    eventActiveTime: 990
+    eventActiveTime: 999
     type: 0
   - stopEventInterval: 60
     eventActiveTime: 15

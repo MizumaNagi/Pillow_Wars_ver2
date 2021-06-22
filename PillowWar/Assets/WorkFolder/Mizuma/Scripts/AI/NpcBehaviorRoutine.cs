@@ -125,7 +125,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.GO_ENEMY:
             case NPC_STATUS.PILLOW_THROW:
                 {
-                    if (targetData.HP <= 0) 
+                    if (targetData.HP <= 0)
                     {
                         ResetTarget(); 
                         break; 

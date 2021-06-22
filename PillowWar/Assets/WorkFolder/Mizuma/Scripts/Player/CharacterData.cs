@@ -11,15 +11,18 @@ public class CharacterData
         character = _myObject;
         Transform t = character.transform;
         myBodyTransform = t;
-        myPillowTransform = t.GetChild(2).transform;
+        pillow = t.GetChild(2).gameObject;
+        myPillowTransform = pillow.transform;
+        myPillowRigidbody = pillow.GetComponent<Rigidbody>();
         myBodyRigidbody = character.GetComponent<Rigidbody>();
-        myPillowRigidbody = t.GetChild(2).GetComponent<Rigidbody>();
+        bodyCollider = character.GetComponent<BoxCollider>();
         HP = GameManager.Instance.ruleData.maxHp;
 
         if (_isNpc == false)
         {
-            myCameraTransform = t.GetChild(8).transform;
-            myCamera = t.GetChild(8).GetComponent<Camera>();
+            meshObjParent = t.GetChild(0).gameObject;
+            myCameraTransform = t.GetChild(1).transform;
+            myCamera = t.GetChild(1).GetComponent<Camera>();
             myLoserCamera = GameObject.FindGameObjectWithTag("LoserCamera").transform.GetChild(_characterID).GetComponent<Camera>();
             myLoserCamera.enabled = false;
         }
@@ -28,6 +31,8 @@ public class CharacterData
     }
 
     public GameObject character;
+    public GameObject pillow;
+    public GameObject meshObjParent;
     //public GameObject myPillow;
     public Transform myBodyTransform;
     public Transform myPillowTransform;
@@ -36,6 +41,7 @@ public class CharacterData
     public Rigidbody myPillowRigidbody;
     public Camera myCamera;
     public Camera myLoserCamera;
+    public BoxCollider bodyCollider;
 
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;
@@ -95,5 +101,13 @@ public class CharacterData
 
         if (isNpc == false) GameManager.Instance.resultIDs.Add(characterID + 1);
         else GameManager.Instance.resultIDs.Add(-characterID - 1);
+    }
+
+    public void HideCharacter(bool isInBed)
+    {
+        pillow.SetActive(!isInBed);
+        meshObjParent.SetActive(!isInBed);
+        bodyCollider.enabled = !isInBed;
+        myBodyRigidbody.isKinematic = isInBed;
     }
 }
