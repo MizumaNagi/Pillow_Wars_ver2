@@ -11,4 +11,5 @@ public class NpcRoutineData : ScriptableObject
     public float distanceToEnemy;
     public float warRangeToEnemy;
     public float maxSearchAngle;
+    public float startGoPillowRemHpPercent;
 }

@@ -36,6 +36,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         searchCollider.radius = routineData.warRangeToEnemy / 2;
 
         targetMarkObj = Instantiate(routineData.targetMark);
+        GameEventScript.Instance.npcBehaviorRoutines.Add(this);
     }
 
     private void Update()
@@ -76,7 +77,32 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
     }
 
-    private void SetNpcStatus(NPC_STATUS status)
+    private Vector3 GetShortestBedPos()
+    {
+        float shortestBedPos = 0;
+        int shortIndex = -1;
+        for (int i = 0; i < BedManager.Instance.bedColliders.Count; i++)
+        {
+            if (BedManager.Instance.bedColliders[i].enabled == false) continue;
+
+            float distance = Vector3.Distance(transform.position, BedManager.Instance.bedColliders[i].transform.position);
+            if (distance > shortestBedPos)
+            {
+                shortestBedPos = distance;
+                shortIndex = i;
+            }
+        }
+
+        if(shortIndex != -1) return BedManager.Instance.bedColliders[shortIndex].transform.position;
+        else
+        {
+            Debug.Log("布団見つけられず...");
+            SetNpcStatus(NPC_STATUS.WALK);
+            return Vector3.zero;
+        }
+    }
+
+    public void SetNpcStatus(NPC_STATUS status)
     {
         npcStatus = status;
 
@@ -94,6 +120,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_BED:
                 {
+                    agent.stoppingDistance = 0;
+                    TriggerGoPillow();
                     break;
                 }
             case NPC_STATUS.PILLOW_THROW:
@@ -166,31 +194,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
         //transform.rotation = targetRot;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            //if (npcStatus != NPC_STATUS.WALK) return;
-
-            Vector3 targetPos = other.transform.position;
-            Vector3 playerDirection = targetPos - transform.position;
-            float angle = Vector3.Angle(transform.forward, playerDirection);
-            if (angle < routineData.maxSearchAngle)
-            {
-                agent.destination = targetPos;
-
-                StringBuilder sb = new StringBuilder(other.gameObject.name);
-                sb.Replace("Player","");
-                sb.Replace("Npc", "");
-                if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
-                targetData = GetChatacterData(id);
-
-                agent.destination = targetData.character.transform.position;
-                SetNpcStatus(NPC_STATUS.GO_ENEMY);
-            }
-        }
-    }
-
     private CharacterData GetChatacterData(int id)
     {
         if (id < 100) return PlayerManager.Instance.playerDatas[id];
@@ -201,6 +204,16 @@ public class NpcBehaviorRoutine : MonoBehaviour
     {
         targetData = null;
         SetNpcStatus(NPC_STATUS.WALK);
+    }
+
+    private void TriggerGoPillow()
+    {
+        float remainHpPercent = ((float)characterData.HP / (float)GameManager.Instance.ruleData.maxHp) * 100;
+        if (remainHpPercent > routineData.startGoPillowRemHpPercent) return;
+
+        Vector3 nextPos = GetShortestBedPos();
+        agent.destination = nextPos;
+        targetMarkObj.transform.position = nextPos;
     }
 
     // デバッグ用
@@ -217,4 +230,30 @@ public class NpcBehaviorRoutine : MonoBehaviour
         Vector3 drawDir = transform.TransformDirection(Vector3.forward) * 5 / 2;
         Debug.DrawRay(transform.position + new Vector3(0, 1.62f, 0f), drawDir, Color.red);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //if (npcStatus != NPC_STATUS.WALK) return;
+
+            Vector3 targetPos = other.transform.position;
+            Vector3 playerDirection = targetPos - transform.position;
+            float angle = Vector3.Angle(transform.forward, playerDirection);
+            if (angle < routineData.maxSearchAngle)
+            {
+                agent.destination = targetPos;
+
+                StringBuilder sb = new StringBuilder(other.gameObject.name);
+                sb.Replace("Player", "");
+                sb.Replace("Npc", "");
+                if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
+                targetData = GetChatacterData(id);
+
+                agent.destination = targetData.character.transform.position;
+                SetNpcStatus(NPC_STATUS.GO_ENEMY);
+            }
+        }
+    }
+
 }
