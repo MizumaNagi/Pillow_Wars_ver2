@@ -49,6 +49,7 @@ public class PillowController : MonoBehaviour
     private void ReturnPillow()
     {
         characterData.isHavePillow = true;
+        characterData.pillowCollider.enabled = false;
         transform.SetParent(characterData.character.transform);
         transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
         characterData.myPillowRigidbody.isKinematic = true;

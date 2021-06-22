@@ -14,6 +14,7 @@ public class CharacterData
         pillow = t.GetChild(2).gameObject;
         myPillowTransform = pillow.transform;
         myPillowRigidbody = pillow.GetComponent<Rigidbody>();
+        pillowCollider = pillow.GetComponent<CapsuleCollider>();
         myBodyRigidbody = character.GetComponent<Rigidbody>();
         bodyCollider = character.GetComponent<BoxCollider>();
         HP = GameManager.Instance.ruleData.maxHp;
@@ -42,6 +43,7 @@ public class CharacterData
     public Camera myCamera;
     public Camera myLoserCamera;
     public BoxCollider bodyCollider;
+    public CapsuleCollider pillowCollider;
 
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;

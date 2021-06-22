@@ -91,7 +91,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 characterMover.Jump(characterDatas[i]);
             }
             // ‚µ‚á‚ª‚Ý
-            if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].isSquat)
+            if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].canJump == true)
             {
                 characterMover.Squat(characterDatas[i], characterDatas[i].isSquat);
             }

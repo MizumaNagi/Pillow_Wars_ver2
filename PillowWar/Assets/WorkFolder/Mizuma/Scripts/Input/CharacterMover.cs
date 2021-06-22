@@ -38,6 +38,7 @@ public class CharacterMover
     public void PillowThrow(CharacterData data, bool isNpc)
     {
         data.isHavePillow = false;
+        data.pillowCollider.enabled = true;
 
         Vector3 initPillowPos;
         initPillowPos = new Vector3(0.4f,1.5f,1.6f);
