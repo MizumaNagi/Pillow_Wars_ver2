@@ -18,6 +18,7 @@ public class GetBedCollider : MonoBehaviour
 
             npcBehaviorRoutine.characterMover.InteractBed(npcBehaviorRoutine.characterData, true, npcBehaviorRoutine.characterData.inBedPos);
             npcBehaviorRoutine.InteractBed(true);
+            npcBehaviorRoutine.SetNpcStatus(NPC_STATUS.IN_BED);
         }
     }
 }

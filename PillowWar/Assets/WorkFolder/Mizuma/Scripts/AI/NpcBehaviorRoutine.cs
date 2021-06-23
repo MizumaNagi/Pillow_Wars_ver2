@@ -7,6 +7,7 @@ public enum NPC_STATUS
     WALK,
     GO_ENEMY,
     GO_BED,
+    IN_BED,
     PILLOW_THROW,
     LENGTH
 }
@@ -18,15 +19,13 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     public CharacterData characterData;
     public CharacterMover characterMover = new CharacterMover();
-    private NavMeshAgent agent;
-
-    private CharacterData targetData;
-
-    private GameObject targetMarkObj;
-
-    private int npcID;
-
     public NPC_STATUS npcStatus = NPC_STATUS.WALK;
+
+    private NavMeshAgent agent;
+    private CharacterData targetData;
+    private GameObject targetMarkObj;
+    private int npcID;
+    private float defaultSpeed;
 
     private void Start()
     {
@@ -37,6 +36,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
         targetMarkObj = Instantiate(routineData.targetMark);
         GameEventScript.Instance.npcBehaviorRoutines.Add(this);
+        defaultSpeed = agent.speed;
     }
 
     private void Update()
@@ -93,7 +93,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
             }
         }
 
-        if(shortIndex != -1) return BedManager.Instance.bedColliders[shortIndex].transform.position;
+
+        if (shortIndex != -1) return BedManager.Instance.bedColliders[shortIndex].transform.position;
         else
         {
             Debug.Log("布団見つけられず...");
@@ -121,7 +122,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.GO_BED:
                 {
                     agent.stoppingDistance = 0;
-                    TriggerGoPillow();
+                    TriggerGoBed();
+                    break;
+                }
+            case NPC_STATUS.IN_BED:
+                {
                     break;
                 }
             case NPC_STATUS.PILLOW_THROW:
@@ -157,9 +162,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     if (targetData.HP <= 0)
                     {
                         ResetTarget(); 
-                        break; 
+                        break;
                     }
-
                     agent.destination = targetData.character.transform.position;
                     LookAtTarget();
 
@@ -177,6 +181,20 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_BED:
                 {
+                    if (characterData.bedStatus != null)
+                    {
+                        if (characterData.bedStatus.canIn == false)
+                        {
+                            Debug.Log("割り込み");
+                            characterMover.InteractBed(characterData, false, characterData.inBedPos);
+                            InteractBed(false);
+                            SetNpcStatus(NPC_STATUS.WALK);
+                        }
+                    }
+                    break;
+                }
+            case NPC_STATUS.IN_BED:
+                {
                     break;
                 }
             default:
@@ -189,10 +207,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private void LookAtTarget()
     {
         transform.LookAt(agent.destination);
-
-        //Vector3 distance = agent.destination - transform.localPosition;
-        //Quaternion targetRot = Quaternion.LookRotation(distance, Vector3.forward);
-        //transform.rotation = targetRot;
     }
 
     private CharacterData GetChatacterData(int id)
@@ -207,10 +221,26 @@ public class NpcBehaviorRoutine : MonoBehaviour
         SetNpcStatus(NPC_STATUS.WALK);
     }
 
-    private void TriggerGoPillow()
+    private void TriggerGoBed()
     {
+        // 残りHP割合が襲撃イベ開始HP割合を下回っていなければイベント無視
         float remainHpPercent = ((float)characterData.HP / (float)GameManager.Instance.ruleData.maxHp) * 100;
-        if (remainHpPercent >= routineData.startGoPillowRemHpPercent) return;
+        if (remainHpPercent >= routineData.startGoBedRemHpPercent) 
+        {
+            SetNpcStatus(NPC_STATUS.WALK);
+            return;
+        }
+
+        // 残りHP割合を元にイベント実行率を計算、イベント実行率よりもRandom(0,100)の方が多ければイベント無視
+        float bedEventThroughPercent = Mathf.Clamp01(remainHpPercent / routineData.startGoBedRemHpPercent) * 100;
+        int rnd = Random.Range(0, 100);
+
+        Debug.Log($"※ 襲撃イベント\n失敗値: {bedEventThroughPercent}, 成功値: {rnd} + {routineData.minStartGoBedPercent}, 結果: {bedEventThroughPercent < rnd + routineData.minStartGoBedPercent}");
+        if (bedEventThroughPercent > rnd + routineData.minStartGoBedPercent) 
+        {
+            SetNpcStatus(NPC_STATUS.WALK);
+            return; 
+        }
 
         Vector3 nextPos = GetShortestBedPos();
         agent.destination = nextPos;
@@ -224,6 +254,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
             agent.destination = characterData.inBedPos;
             targetMarkObj.transform.position = characterData.inBedPos;
             agent.speed = 0;
+        }
+        else
+        {
+            PlayerManager.Instance.playerDatas[characterData.GetID(true)].isInBedRange = false;
+            PlayerManager.Instance.playerDatas[characterData.GetID(true)].bedStatus = null;
+            agent.speed = defaultSpeed;
         }
     }
 
@@ -261,7 +297,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
                     targetData = GetChatacterData(id);
 
-                    agent.destination = targetData.character.transform.position;
                     SetNpcStatus(NPC_STATUS.GO_ENEMY);
                 }
             }

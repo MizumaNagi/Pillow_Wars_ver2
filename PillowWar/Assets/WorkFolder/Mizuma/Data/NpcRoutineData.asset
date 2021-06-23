@@ -18,4 +18,5 @@ MonoBehaviour:
   distanceToEnemy: 5
   warRangeToEnemy: 9
   maxSearchAngle: 150
-  startGoPillowRemHpPercent: 120
+  startGoBedRemHpPercent: 110
+  minStartGoBedPercent: 25
