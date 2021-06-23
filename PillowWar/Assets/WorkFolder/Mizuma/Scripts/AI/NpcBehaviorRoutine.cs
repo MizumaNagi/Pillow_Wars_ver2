@@ -16,8 +16,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
     [SerializeField] public NpcRoutineData routineData;
     [SerializeField] public SphereCollider searchCollider;
 
-    private CharacterData characterData;
-    private CharacterMover characterMover = new CharacterMover();
+    public CharacterData characterData;
+    public CharacterMover characterMover = new CharacterMover();
     private NavMeshAgent agent;
 
     private CharacterData targetData;
@@ -79,14 +79,14 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private Vector3 GetShortestBedPos()
     {
-        float shortestBedPos = 0;
+        float shortestBedPos = Mathf.Infinity;
         int shortIndex = -1;
         for (int i = 0; i < BedManager.Instance.bedColliders.Count; i++)
         {
             if (BedManager.Instance.bedColliders[i].enabled == false) continue;
 
             float distance = Vector3.Distance(transform.position, BedManager.Instance.bedColliders[i].transform.position);
-            if (distance > shortestBedPos)
+            if (distance < shortestBedPos)
             {
                 shortestBedPos = distance;
                 shortIndex = i;
@@ -217,9 +217,14 @@ public class NpcBehaviorRoutine : MonoBehaviour
         targetMarkObj.transform.position = nextPos;
     }
 
-    private void InteractBed(bool isInBed)
+    public void InteractBed(bool isInBed)
     {
-        if (isInBed) agent.speed = 0;
+        if (isInBed)
+        {
+            agent.destination = characterData.inBedPos;
+            targetMarkObj.transform.position = characterData.inBedPos;
+            agent.speed = 0;
+        }
     }
 
     // デバッグ用
@@ -259,20 +264,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     agent.destination = targetData.character.transform.position;
                     SetNpcStatus(NPC_STATUS.GO_ENEMY);
                 }
-            }
-        }
-        else
-        {
-            if (other.gameObject.CompareTag("Bed") && characterData.bedStatus == null)
-            {
-                Debug.Log("侵入");
-                characterData.isInBedRange = true;
-                characterData.inBedPos = other.transform.position;
-                BedStatus bed = other.GetComponent<BedStatus>();
-                characterData.bedStatus = bed;
-
-                characterMover.InteractBed(characterData, true, characterData.inBedPos);
-                InteractBed(true);
             }
         }
     }

@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 8365655524553761187}
   - component: {fileID: 883766377463259203}
   m_Layer: 0
-  m_Name: SearchCollider
+  m_Name: CharacterSeactCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5694,6 +5694,64 @@ Transform:
   m_Father: {fileID: 4371893655928623604}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5861124328100487644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7819112352801974753}
+  - component: {fileID: 872780727303744616}
+  - component: {fileID: 5535024746537886808}
+  m_Layer: 0
+  m_Name: BedSearchCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7819112352801974753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861124328100487644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6878144920767653694}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &872780727303744616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861124328100487644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c1decd3c51729499e932475bb9a44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcBehaviorRoutine: {fileID: 2734912299321155550}
+--- !u!65 &5535024746537886808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861124328100487644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.74, z: 0.43}
+  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!1 &5910720680167603154
 GameObject:
   m_ObjectHideFlags: 0
@@ -6702,6 +6760,7 @@ Transform:
   - {fileID: 5876553112750166343}
   - {fileID: 2435170797521045081}
   - {fileID: 8365655524553761187}
+  - {fileID: 7819112352801974753}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6762,6 +6821,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routineData: {fileID: 11400000, guid: faa662ed0dcfa9248b8c59b2ed4853c5, type: 2}
   searchCollider: {fileID: 883766377463259203}
+  characterData:
+    character: {fileID: 0}
+    pillow: {fileID: 0}
+    meshObjParent: {fileID: 0}
+    myBodyTransform: {fileID: 0}
+    myPillowTransform: {fileID: 0}
+    myCameraTransform: {fileID: 0}
+    myBodyRigidbody: {fileID: 0}
+    myPillowRigidbody: {fileID: 0}
+    myCamera: {fileID: 0}
+    myLoserCamera: {fileID: 0}
+    bodyCollider: {fileID: 0}
+    pillowCollider: {fileID: 0}
+    bedStatus: {fileID: 0}
+    doorAnimation: {fileID: 0}
+    hitPillowCount: 0
+    remainthrowCT: 0
+    isNpc: 0
+    canJump: 0
+    isDeath: 0
+    isHavePillow: 0
+    isInBedRange: 0
+    isInBed: 0
+    isDash: 0
+    isInDoor: 0
+    isSquat: 0
+    inBedPos: {x: 0, y: 0, z: 0}
   npcStatus: 0
 --- !u!195 &-6307336673551469
 NavMeshAgent:
