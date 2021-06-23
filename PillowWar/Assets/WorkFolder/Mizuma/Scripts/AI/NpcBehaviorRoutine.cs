@@ -152,6 +152,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void UpdateActivity()
     {
+        Debug.Log(characterData.HP);
         switch (npcStatus)
         {
             case NPC_STATUS.WALK:
@@ -195,11 +196,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                         if (characterData.bedStatus.canIn == false)
                         {
                             Debug.Log("割り込み");
-                            InteractBed(false);
-                            SetNpcStatus(NPC_STATUS.WALK);
-                            Vector3 nextPos = GetNextDestination();
-                            agent.destination = nextPos;
-                            targetMarkObj.transform.position = nextPos;
+                            StandUpBed();
                         }
                     }
                     break;
@@ -272,6 +269,16 @@ public class NpcBehaviorRoutine : MonoBehaviour
             PlayerManager.Instance.playerDatas[characterData.GetID(true)].bedStatus = null;
             agent.speed = defaultSpeed;
         }
+    }
+    
+    public void StandUpBed()
+    {
+        characterMover.InteractBed(characterData, false, characterData.inBedPos);
+        InteractBed(false);
+        SetNpcStatus(NPC_STATUS.WALK);
+        Vector3 nextPos = GetNextDestination();
+        agent.destination = nextPos;
+        targetMarkObj.transform.position = nextPos;
     }
 
     // デバッグ用

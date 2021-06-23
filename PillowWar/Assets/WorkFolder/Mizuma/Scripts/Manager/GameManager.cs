@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    [SerializeField] public int joinPlayers;
-    [SerializeField] public int joinNpcs;
+    [SerializeField, Range(1,4)] public int joinPlayers;
+    [SerializeField, Range(0,4)] public int joinNpcs;
     [SerializeField] public RuleData ruleData;
 
     [System.NonSerialized] public int remainCharacters;

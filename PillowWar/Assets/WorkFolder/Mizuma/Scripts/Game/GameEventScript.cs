@@ -85,6 +85,10 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
             {
                 PlayerManager.Instance.npcDatas[i].Damage(false);
+                foreach(var npc in npcBehaviorRoutines.ToArray())
+                {
+                    npc.StandUpBed();
+                }
             }
         }
     }
