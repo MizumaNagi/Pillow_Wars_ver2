@@ -66,7 +66,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
             pillow.transform.SetSiblingIndex(2);
-            npcDatas.Add(new CharacterData(obj, i, true));
+            npcDatas.Add(new CharacterData(obj, i + 100, true));
 
             pillow.GetComponent<PillowController>().characterData = npcDatas[i];
 

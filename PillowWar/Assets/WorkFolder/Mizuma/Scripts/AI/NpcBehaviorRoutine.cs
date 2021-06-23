@@ -126,6 +126,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.PILLOW_THROW:
                 {
+                    if (agent.hasPath == false) Debug.Log("布団到着");
                     break;
                 }
             default:
@@ -209,11 +210,16 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private void TriggerGoPillow()
     {
         float remainHpPercent = ((float)characterData.HP / (float)GameManager.Instance.ruleData.maxHp) * 100;
-        if (remainHpPercent > routineData.startGoPillowRemHpPercent) return;
+        if (remainHpPercent >= routineData.startGoPillowRemHpPercent) return;
 
         Vector3 nextPos = GetShortestBedPos();
         agent.destination = nextPos;
         targetMarkObj.transform.position = nextPos;
+    }
+
+    private void InteractBed(bool isInBed)
+    {
+        if (isInBed) agent.speed = 0;
     }
 
     // デバッグ用
@@ -233,27 +239,41 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (npcStatus != NPC_STATUS.GO_BED)
         {
-            //if (npcStatus != NPC_STATUS.WALK) return;
-
-            Vector3 targetPos = other.transform.position;
-            Vector3 playerDirection = targetPos - transform.position;
-            float angle = Vector3.Angle(transform.forward, playerDirection);
-            if (angle < routineData.maxSearchAngle)
+            if (other.gameObject.CompareTag("Player"))
             {
-                agent.destination = targetPos;
+                Vector3 targetPos = other.transform.position;
+                Vector3 playerDirection = targetPos - transform.position;
+                float angle = Vector3.Angle(transform.forward, playerDirection);
+                if (angle < routineData.maxSearchAngle)
+                {
+                    agent.destination = targetPos;
 
-                StringBuilder sb = new StringBuilder(other.gameObject.name);
-                sb.Replace("Player", "");
-                sb.Replace("Npc", "");
-                if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
-                targetData = GetChatacterData(id);
+                    StringBuilder sb = new StringBuilder(other.gameObject.name);
+                    sb.Replace("Player", "");
+                    sb.Replace("Npc", "");
+                    if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
+                    targetData = GetChatacterData(id);
 
-                agent.destination = targetData.character.transform.position;
-                SetNpcStatus(NPC_STATUS.GO_ENEMY);
+                    agent.destination = targetData.character.transform.position;
+                    SetNpcStatus(NPC_STATUS.GO_ENEMY);
+                }
+            }
+        }
+        else
+        {
+            if (other.gameObject.CompareTag("Bed") && characterData.bedStatus == null)
+            {
+                Debug.Log("侵入");
+                characterData.isInBedRange = true;
+                characterData.inBedPos = other.transform.position;
+                BedStatus bed = other.GetComponent<BedStatus>();
+                characterData.bedStatus = bed;
+
+                characterMover.InteractBed(characterData, true, characterData.inBedPos);
+                InteractBed(true);
             }
         }
     }
-
 }

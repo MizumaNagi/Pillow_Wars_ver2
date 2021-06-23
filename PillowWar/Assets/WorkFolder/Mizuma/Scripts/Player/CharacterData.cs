@@ -18,10 +18,10 @@ public class CharacterData
         myBodyRigidbody = character.GetComponent<Rigidbody>();
         bodyCollider = character.GetComponent<BoxCollider>();
         HP = GameManager.Instance.ruleData.maxHp;
+        meshObjParent = t.GetChild(0).gameObject;
 
         if (_isNpc == false)
         {
-            meshObjParent = t.GetChild(0).gameObject;
             myCameraTransform = t.GetChild(1).transform;
             myCamera = t.GetChild(1).GetComponent<Camera>();
             myLoserCamera = GameObject.FindGameObjectWithTag("LoserCamera").transform.GetChild(_characterID).GetComponent<Camera>();
@@ -103,7 +103,7 @@ public class CharacterData
         GameManager.Instance.remainCharacters--;
 
         if (isNpc == false) GameManager.Instance.resultIDs.Add(characterID + 1);
-        else GameManager.Instance.resultIDs.Add(-characterID - 1);
+        else GameManager.Instance.resultIDs.Add(characterID + 1);
     }
 
     public void HideCharacter(bool isInBed)
@@ -112,5 +112,11 @@ public class CharacterData
         meshObjParent.SetActive(!isInBed);
         bodyCollider.enabled = !isInBed;
         myBodyRigidbody.isKinematic = isInBed;
+    }
+
+    public int GetID(bool isNpc)
+    {
+        if (isNpc) return characterID - 100;
+        else return characterID;
     }
 }

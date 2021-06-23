@@ -6,15 +6,6 @@ public class HitCharacterController : MonoBehaviour
     [SerializeField] private int objNum;
     public bool isNpc;
 
-    private void Start()
-    {
-        //StringBuilder sb = new StringBuilder(gameObject.name);
-        //sb.Replace("Player","");
-        //sb.Replace("Npc", "");
-        //objNum = int.Parse(sb.ToString());
-        //sb.Clear();
-    }
-
     public void OnCollisionEnter(Collision collison)
     {
         if (collison.gameObject.tag == "Pillow")
@@ -39,10 +30,11 @@ public class HitCharacterController : MonoBehaviour
         {
             if (isNpc == true)
             {
-                PlayerManager.Instance.npcDatas[objNum - 100].isInBedRange = true;
-                PlayerManager.Instance.npcDatas[objNum - 100].inBedPos = other.transform.position;
-                BedStatus bed = other.GetComponent<BedStatus>();
-                PlayerManager.Instance.npcDatas[objNum - 100].bedStatus = bed;
+                //Debug.Log("ê⁄êG");
+                //PlayerManager.Instance.npcDatas[objNum - 100].isInBedRange = true;
+                //PlayerManager.Instance.npcDatas[objNum - 100].inBedPos = other.transform.position;
+                //BedStatus bed = other.GetComponent<BedStatus>();
+                //PlayerManager.Instance.npcDatas[objNum - 100].bedStatus = bed;
             }
             else
             {
@@ -74,8 +66,8 @@ public class HitCharacterController : MonoBehaviour
         {
             if (isNpc == true)
             {
-                PlayerManager.Instance.npcDatas[objNum - 100].isInBedRange = false;
-                PlayerManager.Instance.npcDatas[objNum - 100].bedStatus = null;
+                //PlayerManager.Instance.npcDatas[objNum - 100].isInBedRange = false;
+                //PlayerManager.Instance.npcDatas[objNum - 100].bedStatus = null;
             }
             else
             {
