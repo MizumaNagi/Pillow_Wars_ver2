@@ -8,7 +8,7 @@ public class GetBedCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Bed") && npcBehaviorRoutine.characterData.bedStatus == null && npcBehaviorRoutine.npcStatus == NPC_STATUS.GO_BED)
+        if(other.gameObject.CompareTag("Bed") && npcBehaviorRoutine.npcStatus == NPC_STATUS.GO_BED)
         {
             Debug.Log("êNì¸");
             npcBehaviorRoutine.characterData.isInBedRange = true;

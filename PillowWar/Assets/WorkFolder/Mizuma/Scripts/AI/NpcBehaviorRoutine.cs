@@ -24,14 +24,14 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private NavMeshAgent agent;
     private CharacterData targetData;
     private GameObject targetMarkObj;
-    private int npcID;
+    public int npcID;
     private float defaultSpeed;
 
     private void Start()
     {
-        characterData = PlayerManager.Instance.npcDatas[npcID];
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
+        characterData = PlayerManager.Instance.npcDatas[npcID - 100];
         searchCollider.radius = routineData.warRangeToEnemy / 2;
 
         targetMarkObj = Instantiate(routineData.targetMark);
@@ -94,13 +94,22 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
 
 
-        if (shortIndex != -1) return BedManager.Instance.bedColliders[shortIndex].transform.position;
+        if (shortIndex != -1)
+        {
+            characterData.bedStatus = GetDestinationBedStatus(shortIndex);
+            return BedManager.Instance.bedColliders[shortIndex].transform.position;
+        }
         else
         {
             Debug.Log("布団見つけられず...");
             SetNpcStatus(NPC_STATUS.WALK);
             return Vector3.zero;
         }
+    }
+
+    private BedStatus GetDestinationBedStatus(int index)
+    {
+        return BedManager.Instance.bedColliders[index].GetComponent<BedStatus>();
     }
 
     public void SetNpcStatus(NPC_STATUS status)
@@ -186,9 +195,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
                         if (characterData.bedStatus.canIn == false)
                         {
                             Debug.Log("割り込み");
-                            characterMover.InteractBed(characterData, false, characterData.inBedPos);
                             InteractBed(false);
                             SetNpcStatus(NPC_STATUS.WALK);
+                            Vector3 nextPos = GetNextDestination();
+                            agent.destination = nextPos;
+                            targetMarkObj.transform.position = nextPos;
                         }
                     }
                     break;
