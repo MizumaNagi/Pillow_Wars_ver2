@@ -152,7 +152,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void UpdateActivity()
     {
-        Debug.Log(characterData.HP);
         switch (npcStatus)
         {
             case NPC_STATUS.WALK:
