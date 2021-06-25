@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: joinPlayers
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder
@@ -633,6 +633,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
+      propertyPath: playerInput.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
+      propertyPath: playerInput.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b5c319e76ba23e43b5b7e269840b770, type: 2}
+    - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
+      propertyPath: playerInput.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 541501f40f63075429866128fdd1ced1, type: 2}
     - target: {fileID: 2682800872874778379, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: m_RootOrder
       value: 3
