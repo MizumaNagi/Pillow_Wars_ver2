@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BedStatus : MonoBehaviour
 {
-    public Collider myCollider;
+    private Collider myCollider;
     public float remainDamagetime;
 
     public CharacterData cd;
-    public Event dmgEvent;
+    public bool canIn = true;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class BedStatus : MonoBehaviour
         if (data != null) SetCharacterData(data);
 
         myCollider.enabled = isOut;
-        HideCharacter(isOut);
+        canIn = isOut;
 
         if(isOut == true)
         {
@@ -49,17 +49,6 @@ public class BedStatus : MonoBehaviour
     private void ResetTime()
     {
         remainDamagetime = GameManager.Instance.ruleData.inBedDamageTime;
-    }
-
-    private void HideCharacter(bool isOut)
-    {
-        if (cd == null)
-        {
-            Debug.LogError("CharacterData‚ª‚ ‚è‚Ü‚¹‚ñ");
-            return;
-        }
-
-        //cd.character.transform.GetChild(0).gameObject.SetActive(isOut);
     }
 
     private void SetCharacterData(CharacterData data)

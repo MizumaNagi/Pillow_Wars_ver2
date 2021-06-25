@@ -11,6 +11,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     private bool isEventStart;
     private EVENT_TYPE nextEventType;
 
+    public List<NpcBehaviorRoutine> npcBehaviorRoutines = new List<NpcBehaviorRoutine>();
     public float remainEventStopTime;
     public float remainEventActiveTime;
     public bool canBedIn = false;
@@ -29,7 +30,14 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     {
         if (remainEventStopTime < remainEventActiveTime)
         {
-            if (isEventStart == false) isEventStart = true;
+            if (isEventStart == false) 
+            {
+                isEventStart = true;
+                foreach(var npcBehaviorRoutine in npcBehaviorRoutines.ToArray())
+                {
+                    npcBehaviorRoutine.SetNpcStatus(NPC_STATUS.GO_BED);
+                }
+            }
             remainEventActiveTime -= Time.deltaTime;
             if (remainEventActiveTime < 0)
             {
@@ -77,6 +85,10 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
             {
                 PlayerManager.Instance.npcDatas[i].Damage(false);
+                foreach(var npc in npcBehaviorRoutines.ToArray())
+                {
+                    npc.StandUpBed();
+                }
             }
         }
     }

@@ -76,7 +76,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             else characterMover.Dash(characterDatas[i], false);
 
             // ダッシュ判定
-            if (Input.GetButtonDown(playerInput[i].Run))
+            if (Input.GetButtonDown(playerInput[i].Run) && characterDatas[i].isSquat == false)
             {
                 characterMover.Dash(characterDatas[i], true);
             }
@@ -86,9 +86,14 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 characterMover.ViewMove(viewMoveInput, characterDatas[i]);
             }
             // ジャンプ
-            if (Input.GetButtonDown(playerInput[i].Jump) && characterDatas[i].canJump == true)
+            if (Input.GetButtonDown(playerInput[i].Jump) && characterDatas[i].canJump == true && characterDatas[i].isSquat == false)
             {
                 characterMover.Jump(characterDatas[i]);
+            }
+            // しゃがみ
+            if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].canJump == true)
+            {
+                characterMover.Squat(characterDatas[i], characterDatas[i].isSquat);
             }
             // ADS/非ADS
             if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f)
@@ -153,10 +158,12 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-移動
         KeyboardInputMove(c);
         // キーボード-ダッシュ判定/解除判定
-        if (Input.GetKey(KeyCode.LeftShift)) characterMover.Dash(c, true);
+        if (Input.GetKey(KeyCode.LeftShift) && c.isSquat == false) characterMover.Dash(c, true);
         else characterMover.Dash(c, false);
         // キーボード-ジャンプ
-        if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true) characterMover.Jump(c);
+        if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true && c.isSquat == false) characterMover.Jump(c);
+        // キーボード-しゃがみ
+        if (Input.GetKeyDown(KeyCode.LeftControl) && c.canJump == true) characterMover.Squat(c, c.isSquat);
         // キーボード-ADS/非ADS
         if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
         else { characterMover.ToNonADS(c); }

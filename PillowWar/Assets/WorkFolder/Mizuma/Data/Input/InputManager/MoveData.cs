@@ -8,6 +8,7 @@ public class MoveData : ScriptableObject
 {
     [Header("ˆÚ“®‘€ì")]
     public float moveSpd;
+    public float squatingMoveSpd;
     public float dashMovMulti;
     public float viewMoveSpd;
     public float jumpForce;
@@ -22,4 +23,6 @@ public class MoveData : ScriptableObject
     public float maxFOV;
     public float fovChangeSpd;
     public float limitRotY;
+    public Vector3 standingCameraPos;
+    public Vector3 squatingCameraPos;
 }

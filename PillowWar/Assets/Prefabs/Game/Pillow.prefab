@@ -93,7 +93,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 4407689812196193053}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData:
     character: {fileID: 0}
+    pillow: {fileID: 0}
+    meshObjParent: {fileID: 0}
     myBodyTransform: {fileID: 0}
     myPillowTransform: {fileID: 0}
     myCameraTransform: {fileID: 0}
@@ -135,8 +137,11 @@ MonoBehaviour:
     myPillowRigidbody: {fileID: 0}
     myCamera: {fileID: 0}
     myLoserCamera: {fileID: 0}
+    bodyCollider: {fileID: 0}
+    pillowCollider: {fileID: 0}
     bedStatus: {fileID: 0}
     doorAnimation: {fileID: 0}
+    hitPillowCount: 0
     remainthrowCT: 0
     isNpc: 0
     canJump: 0
@@ -146,4 +151,5 @@ MonoBehaviour:
     isInBed: 0
     isDash: 0
     isInDoor: 0
+    isSquat: 0
     inBedPos: {x: 0, y: 0, z: 0}

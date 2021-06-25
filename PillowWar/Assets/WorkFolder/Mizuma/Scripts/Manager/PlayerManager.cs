@@ -9,6 +9,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     [SerializeField] private GameObject pillowPrefab;
 
     private Vector3[] spawnPos = { new Vector3(-6f, 0, -6f), new Vector3(6f, 0, 6f), new Vector3(-6f, 0, 6f), new Vector3(6f, 0, -6f), new Vector3(-3f, 0, -3f), new Vector3(3f, 0, 3f), new Vector3(-3f, 0, 3f), new Vector3(3f, 0, -3f)};
+    private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+
     private Transform playersParent;
     private Transform npcsParent;
 
@@ -35,7 +37,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         // player
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
-            GameObject obj = Instantiate(playerPrefabs[i], spawnPos[charaIndex], Quaternion.identity);
+            GameObject obj = Instantiate(playerPrefabs[i], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
             obj.transform.GetChild(0).localPosition = Vector3.zero;
             obj.name = "Player" + i;
             obj.transform.SetParent(playersParent, true);
@@ -66,7 +68,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
             pillow.transform.SetSiblingIndex(2);
-            npcDatas.Add(new CharacterData(obj, i, true));
+            npcDatas.Add(new CharacterData(obj, i + 100, true));
 
             pillow.GetComponent<PillowController>().characterData = npcDatas[i];
 

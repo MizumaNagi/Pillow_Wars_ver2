@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa4f9b5f9360e43bd44dc48c820abb, type: 3}
   m_Name: RuleData
   m_EditorClassIdentifier: 
-  maxHp: 999
+  maxHp: 10
   hitPillowCountOnDamage: 1
   pillowThrowCT: 1
   pillowHeadShotStunTime: 2
   stunPercent: 20
-  inBedDamageTime: 5
+  inBedDamageTime: 99
