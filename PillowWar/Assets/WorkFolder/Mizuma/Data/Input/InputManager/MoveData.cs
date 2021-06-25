@@ -7,8 +7,9 @@ using UnityEngine;
 public class MoveData : ScriptableObject
 {
     [Header("ˆÚ“®‘€ì")]
-    public float moveSpd;
-    public float squatingMoveSpd;
+    public float moveForce;
+    public float walkMoveSpdLimit;
+    public float squatMoveSpdLimit;
     public float dashMovMulti;
     public float viewMoveSpd;
     public float jumpForce;

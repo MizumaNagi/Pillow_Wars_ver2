@@ -8,12 +8,32 @@ public class CharacterMover
     public void Move(Vector3 _movVec, CharacterData data)
     {
         Transform movTransform = data.myBodyTransform;
+        Rigidbody movRb = data.myBodyRigidbody;
 
-        Vector3 movVec;
-        if(data.isSquat) movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.squatingMoveSpd;
-        else movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveSpd;
+        Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveForce;
 
-        movTransform.position += movVec * Time.deltaTime;
+        //Vector3 movVec;
+        //if(data.isSquat) movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.squatMoveSpdLimit;
+        //else movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveForce;
+
+        //movTransform.position += movVec * Time.deltaTime;
+        movRb.AddForce(movVec * Time.deltaTime);
+
+        if(data.isSquat)
+        {
+            if (movRb.velocity.magnitude > InputManager.Instance.moveData.squatMoveSpdLimit)
+            {
+                movRb.velocity /= 1.1f;
+            }
+        }
+        else
+        {
+            if (movRb.velocity.magnitude > InputManager.Instance.moveData.walkMoveSpdLimit)
+            {
+                movRb.velocity /= 1.1f;
+            }
+        }
+        
     }
 
     public void ViewMove(Vector3 _viewMovVec, CharacterData data)
