@@ -8,7 +8,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private int detailEventsNum;
     private int finishEventsNum;
-    private bool isEventStart;
+    public bool isEventStart;
     private EVENT_TYPE nextEventType;
 
     public List<NpcBehaviorRoutine> npcBehaviorRoutines = new List<NpcBehaviorRoutine>();

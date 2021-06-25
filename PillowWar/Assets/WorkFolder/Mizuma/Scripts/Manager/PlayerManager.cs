@@ -8,8 +8,9 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     [SerializeField] private GameObject[] npcPrefabs;
     [SerializeField] private GameObject pillowPrefab;
 
-    private Vector3[] spawnPos = { new Vector3(-6f, 0, -6f), new Vector3(6f, 0, 6f), new Vector3(-6f, 0, 6f), new Vector3(6f, 0, -6f), new Vector3(-3f, 0, -3f), new Vector3(3f, 0, 3f), new Vector3(-3f, 0, 3f), new Vector3(3f, 0, -3f)};
+    private Vector3[] spawnPos = { new Vector3(-6f, 0, -6f), new Vector3(6f, 0, 6f), new Vector3(-6f, 0, 6f), new Vector3(6f, 0, -6f), new Vector3(-3f, 0, -3f), new Vector3(3f, 0, 3f), new Vector3(-3f, 0, 3f), new Vector3(3f, 0, -3f) };
     private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+    private Rect[] twoDivCameraRect = { new Rect(0, 0.5f, 1f, 1f), new Rect(0, 0, 1, 0.5f) };
 
     private Transform playersParent;
     private Transform npcsParent;
@@ -54,6 +55,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             pillow.GetComponent<PillowController>().characterData = playerDatas[i];
 
             charaIndex++;
+
+            if (GameManager.Instance.joinPlayers == 2) playerDatas[i].myCamera.rect = twoDivCameraRect[i];
         }
         // npc
         for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
