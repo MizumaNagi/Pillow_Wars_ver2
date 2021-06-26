@@ -28,6 +28,7 @@ public class BedStatus : MonoBehaviour
         if (data != null) SetCharacterData(data);
 
         myCollider.enabled = isOut;
+        if (myCollider == null) Debug.Log(gameObject.name);
         canIn = isOut;
 
         if(isOut == true)
@@ -41,7 +42,7 @@ public class BedStatus : MonoBehaviour
     {
         if (remainDamagetime < 0)
         {
-            cd.Damage(true);
+            cd.Damage(true, false);
             ResetTime();
         }
     }

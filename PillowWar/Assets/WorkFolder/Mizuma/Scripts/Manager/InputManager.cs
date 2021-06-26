@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class InputManager : SingletonMonoBehaviour<InputManager>
@@ -15,6 +16,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     public MoveData moveData;
     public List<CharacterData> characterDatas = new List<CharacterData>();
+
+    public Image b;
 
     private void Start()
     {
@@ -191,3 +194,4 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         characterMover.ViewMove(vec, c);
     }
 }
+

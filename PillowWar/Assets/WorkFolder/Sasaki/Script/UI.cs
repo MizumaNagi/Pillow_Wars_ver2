@@ -16,12 +16,14 @@ public class UI : MonoBehaviour
     [SerializeField] private Image[] Futont1image;
     [SerializeField] private Image[] Futont2image;
 
-    //public List<float> playerhp = new List<float>();
     public UnityEngine.UI.Text Pausetext;
     private int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private GameManager gameManager;
     private GameEventScript gameEventScript;
+    [SerializeField] private GameObject Player2;
+    [SerializeField] private GameObject Player4;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +39,20 @@ public class UI : MonoBehaviour
         iconChild = hpIconParents[0].childCount;
         hpicon();
 
-        //for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-        //{
-        //    playerhp.Add(0);
-        //}
+        // 参加人数の取得方法
+        //GameManager.Instance.joinPlayers;
+
+        // もしも参加人数が2人なら...
+        if (GameManager.Instance.joinPlayers == 2)
+        {
+            Player2.SetActive(true);
+            Player4.SetActive(false);
+        }
+        else
+        {
+            Player2.SetActive(false);
+            Player4.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -60,10 +72,7 @@ public class UI : MonoBehaviour
                     Futont1image[i].enabled = false;
                     Futont2image[i].enabled = false;
                 }
-            }
 
-            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-            {
                 float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
 
                 for (int j = 0; j < iconChild; j++)
@@ -74,14 +83,6 @@ public class UI : MonoBehaviour
             Pause();
             Image();
         }
-
-        //for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-        //{
-        //    playerhp[i] = 0;
-        //    playerhp[i] = (float)PlayerManager.Instance.charaDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
-
-        //    hp[i].value = playerhp[i];
-        //}
     }
 
     private void PauseTitle()
@@ -113,7 +114,7 @@ public class UI : MonoBehaviour
 
     public void Image()
     {
-        for (int i = 0; i < Futontimage.Length; i++)
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             if (PlayerManager.Instance.playerDatas[i].isInBed == true)
             {
