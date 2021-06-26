@@ -179,6 +179,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     if(agent.hasPath == false)
                     {
                         Debug.LogWarning("経路なし");
+                        SetNpcStatus(NPC_STATUS.WALK);
                         break;
                     }
                     if (agent.remainingDistance <= routineData.warRangeToEnemy)
@@ -242,7 +243,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         float bedEventThroughPercent = Mathf.Clamp01(remainHpPercent / routineData.startGoBedRemHpPercent) * 100;
         int rnd = Random.Range(0, 100);
 
-        Debug.Log($"※ 襲撃イベント\n失敗値: {bedEventThroughPercent}, 成功値: {rnd} + {routineData.minStartGoBedPercent}, 結果: {bedEventThroughPercent < rnd + routineData.minStartGoBedPercent}");
+        //Debug.Log($"※ 襲撃イベント\n失敗値: {bedEventThroughPercent}, 成功値: {rnd} + {routineData.minStartGoBedPercent}, 結果: {bedEventThroughPercent < rnd + routineData.minStartGoBedPercent}");
         if (bedEventThroughPercent > rnd + routineData.minStartGoBedPercent) 
         {
             SetNpcStatus(NPC_STATUS.WALK);
