@@ -24,7 +24,10 @@ public class CharacterData
         {
             myCameraTransform = t.GetChild(1).transform;
             myCamera = t.GetChild(1).GetComponent<Camera>();
-            myLoserCamera = GameObject.FindGameObjectWithTag("LoserCamera").transform.GetChild(_characterID).GetComponent<Camera>();
+
+            GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
+            myLoserCameraObj.SetActive(true);
+            myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();
             myLoserCamera.enabled = false;
         }
 
@@ -66,12 +69,12 @@ public class CharacterData
 
     private int characterID;
 
-    public void Damage(bool pieceDamage)
+    public void Damage(bool isPieceDamage, bool isPercentDamage)
     {
         if (isDeath) { return; }
-        if (isInBed && pieceDamage == false) { return; }
+        if (isInBed && isPieceDamage == false) { return; }
         hitPillowCount++;
-        if (hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage)
+        if (hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage || isPercentDamage)
         {
             HP--;
             hitPillowCount = 0;

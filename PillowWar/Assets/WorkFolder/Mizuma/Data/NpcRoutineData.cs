@@ -13,4 +13,6 @@ public class NpcRoutineData : ScriptableObject
     public float maxSearchAngle;
     public float startGoBedRemHpPercent;
     public float minStartGoBedPercent;
+    public float damagedOnTargetPercent;
+    public float failedInBedPercent;
 }
