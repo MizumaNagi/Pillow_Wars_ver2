@@ -7,14 +7,18 @@ using UnityEngine.SceneManagement;
 public class UI : MonoBehaviour
 {
     //[SerializeField] private Slider[] hp;
-    [SerializeField] private Image[] Futontimage;
-    [SerializeField] private Text[] Futontext;
+    [SerializeField] private Image[] FutontimagePlayer4;
+    [SerializeField] private Image[] FutontimagePlayer2;
+    [SerializeField] private Text[] FutontextPlayer4;
+    [SerializeField] private Text[] FutontextPlayer2;
     [SerializeField] private Transform[] hpIconParents;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button titleButton;
-    [SerializeField] private Image[] Futont1image;
-    [SerializeField] private Image[] Futont2image;
+    [SerializeField] private Image[] Futont1imagePlayer4;
+    [SerializeField] private Image[] Futont1imagePlayer2;
+    [SerializeField] private Image[] Futont2imagePlayer4;
+    [SerializeField] private Image[] Futont2imagePlayer2;
 
     public UnityEngine.UI.Text Pausetext;
     private int iconChild = 0;
@@ -62,17 +66,6 @@ public class UI : MonoBehaviour
         {
             for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
-                if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
-                {
-                    Futont1image[i].enabled = true;
-                    Futont2image[i].enabled = true;
-                }
-                else
-                {
-                    Futont1image[i].enabled = false;
-                    Futont2image[i].enabled = false;
-                }
-
                 float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
 
                 for (int j = 0; j < iconChild; j++)
@@ -82,6 +75,7 @@ public class UI : MonoBehaviour
             }
             Pause();
             Image();
+            Image1();
         }
     }
 
@@ -116,20 +110,60 @@ public class UI : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
-            if (PlayerManager.Instance.playerDatas[i].isInBed == true)
+            if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
             {
-                Futontext[i].enabled = true;
-                Futontimage[i].enabled = true;
-                Futont1image[i].enabled = false;
-                Futont2image[i].enabled = false;
+                Futont1imagePlayer4[i].enabled = true;
+                Futont2imagePlayer4[i].enabled = true;
             }
             else
             {
-                Futontext[i].enabled = false;
-                Futontimage[i].enabled = false;
+                Futont1imagePlayer4[i].enabled = false;
+                Futont2imagePlayer4[i].enabled = false;
+            }
+            if (PlayerManager.Instance.playerDatas[i].isInBed == true)
+            {
+                FutontextPlayer4[i].enabled = true;
+                FutontimagePlayer4[i].enabled = true;
+                Futont1imagePlayer4[i].enabled = false;
+                Futont2imagePlayer4[i].enabled = false;
+            }
+            else
+            {
+                FutontextPlayer4[i].enabled = false;
+                FutontimagePlayer4[i].enabled = false;
             }
         }
     }
+
+    public void Image1()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
+            {
+                Futont1imagePlayer2[i].enabled = true;
+                Futont2imagePlayer2[i].enabled = true;
+            }
+            else
+            {
+                Futont1imagePlayer2[i].enabled = false;
+                Futont2imagePlayer2[i].enabled = false;
+            }
+            if (PlayerManager.Instance.playerDatas[i].isInBed == true)
+            {
+                FutontextPlayer2[i].enabled = true;
+                FutontimagePlayer2[i].enabled = true;
+                Futont1imagePlayer2[i].enabled = false;
+                Futont2imagePlayer2[i].enabled = false;
+            }
+            else
+            {
+                FutontextPlayer2[i].enabled = false;
+                FutontimagePlayer2[i].enabled = false;
+            }
+        }
+    }
+
 
     private void hpicon()
     {

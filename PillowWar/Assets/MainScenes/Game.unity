@@ -5637,16 +5637,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54facd82b7713ca40a38c973089cc9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Futontimage:
+  FutontimagePlayer4:
   - {fileID: 1326872439}
   - {fileID: 620816310}
   - {fileID: 1373557411}
   - {fileID: 1863422315}
-  Futontext:
+  FutontimagePlayer2:
+  - {fileID: 1501301653}
+  - {fileID: 1062878573}
+  FutontextPlayer4:
   - {fileID: 285931189}
   - {fileID: 1898546599}
   - {fileID: 403817673}
   - {fileID: 1541274141}
+  FutontextPlayer2:
+  - {fileID: 1242669267}
+  - {fileID: 589919736}
   hpIconParents:
   - {fileID: 1692452391}
   - {fileID: 586154321}
@@ -5655,16 +5661,22 @@ MonoBehaviour:
   pausePanel: {fileID: 1249954160}
   resumeButton: {fileID: 2110797788}
   titleButton: {fileID: 761044754}
-  Futont1image:
+  Futont1imagePlayer4:
   - {fileID: 1926180357}
   - {fileID: 941984489}
   - {fileID: 1326121033}
   - {fileID: 1953350493}
-  Futont2image:
+  Futont1imagePlayer2:
+  - {fileID: 885647438}
+  - {fileID: 429467707}
+  Futont2imagePlayer4:
   - {fileID: 983084563}
   - {fileID: 1234066141}
   - {fileID: 13457222}
   - {fileID: 1733894734}
+  Futont2imagePlayer2:
+  - {fileID: 1652362080}
+  - {fileID: 1895382524}
   Pausetext: {fileID: 2018461879}
   Player2: {fileID: 2109219190}
   Player4: {fileID: 88016522}
