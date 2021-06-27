@@ -10,13 +10,15 @@ public class SelectMenu : MonoBehaviour
     public Button PlayRightArrowSelect;
     public Button StageLeftArrowSelect;
     public Button StageRightArrowSelect;
+    public Button playSelect;
+    public Button stageSelect;
 
     Text text;
 
     void Start()
     {
         //StartButton‚ğ‰Šúó‘Ô‚Å‘I‘ğó‘Ô‚É‚·‚éB
-        PlayLeftArrowSelect.Select();
+        playSelect.Select();
     }
 
 }

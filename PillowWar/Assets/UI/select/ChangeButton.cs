@@ -9,9 +9,9 @@ public class ChangeButton : MonoBehaviour
 
     public Sprite[] StageImage;
 
-    int StageSelect_now = 0;
+    [SerializeField] int StageSelect_now = 0;
 
-    int ColumnSelect_now = 0;
+    [SerializeField] int ColumnSelect_now = 0;
 
     public Image Spriteimage;
 
@@ -21,6 +21,10 @@ public class ChangeButton : MonoBehaviour
 
     public Button StageSelect;
 
+    private float moveXCT = 0.3f;
+    private float remainMoveXCT = 0f;
+    private float inputThreshold = 0.8f;
+
     private void Start()
     {
         SetSprite();
@@ -29,7 +33,9 @@ public class ChangeButton : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        remainMoveXCT -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || (Input.GetAxis(InputManager.Instance.playerInput[0].MoveX) < -inputThreshold && remainMoveXCT < 0))
         {
             if(ColumnSelect_now == 0)
             {
@@ -39,8 +45,9 @@ public class ChangeButton : MonoBehaviour
             {
                 OnStageLeftArrow();
             }
+            remainMoveXCT = moveXCT;
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow) || (Input.GetAxis(InputManager.Instance.playerInput[0].MoveX) > inputThreshold && remainMoveXCT < 0))
         {
             if (ColumnSelect_now == 0)
             {
@@ -50,27 +57,32 @@ public class ChangeButton : MonoBehaviour
             {
                 OnStageRightArrow();
             }
+            remainMoveXCT = moveXCT;
         }
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis(InputManager.Instance.playerInput[0].MoveY) < -inputThreshold)
         {
-            if(ColumnSelect_now != 0)
+            if (ColumnSelect_now != 0)
             {
                 ColumnSelect_now--;
             }
         }
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis(InputManager.Instance.playerInput[0].MoveY) > inputThreshold)
         {
-            if(ColumnSelect_now == 0)
+            if (ColumnSelect_now == 0)
             {
                 ColumnSelect_now++;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(InputManager.Instance.playerInput[0].Start))
         {
             int PlayerjoinNumbers = int.Parse(PlayNambertext.text.ToString());
             GameManager.Instance.joinPlayers = PlayerjoinNumbers;
             GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
+            SceneManagement.Instance.LoadScene(SCENE_NAME.GAME);
         }
+
+        // Debug.Log($"moveX: {Input.GetAxis(InputManager.Instance.playerInput[0].MoveX)}\n" +
+        //     $"moveY: {Input.GetAxis(InputManager.Instance.playerInput[0].MoveY)}");
     }
 
     public void OnPlayLeftArrow()

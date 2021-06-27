@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public enum SCENE_NAME
 {
     TITLE,
+    SELECT,
     GAME,
     RESULT
 }
@@ -25,11 +26,17 @@ public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
         if(name == "Title")
         {
         }
-        if (name == "Game")
+        else if (name == "Select")
+        {
+        }
+        else if (name == "Game")
         {
             GameManager.Instance.GameStart();
         }
-        if (name == "Result")
+        else if (name == "Result")
+        {
+        }
+        else
         {
         }
     }
@@ -40,10 +47,16 @@ public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
         if (name == "Title")
         {
         }
-        if (name == "Game")
+        else if (name == "Select")
         {
         }
-        if (name == "Result")
+        else if (name == "Game")
+        {
+        }
+        else if (name == "Result")
+        {
+        }
+        else
         {
         }
     }
@@ -55,6 +68,11 @@ public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
             case SCENE_NAME.TITLE:
                 {
                     SceneManager.LoadScene("Title");
+                    break;
+                }
+            case SCENE_NAME.SELECT:
+                {
+                    SceneManager.LoadScene("Select");
                     break;
                 }
             case SCENE_NAME.GAME:

@@ -32,6 +32,7 @@ public class InputData : ScriptableObject
 
     [SerializeField] private XboxConAllTypeEnum ok = XboxConAllTypeEnum.Xbox_Fire_A;      // ����
     [SerializeField] private XboxConAllTypeEnum cancel = XboxConAllTypeEnum.Xbox_Fire_B;  // �L�����Z��
+    [SerializeField] private XboxConAllTypeEnum start = XboxConAllTypeEnum.Xbox_Fire_Menu;
 
     //[Header("�Q�[��������")]
     //[Header("�L�[�{�[�h����(�e�X�g�p)")]
@@ -79,6 +80,8 @@ public class InputData : ScriptableObject
     //public string Right { get => GetKeyName(right); }
     public string Ok { get => GetKeyName(ok); }
     public string Cancel { get => GetKeyName(cancel); }
+
+    public string Start { get => GetKeyName(start); }
 
     private string GetKeyName<T>(T key)
     {
