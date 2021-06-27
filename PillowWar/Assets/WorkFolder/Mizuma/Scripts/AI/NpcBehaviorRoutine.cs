@@ -107,11 +107,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 shortIndex = i;
             }
         }
-
+        PlayerManager.Instance.targetBedName[npcID - 100] = "";
         // 最も近いベッドのインデックスが初期値以外だったか？
         if (shortIndex != -1)
         {
             characterData.bedStatus = GetDestinationBedStatus(shortIndex);
+            PlayerManager.Instance.targetBedName[npcID - 100] = BedManager.Instance.bedColliders[shortIndex].transform.parent.name;
             return BedManager.Instance.bedColliders[shortIndex].transform.position;
         }
         else
@@ -156,7 +157,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.GO_BED:
                 {
                     agent.stoppingDistance = 0;
-                    TriggerGoBed();
                     break;
                 }
             case NPC_STATUS.IN_BED:
@@ -223,7 +223,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_BED:
                 {
-                    if (characterData.bedStatus != null)
+                    //if (characterData.bedStatus != null)
                     {
                         if (characterData.bedStatus.canIn == false)
                         {
@@ -276,13 +276,13 @@ public class NpcBehaviorRoutine : MonoBehaviour
     /// <summary>
     /// 襲撃イベントを行うか、無視するか
     /// </summary>
-    private void TriggerGoBed()
+    public void TriggerGoBed()
     {
         // 残りHP割合が襲撃イベ開始HP割合を下回っていなければイベント無視
         float remainHpPercent = ((float)characterData.HP / (float)GameManager.Instance.ruleData.maxHp) * 100;
         if (remainHpPercent >= routineData.startGoBedRemHpPercent)
         {
-            SetNpcStatus(NPC_STATUS.WALK);
+            //SetNpcStatus(NPC_STATUS.WALK);
             return;
         }
 
@@ -295,15 +295,16 @@ public class NpcBehaviorRoutine : MonoBehaviour
             $"結果: {bedEventThroughPercent < rnd + routineData.minStartGoBedPercent}");
         if (bedEventThroughPercent > rnd + routineData.minStartGoBedPercent) 
         {
-            SetNpcStatus(NPC_STATUS.WALK);
+            //SetNpcStatus(NPC_STATUS.WALK);
             return; 
         }
 
         // 座標を取得、目的地に設定
         Vector3 nextPos = GetShortestBedPos();
         agent.destination = nextPos;
-        Debug.Log(characterData.GetID(true));
         targetMarkObj.transform.position = nextPos;
+
+        SetNpcStatus(NPC_STATUS.GO_BED);
     }
 
     /// <summary>
@@ -356,7 +357,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (npcStatus != NPC_STATUS.GO_BED)
+        if (PlayerManager.Instance.npcDatas[npcID - 100].isInBed == false)
         {
             if (other.gameObject.CompareTag("Player"))
             {

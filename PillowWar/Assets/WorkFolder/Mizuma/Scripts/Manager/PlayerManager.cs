@@ -19,6 +19,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public List<CharacterData> playerDatas = new List<CharacterData>();
     public List<CharacterData> npcDatas = new List<CharacterData>();
 
+    [Header("‚·‚®‚¯‚¹")] public string[] targetBedName = new string[4];
+
     public void Init()
     {
         GameObject emptyObj = new GameObject();

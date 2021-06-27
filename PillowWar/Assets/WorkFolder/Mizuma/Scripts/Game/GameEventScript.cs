@@ -35,7 +35,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 isEventStart = true;
                 foreach(var npcBehaviorRoutine in npcBehaviorRoutines.ToArray())
                 {
-                    if (npcBehaviorRoutine.gameObject.activeSelf == true) npcBehaviorRoutine.SetNpcStatus(NPC_STATUS.GO_BED);
+                    if (npcBehaviorRoutine.gameObject.activeSelf == true) npcBehaviorRoutine.TriggerGoBed();
                 }
             }
             remainEventActiveTime -= Time.deltaTime;
@@ -87,7 +87,11 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 PlayerManager.Instance.npcDatas[i].Damage(false, true);
                 foreach(var npc in npcBehaviorRoutines.ToArray())
                 {
-                    npc.StandUpBed();
+                    if (npc.gameObject.activeSelf == true)
+                    {
+                        npc.StandUpBed();
+                        npc.SetNpcStatus(NPC_STATUS.WALK);
+                    }
                 }
             }
         }

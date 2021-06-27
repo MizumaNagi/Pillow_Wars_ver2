@@ -122,7 +122,7 @@ public class CharacterMover
         data.isInBed = isInBed;
         if (isInBed == true)
         {
-            data.bedStatus.ChangeEnableCollider(false, data);
+            data.bedStatus.ChangeEnableCollider(false, data.GetOriginalID());
             data.myBodyTransform.localPosition = bedPos;
         }
         else

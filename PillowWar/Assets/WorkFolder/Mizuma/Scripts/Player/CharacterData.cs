@@ -109,17 +109,22 @@ public class CharacterData
         else GameManager.Instance.resultIDs.Add(characterID + 1);
     }
 
-    public void HideCharacter(bool isInBed)
+    public void HideCharacter(bool enable)
     {
-        pillow.SetActive(!isInBed);
-        meshObjParent.SetActive(!isInBed);
-        bodyCollider.enabled = !isInBed;
-        myBodyRigidbody.isKinematic = isInBed;
+        pillow.SetActive(!enable);
+        meshObjParent.SetActive(!enable);
+        bodyCollider.enabled = !enable;
+        myBodyRigidbody.isKinematic = enable;
     }
 
     public int GetID(bool isNpc)
     {
         if (isNpc) return characterID - 100;
         else return characterID;
+    }
+
+    public int GetOriginalID()
+    {
+        return characterID;
     }
 }

@@ -9,7 +9,12 @@ public class GetBedCollider : MonoBehaviour
 {
     [SerializeField] private NpcBehaviorRoutine npcBehaviorRoutine;
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+        if (GameManager.Instance.isPause == true) return;
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         // 付近にBedがあり、尚且つNPC状態が"ベッドに向かっている"時
         if (other.gameObject.CompareTag("Bed") && npcBehaviorRoutine.npcStatus == NPC_STATUS.GO_BED)
