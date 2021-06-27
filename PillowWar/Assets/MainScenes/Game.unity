@@ -1914,7 +1914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &234096771
 Transform:
   m_ObjectHideFlags: 0
@@ -5602,7 +5602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &811053871
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6470,7 +6470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed692cc268321a4ba9e65322f933689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDontDestroy: 1
+  isDontDestroy: 0
   activeBeds: 5
   bedColliders: []
 --- !u!1 &998167256
@@ -7149,7 +7149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1122653346
 Transform:
   m_ObjectHideFlags: 0
@@ -12284,7 +12284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1918437016
 Transform:
   m_ObjectHideFlags: 0
@@ -14500,7 +14500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2134658988
 Transform:
   m_ObjectHideFlags: 0
@@ -14819,6 +14819,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2943871946252741230, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
+      propertyPath: npcPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1847934279642183890, guid: e947ebcd38fae4c4eb70ef0b3c5daa71, type: 3}
+    - target: {fileID: 2943871946252741230, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
+      propertyPath: npcPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2485771115601883788, guid: 71795aa50e0bb5d4cbecba50f4ba2105, type: 3}
+    - target: {fileID: 2943871946252741230, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
+      propertyPath: npcPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3183374273860702108, guid: afcf8cf919b87ea48ad759d72f5fade3, type: 3}
+    - target: {fileID: 2943871946252741230, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
+      propertyPath: npcPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3272324596794161349, guid: 5488ffcbe1062494a8be91dcfcb0c306, type: 3}
     - target: {fileID: 2943871946252741230, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
       propertyPath: playerPrefabs.Array.data[0]
       value: 
