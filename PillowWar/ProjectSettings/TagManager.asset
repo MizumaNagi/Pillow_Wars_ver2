@@ -9,6 +9,7 @@ TagManager:
   - Bed
   - LoserCamera
   - Door
+  - EventSearchCollider
   layers:
   - Default
   - TransparentFX

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BedStatus : MonoBehaviour
 {
-    public Collider myCollider;
+    private Collider myCollider;
     public float remainDamagetime;
 
-    public CharacterData cd;
-    public Event dmgEvent;
+    public int inCharacterID;
+    public bool canIn = true;
 
     private void Start()
     {
@@ -20,50 +20,33 @@ public class BedStatus : MonoBehaviour
     {
         if (myCollider.enabled == true) return;
         remainDamagetime -= Time.deltaTime;
-        isTimeOver();
+        if (remainDamagetime < 0) isTimeOver();
     }
 
-    public void ChangeEnableCollider(bool isOut, CharacterData data = null)
+    public void ChangeEnableCollider(bool isOut, int ID = -1)
     {
-        if (data != null) SetCharacterData(data);
+        inCharacterID = ID;
 
         myCollider.enabled = isOut;
-        HideCharacter(isOut);
+        canIn = isOut;
 
-        if(isOut == true)
+        if (myCollider == null) Debug.Log(gameObject.name);
+
+        if (isOut == true)
         {
             ResetTime();
-            cd = null;
         }
     }
 
-    public void isTimeOver()
+    private void isTimeOver()
     {
-        if (remainDamagetime < 0)
-        {
-            cd.Damage(true);
-            ResetTime();
-        }
+        if (inCharacterID < 100) PlayerManager.Instance.playerDatas[inCharacterID].Damage(true, false);
+        else PlayerManager.Instance.npcDatas[inCharacterID - 100].Damage(true, false);
+        ResetTime();
     }
 
     private void ResetTime()
     {
         remainDamagetime = GameManager.Instance.ruleData.inBedDamageTime;
-    }
-
-    private void HideCharacter(bool isOut)
-    {
-        if (cd == null)
-        {
-            Debug.LogError("CharacterData‚ª‚ ‚è‚Ü‚¹‚ñ");
-            return;
-        }
-
-        //cd.character.transform.GetChild(0).gameObject.SetActive(isOut);
-    }
-
-    private void SetCharacterData(CharacterData data)
-    {
-        cd = data;
     }
 }

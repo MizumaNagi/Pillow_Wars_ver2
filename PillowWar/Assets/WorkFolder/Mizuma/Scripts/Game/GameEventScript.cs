@@ -8,9 +8,10 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private int detailEventsNum;
     private int finishEventsNum;
-    private bool isEventStart;
+    public bool isEventStart;
     private EVENT_TYPE nextEventType;
 
+    public List<NpcBehaviorRoutine> npcBehaviorRoutines = new List<NpcBehaviorRoutine>();
     public float remainEventStopTime;
     public float remainEventActiveTime;
     public bool canBedIn = false;
@@ -29,7 +30,14 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     {
         if (remainEventStopTime < remainEventActiveTime)
         {
-            if (isEventStart == false) isEventStart = true;
+            if (isEventStart == false) 
+            {
+                isEventStart = true;
+                foreach(var npcBehaviorRoutine in npcBehaviorRoutines.ToArray())
+                {
+                    if (npcBehaviorRoutine.gameObject.activeSelf == true) npcBehaviorRoutine.TriggerGoBed();
+                }
+            }
             remainEventActiveTime -= Time.deltaTime;
             if (remainEventActiveTime < 0)
             {
@@ -71,12 +79,20 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
         {
             for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
-                PlayerManager.Instance.playerDatas[i].Damage(false);
+                PlayerManager.Instance.playerDatas[i].Damage(false, true);
             }
 
             for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
             {
-                PlayerManager.Instance.npcDatas[i].Damage(false);
+                PlayerManager.Instance.npcDatas[i].Damage(false, true);
+                foreach(var npc in npcBehaviorRoutines.ToArray())
+                {
+                    if (npc.gameObject.activeSelf == true)
+                    {
+                        npc.StandUpBed();
+                        npc.SetNpcStatus(NPC_STATUS.WALK);
+                    }
+                }
             }
         }
     }

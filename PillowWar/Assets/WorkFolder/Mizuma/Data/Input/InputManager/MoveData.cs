@@ -7,7 +7,9 @@ using UnityEngine;
 public class MoveData : ScriptableObject
 {
     [Header("à⁄ìÆëÄçÏ")]
-    public float moveSpd;
+    public float moveForce;
+    public float walkMoveSpdLimit;
+    public float squatMoveSpdLimit;
     public float dashMovMulti;
     public float viewMoveSpd;
     public float jumpForce;
@@ -22,4 +24,6 @@ public class MoveData : ScriptableObject
     public float maxFOV;
     public float fovChangeSpd;
     public float limitRotY;
+    public Vector3 standingCameraPos;
+    public Vector3 squatingCameraPos;
 }

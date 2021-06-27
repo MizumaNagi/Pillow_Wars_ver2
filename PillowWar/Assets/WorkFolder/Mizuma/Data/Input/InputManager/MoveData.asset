@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9490726b9cbfc45addafa1eb766c02, type: 3}
   m_Name: MoveData
   m_EditorClassIdentifier: 
-  moveSpd: 5
+  moveForce: 2000
+  walkMoveSpdLimit: 5
+  squatMoveSpdLimit: 3
   dashMovMulti: 2
   viewMoveSpd: 250
   jumpForce: 200
@@ -23,3 +25,5 @@ MonoBehaviour:
   maxFOV: 65
   fovChangeSpd: 90
   limitRotY: 45
+  standingCameraPos: {x: 0, y: 1.46, z: 0}
+  squatingCameraPos: {x: 0, y: 0.73, z: 0}

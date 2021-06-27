@@ -14,16 +14,20 @@ public class CharacterData
         pillow = t.GetChild(2).gameObject;
         myPillowTransform = pillow.transform;
         myPillowRigidbody = pillow.GetComponent<Rigidbody>();
+        pillowCollider = pillow.GetComponent<CapsuleCollider>();
         myBodyRigidbody = character.GetComponent<Rigidbody>();
         bodyCollider = character.GetComponent<BoxCollider>();
         HP = GameManager.Instance.ruleData.maxHp;
+        meshObjParent = t.GetChild(0).gameObject;
 
         if (_isNpc == false)
         {
-            meshObjParent = t.GetChild(0).gameObject;
             myCameraTransform = t.GetChild(1).transform;
             myCamera = t.GetChild(1).GetComponent<Camera>();
-            myLoserCamera = GameObject.FindGameObjectWithTag("LoserCamera").transform.GetChild(_characterID).GetComponent<Camera>();
+
+            GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
+            myLoserCameraObj.SetActive(true);
+            myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();
             myLoserCamera.enabled = false;
         }
 
@@ -42,6 +46,7 @@ public class CharacterData
     public Camera myCamera;
     public Camera myLoserCamera;
     public BoxCollider bodyCollider;
+    public CapsuleCollider pillowCollider;
 
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;
@@ -58,17 +63,18 @@ public class CharacterData
     public bool isInBed = false;
     public bool isDash = false;
     public bool isInDoor = false;
+    public bool isSquat = false;
 
     public Vector3 inBedPos = Vector3.zero;
 
     private int characterID;
 
-    public void Damage(bool pieceDamage)
+    public void Damage(bool isPieceDamage, bool isPercentDamage)
     {
         if (isDeath) { return; }
-        if (isInBed && pieceDamage == false) { return; }
+        if (isInBed && isPieceDamage == false) { return; }
         hitPillowCount++;
-        if (hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage)
+        if (hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage || isPercentDamage)
         {
             HP--;
             hitPillowCount = 0;
@@ -100,14 +106,25 @@ public class CharacterData
         GameManager.Instance.remainCharacters--;
 
         if (isNpc == false) GameManager.Instance.resultIDs.Add(characterID + 1);
-        else GameManager.Instance.resultIDs.Add(-characterID - 1);
+        else GameManager.Instance.resultIDs.Add(characterID + 1);
     }
 
-    public void HideCharacter(bool isInBed)
+    public void HideCharacter(bool enable)
     {
-        pillow.SetActive(!isInBed);
-        meshObjParent.SetActive(!isInBed);
-        bodyCollider.enabled = !isInBed;
-        myBodyRigidbody.isKinematic = isInBed;
+        pillow.SetActive(!enable);
+        meshObjParent.SetActive(!enable);
+        bodyCollider.enabled = !enable;
+        myBodyRigidbody.isKinematic = enable;
+    }
+
+    public int GetID(bool isNpc)
+    {
+        if (isNpc) return characterID - 100;
+        else return characterID;
+    }
+
+    public int GetOriginalID()
+    {
+        return characterID;
     }
 }

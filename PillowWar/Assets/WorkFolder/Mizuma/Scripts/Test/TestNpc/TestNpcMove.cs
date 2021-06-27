@@ -52,7 +52,6 @@ public class TestNpcMove : MonoBehaviour
             {
                 surfaces.BuildNavMesh();
             }
-            Debug.Log("Update mesh");
         }
     }
 }
