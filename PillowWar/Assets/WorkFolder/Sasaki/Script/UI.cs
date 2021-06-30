@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    //[SerializeField] private Slider[] hp;
     [SerializeField] private Image[] FutontimagePlayer4;
     [SerializeField] private Image[] FutontimagePlayer2;
     [SerializeField] private Text[] FutontextPlayer4;
     [SerializeField] private Text[] FutontextPlayer2;
     [SerializeField] private Transform[] hpIconParents;
+    [SerializeField] private Transform[] hpIconParents1;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button titleButton;
@@ -23,6 +23,7 @@ public class UI : MonoBehaviour
     public UnityEngine.UI.Text Pausetext;
     private int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
+    private List<List<Image>> hpIcons1 = new List<List<Image>>();
     private GameManager gameManager;
     private GameEventScript gameEventScript;
     [SerializeField] private GameObject Player2;
@@ -41,7 +42,9 @@ public class UI : MonoBehaviour
         Pausetext.enabled = false;
 
         iconChild = hpIconParents[0].childCount;
+        iconChild = hpIconParents1[0].childCount;
         hpicon();
+        hpicon1();
 
         // éQâ¡êlêîÇÃéÊìæï˚ñ@
         //GameManager.Instance.joinPlayers;
@@ -76,7 +79,18 @@ public class UI : MonoBehaviour
             Pause();
             Image();
             Image1();
+
+            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+            {
+                float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+
+                for (int j = 0; j < iconChild; j++)
+                {
+                    hpIcons1[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                }
+            }
         }
+
     }
 
     private void PauseTitle()
@@ -177,6 +191,16 @@ public class UI : MonoBehaviour
             hpIcons.Add(images);
         }
     }
-
-
+    private void hpicon1()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            List<Image> images = new List<Image>();
+            for (int j = 0; j < iconChild; j++)
+            {
+                images.Add(hpIconParents1[i].GetChild(j).GetComponent<Image>());
+            }
+            hpIcons1.Add(images);
+        }
+    }
 }
