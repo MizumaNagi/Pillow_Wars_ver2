@@ -11,6 +11,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] public RuleData ruleData;
 
     [System.NonSerialized] public int remainPlayers;
+    [System.NonSerialized] public int remainCharacters;
     [System.NonSerialized] public bool isPause = false;
 
     public bool isPlayTheGame { get; private set; } = false;
@@ -49,7 +50,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 InputManager.Instance.UiInputUpdateMethod();
             }
 
-            if (remainPlayers <= 1) GoResult();
+            if (remainPlayers <= 0 || remainCharacters <= 1) GoResult();
         }
     }
 
@@ -78,33 +79,37 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         resultIDs.Clear();
         remainPlayers = joinPlayers;
+        remainCharacters = joinPlayers + joinNpcs;
     }
 
     private void FindWinCharacterID()
     {
-        var IDLists = new List<int>();
-        for(int i = 0; i < joinPlayers; i++)
+        if(resultIDs.Count != joinPlayers)
         {
-            IDLists.Add(i + 1);
-        }
-        //for(int i = 0; i < joinNpcs; i++)
-        //{
-        //    IDLists.Add(-i - 1);
-        //}
-
-        foreach(int loseID in resultIDs.ToArray())
-        {
-            IDLists.Remove(loseID);
-        }
-        if(IDLists.Count != 1)
-        {
-            Debug.LogError("勝利プレイヤーの検索失敗");
-            foreach(int i in IDLists.ToArray())
+            var IDLists = new List<int>();
+            for (int i = 0; i < joinPlayers; i++)
             {
-                Debug.Log(i);
+                IDLists.Add(i + 1);
             }
-            return;
+            //for(int i = 0; i < joinNpcs; i++)
+            //{
+            //    IDLists.Add(-i - 1);
+            //}
+
+            foreach (int loseID in resultIDs.ToArray())
+            {
+                IDLists.Remove(loseID);
+            }
+            if (IDLists.Count != 1)
+            {
+                Debug.LogError("勝利プレイヤーの検索失敗");
+                foreach (int i in IDLists.ToArray())
+                {
+                    Debug.Log(i);
+                }
+                return;
+            }
+            resultIDs.Add(IDLists[0]);
         }
-        resultIDs.Add(IDLists[0]);
     }
 }

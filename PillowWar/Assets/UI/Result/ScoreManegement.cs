@@ -40,7 +40,8 @@ public class ScoreManegement : MonoBehaviour
         //GetTexts[3].text = "4th Player" + GamePlayer[3].ToString();
         for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
-            GetTexts[i].text = $"{i + 1}{rankModifier[i]} Player: {GamePlayer[i]}";
+            GetTexts[i].text = "";
+            GetTexts[i].text = $"{i + 1}{rankModifier[i]}: Player{GamePlayer[i]}";
         }
     }
 }

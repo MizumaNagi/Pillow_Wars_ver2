@@ -104,6 +104,7 @@ public class CharacterData
         isInBed = false;
         isDeath = true;
 
+        GameManager.Instance.remainCharacters--;
         if (isNpc == false)
         {
             GameManager.Instance.remainPlayers--;
