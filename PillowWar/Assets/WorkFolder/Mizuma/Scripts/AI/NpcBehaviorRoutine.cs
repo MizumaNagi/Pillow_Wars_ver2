@@ -27,8 +27,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private NavMeshAgent agent;
     private CharacterData targetData;
     private GameObject targetMarkObj;
-    public int npcID;
     private float defaultSpeed;
+
+    public float startGoBedTime;
+    public bool isOnceGoBed;
+
+    public int npcID;
 
     private void Start()
     {
@@ -40,10 +44,13 @@ public class NpcBehaviorRoutine : MonoBehaviour
         targetMarkObj = Instantiate(routineData.targetMark);
         GameEventScript.Instance.npcBehaviorRoutines.Add(this);
         defaultSpeed = agent.speed;
+        startGoBedTime = routineData.minStartGoBedTime;
     }
 
     private void Update()
     {
+        Debug.Log($"{npcID}:{startGoBedTime}");
+
         if (gameObject.activeSelf == false) this.enabled = false;
 
         if (GameManager.Instance.isPause == false)
@@ -95,10 +102,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
     }
 
-   /// <summary>
-   /// 最も近い未使用ベッドの座標を取得する
-   /// </summary>
-   /// <returns>最も近い未使用ベッドの座標</returns>
+    /// <summary>
+    /// 最も近い未使用ベッドの座標を取得する
+    /// </summary>
+    /// <returns>最も近い未使用ベッドの座標</returns>
     private Vector3 GetShortestBedPos()
     {
         float shortestBedPos = Mathf.Infinity;
@@ -198,7 +205,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                         Vector3 nextPos = GetNextDestination();
                         agent.destination = nextPos;
                         targetMarkObj.transform.position = nextPos;
-                        SetNpcStatus(NPC_STATUS.WALK);
                     }
                     break;
                 }
@@ -206,9 +212,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.PILLOW_THROW:
                 {
                     // 攻撃対象が死んだら別ターゲットを探しに行く
-                    if (targetData.HP <= 0)
+                    // 攻撃対象がベッドに入ったら別ターゲットを探しに行く
+                    if (targetData.HP <= 0 || targetData.isInBed)
                     {
-                        ResetTarget(); 
+                        ResetTarget();
                         break;
                     }
 
@@ -232,14 +239,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_BED:
                 {
-                    //if (characterData.bedStatus != null)
+                    if (characterData.bedStatus.canIn == false)
                     {
-                        if (characterData.bedStatus.canIn == false)
-                        {
-                            Debug.Log("割り込み");
-                            SetNpcStatus(NPC_STATUS.WALK);
-                            //StandUpBed();
-                        }
+                        Debug.Log("割り込み");
+                        SetNpcStatus(NPC_STATUS.WALK);
                     }
                     break;
                 }
@@ -283,7 +286,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
     }
 
     /// <summary>
-    /// 襲撃イベントを行うか、無視するか
+    /// 襲撃イベントに備えるか、無視するか
+    /// (HP割合は実行確立に影響)
     /// </summary>
     public void TriggerGoBed()
     {
@@ -302,10 +306,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
         Debug.Log($"※ 襲撃イベント\n失敗値: {bedEventThroughPercent}, " +
             $"成功値: {rnd} + {routineData.minStartGoBedPercent}, " +
             $"結果: {bedEventThroughPercent < rnd + routineData.minStartGoBedPercent}");
-        if (bedEventThroughPercent > rnd + routineData.minStartGoBedPercent) 
+        if (bedEventThroughPercent > rnd + routineData.minStartGoBedPercent)
         {
             //SetNpcStatus(NPC_STATUS.WALK);
-            return; 
+            return;
         }
 
         // 座標を取得、目的地に設定
@@ -314,6 +318,29 @@ public class NpcBehaviorRoutine : MonoBehaviour
         targetMarkObj.transform.position = nextPos;
 
         SetNpcStatus(NPC_STATUS.GO_BED);
+    }
+
+    /// <summary>
+    /// 襲撃イベントに備えるか、無視するか
+    /// (HP割合は開始時間に影響(ベッドに向かう確率100%))
+    /// </summary>
+    public void CheckTimeTriggerGoBed()
+    {
+        if (isOnceGoBed == true) return;
+        Debug.Log("布団入れるかチェック");
+
+        isOnceGoBed = true;
+        Vector3 nextPos = GetShortestBedPos();
+        agent.destination = nextPos;
+        targetMarkObj.transform.position = nextPos;
+
+        SetNpcStatus(NPC_STATUS.GO_BED);
+    }
+
+    public void ResetBedEventStatus()
+    {
+        Debug.Log("布団イベリセット");
+        UpdateStartGoBedTime();
     }
 
     /// <summary>
@@ -335,7 +362,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
             agent.speed = defaultSpeed;
         }
     }
-    
+
     public void StandUpBed()
     {
         Vector3 nextPos = GetNextDestination();
@@ -351,7 +378,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private int DamagedChgRoutine()
     {
-        int rnd = UnityEngine.Random.Range(0,100);
+        Debug.Log("イライラ");
+
+        int rnd = UnityEngine.Random.Range(0, 100);
         int deadValue = 0;
 
         if (deadValue + routineData.shootingDamageChgTargetRoutinePercent > rnd)
@@ -370,6 +399,24 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
         else return -1;
     }
+
+    private void UpdateStartGoBedTime()
+    {
+        isOnceGoBed = false;
+
+        float remainHpPercent = ((float)characterData.HP / (float)GameManager.Instance.ruleData.maxHp);
+        if (remainHpPercent >= routineData.startGoBedRemHpPercent)
+        {
+            startGoBedTime = routineData.minStartGoBedTime;
+            return;
+        }
+        float minStartGoBedTime = routineData.minStartGoBedTime;
+        float maxStartGoBedTime = routineData.maxStartGoBedTime;
+
+        startGoBedTime = minStartGoBedTime + ((1 - remainHpPercent) * (maxStartGoBedTime - minStartGoBedTime));
+    }
+
+    
 
     // デバッグ用
     private void OnDrawGizmos()
@@ -392,6 +439,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         {
             if (collision.gameObject.tag == "Pillow")
             {
+                Debug.Log("敵の攻撃!");
                 int pillowNum = int.Parse(collision.gameObject.name);
                 if (pillowNum == npcID) return;
 
@@ -413,10 +461,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerManager.Instance.npcDatas[npcID - 100].isInBed == false)
+        //if (PlayerManager.Instance.npcDatas[npcID - 100].isInBed == false)
+        if(npcStatus != NPC_STATUS.GO_BED && npcStatus != NPC_STATUS.IN_BED)
         {
             if (other.gameObject.CompareTag("Player"))
             {
+                Debug.Log("敵発見！");
                 // 周囲の敵の角度を調べる
                 Vector3 targetPos = other.transform.position;
                 Vector3 playerDirection = targetPos - transform.position;
