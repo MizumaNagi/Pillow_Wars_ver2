@@ -19,6 +19,15 @@ public class GetBedCollider : MonoBehaviour
         // 付近にBedがあり、尚且つNPC状態が"ベッドに向かっている"時
         if (other.gameObject.CompareTag("Bed") && npcBehaviorRoutine.npcStatus == NPC_STATUS.GO_BED)
         {
+            // 一定確率で布団に入る事を失敗する
+            float failedValue = npcBehaviorRoutine.routineData.failedInBedPercent;
+            float rnd = Random.Range(0,100);
+            if (failedValue > rnd)
+            {
+                npcBehaviorRoutine.SetNpcStatus(NPC_STATUS.WALK);
+                return;
+            }
+
             // 範囲内のBedStatusを取得する
             Debug.Log("侵入");
             npcBehaviorRoutine.characterData.isInBedRange = true;

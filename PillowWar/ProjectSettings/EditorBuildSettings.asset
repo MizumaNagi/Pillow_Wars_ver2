@@ -9,18 +9,21 @@ EditorBuildSettings:
     path: Assets/MainScenes/Title.unity
     guid: 2fc90743ffeb6e44fa2cb157b4501012
   - enabled: 1
+    path: Assets/MainScenes/Select.unity
+    guid: 5ee1d8ff7ae67c24d8113a92ded068a7
+  - enabled: 1
     path: Assets/MainScenes/Game.unity
     guid: f294e1bb1846cbe4fb4064f6d03963c6
-  - enabled: 0
-    path: Assets/WorkFolder/Sasaki/Scenes/Game.unity
-    guid: 0a99c3be68daf2344ae2726f01d5ad44
   - enabled: 1
     path: Assets/MainScenes/Result.unity
     guid: f5598e4640f18e547b4aa5cc8147711a
-  - enabled: 1
+  - enabled: 0
+    path: Assets/WorkFolder/Sasaki/Scenes/Game.unity
+    guid: 0a99c3be68daf2344ae2726f01d5ad44
+  - enabled: 0
     path: Assets/WorkFolder/Mizuma/Scenes/TestDisplayDivision.unity
     guid: 97201fa909ab48840af618d89f45544a
-  - enabled: 1
+  - enabled: 0
     path: Assets/WorkFolder/Mizuma/Scenes/EmptyScene.unity
     guid: 7511eb3a15f1046419da34130335e6ea
   m_configObjects:

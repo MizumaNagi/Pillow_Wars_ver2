@@ -8,8 +8,10 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private int detailEventsNum;
     private int finishEventsNum;
-    public bool isEventStart;
+    private bool isEventStart;
+    private bool npcGoBedTrigger;
     private EVENT_TYPE nextEventType;
+    private float npcGoBedTriggerRemTime = 10f;
 
     public List<NpcBehaviorRoutine> npcBehaviorRoutines = new List<NpcBehaviorRoutine>();
     public float remainEventStopTime;
@@ -24,26 +26,50 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     public void Init()
     {
         NextEventStart();
+
     }
 
     public void UpdateMethod()
     {
         if (remainEventStopTime < remainEventActiveTime)
         {
+            // イベントスタートトリガー
             if (isEventStart == false) 
             {
                 isEventStart = true;
-                foreach(var npcBehaviorRoutine in npcBehaviorRoutines.ToArray())
-                {
-                    if (npcBehaviorRoutine.gameObject.activeSelf == true) npcBehaviorRoutine.TriggerGoBed();
-                }
             }
             remainEventActiveTime -= Time.deltaTime;
+
+            // 布団潜り込みトリガー
+            if (remainEventActiveTime < npcGoBedTriggerRemTime && npcGoBedTrigger == false)
+            {
+                npcGoBedTrigger = true;
+                // NPC全員に布団進行トリガー (HP割合=実行確立 方式)
+                // foreach (var npcBehaviorRoutine in npcBehaviorRoutines.ToArray())
+                // {
+                //     if (npcBehaviorRoutine.gameObject.activeSelf == true) npcBehaviorRoutine.TriggerGoBed();
+                // }
+            }
+
+            // 各NPCが布団進行可能時間なら布団を目指す
+            foreach (var npcBehaviourRoutine in npcBehaviorRoutines.ToArray())
+            {
+                if (npcBehaviourRoutine.gameObject.activeSelf == true && npcBehaviourRoutine.startGoBedTime > remainEventActiveTime) npcBehaviourRoutine.CheckTimeTriggerGoBed();
+            }
+
+            // イベント発生
             if (remainEventActiveTime < 0)
             {
                 isEventStart = false;
+                npcGoBedTrigger = false;
                 NextEventStart();
                 EventActive(nextEventType);
+
+                // NPC全員に布団進行トリガー (HP割合=実行時間 方式)
+                foreach (var npcBehaviourRoutine in npcBehaviorRoutines.ToArray())
+                {
+                    if (npcBehaviourRoutine.gameObject.activeSelf == true) npcBehaviourRoutine.ResetBedEventStatus();
+                }
             }
             canBedIn = true;
         }

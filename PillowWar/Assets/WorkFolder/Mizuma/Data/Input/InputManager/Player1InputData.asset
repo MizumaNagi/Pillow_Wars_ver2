@@ -28,3 +28,4 @@ MonoBehaviour:
   cursolMoveY: 11
   ok: 0
   cancel: 1
+  start: 7
