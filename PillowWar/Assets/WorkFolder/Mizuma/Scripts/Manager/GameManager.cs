@@ -10,7 +10,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField, Range(0,4)] public int joinNpcs;
     [SerializeField] public RuleData ruleData;
 
-    [System.NonSerialized] public int remainCharacters;
+    [System.NonSerialized] public int remainPlayers;
     [System.NonSerialized] public bool isPause = false;
 
     public bool isPlayTheGame { get; private set; } = false;
@@ -49,7 +49,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 InputManager.Instance.UiInputUpdateMethod();
             }
 
-            if (remainCharacters <= 1) GoResult();
+            if (remainPlayers <= 1) GoResult();
         }
     }
 
@@ -77,7 +77,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Init()
     {
         resultIDs.Clear();
-        remainCharacters = joinPlayers + joinNpcs;
+        remainPlayers = joinPlayers;
     }
 
     private void FindWinCharacterID()
@@ -87,10 +87,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             IDLists.Add(i + 1);
         }
-        for(int i = 0; i < joinNpcs; i++)
-        {
-            IDLists.Add(-i - 1);
-        }
+        //for(int i = 0; i < joinNpcs; i++)
+        //{
+        //    IDLists.Add(-i - 1);
+        //}
 
         foreach(int loseID in resultIDs.ToArray())
         {

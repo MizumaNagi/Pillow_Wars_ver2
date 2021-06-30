@@ -20,5 +20,6 @@ MonoBehaviour:
   maxSearchAngle: 150
   startGoBedRemHpPercent: 101
   minStartGoBedPercent: 100
-  damagedOnTargetPercent: 100
-  failedInBedPercent: 0
+  shootingDamageChgTargetRoutinePercent: 50
+  shootingDamageChgEscapeRoutinePercent: 5
+  shootingDamageChgEscapeAndJumpRoutinePercent: 0

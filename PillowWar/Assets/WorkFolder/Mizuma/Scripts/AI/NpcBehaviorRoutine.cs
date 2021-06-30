@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections;
+using System.Text;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +8,7 @@ public enum NPC_STATUS
 {
     WALK,
     GO_ENEMY,
+    ESCAPE,
     GO_BED,
     IN_BED,
     PILLOW_THROW,
@@ -55,6 +58,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
         }
     }
 
+    private IEnumerator ResumeNavmeshAgent()
+    {
+        yield return new WaitForSeconds(0.5f);
+        agent.isStopped = false;
+    }
+
     /// <summary>
     /// NPC名から自身のIDを取得する
     /// </summary>
@@ -74,7 +83,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     {
         NavMeshHit navMeshHit;
 
-        Vector3 rndPos = new Vector3(Random.Range(-routineData.stageRange.x, routineData.stageRange.x), 0, Random.Range(-routineData.stageRange.z, routineData.stageRange.z));
+        Vector3 rndPos = new Vector3(UnityEngine.Random.Range(-routineData.stageRange.x, routineData.stageRange.x), 0, UnityEngine.Random.Range(-routineData.stageRange.z, routineData.stageRange.z));
         if (NavMesh.SamplePosition(rndPos, out navMeshHit, routineData.searchNavMeshRange, NavMesh.AllAreas))
         {
             return navMeshHit.position;
@@ -288,7 +297,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
         // 残りHP割合を元にイベント実行率を計算、イベント実行率よりもRandom(0,100)の方が多ければイベント無視
         float bedEventThroughPercent = Mathf.Clamp01(remainHpPercent / routineData.startGoBedRemHpPercent) * 100;
-        int rnd = Random.Range(0, 100);
+        int rnd = UnityEngine.Random.Range(0, 100);
 
         Debug.Log($"※ 襲撃イベント\n失敗値: {bedEventThroughPercent}, " +
             $"成功値: {rnd} + {routineData.minStartGoBedPercent}, " +
@@ -340,6 +349,28 @@ public class NpcBehaviorRoutine : MonoBehaviour
         InteractBed(false);
     }
 
+    private int DamagedChgRoutine()
+    {
+        int rnd = UnityEngine.Random.Range(0,100);
+        int deadValue = 0;
+
+        if (deadValue + routineData.shootingDamageChgTargetRoutinePercent > rnd)
+        {
+            deadValue += (int)routineData.shootingDamageChgTargetRoutinePercent;
+            return (int)NPC_STATUS.GO_ENEMY;
+        }
+        else if (deadValue + routineData.shootingDamageChgEscapeRoutinePercent > rnd)
+        {
+            deadValue += (int)routineData.shootingDamageChgEscapeRoutinePercent;
+            return -1;
+        }
+        else if (deadValue + routineData.shootingDamageChgEscapeAndJumpRoutinePercent > rnd)
+        {
+            return -1;
+        }
+        else return -1;
+    }
+
     // デバッグ用
     private void OnDrawGizmos()
     {
@@ -353,6 +384,31 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
         Vector3 drawDir = transform.TransformDirection(Vector3.forward) * 5 / 2;
         Debug.DrawRay(transform.position + new Vector3(0, 1.62f, 0f), drawDir, Color.red);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (npcStatus != NPC_STATUS.IN_BED && npcStatus != NPC_STATUS.GO_BED)
+        {
+            if (collision.gameObject.tag == "Pillow")
+            {
+                int pillowNum = int.Parse(collision.gameObject.name);
+                if (pillowNum == npcID) return;
+
+                // ルーチンを変更するか決める
+                int result = DamagedChgRoutine();
+                if (result == -1) return;
+
+                // ターゲット変更
+                if (result == (int)NPC_STATUS.GO_ENEMY)
+                {
+                    int ID = int.Parse(collision.gameObject.name);
+                    if (ID < 100) targetData = PlayerManager.Instance.playerDatas[ID];
+                    else targetData = PlayerManager.Instance.npcDatas[ID - 100];
+                    SetNpcStatus(NPC_STATUS.GO_ENEMY);
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)

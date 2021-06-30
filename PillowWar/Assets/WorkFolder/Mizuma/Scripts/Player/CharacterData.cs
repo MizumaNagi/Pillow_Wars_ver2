@@ -103,10 +103,13 @@ public class CharacterData
 
         isInBed = false;
         isDeath = true;
-        GameManager.Instance.remainCharacters--;
 
-        if (isNpc == false) GameManager.Instance.resultIDs.Add(characterID + 1);
-        else GameManager.Instance.resultIDs.Add(characterID + 1);
+        if (isNpc == false)
+        {
+            GameManager.Instance.remainPlayers--;
+            GameManager.Instance.resultIDs.Add(characterID + 1);
+        }
+        //else GameManager.Instance.resultIDs.Add(characterID + 1);
     }
 
     public void HideCharacter(bool enable)
