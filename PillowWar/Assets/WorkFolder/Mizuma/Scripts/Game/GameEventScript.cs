@@ -7,7 +7,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     [SerializeField] private GameEventData gameEventData;
 
     private int detailEventsNum;
-    private int finishEventsNum;
+    public int finishEventsNum;
     private bool isEventStart;
     private bool npcGoBedTrigger;
     private EVENT_TYPE nextEventType;
