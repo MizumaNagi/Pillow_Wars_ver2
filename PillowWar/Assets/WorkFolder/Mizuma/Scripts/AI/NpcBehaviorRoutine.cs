@@ -34,6 +34,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     public int npcID;
 
+    private float escapeTime = 10;
+    private float remainEscapeTime = 0;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -49,8 +52,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"{npcID}:{startGoBedTime}");
-
         if (gameObject.activeSelf == false) this.enabled = false;
 
         if (GameManager.Instance.isPause == false)
@@ -183,6 +184,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     break;
                 }
+            case NPC_STATUS.ESCAPE:
+                {
+                    if (remainEscapeTime < 0) return;
+                    remainEscapeTime = escapeTime;
+                    break;
+                }
             default:
                 {
                     break;
@@ -248,6 +255,21 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.IN_BED:
                 {
+                    break;
+                }
+            case NPC_STATUS.ESCAPE:
+                {
+                    remainEscapeTime -= Time.deltaTime;
+                    if (remainEscapeTime < 0)
+                    {
+                        SetNpcStatus(NPC_STATUS.WALK);
+                        break;
+                    }
+
+                    Vector3 dest = EscapeTarget(transform.position, targetData.myBodyTransform.position);
+                    agent.destination = dest;
+                    targetMarkObj.transform.position = dest;
+                    Debug.Log(dest);
                     break;
                 }
             default:
@@ -416,7 +438,15 @@ public class NpcBehaviorRoutine : MonoBehaviour
         startGoBedTime = minStartGoBedTime + ((1 - remainHpPercent) * (maxStartGoBedTime - minStartGoBedTime));
     }
 
-    
+    private Vector3 EscapeTarget(Vector3 selfPos, Vector3 targetPos)
+    {
+        Vector3 vec = targetPos - selfPos;
+        Vector3 dest = new Vector3(vec.x * -1, 0, vec.z * -1);
+        Vector3 result = dest + selfPos;
+        result.y = 0;
+
+        return result;
+    }
 
     // デバッグ用
     private void OnDrawGizmos()
@@ -439,6 +469,13 @@ public class NpcBehaviorRoutine : MonoBehaviour
         {
             if (collision.gameObject.tag == "Pillow")
             {
+                SetNpcStatus(NPC_STATUS.ESCAPE);
+                int index = int.Parse(collision.gameObject.name);
+                if (index < 100) targetData = PlayerManager.Instance.playerDatas[index];
+                else targetData = PlayerManager.Instance.npcDatas[index - 100];
+
+                return;
+
                 Debug.Log("敵の攻撃!");
                 int pillowNum = int.Parse(collision.gameObject.name);
                 if (pillowNum == npcID) return;

@@ -711,6 +711,8 @@ MonoBehaviour:
     isSquat: 0
     inBedPos: {x: 0, y: 0, z: 0}
   npcStatus: 0
+  startGoBedTime: 0
+  isOnceGoBed: 0
   npcID: 0
 --- !u!195 &483547181878309425
 NavMeshAgent:
