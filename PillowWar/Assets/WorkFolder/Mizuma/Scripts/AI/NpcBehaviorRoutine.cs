@@ -34,7 +34,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     public int npcID;
 
-    private float escapeTime = 10;
+    private float escapeTime = 2;
     private float remainEscapeTime = 0;
 
     private void Start()
@@ -188,6 +188,15 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     if (remainEscapeTime < 0) return;
                     remainEscapeTime = escapeTime;
+
+                    // TODO:仮逃走処理！
+                    int x,y;
+                    if(targetData.myBodyTransform.position.x < transform.position.x) x = 1;
+                    else x = -1;
+                    if(targetData.myBodyTransform.position.y < transform.position.y) y = 1;
+                    else y = -1;
+                    agent.destination = new Vector3(7 * x, 0, 7 * y);
+
                     break;
                 }
             default:
@@ -266,10 +275,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
                         break;
                     }
 
-                    Vector3 dest = EscapeTarget(transform.position, targetData.myBodyTransform.position);
-                    agent.destination = dest;
-                    targetMarkObj.transform.position = dest;
-                    Debug.Log(dest);
+                    //Vector3 dest = EscapeTarget(transform.localPosition, targetData.myBodyTransform.localPosition);
+                    //agent.destination = dest;
+                    //targetMarkObj.transform.position = dest;
+                    //Debug.Log(dest);
                     break;
                 }
             default:
@@ -413,7 +422,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         else if (deadValue + routineData.shootingDamageChgEscapeRoutinePercent > rnd)
         {
             deadValue += (int)routineData.shootingDamageChgEscapeRoutinePercent;
-            return -1;
+            return (int)NPC_STATUS.ESCAPE;
         }
         else if (deadValue + routineData.shootingDamageChgEscapeAndJumpRoutinePercent > rnd)
         {
@@ -441,7 +450,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private Vector3 EscapeTarget(Vector3 selfPos, Vector3 targetPos)
     {
         Vector3 vec = targetPos - selfPos;
-        Vector3 dest = new Vector3(vec.x * -1, 0, vec.z * -1);
+        //Vector3 dest = new Vector3(vec.x * -1, 0, vec.z * -1);
+        Vector3 dest = Vector3.Scale(new Vector3(vec.x * 1, 0, vec.z * 1), -transform.forward);
         Vector3 result = dest + selfPos;
         result.y = 0;
 
@@ -469,14 +479,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
         {
             if (collision.gameObject.tag == "Pillow")
             {
-                SetNpcStatus(NPC_STATUS.ESCAPE);
-                int index = int.Parse(collision.gameObject.name);
-                if (index < 100) targetData = PlayerManager.Instance.playerDatas[index];
-                else targetData = PlayerManager.Instance.npcDatas[index - 100];
-
-                return;
-
-                Debug.Log("敵の攻撃!");
                 int pillowNum = int.Parse(collision.gameObject.name);
                 if (pillowNum == npcID) return;
 
@@ -492,6 +494,15 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     else targetData = PlayerManager.Instance.npcDatas[ID - 100];
                     SetNpcStatus(NPC_STATUS.GO_ENEMY);
                 }
+
+                // 逃走開始
+                if (result == (int)NPC_STATUS.ESCAPE)
+                {
+                    int index = int.Parse(collision.gameObject.name);
+                    if (index < 100) targetData = PlayerManager.Instance.playerDatas[index];
+                    else targetData = PlayerManager.Instance.npcDatas[index - 100];
+                    SetNpcStatus(NPC_STATUS.ESCAPE);
+                }
             }
         }
     }
@@ -499,7 +510,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if (PlayerManager.Instance.npcDatas[npcID - 100].isInBed == false)
-        if(npcStatus != NPC_STATUS.GO_BED && npcStatus != NPC_STATUS.IN_BED)
+        if(npcStatus != NPC_STATUS.GO_BED && npcStatus != NPC_STATUS.IN_BED && npcStatus != NPC_STATUS.ESCAPE)
         {
             if (other.gameObject.CompareTag("Player"))
             {

@@ -21,7 +21,7 @@ MonoBehaviour:
   failedInBedPercent: 0
   startGoBedRemHpPercent: 60
   minStartGoBedPercent: 100
-  shootingDamageChgTargetRoutinePercent: 50
+  shootingDamageChgTargetRoutinePercent: 10
   shootingDamageChgEscapeRoutinePercent: 5
   shootingDamageChgEscapeAndJumpRoutinePercent: 0
   minStartGoBedTime: 10
