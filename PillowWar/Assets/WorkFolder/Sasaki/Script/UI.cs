@@ -21,7 +21,7 @@ public class UI : MonoBehaviour
     [SerializeField] private Image[] Futont2imagePlayer2;
 
     public UnityEngine.UI.Text Pausetext;
-    private int iconChild = 0;
+    public int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private List<List<Image>> hpIcons1 = new List<List<Image>>();
     private GameManager gameManager;
@@ -41,10 +41,6 @@ public class UI : MonoBehaviour
 
         Pausetext.enabled = false;
 
-        iconChild = hpIconParents[0].childCount;
-        iconChild = hpIconParents1[0].childCount;
-        hpicon();
-        hpicon1();
 
         // 参加人数の取得方法
         //GameManager.Instance.joinPlayers;
@@ -54,11 +50,15 @@ public class UI : MonoBehaviour
         {
             Player2.SetActive(true);
             Player4.SetActive(false);
+            iconChild = hpIconParents1[0].childCount;
+            hpicon1();
         }
         else
         {
             Player2.SetActive(false);
             Player4.SetActive(true);
+            iconChild = hpIconParents[0].childCount;
+            hpicon();
         }
     }
 
@@ -67,30 +67,38 @@ public class UI : MonoBehaviour
     {
         if (GameManager.Instance.isPlayTheGame == true)
         {
-            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+            // もし参加人数が2人なら...
+            if (GameManager.Instance.joinPlayers == 2)
             {
-                float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+                Image1();
 
-                for (int j = 0; j < iconChild; j++)
+                for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
                 {
-                    hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                    float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+
+                    for (int j = 0; j < iconChild; j++)
+                    {
+                        hpIcons1[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                    }
                 }
             }
+            else
+            {
+                Image();
+
+                for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+                {
+                    float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
+
+                    for (int j = 0; j < iconChild; j++)
+                    {
+                        hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                    }
+                }
+            }
+
             Pause();
-            Image();
-            Image1();
-
-            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-            {
-                float playerhp = (float)PlayerManager.Instance.playerDatas[i].HP / (float)GameManager.Instance.ruleData.maxHp;
-
-                for (int j = 0; j < iconChild; j++)
-                {
-                    hpIcons1[i][j].fillAmount = playerhp * iconChild - 1 * j;
-                }
-            }
         }
-
     }
 
     private void PauseTitle()

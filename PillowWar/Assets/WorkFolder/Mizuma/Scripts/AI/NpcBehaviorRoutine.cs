@@ -409,8 +409,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private int DamagedChgRoutine()
     {
-        Debug.Log("イライラ");
-
         int rnd = UnityEngine.Random.Range(0, 100);
         int deadValue = 0;
 
@@ -459,19 +457,19 @@ public class NpcBehaviorRoutine : MonoBehaviour
     }
 
     // デバッグ用
-    private void OnDrawGizmos()
-    {
-        UnityEditor.Handles.color = Color.green;
-        UnityEditor.Handles.DrawSolidArc(
-            transform.position,
-            Vector3.up,
-            Quaternion.Euler(0f, -routineData.maxSearchAngle / 2, 0f) * transform.forward,
-            routineData.maxSearchAngle,
-            searchCollider.radius);
-
-        Vector3 drawDir = transform.TransformDirection(Vector3.forward) * 5 / 2;
-        Debug.DrawRay(transform.position + new Vector3(0, 1.62f, 0f), drawDir, Color.red);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    UnityEditor.Handles.color = Color.green;
+    //    UnityEditor.Handles.DrawSolidArc(
+    //        transform.position,
+    //        Vector3.up,
+    //        Quaternion.Euler(0f, -routineData.maxSearchAngle / 2, 0f) * transform.forward,
+    //        routineData.maxSearchAngle,
+    //        searchCollider.radius);
+    //
+    //    Vector3 drawDir = transform.TransformDirection(Vector3.forward) * 5 / 2;
+    //    Debug.DrawRay(transform.position + new Vector3(0, 1.62f, 0f), drawDir, Color.red);
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -514,7 +512,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Debug.Log("敵発見！");
                 // 周囲の敵の角度を調べる
                 Vector3 targetPos = other.transform.position;
                 Vector3 playerDirection = targetPos - transform.position;

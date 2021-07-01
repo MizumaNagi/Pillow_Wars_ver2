@@ -171,7 +171,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
         else { characterMover.ToNonADS(c); }
         // キーボード-枕投げ
-        if (Input.GetMouseButton(0) && c.isHavePillow) characterMover.PillowThrow(c, false);
+        if (Input.GetMouseButton(0) && c.isHavePillow && c.remainthrowCT < 0) characterMover.PillowThrow(c, false);
         // キーボード-布団に入る
         if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true && GameEventScript.Instance.canBedIn == true) characterMover.InteractBed(c, true, c.inBedPos);
         // キーボード-ドア開閉

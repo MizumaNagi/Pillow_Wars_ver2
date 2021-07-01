@@ -13,6 +13,6 @@ public class NavMeshSurfaceUpdate : MonoBehaviour
 
     private void Update()
     {
-        if (Time.deltaTime % UpdateFrameCT == 0) navMesh.BuildNavMesh();
+        if (Time.deltaTime % UpdateFrameCT == 0 && GameManager.Instance.isPause == false) navMesh.BuildNavMesh();
     }
 }

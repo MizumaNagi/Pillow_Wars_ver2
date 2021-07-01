@@ -25,31 +25,33 @@ public class TemporaryUiManager : MonoBehaviour
 
     private void Update()
     {
+        // if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Game") return;
+
         // 負荷軽減&テスト用コードなので5フレームに1度だけ更新
         if (Time.frameCount % 5 != 0) return;
 
         // HPTxt更新
-        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-        {
-            int hp = playerManager.playerDatas[i].HP;
-            if (hp <= 0) hpTxts[i].text = "死(行動不可)";
-            else hpTxts[i].text = hp.ToString();
-        }
+        // for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        // {
+        //     int hp = playerManager.playerDatas[i].HP;
+        //     if (hp <= 0) hpTxts[i].text = "死(行動不可)";
+        //     else hpTxts[i].text = hp.ToString();
+        // }
 
         // In お布団 Txt更新
-        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
-        {
-            if (playerManager.playerDatas[i].isInBed == true) isInBedTxts[i].enabled = true;
-            else isInBedTxts[i].enabled = false;
-        }
+        // for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        // {
+        //     if (playerManager.playerDatas[i].isInBed == true) isInBedTxts[i].enabled = true;
+        //     else isInBedTxts[i].enabled = false;
+        // }
 
         // イベントTxt更新
         remainEventStopTxt.text = $"次イベント開始時間: <size=70>{gameEventScript.remainEventStopTime:000.0}</size>秒";
         remainEventActiveTxt.text = $"残りイベント発生時間: <size=70>{gameEventScript.remainEventActiveTime:000.0}</size>秒";
 
         // ポーズ中Txt更新
-        if (gameManager.isPause == true) isPauseTxt.enabled = true;
-        else isPauseTxt.enabled = false;
+        // if (gameManager.isPause == true) isPauseTxt.enabled = true;
+        // else isPauseTxt.enabled = false;
 
         // さも当然にUpdateで処理しているが、毎フレームtext更新は負荷が掛かるので
         // 毎フレーム呼ぶ必要のないものは呼ばない
@@ -65,3 +67,4 @@ public class TemporaryUiManager : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 }
+
