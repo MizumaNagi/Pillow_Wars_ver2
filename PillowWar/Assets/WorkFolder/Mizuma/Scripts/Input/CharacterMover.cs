@@ -74,11 +74,11 @@ public class CharacterMover
 
         if (isNpc) 
         {
-            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce); 
+            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.VelocityChange); 
         }
         else
         {
-            data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce);
+            data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce, ForceMode.VelocityChange);
         }
     }
 

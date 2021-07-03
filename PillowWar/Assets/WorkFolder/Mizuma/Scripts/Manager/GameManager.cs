@@ -65,10 +65,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void GameEnd()
     {
         PlayerManager.Instance.DataReset();
-        GameEventScript.Instance.finishEventsNum = 0;
+        GameEventScript.Instance.StatusReset();
         isPlayTheGame = false;
-        // XXX:NPCが毎フレーム経路探索を行ってしまう
-        // isPause = false;
+        isPause = false;
     }
 
     private void GoResult()

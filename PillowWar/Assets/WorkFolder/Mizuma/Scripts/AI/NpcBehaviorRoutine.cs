@@ -380,18 +380,22 @@ public class NpcBehaviorRoutine : MonoBehaviour
     /// <param name="isInBed">ベッドに入ろうとしているか</param>
     public void InteractBed(bool isInBed)
     {
-        if (isInBed)
+        try
         {
-            agent.destination = characterData.inBedPos;
-            targetMarkObj.transform.position = characterData.inBedPos;
-            agent.speed = 0;
+            if (isInBed)
+            {
+                agent.destination = characterData.inBedPos;
+                targetMarkObj.transform.position = characterData.inBedPos;
+                agent.speed = 0;
+            }
+            else
+            {
+                PlayerManager.Instance.npcDatas[characterData.GetID(true)].isInBedRange = false;
+                PlayerManager.Instance.npcDatas[characterData.GetID(true)].bedStatus = null;
+                agent.speed = defaultSpeed;
+            }
         }
-        else
-        {
-            PlayerManager.Instance.playerDatas[characterData.GetID(true)].isInBedRange = false;
-            PlayerManager.Instance.playerDatas[characterData.GetID(true)].bedStatus = null;
-            agent.speed = defaultSpeed;
-        }
+        catch (System.ArgumentOutOfRangeException e) { Debug.LogError(characterData.GetID(true)); Debug.LogError(e.ParamName); }
     }
 
     public void StandUpBed()

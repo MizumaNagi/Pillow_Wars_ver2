@@ -34,7 +34,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
         if (remainEventStopTime < remainEventActiveTime)
         {
             // イベントスタートトリガー
-            if (isEventStart == false) 
+            if (isEventStart == false)
             {
                 isEventStart = true;
             }
@@ -51,10 +51,16 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 // }
             }
 
-            // 各NPCが布団進行可能時間なら布団を目指す
-            foreach (var npcBehaviourRoutine in npcBehaviorRoutines.ToArray())
+            if (npcBehaviorRoutines.Count != 0)
             {
-                if (npcBehaviourRoutine.gameObject.activeSelf == true && npcBehaviourRoutine.startGoBedTime > remainEventActiveTime) npcBehaviourRoutine.CheckTimeTriggerGoBed();
+                // 各NPCが布団進行可能時間なら布団を目指す
+                foreach (var npcBehaviourRoutine in npcBehaviorRoutines.ToArray())
+                {
+                    if (npcBehaviourRoutine.gameObject.activeSelf == true)
+                    {
+                        if (npcBehaviourRoutine.startGoBedTime > remainEventActiveTime) npcBehaviourRoutine.CheckTimeTriggerGoBed();
+                    }
+                }
             }
 
             // イベント発生
@@ -66,9 +72,12 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 EventActive(nextEventType);
 
                 // NPC全員に布団進行トリガー (HP割合=実行時間 方式)
-                foreach (var npcBehaviourRoutine in npcBehaviorRoutines.ToArray())
+                if (npcBehaviorRoutines.Count != 0)
                 {
-                    if (npcBehaviourRoutine.gameObject.activeSelf == true) npcBehaviourRoutine.ResetBedEventStatus();
+                    foreach (var npcBehaviourRoutine in npcBehaviorRoutines.ToArray())
+                    {
+                        if (npcBehaviourRoutine.gameObject.activeSelf == true) npcBehaviourRoutine.ResetBedEventStatus();
+                    }
                 }
             }
             canBedIn = true;
@@ -83,7 +92,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private void NextEventStart()
     {
-        if(finishEventsNum <= detailEventsNum)
+        if (finishEventsNum <= detailEventsNum)
         {
             remainEventStopTime = gameEventData.gameEvents[finishEventsNum].stopEventInterval;
             remainEventActiveTime = gameEventData.gameEvents[finishEventsNum].eventActiveTime;
@@ -103,7 +112,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     {
         if (type == EVENT_TYPE.TeacherAttack)
         {
-            for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
+            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
             {
                 PlayerManager.Instance.playerDatas[i].Damage(false, true);
             }
@@ -111,7 +120,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
             {
                 PlayerManager.Instance.npcDatas[i].Damage(false, true);
-                foreach(var npc in npcBehaviorRoutines.ToArray())
+                foreach (var npc in npcBehaviorRoutines.ToArray())
                 {
                     if (npc.gameObject.activeSelf == true)
                     {
@@ -121,5 +130,11 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 }
             }
         }
+    }
+
+    public void StatusReset()
+    {
+        finishEventsNum = 0;
+        npcBehaviorRoutines.Clear();
     }
 }
