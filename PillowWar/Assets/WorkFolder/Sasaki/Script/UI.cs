@@ -20,12 +20,25 @@ public class UI : MonoBehaviour
     [SerializeField] private Image[] Futont2imagePlayer4;
     [SerializeField] private Image[] Futont2imagePlayer2;
 
+    [SerializeField] private Image[] hpimagePlayer2;
+    [SerializeField] private Image[] hpimage1Player2;
+    [SerializeField] private Image[] hpimage2Player2;
+    [SerializeField] private Image[] hpimage3Player2;
+    [SerializeField] private Image[] hpimage4Player2;
+    [SerializeField] private Image[] hpimagePlayer4;
+    [SerializeField] private Image[] hpimage1Player4;
+    [SerializeField] private Image[] hpimage2Player4;
+    [SerializeField] private Image[] hpimage3Player4;
+    [SerializeField] private Image[] hpimage4Player4;
+
     public UnityEngine.UI.Text Pausetext;
     public int iconChild = 0;
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private List<List<Image>> hpIcons1 = new List<List<Image>>();
     private GameManager gameManager;
     private GameEventScript gameEventScript;
+    public Button TitleButton;
+    public Button ResumeButton;
     [SerializeField] private GameObject Player2;
     [SerializeField] private GameObject Player4;
 
@@ -41,6 +54,8 @@ public class UI : MonoBehaviour
 
         Pausetext.enabled = false;
 
+        TitleButton.Select();
+        ResumeButton.Select();
 
         // éQâ¡êlêîÇÃéÊìæï˚ñ@
         //GameManager.Instance.joinPlayers;
@@ -80,6 +95,35 @@ public class UI : MonoBehaviour
                     {
                         hpIcons1[i][j].fillAmount = playerhp * iconChild - 1 * j;
                     }
+
+                    if (PlayerManager.Instance.playerDatas[i].HP == 10)
+                    {
+                        hpimagePlayer2[i].enabled = true;
+                        hpimage1Player2[i].enabled = false;
+                        hpimage2Player2[i].enabled = false;
+                        hpimage3Player2[i].enabled = false;
+                        hpimage4Player2[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 8)
+                    {
+                        hpimage1Player2[i].enabled = true;
+                        hpimagePlayer2[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 5)
+                    {
+                        hpimage2Player2[i].enabled = true;
+                        hpimage1Player2[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 2)
+                    {
+                        hpimage3Player2[i].enabled = true;
+                        hpimage2Player2[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 1)
+                    {
+                        hpimage4Player2[i].enabled = true;
+                        hpimage3Player2[i].enabled = false;
+                    }
                 }
             }
             else
@@ -93,6 +137,35 @@ public class UI : MonoBehaviour
                     for (int j = 0; j < iconChild; j++)
                     {
                         hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP == 10)
+                    {
+                        hpimagePlayer4[i].enabled = true;
+                        hpimage1Player4[i].enabled = false;
+                        hpimage2Player4[i].enabled = false;
+                        hpimage3Player4[i].enabled = false;
+                        hpimage4Player4[i].enabled = false;
+                    }
+
+                    if (PlayerManager.Instance.playerDatas[i].HP < 8)
+                    {
+                        hpimage1Player4[i].enabled = true;
+                        hpimagePlayer4[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 5)
+                    {
+                        hpimage2Player4[i].enabled = true;
+                        hpimage1Player4[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 2)
+                    {
+                        hpimage3Player4[i].enabled = true;
+                        hpimage2Player4[i].enabled = false;
+                    }
+                    if (PlayerManager.Instance.playerDatas[i].HP < 1)
+                    {
+                        hpimage4Player4[i].enabled = true;
+                        hpimage3Player4[i].enabled = false;
                     }
                 }
             }
