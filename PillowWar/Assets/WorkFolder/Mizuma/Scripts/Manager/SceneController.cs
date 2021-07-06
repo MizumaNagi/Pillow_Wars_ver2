@@ -11,7 +11,7 @@ public enum SCENE_NAME
     RESULT
 }
 
-public class SceneManagement : SingletonMonoBehaviour<SceneManagement>
+public class SceneController : SingletonMonoBehaviour<SceneController>
 {
     private void Start()
     {

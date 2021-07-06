@@ -266,14 +266,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
-      propertyPath: joinNpcs
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
-      propertyPath: joinPlayers
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder
       value: 4

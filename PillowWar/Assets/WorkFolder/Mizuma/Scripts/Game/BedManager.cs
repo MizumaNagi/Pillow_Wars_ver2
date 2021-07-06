@@ -14,6 +14,8 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 
     private void Start()
     {
+        Debug.Log("Start");
+
         int childCount = transform.childCount;
 
         for (int i = 0; i < childCount; i++)
@@ -29,5 +31,20 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
             beforeArr.RemoveAt(activeNum);
             transform.GetChild(afterArr[i]).gameObject.SetActive(true);
         }
+    }
+
+    public void AllBedChgActive(bool isActive)
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(isActive);
+        }
+
+        ResetStatus();
+    }
+
+    public void ResetStatus()
+    {
+        
     }
 }

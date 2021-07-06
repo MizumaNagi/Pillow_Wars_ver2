@@ -39,6 +39,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("player start");
+
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
         characterData = PlayerManager.Instance.npcDatas[npcID - 100];
@@ -48,6 +50,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
         GameEventScript.Instance.npcBehaviorRoutines.Add(this);
         defaultSpeed = agent.speed;
         startGoBedTime = routineData.minStartGoBedTime;
+
+        SetNpcStatus(NPC_STATUS.WALK);
     }
 
     private void Update()
@@ -112,7 +116,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         float shortestBedPos = Mathf.Infinity;
         int shortIndex = -1;
 
-        // BedManagerに登録されている全ての未使用ベッドから最も近いベッドのインデックス番号を取得する
+        // BedManager.Instanceに登録されている全ての未使用ベッドから最も近いベッドのインデックス番号を取得する
         for (int i = 0; i < BedManager.Instance.bedColliders.Count; i++)
         {
             if (BedManager.Instance.bedColliders[i].enabled == false) continue;
@@ -164,6 +168,9 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.WALK:
                 {
                     agent.stoppingDistance = 0;
+                    Vector3 nextPos = GetNextDestination();
+                    agent.destination = nextPos;
+                    targetMarkObj.transform.position = nextPos;
                     break;
                 }
             case NPC_STATUS.GO_ENEMY:
@@ -218,9 +225,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     // 経路が無ければ新しい目的地を決める
                     if (agent.hasPath == false)
                     {
-                        Vector3 nextPos = GetNextDestination();
-                        agent.destination = nextPos;
-                        targetMarkObj.transform.position = nextPos;
+                        Debug.Log("経路無");
+
+                        //Vector3 nextPos = GetNextDestination();
+                        //agent.destination = nextPos;
+                        //targetMarkObj.transform.position = nextPos;
                     }
                     break;
                 }

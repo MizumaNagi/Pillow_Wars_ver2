@@ -179,12 +179,13 @@ public class UI : MonoBehaviour
         pausePanel.SetActive(false);
         Pausetext.enabled = false;
         GameManager.Instance.GameEnd();
-        SceneManagement.Instance.LoadScene(SCENE_NAME.TITLE);
+        SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
     }
 
     private void PauseResume()
     {
         gameManager.isPause = !gameManager.isPause;
+        Time.timeScale = 1;
     }
 
     public void Pause()

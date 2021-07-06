@@ -78,7 +78,7 @@ public class ChangeButton : MonoBehaviour
             int PlayerjoinNumbers = int.Parse(PlayNambertext.text.ToString());
             GameManager.Instance.joinPlayers = PlayerjoinNumbers;
             GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
-            SceneManagement.Instance.LoadScene(SCENE_NAME.GAME);
+            SceneController.Instance.LoadScene(SCENE_NAME.GAME);
         }
 
         // Debug.Log($"moveX: {Input.GetAxis(InputManager.Instance.playerInput[0].MoveX)}\n" +
