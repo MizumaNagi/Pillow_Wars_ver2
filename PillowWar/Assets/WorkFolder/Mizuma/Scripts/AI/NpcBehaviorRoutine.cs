@@ -168,9 +168,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.WALK:
                 {
                     agent.stoppingDistance = 0;
-                    Vector3 nextPos = GetNextDestination();
-                    agent.destination = nextPos;
-                    targetMarkObj.transform.position = nextPos;
+                    
                     break;
                 }
             case NPC_STATUS.GO_ENEMY:
@@ -223,13 +221,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.WALK:
                 {
                     // 経路が無ければ新しい目的地を決める
-                    if (agent.hasPath == false)
+                    if (agent.hasPath == false && agent.pathPending == false)
                     {
                         Debug.Log("経路無");
-
-                        //Vector3 nextPos = GetNextDestination();
-                        //agent.destination = nextPos;
-                        //targetMarkObj.transform.position = nextPos;
+                        Vector3 nextPos = GetNextDestination();
+                        agent.destination = nextPos;
+                        targetMarkObj.transform.position = nextPos;
                     }
                     break;
                 }

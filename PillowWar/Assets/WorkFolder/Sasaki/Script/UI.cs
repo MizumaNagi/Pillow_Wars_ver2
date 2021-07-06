@@ -180,6 +180,7 @@ public class UI : MonoBehaviour
         Pausetext.enabled = false;
         GameManager.Instance.GameEnd();
         SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
+        Time.timeScale = 1;
     }
 
     private void PauseResume()

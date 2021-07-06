@@ -12,7 +12,7 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 
     public List<BoxCollider> bedColliders = new List<BoxCollider>();
 
-    private void Start()
+    public void RandomObjActive()
     {
         Debug.Log("Start");
 
@@ -45,6 +45,7 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 
     public void ResetStatus()
     {
-        
+        beforeArr.Clear();
+        afterArr.Clear();
     }
 }

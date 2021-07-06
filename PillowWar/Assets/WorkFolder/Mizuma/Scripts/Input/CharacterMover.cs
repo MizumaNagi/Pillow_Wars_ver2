@@ -52,7 +52,7 @@ public class CharacterMover
     public void Jump(CharacterData data)
     {
         data.canJump = false;
-        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce/* * data.myBodyTransform.forward.y*/, 0);
+        data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce, 0);
     }
 
     public void PillowThrow(CharacterData data, bool isNpc)
@@ -60,25 +60,20 @@ public class CharacterMover
         data.isHavePillow = false;
         data.pillowCollider.enabled = true;
 
-        Vector3 initPillowPos;
-        initPillowPos = new Vector3(0.4f,1.5f,1.6f);
-        // initPillowPos = Vector3.Scale(
-        //     new Vector3(0f, 1.5f, 2f), 
-        //     new Vector3(data.character.transform.forward.x, 1f, data.character.transform.forward.z));
-        // initPillowPos = data.character.transform.forward * 2 + new Vector3(0f,1.5f,0f);
+        data.myPillowTransform.localPosition = new Vector3(0,1.6f,1);
 
-        data.myPillowTransform.localPosition = initPillowPos;
         data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
 
+        data.myPillowTransform.LookAt(data.myBodyTransform.position + (data.myBodyTransform.forward * 3) + new Vector3(0,1,0));
         if (isNpc) 
         {
-            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.VelocityChange); 
+            data.myPillowRigidbody.AddForce((data.myBodyTransform.forward + new Vector3(0,0.5f,0)) * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration); 
         }
         else
         {
-            data.myPillowRigidbody.AddForce(data.myCameraTransform.forward * InputManager.Instance.moveData.throwForce, ForceMode.VelocityChange);
+            data.myPillowRigidbody.AddForce((data.myCameraTransform.forward + new Vector3(0,0.5f,0)) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
         }
     }
 

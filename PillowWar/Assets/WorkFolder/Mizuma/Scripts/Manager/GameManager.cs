@@ -9,7 +9,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField, Range(1,4)] public int joinPlayers;
     [SerializeField, Range(0,4)] public int joinNpcs;
     [SerializeField] public RuleData ruleData;
-    [SerializeField] private GameObject bedManager;
 
     public int remainPlayers;
     public int remainCharacters;
@@ -57,13 +56,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void GameStart()
     {
-        Debug.Log("start");
-
         isPlayTheGame = true;
         PlayerManager.Instance.Init();
         GameEventScript.Instance.Init();
+        BedManager.Instance.RandomObjActive();
         Init();
-        ManagerMake();
     }
 
     public void GameEnd()
@@ -88,12 +85,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         remainPlayers = joinPlayers;
         remainCharacters = joinPlayers + joinNpcs;
         Debug.Log($"players:{remainPlayers}\ncharacters:{remainCharacters}");
-    }
-
-    public void ManagerMake()
-    {
-        GameObject obj = Instantiate(bedManager);
-        obj.name = "BedManager";
     }
 
     private void FindWinCharacterID()
