@@ -95,16 +95,20 @@ public class NpcBehaviorRoutine : MonoBehaviour
     {
         NavMeshHit navMeshHit;
 
-        Vector3 rndPos = new Vector3(UnityEngine.Random.Range(-routineData.stageRange.x, routineData.stageRange.x), 0, UnityEngine.Random.Range(-routineData.stageRange.z, routineData.stageRange.z));
-        if (NavMesh.SamplePosition(rndPos, out navMeshHit, routineData.searchNavMeshRange, NavMesh.AllAreas))
+        for(int i = 0; i < routineData.searchMaxCount; i++)
         {
-            return navMeshHit.position;
+            Vector3 rndPos = new Vector3(
+                UnityEngine.Random.Range(routineData.negativeStageRange.x, routineData.positiveStageRange.x),
+                0f,
+                UnityEngine.Random.Range(routineData.negativeStageRange.z, routineData.positiveStageRange.z));
+            if (NavMesh.SamplePosition(rndPos, out navMeshHit, routineData.searchNavMeshRange, NavMesh.AllAreas))
+            {
+                return navMeshHit.position;
+            }
         }
-        else
-        {
-            Debug.LogError("Ai目的地の設定失敗");
-            return Vector3.zero;
-        }
+
+        Debug.LogWarning("Ai目的地の設定失敗");
+        return Vector3.zero;
     }
 
     /// <summary>
@@ -168,7 +172,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.WALK:
                 {
                     agent.stoppingDistance = 0;
-                    
+
+                    Vector3 nextPos = GetNextDestination();
+                    agent.destination = nextPos;
+                    targetMarkObj.transform.position = nextPos;
                     break;
                 }
             case NPC_STATUS.GO_ENEMY:

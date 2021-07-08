@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: NpcRoutineData
   m_EditorClassIdentifier: 
   targetMark: {fileID: 615382248181381586, guid: c55952e7760613245971c7044450d6ae, type: 3}
-  stageRange: {x: 8, y: 0, z: 8}
-  searchNavMeshRange: 2.5
+  negativeStageRange: {x: -7, y: 0, z: -7}
+  positiveStageRange: {x: 7, y: 0, z: 7}
+  searchNavMeshRange: 1.5
+  searchMaxCount: 10
   distanceToEnemy: 5
   warRangeToEnemy: 7
   maxSearchAngle: 150

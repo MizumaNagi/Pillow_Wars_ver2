@@ -17,8 +17,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     public MoveData moveData;
     public List<CharacterData> characterDatas = new List<CharacterData>();
 
-    public Image b;
-
     private void Start()
     {
         gameManager = GameManager.Instance;

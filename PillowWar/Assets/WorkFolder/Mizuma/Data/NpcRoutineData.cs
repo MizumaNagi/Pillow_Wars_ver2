@@ -6,9 +6,11 @@ using UnityEngine;
 public class NpcRoutineData : ScriptableObject
 {
     public GameObject targetMark;
-    public Vector3 stageRange;
+    public Vector3 negativeStageRange;
+    public Vector3 positiveStageRange;
 
     [Range(1f, 5f)] public float searchNavMeshRange;        // ƒ‰ƒ“ƒ_ƒ€À•W‚©‚ç•às‰Â”\‚ÈNavMesh‚ğ’T‚µo‚·”ÍˆÍ
+    [Range(1, 10)] public int searchMaxCount;               // ƒ‰ƒ“ƒ_ƒ€À•W‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½Û‚ÉÅ‘å‰½‰ñŒJ‚è•Ô‚µŒŸõ‚·‚é‚©
     public float distanceToEnemy;                           // “G‚Æ‚ÌÚ“G‹——£
     public float warRangeToEnemy;                           // “G‚Æ‚Ìí“¬‹——£
     public float maxSearchAngle;                            // ‹–ì
