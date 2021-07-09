@@ -18,6 +18,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     public float remainEventActiveTime;
     public bool canBedIn = false;
 
+
     private void Start()
     {
         detailEventsNum = gameEventData.gameEvents.Length;
