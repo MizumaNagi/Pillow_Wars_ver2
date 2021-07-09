@@ -132,12 +132,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 shortIndex = i;
             }
         }
-        PlayerManager.Instance.targetBedName[npcID - 100] = "";
         // 最も近いベッドのインデックスが初期値以外だったか？
         if (shortIndex != -1)
         {
             characterData.bedStatus = GetDestinationBedStatus(shortIndex);
-            PlayerManager.Instance.targetBedName[npcID - 100] = BedManager.Instance.bedColliders[shortIndex].transform.parent.name;
             return BedManager.Instance.bedColliders[shortIndex].transform.position;
         }
         else
