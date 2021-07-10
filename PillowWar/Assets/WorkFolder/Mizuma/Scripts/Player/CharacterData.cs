@@ -54,6 +54,7 @@ public class CharacterData
     public int HP { get; private set; }
     public int hitPillowCount;
     public float remainthrowCT = 0;
+    public float remainStunTime = 0;
 
     public bool isNpc = false;
     public bool canJump = true;
@@ -84,6 +85,15 @@ public class CharacterData
         {
             character.SetActive(false);
             Death();
+        }
+    }
+
+    public void StunJudge()
+    {
+        int rnd = Random.Range(0, 100);
+        if(GameManager.Instance.ruleData.stunPercent > rnd)
+        {
+            remainStunTime = GameManager.Instance.ruleData.pillowHeadShotStunTime;
         }
     }
 

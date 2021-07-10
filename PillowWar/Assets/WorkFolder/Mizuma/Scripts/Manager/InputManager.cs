@@ -52,7 +52,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     {
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
-            if (characterDatas[i].isDeath == true) continue;
+            if (characterDatas[i].isDeath == true || characterDatas[i].remainStunTime > 0) continue;
             if (i == keyboardMovePlayerId && isUseKeyboard) continue;
 
             if (characterDatas[i].isInBed == true)
@@ -143,7 +143,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     private void KeyboardMoveInputUpdateMethod()
     {
         CharacterData c = characterDatas[keyboardMovePlayerId];
-        if (c.isDeath == true) return;
+        if (c.isDeath == true || c.remainStunTime > 0) return;
 
         if (c.isInBed == true)
         {

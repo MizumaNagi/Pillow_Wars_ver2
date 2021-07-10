@@ -12,6 +12,7 @@ public enum NPC_STATUS
     GO_BED,
     IN_BED,
     PILLOW_THROW,
+    STUN,
     LENGTH
 }
 
@@ -56,6 +57,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Update()
     {
+        if (characterData.remainStunTime > 0) return;
         if (gameObject.activeSelf == false) this.enabled = false;
 
         if (GameManager.Instance.isPause == false)
@@ -207,6 +209,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     else y = -1;
                     agent.destination = new Vector3(7 * x, 0, 7 * y);
 
+                    break;
+                }
+            case NPC_STATUS.STUN:
+                {
                     break;
                 }
             default:

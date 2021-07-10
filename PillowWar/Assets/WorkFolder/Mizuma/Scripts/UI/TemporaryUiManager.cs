@@ -11,6 +11,7 @@ public class TemporaryUiManager : MonoBehaviour
     // Texts
     [SerializeField] private Text[] hpTxts;
     [SerializeField] private Text[] isInBedTxts;
+    [SerializeField] private Text[] isStunTexts;
     [SerializeField] private Text remainEventStopTxt;
     [SerializeField] private Text remainEventActiveTxt;
     [SerializeField] private Text isPauseTxt;
@@ -52,6 +53,20 @@ public class TemporaryUiManager : MonoBehaviour
         // ポーズ中Txt更新
         // if (gameManager.isPause == true) isPauseTxt.enabled = true;
         // else isPauseTxt.enabled = false;
+
+        // 
+        if (GameManager.Instance.joinPlayers == 2)
+        {
+            isStunTexts[0].enabled = PlayerManager.Instance.playerDatas[0].remainStunTime > 0;
+            isStunTexts[2].enabled = PlayerManager.Instance.playerDatas[1].remainStunTime > 0;
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                isStunTexts[i].enabled = PlayerManager.Instance.playerDatas[i].remainStunTime > 0;
+            }
+        }
 
         // さも当然にUpdateで処理しているが、毎フレームtext更新は負荷が掛かるので
         // 毎フレーム呼ぶ必要のないものは呼ばない
