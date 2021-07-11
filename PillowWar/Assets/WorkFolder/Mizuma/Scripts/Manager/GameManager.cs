@@ -84,7 +84,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         resultIDs.Clear();
         remainPlayers = joinPlayers;
         remainCharacters = joinPlayers + joinNpcs;
-        Debug.Log($"players:{remainPlayers}\ncharacters:{remainCharacters}");
     }
 
     private void FindWinCharacterID()

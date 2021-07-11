@@ -29,7 +29,6 @@ public class GetBedCollider : MonoBehaviour
             }
 
             // ”ÍˆÍ“à‚ÌBedStatus‚ğæ“¾‚·‚é
-            Debug.Log("N“ü");
             npcBehaviorRoutine.characterData.isInBedRange = true;
             npcBehaviorRoutine.characterData.inBedPos = other.transform.position;
             BedStatus bed = other.GetComponent<BedStatus>();

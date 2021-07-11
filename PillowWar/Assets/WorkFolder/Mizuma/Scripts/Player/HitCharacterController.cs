@@ -13,16 +13,15 @@ public class HitCharacterController : MonoBehaviour
             int pillowNum = int.Parse(collison.gameObject.name);
             if (pillowNum == objNum) return;
 
-            if (isNpc == true)
+            CharacterData cd = null;
+            if (isNpc == true) cd = PlayerManager.Instance.npcDatas[objNum - 100];
+            else cd = PlayerManager.Instance.playerDatas[objNum];
+
+            cd.Damage(false, false);
+            if (collison.transform.position.y > transform.position.y + GameManager.Instance.ruleData.headShotBorderLocalPosY
+                && cd.remainStunTime < -GameManager.Instance.ruleData.stunRegistTime)
             {
-                CharacterData cd = PlayerManager.Instance.npcDatas[objNum - 100];
-                cd.Damage(false, false);
-                cd.StunJudge();
-            }
-            else
-            {
-                CharacterData cd = PlayerManager.Instance.playerDatas[objNum];
-                cd.Damage(false, false);
+                Debug.Log("Head Shot");
                 cd.StunJudge();
             }
         }
@@ -55,7 +54,7 @@ public class HitCharacterController : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Door")
+        if (other.gameObject.tag == "InteractDoor")
         {
             if (isNpc == true)
             {

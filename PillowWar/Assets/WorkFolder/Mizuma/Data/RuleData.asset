@@ -15,6 +15,8 @@ MonoBehaviour:
   maxHp: 10
   hitPillowCountOnDamage: 1
   pillowThrowCT: 1
-  pillowHeadShotStunTime: 2
-  stunPercent: 100
   inBedDamageTime: 5
+  headShotBorderLocalPosY: 1.35
+  stunRegistTime: 0
+  pillowHeadShotStunTime: 1
+  stunPercent: 100

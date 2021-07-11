@@ -266,6 +266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
+      propertyPath: joinNpcs
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -858,6 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deec9766d1aa73e448a3de1182a66da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goToGame: 1
 --- !u!4 &1826912177
 Transform:
   m_ObjectHideFlags: 0

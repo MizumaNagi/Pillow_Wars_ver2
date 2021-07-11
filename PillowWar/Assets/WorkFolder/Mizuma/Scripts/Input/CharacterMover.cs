@@ -60,7 +60,7 @@ public class CharacterMover
         data.isHavePillow = false;
         data.pillowCollider.enabled = true;
 
-        data.myPillowTransform.localPosition = new Vector3(0,1.6f,1);
+        data.myPillowTransform.localPosition = new Vector3(0,1,1);
 
         data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;

@@ -274,7 +274,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 {
                     if (characterData.bedStatus.canIn == false)
                     {
-                        Debug.Log("割り込み");
                         SetNpcStatus(NPC_STATUS.WALK);
                     }
                     break;
@@ -296,6 +295,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     //agent.destination = dest;
                     //targetMarkObj.transform.position = dest;
                     //Debug.Log(dest);
+                    break;
+                }
+            case NPC_STATUS.STUN:
+                {
+                    if (characterData.remainStunTime < 0) SetNpcStatus(NPC_STATUS.WALK);
                     break;
                 }
             default:
@@ -375,7 +379,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
     public void CheckTimeTriggerGoBed()
     {
         if (isOnceGoBed == true) return;
-        Debug.Log("布団入れるかチェック");
 
         isOnceGoBed = true;
         Vector3 nextPos = GetShortestBedPos();
@@ -387,7 +390,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     public void ResetBedEventStatus()
     {
-        Debug.Log("布団イベリセット");
         UpdateStartGoBedTime();
     }
 

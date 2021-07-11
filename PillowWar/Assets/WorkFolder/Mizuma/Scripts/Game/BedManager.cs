@@ -14,8 +14,6 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 
     public void RandomObjActive()
     {
-        Debug.Log("Start");
-
         int childCount = transform.childCount;
 
         for (int i = 0; i < childCount; i++)

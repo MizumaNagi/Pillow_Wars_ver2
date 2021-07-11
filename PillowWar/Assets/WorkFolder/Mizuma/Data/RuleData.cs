@@ -9,7 +9,10 @@ public class RuleData : ScriptableObject
     public int maxHp;
     public int hitPillowCountOnDamage;
     public float pillowThrowCT;
+    public float inBedDamageTime;
+    [Header("ヘッドショット関連")]
+    public float headShotBorderLocalPosY;
+    public float stunRegistTime;
     public float pillowHeadShotStunTime;
     public float stunPercent;
-    public float inBedDamageTime;
 }
