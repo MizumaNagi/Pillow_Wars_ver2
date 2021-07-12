@@ -50,10 +50,10 @@ MonoBehaviour:
   - {fileID: 6776320758568855931, guid: 9840844886cee114183e8acb952117f4, type: 3}
   - {fileID: 6160065371633453282, guid: e36382debdfb4b44b9b329b4dc2f454b, type: 3}
   npcPrefabs:
-  - {fileID: 5858371983849001437, guid: 440eea1dd88f2ff428d7f26933dceb4c, type: 3}
-  - {fileID: 6582151430622989457, guid: 0f96fe172e69c1344b15b651fe857eba, type: 3}
-  - {fileID: 5079035383565297791, guid: ca42b60775a47074d8c6debbf15e31d1, type: 3}
-  - {fileID: 9218476839452398830, guid: 3fbf3d3f258770e4ba82137d6d984713, type: 3}
+  - {fileID: 1847934279642183890, guid: e947ebcd38fae4c4eb70ef0b3c5daa71, type: 3}
+  - {fileID: 2485771115601883788, guid: 71795aa50e0bb5d4cbecba50f4ba2105, type: 3}
+  - {fileID: 3183374273860702108, guid: afcf8cf919b87ea48ad759d72f5fade3, type: 3}
+  - {fileID: 3272324596794161349, guid: 5488ffcbe1062494a8be91dcfcb0c306, type: 3}
   pillowPrefab: {fileID: 4407689812196193053, guid: d8e99c000fd684b4e8761a2131cd014b, type: 3}
   playerDatas: []
   npcDatas: []

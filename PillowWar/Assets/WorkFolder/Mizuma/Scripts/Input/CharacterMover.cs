@@ -66,14 +66,16 @@ public class CharacterMover
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
 
-        data.myPillowTransform.LookAt(data.myBodyTransform.position + (data.myBodyTransform.forward * 3) + new Vector3(0,1,0));
+        Vector3 angleDir = new Vector3(0, Mathf.Cos(InputManager.Instance.moveData.throwAngle * Mathf.Deg2Rad), Mathf.Sin(InputManager.Instance.moveData.throwAngle * Mathf.Deg2Rad));
+        Debug.Log("body:" + Vector3.Scale(data.myBodyTransform.forward, angleDir));
+
         if (isNpc) 
         {
-            data.myPillowRigidbody.AddForce((data.myBodyTransform.forward + new Vector3(0,0.5f,0)) * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration); 
+            data.myPillowRigidbody.AddForce((data.myBodyTransform.forward + angleDir) * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration); 
         }
         else
         {
-            data.myPillowRigidbody.AddForce((data.myCameraTransform.forward + new Vector3(0,0.5f,0)) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
+            data.myPillowRigidbody.AddForce(Vector3.Scale(-data.myBodyTransform.forward, angleDir) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
         }
     }
 
@@ -142,5 +144,31 @@ public class CharacterMover
         }
 
         data.isSquat = !isSquated;
+    }
+
+    // 参考:
+    private Vector3 CalculateVelocity(Vector3 pointA, Vector3 pointB, float angle)
+    {
+        // 射出角をラジアンに変換
+        float rad = angle * Mathf.PI / 180;
+
+        // 水平方向の距離x
+        float x = Vector2.Distance(new Vector2(pointA.x, pointA.z), new Vector2(pointB.x, pointB.z));
+
+        // 垂直方向の距離y
+        float y = pointA.y - pointB.y;
+
+        // 斜方投射の公式を初速度について解く
+        float speed = Mathf.Sqrt(-Physics.gravity.y * Mathf.Pow(x, 2) / (2 * Mathf.Pow(Mathf.Cos(rad), 2) * (x * Mathf.Tan(rad) + y)));
+
+        if (float.IsNaN(speed))
+        {
+            // 条件を満たす初速を算出できなければVector3.zeroを返す
+            return Vector3.zero;
+        }
+        else
+        {
+            return (new Vector3(pointB.x - pointA.x, x * Mathf.Tan(rad), pointB.z - pointA.z).normalized * speed);
+        }
     }
 }
