@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: joinNpcs
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder

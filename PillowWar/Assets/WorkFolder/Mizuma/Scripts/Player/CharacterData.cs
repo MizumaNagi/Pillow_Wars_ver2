@@ -11,20 +11,20 @@ public class CharacterData
         character = _myObject;
         Transform t = character.transform;
         myBodyTransform = t;
-        pillow = t.GetChild(2).gameObject;
+        meshObjParent = t.GetChild(0).gameObject;
+        myCameraTransform = t.GetChild(1).transform;
+
+        pillow = myCameraTransform.GetChild(0).gameObject;
         myPillowTransform = pillow.transform;
         myPillowRigidbody = pillow.GetComponent<Rigidbody>();
-        pillowCollider = pillow.GetComponent<CapsuleCollider>();
+        pillowCollider = pillow.GetComponent<BoxCollider>();
         myBodyRigidbody = character.GetComponent<Rigidbody>();
         bodyCollider = character.GetComponent<BoxCollider>();
         HP = GameManager.Instance.ruleData.maxHp;
-        meshObjParent = t.GetChild(0).gameObject;
 
         if (_isNpc == false)
         {
-            myCameraTransform = t.GetChild(1).transform;
             myCamera = t.GetChild(1).GetComponent<Camera>();
-
             GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
             myLoserCameraObj.SetActive(true);
             myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();
@@ -46,7 +46,7 @@ public class CharacterData
     public Camera myCamera;
     public Camera myLoserCamera;
     public BoxCollider bodyCollider;
-    public CapsuleCollider pillowCollider;
+    public BoxCollider pillowCollider;
 
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;

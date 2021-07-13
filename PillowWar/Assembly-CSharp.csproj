@@ -65,6 +65,7 @@
     <Compile Include="Assets\WorkFolder\Sasaki\Script\UI.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\DoorAnimation.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\CharacterMover.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\UI\Title\ButtonSelect.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\InputData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\GetBedCollider.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\HP.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestThrow.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\PillowController.cs" />
     <Compile Include="Assets\UI\select\SelectMenu.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Player.cs" />
@@ -108,8 +110,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
-    <Compile Include="Assets\MainScenes\TestThrow.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />

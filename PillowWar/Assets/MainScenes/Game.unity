@@ -17431,7 +17431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831118419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.27}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -21787,6 +21787,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2943871946252741230, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
+      propertyPath: pillowPrefab
+      value: 
+      objectReference: {fileID: 3566193196409468901, guid: 726b288aa0fd097468095c27a519bb02, type: 3}
     - target: {fileID: 2943871946252741231, guid: 767a41a3f85154148aacdef1ea545195, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -22100,7 +22104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1751634291936557743, guid: 567ce2a4e7316e543b83dc928ef997cd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 567ce2a4e7316e543b83dc928ef997cd, type: 3}

@@ -67,15 +67,14 @@ public class CharacterMover
         data.myPillowRigidbody.isKinematic = false;
 
         Vector3 angleDir = new Vector3(0, Mathf.Cos(InputManager.Instance.moveData.throwAngle * Mathf.Deg2Rad), Mathf.Sin(InputManager.Instance.moveData.throwAngle * Mathf.Deg2Rad));
-        Debug.Log("body:" + Vector3.Scale(data.myBodyTransform.forward, angleDir));
 
         if (isNpc) 
         {
-            data.myPillowRigidbody.AddForce((data.myBodyTransform.forward + angleDir) * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration); 
+            data.myPillowRigidbody.AddForce((data.myBodyTransform.forward) * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration); 
         }
         else
         {
-            data.myPillowRigidbody.AddForce(Vector3.Scale(-data.myBodyTransform.forward, angleDir) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
+            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
         }
     }
 
