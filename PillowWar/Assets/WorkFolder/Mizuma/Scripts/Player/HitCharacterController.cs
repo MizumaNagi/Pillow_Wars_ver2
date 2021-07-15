@@ -17,6 +17,7 @@ public class HitCharacterController : MonoBehaviour
             if (isNpc == true) cd = PlayerManager.Instance.npcDatas[objNum - 100];
             else cd = PlayerManager.Instance.playerDatas[objNum];
 
+            // ヘッドショット判定
             cd.Damage(false, false);
             if (collison.transform.position.y > transform.position.y + GameManager.Instance.ruleData.headShotBorderLocalPosY
                 && cd.remainStunTime < -GameManager.Instance.ruleData.stunRegistTime)

@@ -521,7 +521,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.87181175, b: 0.6933962, a: 1}
+  m_Color: {r: 1, g: 0.6744069, b: 0.4764151, a: 1}
   m_Intensity: 0.63
   m_Range: 10
   m_SpotAngle: 30
@@ -9097,7 +9097,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.87181175, b: 0.6933962, a: 1}
+  m_Color: {r: 1, g: 0.6744069, b: 0.4764151, a: 1}
   m_Intensity: 0.63
   m_Range: 10
   m_SpotAngle: 30
@@ -11922,7 +11922,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.87181175, b: 0.6933962, a: 1}
+  m_Color: {r: 1, g: 0.6744069, b: 0.4764151, a: 1}
   m_Intensity: 0.63
   m_Range: 10
   m_SpotAngle: 30
@@ -12161,7 +12161,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.87181175, b: 0.6933962, a: 1}
+  m_Color: {r: 1, g: 0.6744069, b: 0.4764151, a: 1}
   m_Intensity: 0.63
   m_Range: 10
   m_SpotAngle: 30
@@ -14505,7 +14505,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.87181175, b: 0.6933962, a: 1}
+  m_Color: {r: 1, g: 0.6744069, b: 0.4764151, a: 1}
   m_Intensity: 0.63
   m_Range: 10
   m_SpotAngle: 30
@@ -15073,6 +15073,7 @@ GameObject:
   - component: {fileID: 1638212722}
   - component: {fileID: 1638212724}
   - component: {fileID: 1638212723}
+  - component: {fileID: 1638212725}
   m_Layer: 0
   m_Name: MainStage
   m_TagString: Untagged
@@ -15146,6 +15147,18 @@ MonoBehaviour:
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: fcd334fd6bcaacf41a14cd3707f328ac, type: 2}
+--- !u!114 &1638212725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638212721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c91076fa2e4ba4142a6fc1e1d513d2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1649836081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18417,7 +18430,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.87181175, b: 0.6933962, a: 1}
+  m_Color: {r: 1, g: 0.6744069, b: 0.4764151, a: 1}
   m_Intensity: 0.63
   m_Range: 10
   m_SpotAngle: 30
@@ -21658,6 +21671,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afcddf34508809e4c9eb8b8f2d1f1585, type: 3}
+--- !u!4 &1942006744889399020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 424585580, guid: afcddf34508809e4c9eb8b8f2d1f1585, type: 3}
+  m_PrefabInstance: {fileID: 1942006744889399019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2682800872982616834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22104,7 +22122,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1751634291936557743, guid: 567ce2a4e7316e543b83dc928ef997cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 567ce2a4e7316e543b83dc928ef997cd, type: 3}
+--- !u!1 &7203923781429141477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1751634291936557743, guid: 567ce2a4e7316e543b83dc928ef997cd, type: 3}
+  m_PrefabInstance: {fileID: 7203923781429141476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7203923781429141478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203923781429141477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc201d50e7455334aba407045b565ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syoujiParent: {fileID: 1942006744889399020}
