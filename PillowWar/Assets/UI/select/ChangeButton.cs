@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ChangeButton : MonoBehaviour
 {
+    int PlayerjoinNumbers = 2;
+
     public Text PlayNambertext;
 
     public Sprite[] StageImage;
@@ -75,7 +77,6 @@ public class ChangeButton : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(InputManager.Instance.playerInput[0].Start))
         {
-            int PlayerjoinNumbers = int.Parse(PlayNambertext.text.ToString());
             GameManager.Instance.joinPlayers = PlayerjoinNumbers;
             GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
             SceneController.Instance.LoadScene(SCENE_NAME.GAME);
@@ -87,11 +88,13 @@ public class ChangeButton : MonoBehaviour
 
     public void OnPlayLeftArrow()
     {
+        PlayerjoinNumbers = 2;
         PlayNambertext.text = "Player:2\n<color=red>NPC:4</color>";
     }
 
     public void OnPlayRightArrow()
     {
+        PlayerjoinNumbers = 4;
         PlayNambertext.text = "Player:4\n<color=red>NPC:2</color>";
     }
 
