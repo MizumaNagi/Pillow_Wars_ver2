@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,9 +53,6 @@
     <UnityVersion>2020.2.5f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\UI\Result\ScoreManegement.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HitCharacterController.cs" />
     <Compile Include="Assets\UI\Game\AlertContorol.cs" />
@@ -67,7 +64,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\DoorAnimation.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\CharacterMover.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
-    <Compile Include="Assets\UI\Title\ButtonSelect.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
@@ -88,7 +84,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\PillowController.cs" />
     <Compile Include="Assets\UI\select\SelectMenu.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Player.cs" />
-    <Compile Include="Assets\UI\Title\ExitButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\BedStatus.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\PlayerManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\DebugInput.cs" />
@@ -106,11 +101,11 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAllTypeEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
-    <Compile Include="Assets\UI\Title\StartButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\BedManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\UI\Title\AntButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
