@@ -44,7 +44,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         emptyObj3.name = "PillowParent";
 
         int charaIndex = 0;
-
         // player
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
@@ -53,15 +52,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             obj.name = "Player" + i;
             obj.transform.SetParent(playersParent, true);
 
-            GameObject pillow = Instantiate(pillowPrefab);
+            GameObject pillow = obj.transform.GetChild(1).GetChild(0).gameObject;
             pillow.name = i.ToString();
-            pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            pillow.transform.SetSiblingIndex(2);
             playerDatas.Add(new CharacterData(obj, i, false));
 
-            // TODO:–³‘Ê‚ÈGetcomponent...
-            //pillow.AddComponent<PillowController>();
             pillow.GetComponent<PillowController>().characterData = playerDatas[i];
 
             charaIndex++;
@@ -76,11 +71,9 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             obj.name = "Npc" + (i + 100);
             obj.transform.SetParent(npcsParent, true);
 
-            GameObject pillow = Instantiate(pillowPrefab);
+            GameObject pillow = obj.transform.GetChild(1).GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
-            pillow.transform.SetParent(obj.transform);
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            pillow.transform.SetSiblingIndex(2);
             npcDatas.Add(new CharacterData(obj, i + 100, true));
 
             pillow.GetComponent<PillowController>().characterData = npcDatas[i];

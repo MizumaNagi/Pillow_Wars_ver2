@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 // 生成するオブジェクトにつける
@@ -6,11 +5,6 @@ public class TestThrow : MonoBehaviour
 {
     private float throwForcePow = 1200f;
     public int angle;
-
-    [Header("直でベクトル変更")]
-    [Range(0, 1f)] public float dynamicRotX;
-    [Range(0, 1f)] public float dynamicRotY;
-    [Range(0, 1f)] public float dynamicRotZ;
 
     private void Update()
     {
@@ -25,10 +19,8 @@ public class TestThrow : MonoBehaviour
             obj.AddComponent<AutoDestroy>();
             Rigidbody rb = obj.AddComponent<Rigidbody>();
 
-            //Vector3 angleVec = new Vector3(0, Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
-            //rb.AddForce(obj.transform.forward + angleVec * throwForcePow);
-
-            rb.AddForce(new Vector3(dynamicRotX,dynamicRotY,dynamicRotZ) * throwForcePow);
+            Vector3 angleVec = new Vector3(0, Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
+            rb.AddForce((transform.forward.normalized + angleVec.normalized) * throwForcePow);
         }
     }
 }

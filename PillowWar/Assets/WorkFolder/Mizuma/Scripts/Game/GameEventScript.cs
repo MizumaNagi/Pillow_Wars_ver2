@@ -8,7 +8,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private int detailEventsNum;
     public int finishEventsNum;
-    private bool isEventStart;
+    public bool isEventStart;
     private bool npcGoBedTrigger;
     private EVENT_TYPE nextEventType;
     private float npcGoBedTriggerRemTime = 10f;

@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class TeacherController : MonoBehaviour
 {
-    [SerializeField] private Transform teacherPointParent;
+    [SerializeField] private Transform syoujiParent;
 
-    private List<Transform> teacherPoints = new List<Transform>();
+    private int syojiChildCount = 0;
 
     private void Start()
     {
-        
+        syojiChildCount = syoujiParent.childCount;
+        EventStart();
+    }
+
+    public void EventStart()
+    {
+        int rnd = Random.Range(0, syojiChildCount - 1);
+        syoujiParent.GetChild(rnd).GetComponent<DoorAnimation>().InteractDoor();
+        transform.position = syoujiParent.GetChild(rnd).Find("TeacherPoint").gameObject.transform.position;
+        transform.rotation = syoujiParent.GetChild(rnd).Find("TeacherPoint").gameObject.transform.rotation;
     }
 }
