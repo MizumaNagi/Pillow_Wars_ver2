@@ -19,6 +19,9 @@ public class UI : MonoBehaviour
     [SerializeField] private Image[] Futont1imagePlayer2;
     [SerializeField] private Image[] Futont2imagePlayer4;
     [SerializeField] private Image[] Futont2imagePlayer2;
+    [SerializeField] private Text[] Futon1textPlayer2;
+    [SerializeField] private Text[] Futon1textPlayer4;
+
 
     [SerializeField] private Image[] hpimagePlayer2;
     [SerializeField] private Image[] hpimage1Player2;
@@ -33,12 +36,11 @@ public class UI : MonoBehaviour
 
     public UnityEngine.UI.Text Pausetext;
     public int iconChild = 0;
+    float[] futonhp = new float[4];
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private List<List<Image>> hpIcons1 = new List<List<Image>>();
     private GameManager gameManager;
     private GameEventScript gameEventScript;
-    public Button TitleButton;
-    public Button ResumeButton;
     [SerializeField] private GameObject Player2;
     [SerializeField] private GameObject Player4;
 
@@ -54,8 +56,6 @@ public class UI : MonoBehaviour
 
         Pausetext.enabled = false;
 
-        TitleButton.Select();
-        ResumeButton.Select();
 
         // 参加人数の取得方法
         //GameManager.Instance.joinPlayers;
@@ -80,8 +80,10 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (GameManager.Instance.isPlayTheGame == true)
         {
+            Futonhpvalue();
             // もし参加人数が2人なら...
             if (GameManager.Instance.joinPlayers == 2)
             {
@@ -146,7 +148,6 @@ public class UI : MonoBehaviour
                         hpimage3Player4[i].enabled = false;
                         hpimage4Player4[i].enabled = false;
                     }
-
                     if (PlayerManager.Instance.playerDatas[i].HP < 8)
                     {
                         hpimage1Player4[i].enabled = true;
@@ -181,6 +182,30 @@ public class UI : MonoBehaviour
         GameManager.Instance.GameEnd();
         SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
         Time.timeScale = 1;
+    }
+    private void Futonhpvalue()
+    {
+        if (GameManager.Instance.joinPlayers == 2)
+        {
+            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+            {
+                if (PlayerManager.Instance.playerDatas[i].bedStatus == null) continue;
+
+                futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamagetime / GameManager.Instance.ruleData.inBedDamageTime;
+                Futon1textPlayer2[i].text = "眠気" + Mathf.Floor((futonhp[i]) * 100) + "%";
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+            {
+                if (PlayerManager.Instance.playerDatas[i].bedStatus == null) continue;
+
+                futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamagetime / GameManager.Instance.ruleData.inBedDamageTime;
+                Futon1textPlayer4[i].text = "眠気" + Mathf.Floor((1 - futonhp[i]) * 100) + "%";
+            }
+
+        }
     }
 
     private void PauseResume()
@@ -219,6 +244,7 @@ public class UI : MonoBehaviour
             }
             if (PlayerManager.Instance.playerDatas[i].isInBed == true)
             {
+                Futon1textPlayer4[i].enabled = true;
                 FutontextPlayer4[i].enabled = true;
                 FutontimagePlayer4[i].enabled = true;
                 Futont1imagePlayer4[i].enabled = false;
@@ -226,6 +252,7 @@ public class UI : MonoBehaviour
             }
             else
             {
+                Futon1textPlayer4[i].enabled = false;
                 FutontextPlayer4[i].enabled = false;
                 FutontimagePlayer4[i].enabled = false;
             }
@@ -248,6 +275,8 @@ public class UI : MonoBehaviour
             }
             if (PlayerManager.Instance.playerDatas[i].isInBed == true)
             {
+                Futon1textPlayer2[i].enabled = true;
+
                 FutontextPlayer2[i].enabled = true;
                 FutontimagePlayer2[i].enabled = true;
                 Futont1imagePlayer2[i].enabled = false;
@@ -255,6 +284,7 @@ public class UI : MonoBehaviour
             }
             else
             {
+                Futon1textPlayer2[i].enabled = false;
                 FutontextPlayer2[i].enabled = false;
                 FutontimagePlayer2[i].enabled = false;
             }
