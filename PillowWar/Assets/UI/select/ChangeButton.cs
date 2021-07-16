@@ -87,12 +87,12 @@ public class ChangeButton : MonoBehaviour
 
     public void OnPlayLeftArrow()
     {
-        PlayNambertext.text = "2";
+        PlayNambertext.text = "Player:2\n<color=red>NPC:4</color>";
     }
 
     public void OnPlayRightArrow()
     {
-        PlayNambertext.text = "4";
+        PlayNambertext.text = "Player:4\n<color=red>NPC:2</color>";
     }
 
     public void OnStageLeftArrow()
