@@ -19,7 +19,6 @@ public class AlertContorol : MonoBehaviour
     {
         if (GameEventScript.Instance.isEventStart == true)
         {
-            GameEventScript.Instance.remainEventActiveTime -= Time.deltaTime;
             seconds = (int)GameEventScript.Instance.remainEventActiveTime;
             timertext.text = seconds.ToString();
             if (EventTrigger == false)
