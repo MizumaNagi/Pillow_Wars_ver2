@@ -1,14 +1,31 @@
 fileFormatVersion: 2
-guid: 549a1e369c6a75f43a2da6587ec9b0cf
+guid: b55b1c3ba146d2e418d509617dcc1634
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: zabuton01
+    100004: zabuton02
+    100006: zaputon03
+    100008: zaputon04
     400000: //RootNode
-    2100000: MT_Light_L
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Light_L
+    400002: zabuton01
+    400004: zabuton02
+    400006: zaputon03
+    400008: zaputon04
+    2100000: MT_Tower_zabuton1
+    2300000: zabuton01
+    2300002: zabuton02
+    2300004: zaputon03
+    2300006: zaputon04
+    3300000: zabuton01
+    3300002: zabuton02
+    3300004: zaputon03
+    3300006: zaputon04
+    4300000: zabuton01
+    4300002: zabuton02
+    4300004: zaputon03
+    4300006: zaputon04
   externalObjects: {}
   materials:
     importMaterials: 1
