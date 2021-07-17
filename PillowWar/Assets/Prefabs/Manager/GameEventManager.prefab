@@ -45,3 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDontDestroy: 1
   gameEventData: {fileID: 11400000, guid: fe8c2aa21eca3254d969b8c2d0e499dc, type: 2}
+  finishEventsNum: 0
+  isEventStart: 0
+  npcBehaviorRoutines: []
+  remainEventStopTime: 0
+  remainEventActiveTime: 0
+  canBedIn: 0
