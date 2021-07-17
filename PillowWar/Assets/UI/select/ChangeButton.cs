@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChangeButton : MonoBehaviour
 {
-    int PlayerjoinNumbers = 0;
+    int PlayerjoinNumbers = 2;
 
     public Text PlayNambertext;
 

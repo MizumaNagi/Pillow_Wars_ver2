@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{3DD27F77-9489-6FDE-D79D-3F22B3BE2228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{E4FAF7D5-7368-0078-8379-C06D70878E14}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,10 +25,6 @@ Global
 		{3DD27F77-9489-6FDE-D79D-3F22B3BE2228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DD27F77-9489-6FDE-D79D-3F22B3BE2228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DD27F77-9489-6FDE-D79D-3F22B3BE2228}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4FAF7D5-7368-0078-8379-C06D70878E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4FAF7D5-7368-0078-8379-C06D70878E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4FAF7D5-7368-0078-8379-C06D70878E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4FAF7D5-7368-0078-8379-C06D70878E14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

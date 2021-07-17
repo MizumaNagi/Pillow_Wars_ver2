@@ -27,7 +27,6 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     public void Init()
     {
         NextEventStart();
-
     }
 
     public void UpdateMethod()
@@ -39,6 +38,9 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             {
                 isEventStart = true;
             }
+        }
+        if(isEventStart == true)
+        { 
             remainEventActiveTime -= Time.deltaTime;
 
             // •z’cö‚è‚İƒgƒŠƒK[
