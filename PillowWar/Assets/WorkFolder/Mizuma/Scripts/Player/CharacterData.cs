@@ -11,9 +11,16 @@ public class CharacterData
         character = _myObject;
         Transform t = character.transform;
         myBodyTransform = t;
-        meshObjParent = t.GetChild(0).gameObject;
-        myCameraTransform = t.GetChild(1).transform;
-
+        if (_isNpc == false)
+        {
+            meshObjParent = t.GetChild(1).gameObject;
+        }
+        else
+        {
+            meshObjParent = t.GetChild(3).gameObject;
+        }
+        
+        myCameraTransform = t.GetChild(0).transform;
         pillow = myCameraTransform.GetChild(0).gameObject;
         myPillowTransform = pillow.transform;
         myPillowRigidbody = pillow.GetComponent<Rigidbody>();
@@ -24,7 +31,7 @@ public class CharacterData
 
         if (_isNpc == false)
         {
-            myCamera = t.GetChild(1).GetComponent<Camera>();
+            myCamera = myCameraTransform.GetComponent<Camera>();
             GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
             myLoserCameraObj.SetActive(true);
             myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();

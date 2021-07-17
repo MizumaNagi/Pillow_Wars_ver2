@@ -6,7 +6,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 {
     [SerializeField] private GameObject[] playerPrefabs;
     [SerializeField] private GameObject[] npcPrefabs;
-    [SerializeField] private GameObject pillowPrefab;
 
     private Vector3[] spawnPos = { 
         new Vector3(-6f, 0, -6f),
@@ -21,6 +20,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
     private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
     private Rect[] twoDivCameraRect = { new Rect(0, 0.5f, 1f, 1f), new Rect(0, 0, 1, 0.5f) };
+    private Rect[] fourDivCameraRect = { new Rect(-0.5f, 0.5f, 1, 1), new Rect(0.5f, 0.5f, 1, 1), new Rect(-0.5f, -0.5f, 1, 1), new Rect(0.5f, -0.5f, 1, 1) };
 
     private Transform playersParent;
     private Transform npcsParent;
@@ -47,12 +47,13 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         // player
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
-            GameObject obj = Instantiate(playerPrefabs[i], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
-            obj.transform.GetChild(0).localPosition = Vector3.zero;
+            int modelIndex = i % playerPrefabs.Length;
+            GameObject obj = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
             obj.name = "Player" + i;
+            obj.GetComponent<HitCharacterController>().objNum = i;
             obj.transform.SetParent(playersParent, true);
 
-            GameObject pillow = obj.transform.GetChild(1).GetChild(0).gameObject;
+            GameObject pillow = obj.transform.GetChild(0).GetChild(0).gameObject;
             pillow.name = i.ToString();
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
             playerDatas.Add(new CharacterData(obj, i, false));
@@ -62,16 +63,18 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             charaIndex++;
 
             if (GameManager.Instance.joinPlayers == 2) playerDatas[i].myCamera.rect = twoDivCameraRect[i];
+            else if (GameManager.Instance.joinPlayers == 4) playerDatas[i].myCamera.rect = fourDivCameraRect[i];
         }
         // npc
         for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
         {
-            GameObject obj = Instantiate(npcPrefabs[i], spawnPos[charaIndex], Quaternion.identity);
-            obj.transform.GetChild(0).localPosition = Vector3.zero;
+            int modelIndex = i % playerPrefabs.Length;
+            GameObject obj = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
             obj.name = "Npc" + (i + 100);
+            obj.GetComponent<HitCharacterController>().objNum = i + 100;
             obj.transform.SetParent(npcsParent, true);
 
-            GameObject pillow = obj.transform.GetChild(1).GetChild(0).gameObject;
+            GameObject pillow = obj.transform.GetChild(0).GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
             npcDatas.Add(new CharacterData(obj, i + 100, true));

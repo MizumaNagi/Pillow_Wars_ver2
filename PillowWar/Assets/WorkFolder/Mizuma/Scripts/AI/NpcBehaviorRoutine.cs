@@ -40,7 +40,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("player start");
+       
 
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();

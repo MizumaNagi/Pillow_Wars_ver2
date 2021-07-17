@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objNum: 0
-  isNpc: 0
+  isNpc: 1
 --- !u!114 &5304672041666775855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab36b8d4d66b0647baf1f17b6a85acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  routineData: {fileID: 0}
-  searchCollider: {fileID: 0}
+  routineData: {fileID: 11400000, guid: faa662ed0dcfa9248b8c59b2ed4853c5, type: 2}
+  searchCollider: {fileID: 5304672040998780833}
   characterData:
     character: {fileID: 0}
     pillow: {fileID: 0}

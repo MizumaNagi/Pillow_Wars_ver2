@@ -3,7 +3,7 @@ using System.Text;
 
 public class HitCharacterController : MonoBehaviour
 {
-    [SerializeField] private int objNum;
+    public int objNum;
     public bool isNpc;
 
     public void OnCollisionEnter(Collision collison)
