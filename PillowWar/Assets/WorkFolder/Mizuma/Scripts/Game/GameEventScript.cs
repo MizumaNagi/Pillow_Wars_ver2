@@ -9,6 +9,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     private int detailEventsNum;
     public int finishEventsNum;
     public bool isEventStart;
+    public bool triggerEventEnd;
     private bool npcGoBedTrigger;
     private EVENT_TYPE nextEventType;
     private float npcGoBedTriggerRemTime = 10f;
@@ -31,6 +32,8 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     public void UpdateMethod()
     {
+        if (isEventStart == true && remainEventActiveTime < 0) Debug.Log("イベント切り替え!!!!!!!!!!!!!!!!");
+
         if (remainEventStopTime < remainEventActiveTime)
         {
             // イベントスタートトリガー

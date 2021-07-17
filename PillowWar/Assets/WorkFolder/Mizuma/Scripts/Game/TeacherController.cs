@@ -11,7 +11,6 @@ public class TeacherController : MonoBehaviour
     private void Start()
     {
         syojiChildCount = syoujiParent.childCount;
-        EventStart();
     }
 
     public void EventStart()
