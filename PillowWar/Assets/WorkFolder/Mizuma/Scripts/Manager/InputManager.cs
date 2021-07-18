@@ -92,10 +92,10 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 characterMover.Jump(characterDatas[i]);
             }
             // しゃがみ
-            if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].canJump == true)
-            {
-                characterMover.Squat(characterDatas[i], characterDatas[i].isSquat);
-            }
+            //if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].canJump == true)
+            //{
+            //    characterMover.Squat(characterDatas[i], characterDatas[i].isSquat);
+            //}
             // ADS/非ADS
             if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f)
             {
@@ -164,7 +164,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true && c.isSquat == false) characterMover.Jump(c);
         // キーボード-しゃがみ
-        if (Input.GetKeyDown(KeyCode.LeftControl) && c.canJump == true) characterMover.Squat(c, c.isSquat);
+        //if (Input.GetKeyDown(KeyCode.LeftControl) && c.canJump == true) characterMover.Squat(c, c.isSquat);
         // キーボード-ADS/非ADS
         if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
         else { characterMover.ToNonADS(c); }

@@ -9,7 +9,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     private int detailEventsNum;
     public int finishEventsNum;
     public bool isEventStart;
-    public bool triggerEventEnd;
+    public bool triggerEventEnd = false;
     private bool npcGoBedTrigger;
     private EVENT_TYPE nextEventType;
     private float npcGoBedTriggerRemTime = 10f;
@@ -19,6 +19,8 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     public float remainEventActiveTime;
     public bool canBedIn = false;
 
+    public Vector3 openDoorCameraPos;
+    public Quaternion openDoorCamerarot;
 
     private void Start()
     {
@@ -32,7 +34,6 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     public void UpdateMethod()
     {
-        if (isEventStart == true && remainEventActiveTime < 0) Debug.Log("イベント切り替え!!!!!!!!!!!!!!!!");
 
         if (remainEventStopTime < remainEventActiveTime)
         {
@@ -76,6 +77,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
                 npcGoBedTrigger = false;
                 NextEventStart();
                 EventActive(nextEventType);
+                TriggerEventBool();
 
                 // NPC全員に布団進行トリガー (HP割合=実行時間 方式)
                 if (npcBehaviorRoutines.Count != 0)
@@ -142,5 +144,17 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     {
         finishEventsNum = 0;
         npcBehaviorRoutines.Clear();
+    }
+
+    private void TriggerEventBool()
+    {
+        triggerEventEnd = true;
+        StartCoroutine(BoolChangeOneFrameWait(false));
+    }
+
+    private IEnumerator BoolChangeOneFrameWait(bool isTrue)
+    {
+        yield return new WaitForEndOfFrame();
+        triggerEventEnd = isTrue;
     }
 }

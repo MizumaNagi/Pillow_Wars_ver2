@@ -32,6 +32,8 @@ public class CharacterData
         if (_isNpc == false)
         {
             myCamera = myCameraTransform.GetComponent<Camera>();
+            cameraController = myCameraTransform.GetComponent<CameraController>();
+
             GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
             myLoserCameraObj.SetActive(true);
             myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();
@@ -57,6 +59,7 @@ public class CharacterData
 
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;
+    public CameraController cameraController;
 
     public int HP { get; private set; }
     public int hitPillowCount;
