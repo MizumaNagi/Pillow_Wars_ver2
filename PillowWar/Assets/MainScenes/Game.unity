@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37312242, g: 0.3807421, b: 0.35872674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22559,6 +22559,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3cc86cb4493b3c478fe665cb8469bcf, type: 3}
+--- !u!4 &682463705803687334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3548540080923350456, guid: e3cc86cb4493b3c478fe665cb8469bcf, type: 3}
+  m_PrefabInstance: {fileID: 682463705803687333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1784321546349651312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22869,11 +22874,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0856adc649761a549ae9891c1a372104, type: 3}
---- !u!4 &3090555680416141947 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 822068636246291704, guid: 0856adc649761a549ae9891c1a372104, type: 3}
-  m_PrefabInstance: {fileID: 3090555680416141946}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4669410397987026064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23154,4 +23154,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc201d50e7455334aba407045b565ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syoujiParent: {fileID: 3090555680416141947}
+  syoujiParent: {fileID: 682463705803687334}

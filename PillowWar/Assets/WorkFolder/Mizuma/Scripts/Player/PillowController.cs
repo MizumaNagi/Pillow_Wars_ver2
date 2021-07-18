@@ -50,9 +50,12 @@ public class PillowController : MonoBehaviour
     {
         characterData.isHavePillow = true;
         characterData.pillowCollider.enabled = false;
-        transform.SetParent(characterData.myCameraTransform);
+
+        if (GameEventScript.Instance.canAction == false) transform.SetParent(characterData.myBodyTransform);
+        else transform.SetParent(characterData.myCameraTransform);
         transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
         transform.localRotation = Quaternion.Euler(InputManager.Instance.moveData.pillowSpawnRot);
+
         characterData.myPillowRigidbody.isKinematic = true;
         characterData.myPillowRigidbody.velocity = Vector3.zero;
     }

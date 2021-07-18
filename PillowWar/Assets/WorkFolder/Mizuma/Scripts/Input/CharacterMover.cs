@@ -118,12 +118,12 @@ public class CharacterMover
         data.isInBed = isInBed;
         if (isInBed == true)
         {
-            data.bedStatus.ChangeEnableCollider(false, data.GetOriginalID());
+            data.bedStatus.ChangeEnableCollider(false, data);
             data.myBodyTransform.localPosition = bedPos;
         }
         else
         {
-            data.bedStatus.ChangeEnableCollider(true);
+            data.bedStatus.ChangeEnableCollider(true, null);
             data.bedStatus = null;
         }
         data.HideCharacter(isInBed);

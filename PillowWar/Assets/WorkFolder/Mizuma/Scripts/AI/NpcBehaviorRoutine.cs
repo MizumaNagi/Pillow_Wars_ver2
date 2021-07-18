@@ -142,7 +142,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
         else
         {
             Debug.Log("布団見つけられず...");
-            SetNpcStatus(NPC_STATUS.WALK);
             return Vector3.zero;
         }
     }
@@ -378,6 +377,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
         isOnceGoBed = true;
         Vector3 nextPos = GetShortestBedPos();
+        if(nextPos == Vector3.zero)
+        {
+            SetNpcStatus(NPC_STATUS.WALK);
+            return;
+        }
         agent.destination = nextPos;
         targetMarkObj.transform.position = nextPos;
 

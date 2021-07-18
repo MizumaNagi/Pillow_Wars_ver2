@@ -1,15 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
     private float arriveTime = 2f;
-    private float stayTime = 3f;
+    private float stayTime = 2.5f;
 
     private Camera cameraCompo;
     private Transform myPillowTransform;
-    private Transform myCharacterTransform;
+    public Transform myCharacterTransform;
 
     private void Start()
     {
@@ -35,14 +35,14 @@ public class CameraController : MonoBehaviour
     }
 
     [SerializeField] private float deltaTime = 0;
-    public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot)
+    public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot, UnityAction callBack)
     {
         deltaTime = 0;
         Vector3 startPos = cameraCompo.transform.position;
         Quaternion startRot = cameraCompo.transform.rotation;
 
         // 枕,カメラ パージ
-        cameraCompo.transform.GetChild(0).SetParent(myCharacterTransform, false);
+        myPillowTransform.SetParent(myCharacterTransform, false);
         cameraCompo.transform.SetParent(PlayerManager.Instance.CameraParent, false);
 
         while (true)
@@ -67,6 +67,9 @@ public class CameraController : MonoBehaviour
                 cameraCompo.transform.localPosition = InputManager.Instance.moveData.standingCameraPos;
                 cameraCompo.transform.localRotation = Quaternion.identity;
                 GameEventScript.Instance.canAction = true;
+
+                yield return new WaitForSeconds(0.5f);
+                callBack();
                 yield break;
             }
         }

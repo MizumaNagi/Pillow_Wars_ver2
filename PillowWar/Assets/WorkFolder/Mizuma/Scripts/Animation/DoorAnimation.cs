@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorAnimation : MonoBehaviour
 {
     private Animator animator;
+    private bool isOpened = false;
 
     private void Start()
     {
@@ -13,8 +14,9 @@ public class DoorAnimation : MonoBehaviour
 
     public void InteractDoor()
     {
-        bool b = animator.GetBool("isOpen");
-        animator.SetBool("isOpen", !b);
-        animator.SetTrigger("trigger");
+        if (isOpened) animator.SetTrigger("triggerClose");
+        animator.SetTrigger("triggerOpen");
+
+        isOpened = !isOpened;
     }
 }

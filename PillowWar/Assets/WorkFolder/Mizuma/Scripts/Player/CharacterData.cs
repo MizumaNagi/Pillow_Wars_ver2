@@ -111,7 +111,7 @@ public class CharacterData
     {
         if (bedStatus != null)
         {
-            bedStatus.ChangeEnableCollider(true);
+            bedStatus.ChangeEnableCollider(true, this);
             bedStatus = null;
         }
 

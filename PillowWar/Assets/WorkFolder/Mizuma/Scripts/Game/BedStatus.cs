@@ -7,7 +7,7 @@ public class BedStatus : MonoBehaviour
     private Collider myCollider;
     public float remainDamagetime;
 
-    public int inCharacterID;
+    public CharacterData data;
     public bool canIn = true;
 
     private void Start()
@@ -19,14 +19,12 @@ public class BedStatus : MonoBehaviour
     private void Update()
     {
         if (myCollider.enabled == true) return;
-        remainDamagetime -= Time.deltaTime;
+        if (GameEventScript.Instance.canAction == true) remainDamagetime -= Time.deltaTime;
         if (remainDamagetime < 0) isTimeOver();
     }
 
-    public void ChangeEnableCollider(bool isOut, int ID = -1)
+    public void ChangeEnableCollider(bool isOut, CharacterData data)
     {
-        inCharacterID = ID;
-
         myCollider.enabled = isOut;
         canIn = isOut;
 
@@ -40,9 +38,14 @@ public class BedStatus : MonoBehaviour
 
     private void isTimeOver()
     {
-        if (inCharacterID < 100) PlayerManager.Instance.playerDatas[inCharacterID].Damage(true, false);
-        else PlayerManager.Instance.npcDatas[inCharacterID - 100].Damage(true, false);
         ResetTime();
+
+        //CharacterData data;
+        //if (inCharacterID < 100) data = PlayerManager.Instance.playerDatas[inCharacterID];
+        //else data = PlayerManager.Instance.npcDatas[inCharacterID - 100];
+
+        if (data.isInBed == true) return;
+        data.Damage(true, false);
     }
 
     private void ResetTime()
