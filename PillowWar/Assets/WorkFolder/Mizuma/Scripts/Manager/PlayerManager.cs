@@ -18,7 +18,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         new Vector3(-3f, 0, -3f)
     };
 
-    private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+    private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315f, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
     private Rect[] twoDivCameraRect = { new Rect(0, 0.5f, 1f, 1f), new Rect(0, 0, 1, 0.5f) };
     private Rect[] fourDivCameraRect = { new Rect(-0.5f, 0.5f, 1, 1), new Rect(0.5f, 0.5f, 1, 1), new Rect(-0.5f, -0.5f, 1, 1), new Rect(0.5f, -0.5f, 1, 1) };
 
@@ -26,6 +26,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     private Transform npcsParent;
 
     public Transform PillowParent { get; private set; }
+    public Transform CameraParent { get; private set; }
     public List<CharacterData> playerDatas = new List<CharacterData>();
     public List<CharacterData> npcDatas = new List<CharacterData>();
 
@@ -42,6 +43,10 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         GameObject emptyObj3 = new GameObject();
         PillowParent = emptyObj3.transform;
         emptyObj3.name = "PillowParent";
+
+        GameObject emptyObj4 = new GameObject();
+        CameraParent = emptyObj4.transform;
+        emptyObj4.name = "CameraParent";
 
         int charaIndex = 0;
         // player

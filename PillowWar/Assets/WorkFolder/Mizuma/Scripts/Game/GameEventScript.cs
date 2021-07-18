@@ -18,6 +18,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     public float remainEventStopTime;
     public float remainEventActiveTime;
     public bool canBedIn = false;
+    public bool canAction = true;
 
     public Vector3 openDoorCameraPos;
     public Quaternion openDoorCamerarot;
@@ -73,6 +74,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             // ÉCÉxÉìÉgî≠ê∂
             if (remainEventActiveTime < 0)
             {
+                canAction = false;
                 isEventStart = false;
                 npcGoBedTrigger = false;
                 NextEventStart();
@@ -95,7 +97,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             canBedIn = false;
         }
 
-        remainEventStopTime -= Time.deltaTime;
+        if(canAction) remainEventStopTime -= Time.deltaTime;
     }
 
     private void NextEventStart()

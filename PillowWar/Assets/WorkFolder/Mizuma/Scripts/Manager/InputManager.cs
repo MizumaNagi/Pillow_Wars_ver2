@@ -50,6 +50,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     public void MoveInputUpdateMethod()
     {
+        if (GameEventScript.Instance.canAction == false) return;
+
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
             if (characterDatas[i].isDeath == true || characterDatas[i].remainStunTime > 0) continue;

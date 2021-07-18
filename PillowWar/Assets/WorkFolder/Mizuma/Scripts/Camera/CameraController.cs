@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private float arriveTime = 3f;
+    private float arriveTime = 2f;
     private float stayTime = 3f;
 
     private Camera cameraCompo;
+    private Transform myPillowTransform;
+    private Transform myCharacterTransform;
 
     private void Start()
     {
         cameraCompo = GetComponent<Camera>();
+        myCharacterTransform = transform.parent.transform;
+        myPillowTransform = transform.GetChild(0).transform;
     }
 
     void Update()
@@ -37,6 +41,10 @@ public class CameraController : MonoBehaviour
         Vector3 startPos = cameraCompo.transform.position;
         Quaternion startRot = cameraCompo.transform.rotation;
 
+        // 枕,カメラ パージ
+        cameraCompo.transform.GetChild(0).SetParent(myCharacterTransform, false);
+        cameraCompo.transform.SetParent(PlayerManager.Instance.CameraParent, false);
+
         while (true)
         {
             yield return null;
@@ -51,9 +59,14 @@ public class CameraController : MonoBehaviour
             if (completePercent > 1)
             {
                 yield return new WaitForSeconds(stayTime);
-                cameraCompo.transform.localPosition = InputManager.Instance.moveData.standingCameraPos;
-                cameraCompo.transform.rotation = Quaternion.identity;
 
+                // 枕,カメラ くっつける
+                cameraCompo.transform.SetParent(myCharacterTransform, false);
+                myPillowTransform.SetParent(transform, false);
+
+                cameraCompo.transform.localPosition = InputManager.Instance.moveData.standingCameraPos;
+                cameraCompo.transform.localRotation = Quaternion.identity;
+                GameEventScript.Instance.canAction = true;
                 yield break;
             }
         }

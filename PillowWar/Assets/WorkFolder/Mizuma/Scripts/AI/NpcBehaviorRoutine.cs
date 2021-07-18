@@ -56,6 +56,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private void Update()
     {
         if (characterData.remainStunTime > 0) return;
+        if (GameEventScript.Instance.canAction == false) return;
         if (gameObject.activeSelf == false) this.enabled = false;
 
         if (GameManager.Instance.isPause == false)
@@ -200,11 +201,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     remainEscapeTime = escapeTime;
 
                     // TODO:仮逃走処理！
-                    int x,y;
-                    if(targetData.myBodyTransform.position.x < transform.position.x) x = 1;
-                    else x = -1;
-                    if(targetData.myBodyTransform.position.y < transform.position.y) y = 1;
-                    else y = -1;
+                    int x = targetData.myBodyTransform.position.x < transform.position.x ? 1 : -1;
+                    int y = targetData.myBodyTransform.position.y < transform.position.y ? 1 : -1;
                     agent.destination = new Vector3(7 * x, 0, 7 * y);
 
                     break;
