@@ -57,25 +57,24 @@ public class CharacterMover
 
     public void PillowThrow(CharacterData data, bool isNpc)
     {
+        float angle = 15f;
+        float missVec = 0.3f;
+
         data.isHavePillow = false;
         data.pillowCollider.enabled = true;
 
-        data.myPillowTransform.localPosition = new Vector3(0,1,1);
+        data.myPillowTransform.localPosition = new Vector3(0,0,1);
+        data.myPillowRigidbody.angularVelocity = Vector3.forward;
 
         data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
 
-        Vector3 angleDir = new Vector3(0, Mathf.Cos(InputManager.Instance.moveData.throwAngle * Mathf.Deg2Rad), Mathf.Sin(InputManager.Instance.moveData.throwAngle * Mathf.Deg2Rad));
+        Quaternion forwardRotation = data.myBodyTransform.rotation;
+        Vector3 angleVec = new Vector3(0, Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad)).normalized;
+        Vector3 rndVec = new Vector3(Random.Range(-missVec, missVec), Random.Range(-missVec, missVec), Random.Range(-missVec, missVec));
 
-        if (isNpc) 
-        {
-            data.myPillowRigidbody.AddForce((data.myBodyTransform.forward) * Random.Range(0.8f,1.2f) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration); 
-        }
-        else
-        {
-            data.myPillowRigidbody.AddForce(data.myBodyTransform.forward * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
-        }
+        data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
     }
 
     public void ToNonADS(CharacterData data)
