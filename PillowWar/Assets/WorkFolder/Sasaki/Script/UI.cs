@@ -192,7 +192,7 @@ public class UI : MonoBehaviour
                 if (PlayerManager.Instance.playerDatas[i].bedStatus == null) continue;
 
                 futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamagetime / GameManager.Instance.ruleData.inBedDamageTime;
-                Futon1textPlayer2[i].text = "–°‹C " + Mathf.Floor((futonhp[i]) * 100) + "%";
+                Futon1textPlayer2[i].text = "–°‹C " + Mathf.Floor((1 - futonhp[i]) * 100) + "%";
             }
         }
         else

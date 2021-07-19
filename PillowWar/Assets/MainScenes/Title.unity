@@ -198,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &185863028
 Transform:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185863027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.51, y: 0, z: 1.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1642099496}
@@ -226,7 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b16e3f4fef904746a3be61c48ee5668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 0
+  angle: 30
+  forwardNormalized: 0
+  angleVecNormalized: 0
 --- !u!23 &185863030
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -985,7 +987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1826912176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,7 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9791e1e0b07494449aeaa55a4f8cf710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkipSelectScene: 1
+  isSkipSelectScene: 0
 --- !u!4 &1826912177
 Transform:
   m_ObjectHideFlags: 0
