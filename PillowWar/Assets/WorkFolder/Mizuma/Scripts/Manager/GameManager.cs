@@ -54,7 +54,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
 
-    public void GameStart()
+    public IEnumerator DelayGameStart(float delayTime)
+    {
+        PlayerManager.Instance.Init();
+        GameEventScript.Instance.Init();
+        BedManager.Instance.RandomObjActive();
+        Init();
+        yield return new WaitForSeconds(delayTime);
+        isPlayTheGame = true;
+    }
+
+    private void GameStart()
     {
         isPlayTheGame = true;
         PlayerManager.Instance.Init();

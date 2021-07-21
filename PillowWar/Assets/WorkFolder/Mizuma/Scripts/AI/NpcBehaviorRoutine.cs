@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public enum NPC_STATUS
 {
+    IS_READY,
     WALK,
     GO_ENEMY,
     ESCAPE,
@@ -48,15 +49,16 @@ public class NpcBehaviorRoutine : MonoBehaviour
         defaultSpeed = agent.speed;
         startGoBedTime = routineData.minStartGoBedTime;
 
-        SetNpcStatus(NPC_STATUS.WALK);
+        SetNpcStatus(NPC_STATUS.IS_READY);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.isPlayTheGame == false) return;
         if (characterData.remainStunTime > 0) return;
         if (GameEventScript.Instance.canAction == false) return;
-        if (gameObject.activeSelf == false) this.enabled = false;
 
+        if (gameObject.activeSelf == false) this.enabled = false;
         if (GameManager.Instance.isPause == false)
         {
             agent.isStopped = false;
@@ -291,6 +293,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.STUN:
                 {
                     if (characterData.remainStunTime < 0) SetNpcStatus(NPC_STATUS.WALK);
+                    break;
+                }
+            case NPC_STATUS.IS_READY:
+                {
+                    SetNpcStatus(NPC_STATUS.WALK);
                     break;
                 }
             default:
