@@ -33,10 +33,9 @@ public class AlertContorol : MonoBehaviour
         {
             TimerPanel.SetActive(false);
         }
-        else if(GameEventScript.Instance.remainEventActiveTime <= 0)
+        else if(GameEventScript.Instance.triggerEventEnd == true)
         {
             EventTrigger = false;
-            Debug.Log("aaa");
         }
     }
 

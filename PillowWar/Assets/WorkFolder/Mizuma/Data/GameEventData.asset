@@ -35,6 +35,6 @@ MonoBehaviour:
     eventActiveTime: 5
     type: 0
   finalEventInfo:
-    stopEventInterval: 10
+    stopEventInterval: 15
     eventActiveTime: 5
     type: 0
