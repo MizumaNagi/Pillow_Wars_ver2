@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
     }
 
     [SerializeField] private float deltaTime = 0;
-    public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot, UnityAction callBack)
+    public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot)
     {
         deltaTime = 0;
         Vector3 startPos = cameraCompo.transform.position;
@@ -68,8 +68,6 @@ public class CameraController : MonoBehaviour
                 cameraCompo.transform.localRotation = Quaternion.identity;
                 GameEventScript.Instance.canAction = true;
 
-                yield return new WaitForSeconds(0.5f);
-                callBack();
                 yield break;
             }
         }

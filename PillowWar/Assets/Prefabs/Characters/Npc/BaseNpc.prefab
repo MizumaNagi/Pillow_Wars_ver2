@@ -31,64 +31,6 @@ Transform:
   m_Father: {fileID: 5304672041666775848}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5304672040994747114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5304672040994747113}
-  - component: {fileID: 5304672040994747112}
-  - component: {fileID: 5304672040994747119}
-  m_Layer: 0
-  m_Name: EventSearchCollider
-  m_TagString: EventSearchCollider
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5304672040994747113
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5304672040994747114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5304672041666775848}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5304672040994747112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5304672040994747114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c1decd3c51729499e932475bb9a44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcBehaviorRoutine: {fileID: 5304672041666775855}
---- !u!65 &5304672040994747119
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5304672040994747114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.74, z: 0.43}
-  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!1 &5304672040998780835
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5304672040998780834}
   - component: {fileID: 5304672040998780833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CharacterSearchCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,6 +89,7 @@ GameObject:
   - component: {fileID: 5304672041666775854}
   - component: {fileID: 5304672041666775855}
   - component: {fileID: 5304672041666775859}
+  - component: {fileID: 6771691630465607909}
   m_Layer: 0
   m_Name: BaseNpc
   m_TagString: Player
@@ -167,7 +110,6 @@ Transform:
   m_Children:
   - {fileID: 5304672040322981794}
   - {fileID: 5304672040998780834}
-  - {fileID: 5304672040994747113}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -243,6 +185,8 @@ MonoBehaviour:
     pillowCollider: {fileID: 0}
     bedStatus: {fileID: 0}
     doorAnimation: {fileID: 0}
+    cameraController: {fileID: 0}
+    HP: 0
     hitPillowCount: 0
     remainthrowCT: 0
     remainStunTime: 0
@@ -282,6 +226,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &6771691630465607909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304672041666775849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c1decd3c51729499e932475bb9a44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcBehaviorRoutine: {fileID: 5304672041666775855}
 --- !u!1001 &5304672041522537070
 PrefabInstance:
   m_ObjectHideFlags: 0

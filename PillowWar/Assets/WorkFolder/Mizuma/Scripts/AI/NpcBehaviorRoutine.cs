@@ -124,7 +124,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         // BedManager.Instanceに登録されている全ての未使用ベッドから最も近いベッドのインデックス番号を取得する
         for (int i = 0; i < BedManager.Instance.bedColliders.Count; i++)
         {
-            if (BedManager.Instance.bedColliders[i].enabled == false) continue;
+            if (BedManager.Instance.bedColliders[i].gameObject.activeSelf == false) continue;
 
             float distance = Vector3.Distance(transform.position, BedManager.Instance.bedColliders[i].transform.position);
             if (distance < shortestBedPos)

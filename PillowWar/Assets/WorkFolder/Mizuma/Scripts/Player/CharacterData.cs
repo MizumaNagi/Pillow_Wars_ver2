@@ -17,7 +17,7 @@ public class CharacterData
         }
         else
         {
-            meshObjParent = t.GetChild(3).gameObject;
+            meshObjParent = t.GetChild(2).gameObject;
         }
         
         myCameraTransform = t.GetChild(0).transform;
@@ -74,7 +74,6 @@ public class CharacterData
     public bool isInBedRange = false;
     public bool isInBed = false;
     public bool isDash = false;
-    public bool isInDoor = false;
     public bool isSquat = false;
 
     public Vector3 inBedPos = Vector3.zero;

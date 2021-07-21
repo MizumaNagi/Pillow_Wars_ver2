@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5089654523162246154}
   - component: {fileID: 8691199398543470575}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BedEventCollider
   m_TagString: Bed
   m_Icon: {fileID: 0}

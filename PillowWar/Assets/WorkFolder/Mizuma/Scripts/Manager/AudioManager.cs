@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int bgmChannelValue;
+    [SerializeField] private int seChannelValue;
 
-    // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        
+        for(int i = 0; i < bgmChannelValue; i++)
+        {
+
+        }
     }
 }

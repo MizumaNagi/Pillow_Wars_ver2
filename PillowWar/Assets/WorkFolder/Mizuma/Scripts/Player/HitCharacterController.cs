@@ -54,20 +54,6 @@ public class HitCharacterController : MonoBehaviour
                 PlayerManager.Instance.playerDatas[objNum].bedStatus = bed;
             }
         }
-
-        if (other.gameObject.tag == "InteractDoor")
-        {
-            if (isNpc == true)
-            {
-                PlayerManager.Instance.npcDatas[objNum - 100].isInDoor = true;
-                PlayerManager.Instance.npcDatas[objNum - 100].doorAnimation = other.GetComponent<DoorAnimation>();
-            }
-            else
-            {
-                PlayerManager.Instance.playerDatas[objNum].isInDoor = true;
-                PlayerManager.Instance.playerDatas[objNum].doorAnimation = other.GetComponent<DoorAnimation>();
-            }
-        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -84,21 +70,6 @@ public class HitCharacterController : MonoBehaviour
                 PlayerManager.Instance.playerDatas[objNum].isInBedRange = false;
                 PlayerManager.Instance.playerDatas[objNum].bedStatus = null;
             }
-        }
-
-        if(other.gameObject.tag == "Door")
-        {
-            if (isNpc == true)
-            {
-                PlayerManager.Instance.npcDatas[objNum - 100].isInDoor = false;
-                PlayerManager.Instance.npcDatas[objNum - 100].doorAnimation = null;
-            }
-            else
-            {
-                PlayerManager.Instance.playerDatas[objNum].isInDoor = false;
-                PlayerManager.Instance.playerDatas[objNum].doorAnimation = null;
-            }
-            
         }
     }
 }

@@ -15,7 +15,7 @@ public class DoorAnimation : MonoBehaviour
     public void InteractDoor()
     {
         if (isOpened) animator.SetTrigger("triggerClose");
-        animator.SetTrigger("triggerOpen");
+        else animator.SetTrigger("triggerOpen");
 
         isOpened = !isOpened;
     }

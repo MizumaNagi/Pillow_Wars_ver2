@@ -38,13 +38,15 @@ public class TeacherController : MonoBehaviour
             Vector3 cameraEndPos = syoujiParent.GetChild(rnd).Find("CameraPoint").gameObject.transform.position;
             Quaternion cameraEndRot = syoujiParent.GetChild(rnd).Find("CameraPoint").gameObject.transform.rotation;
 
-            //CallBack callBack = doorAnimation.InteractDoor;
-            StartCoroutine(playerData.cameraController.StartMoveCorutine(cameraEndPos, cameraEndRot, doorAnimation.InteractDoor));
+            StartCoroutine(playerData.cameraController.StartMoveCorutine(cameraEndPos, cameraEndRot));
         }
+
+        StartCoroutine(DelayDoorAnimation(doorAnimation.InteractDoor));
     }
 
-    public void A()
+    private IEnumerator DelayDoorAnimation(UnityEngine.Events.UnityAction callBack)
     {
-
+        yield return new WaitForSeconds(3);
+        callBack();
     }
 }
