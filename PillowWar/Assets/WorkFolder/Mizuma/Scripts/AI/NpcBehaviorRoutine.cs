@@ -153,7 +153,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     /// <returns>指定した入れる番号のBedStatus</returns>
     private BedStatus GetDestinationBedStatus(int index)
     {
-        return BedManager.Instance.bedColliders[index].GetComponent<BedStatus>();
+        return BedManager.Instance.bedColliders[index].GetComponentInParent<BedStatus>();
     }
 
     /// <summary>

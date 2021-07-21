@@ -16,6 +16,8 @@ public class GetBedCollider : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(other.tag);
+
         // 付近にBedがあり、尚且つNPC状態が"ベッドに向かっている"時
         if (other.gameObject.CompareTag("Bed") && npcBehaviorRoutine.npcStatus == NPC_STATUS.GO_BED)
         {
@@ -31,7 +33,7 @@ public class GetBedCollider : MonoBehaviour
             // 範囲内のBedStatusを取得する
             npcBehaviorRoutine.characterData.isInBedRange = true;
             npcBehaviorRoutine.characterData.inBedPos = other.transform.position;
-            BedStatus bed = other.GetComponent<BedStatus>();
+            BedStatus bed = other.GetComponentInParent<BedStatus>();
             npcBehaviorRoutine.characterData.bedStatus = bed;
 
             // ベッドに入る

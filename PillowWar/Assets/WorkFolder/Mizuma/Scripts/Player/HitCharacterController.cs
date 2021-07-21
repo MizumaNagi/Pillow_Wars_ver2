@@ -50,7 +50,7 @@ public class HitCharacterController : MonoBehaviour
             {
                 PlayerManager.Instance.playerDatas[objNum].isInBedRange = true;
                 PlayerManager.Instance.playerDatas[objNum].inBedPos = other.transform.position;
-                BedStatus bed = other.GetComponent<BedStatus>();
+                BedStatus bed = other.GetComponentInParent<BedStatus>();
                 PlayerManager.Instance.playerDatas[objNum].bedStatus = bed;
             }
         }

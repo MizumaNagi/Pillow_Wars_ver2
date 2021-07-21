@@ -1,28 +1,26 @@
 fileFormatVersion: 2
-guid: c21f3c68eaf8d4d45b1ee8bac9fc06d2
+guid: 8cb5718b4c138a748aa374c4756d926c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: huton_bottom
-    100004: huton_folded
-    100006: huton_top
+    100002: Futon_flat
+    100004: Futon_InPlayer
+    100006: Makura
     400000: //RootNode
-    400002: huton_bottom
-    400004: huton_folded
-    400006: huton_top
-    2100000: texture_huton_folded
-    2300000: huton_bottom
-    2300002: huton_folded
-    2300004: huton_top
-    3300000: huton_bottom
-    3300002: huton_folded
-    3300004: huton_top
-    4300000: huton_bottom
-    4300002: huton_top
-    4300004: huton_folded
-    7400000: Take 001
-    9500000: //RootNode
+    400002: Futon_flat
+    400004: Futon_InPlayer
+    400006: Makura
+    2100000: texture_futon
+    2300000: Futon_flat
+    2300002: Futon_InPlayer
+    2300004: Makura
+    3300000: Futon_flat
+    3300002: Futon_InPlayer
+    3300004: Makura
+    4300000: Makura
+    4300002: Futon_flat
+    4300004: Futon_InPlayer
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -75,8 +73,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -103,7 +101,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

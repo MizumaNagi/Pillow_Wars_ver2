@@ -61,7 +61,8 @@ public class CharacterData
     public DoorAnimation doorAnimation;
     public CameraController cameraController;
 
-    public int HP { get; private set; }
+    //public int HP { get; private set; }
+    public int HP;
     public int hitPillowCount;
     public float remainthrowCT = 0;
     public float remainStunTime = 0;
