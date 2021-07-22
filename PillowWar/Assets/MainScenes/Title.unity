@@ -369,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: joinPlayers
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder
@@ -683,6 +683,10 @@ PrefabInstance:
     - target: {fileID: 2682800872874778373, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: m_Name
       value: InputManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
+      propertyPath: isUseKeyboard
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778379, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: m_RootOrder

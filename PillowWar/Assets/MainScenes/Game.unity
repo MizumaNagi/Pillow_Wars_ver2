@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37312242, g: 0.3807421, b: 0.35872674, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6642,6 +6642,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1638212722}
     m_Modifications:
+    - target: {fileID: 13487226829478840, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217133510335938633, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410113978083080092, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730113178535436721, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730113178535436721, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147127197093417370, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523095412340483765, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258941450361008936, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441281362324076374, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256947845698053990, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8759552515544946327, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8921960362966388383, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_Name
       value: Beds
@@ -6700,6 +6744,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8921960362966388449, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: isDontDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153879909563472837, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
