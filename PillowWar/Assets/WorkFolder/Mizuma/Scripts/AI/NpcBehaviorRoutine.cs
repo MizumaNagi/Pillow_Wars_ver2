@@ -265,6 +265,13 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_BED:
                 {
+                    if (characterData.bedStatus == null)
+                    {
+                        Debug.LogWarning("布団消失");
+                        SetNpcStatus(NPC_STATUS.WALK);
+                        break;
+                    }
+
                     if (characterData.bedStatus.canIn == false)
                     {
                         SetNpcStatus(NPC_STATUS.WALK);
@@ -379,7 +386,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
         isOnceGoBed = true;
         Vector3 nextPos = GetShortestBedPos();
-        if(nextPos == Vector3.zero)
+        if(nextPos == Vector3.zero || characterData.bedStatus == null)
         {
             SetNpcStatus(NPC_STATUS.WALK);
             return;

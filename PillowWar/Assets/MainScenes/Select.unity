@@ -750,9 +750,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayNambertext: {fileID: 1983358435}
   StageImage:
-  - {fileID: 21300000, guid: bdad5605eef4ef848a025acc3e9e2318, type: 3}
-  - {fileID: 21300000, guid: edb6bfde6ee31b146a2ce9a530f2c335, type: 3}
-  - {fileID: 21300000, guid: b012154d8db12b444969e50061b1b54d, type: 3}
+  - {fileID: 21300000, guid: 7f750459a7917a945a747b640bc18886, type: 3}
+  - {fileID: 21300000, guid: 7f750459a7917a945a747b640bc18886, type: 3}
+  - {fileID: 21300000, guid: 7f750459a7917a945a747b640bc18886, type: 3}
   StageSelect_now: 0
   ColumnSelect_now: 0
   Spriteimage: {fileID: 1249507345}

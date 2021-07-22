@@ -34,6 +34,9 @@ public class UI : MonoBehaviour
     [SerializeField] private Image[] hpimage3Player4;
     [SerializeField] private Image[] hpimage4Player4;
 
+    [SerializeField] private GameObject[] damageUi2;
+    [SerializeField] private GameObject[] damageUi4;
+
     public UnityEngine.UI.Text Pausetext;
     public int iconChild = 0;
     float[] futonhp = new float[4];
@@ -48,6 +51,8 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        joinPlayerNum = GameManager.Instance.joinPlayers;
+
         gameManager = GameManager.Instance;
         gameEventScript = GameEventScript.Instance;
 
@@ -80,6 +85,7 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ChangeHpEvent();
 
         if (GameManager.Instance.isPlayTheGame == true)
         {
@@ -314,6 +320,38 @@ public class UI : MonoBehaviour
                 images.Add(hpIconParents1[i].GetChild(j).GetComponent<Image>());
             }
             hpIcons1.Add(images);
+        }
+    }
+
+    private const int maxHp = 10;
+    private int[] hps = { maxHp, maxHp, maxHp, maxHp};
+    private int joinPlayerNum = 0;
+
+    private void ChangeHpEvent()
+    {
+        if(joinPlayerNum == 2)
+        {
+            for (int i = 0; i < joinPlayerNum; i++)
+            {
+                if(hps[i] != PlayerManager.Instance.playerDatas[i].HP)
+                {
+                    hps[i] = PlayerManager.Instance.playerDatas[i].HP;
+                    if (damageUi2[i].activeSelf == true) damageUi2[i].SetActive(false);
+                    damageUi2[i].SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < joinPlayerNum; i++)
+            {
+                if (hps[i] != PlayerManager.Instance.playerDatas[i].HP)
+                {
+                    hps[i] = PlayerManager.Instance.playerDatas[i].HP;
+                    if (damageUi4[i].activeSelf == true) damageUi4[i].SetActive(false);
+                    damageUi4[i].SetActive(true);
+                }
+            }
         }
     }
 }

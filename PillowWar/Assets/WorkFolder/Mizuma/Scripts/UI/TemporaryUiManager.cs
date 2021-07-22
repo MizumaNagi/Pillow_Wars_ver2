@@ -11,7 +11,7 @@ public class TemporaryUiManager : MonoBehaviour
     // Texts
     [SerializeField] private Text[] hpTxts;
     [SerializeField] private Text[] isInBedTxts;
-    [SerializeField] private Text[] isStunTexts;
+    [SerializeField] private Image[] isStunImages;
     [SerializeField] private Text remainEventStopTxt;
     [SerializeField] private Text remainEventActiveTxt;
     [SerializeField] private Text isPauseTxt;
@@ -21,7 +21,11 @@ public class TemporaryUiManager : MonoBehaviour
         playerManager = PlayerManager.Instance;
         gameEventScript = GameEventScript.Instance;
         gameManager = GameManager.Instance;
-        //StartCoroutine(FrameWait());
+
+        foreach(Image img in isStunImages)
+        {
+            img.enabled = false;
+        }
     }
 
     private void Update()
@@ -57,14 +61,14 @@ public class TemporaryUiManager : MonoBehaviour
         // 
         if (GameManager.Instance.joinPlayers == 2)
         {
-            isStunTexts[0].enabled = PlayerManager.Instance.playerDatas[0].remainStunTime > 0;
-            isStunTexts[2].enabled = PlayerManager.Instance.playerDatas[1].remainStunTime > 0;
+            isStunImages[4].enabled = PlayerManager.Instance.playerDatas[0].remainStunTime > 0;
+            isStunImages[5].enabled = PlayerManager.Instance.playerDatas[1].remainStunTime > 0;
         }
         else
         {
             for (int i = 0; i < 4; i++)
             {
-                isStunTexts[i].enabled = PlayerManager.Instance.playerDatas[i].remainStunTime > 0;
+                isStunImages[i].enabled = PlayerManager.Instance.playerDatas[i].remainStunTime > 0;
             }
         }
 

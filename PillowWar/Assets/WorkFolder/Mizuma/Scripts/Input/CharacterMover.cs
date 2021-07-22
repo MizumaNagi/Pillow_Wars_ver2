@@ -58,7 +58,7 @@ public class CharacterMover
     public void PillowThrow(CharacterData data, bool isNpc)
     {
         float angle = 15f;
-        float missVec = 0.3f;
+        float missVec = 0.2f;
 
         data.isHavePillow = false;
         data.pillowCollider.enabled = true;

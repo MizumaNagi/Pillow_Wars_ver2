@@ -145,6 +145,10 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
     public void StatusReset()
     {
         finishEventsNum = 0;
+        isEventStart = false;
+        triggerEventEnd = false;
+        canBedIn = false;
+        canAction = true;
         npcBehaviorRoutines.Clear();
     }
 
