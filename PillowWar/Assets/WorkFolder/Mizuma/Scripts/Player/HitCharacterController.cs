@@ -3,7 +3,7 @@ using System.Text;
 
 public class HitCharacterController : MonoBehaviour
 {
-    [SerializeField] private int objNum;
+    public int objNum;
     public bool isNpc;
 
     public void OnCollisionEnter(Collision collison)
@@ -50,22 +50,8 @@ public class HitCharacterController : MonoBehaviour
             {
                 PlayerManager.Instance.playerDatas[objNum].isInBedRange = true;
                 PlayerManager.Instance.playerDatas[objNum].inBedPos = other.transform.position;
-                BedStatus bed = other.GetComponent<BedStatus>();
+                BedStatus bed = other.GetComponentInParent<BedStatus>();
                 PlayerManager.Instance.playerDatas[objNum].bedStatus = bed;
-            }
-        }
-
-        if (other.gameObject.tag == "InteractDoor")
-        {
-            if (isNpc == true)
-            {
-                PlayerManager.Instance.npcDatas[objNum - 100].isInDoor = true;
-                PlayerManager.Instance.npcDatas[objNum - 100].doorAnimation = other.GetComponent<DoorAnimation>();
-            }
-            else
-            {
-                PlayerManager.Instance.playerDatas[objNum].isInDoor = true;
-                PlayerManager.Instance.playerDatas[objNum].doorAnimation = other.GetComponent<DoorAnimation>();
             }
         }
     }
@@ -84,21 +70,6 @@ public class HitCharacterController : MonoBehaviour
                 PlayerManager.Instance.playerDatas[objNum].isInBedRange = false;
                 PlayerManager.Instance.playerDatas[objNum].bedStatus = null;
             }
-        }
-
-        if(other.gameObject.tag == "Door")
-        {
-            if (isNpc == true)
-            {
-                PlayerManager.Instance.npcDatas[objNum - 100].isInDoor = false;
-                PlayerManager.Instance.npcDatas[objNum - 100].doorAnimation = null;
-            }
-            else
-            {
-                PlayerManager.Instance.playerDatas[objNum].isInDoor = false;
-                PlayerManager.Instance.playerDatas[objNum].doorAnimation = null;
-            }
-            
         }
     }
 }

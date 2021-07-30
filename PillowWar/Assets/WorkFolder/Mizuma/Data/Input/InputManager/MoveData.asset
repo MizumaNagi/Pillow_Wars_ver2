@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MoveData
   m_EditorClassIdentifier: 
   moveForce: 2000
-  walkMoveSpdLimit: 5
+  walkMoveSpdLimit: 4
   squatMoveSpdLimit: 3
-  dashMovMulti: 2
+  dashMovMulti: 1.5
   viewMoveSpd: 250
   jumpForce: 200
-  throwForce: 250
-  throwAngle: 15
+  throwForce: 240
+  throwAngle: 30
   updateVelocityCoeffcient: 1
   pillowSpawnPos: {x: 0.32, y: -0.45, z: 0.8}
   pillowSpawnRot: {x: -45, y: 150, z: -75}

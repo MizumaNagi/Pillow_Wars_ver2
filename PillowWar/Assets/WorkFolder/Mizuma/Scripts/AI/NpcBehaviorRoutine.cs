@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public enum NPC_STATUS
 {
+    IS_READY,
     WALK,
     GO_ENEMY,
     ESCAPE,
@@ -27,7 +28,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private NavMeshAgent agent;
     private CharacterData targetData;
-    private GameObject targetMarkObj;
     private float defaultSpeed;
 
     public float startGoBedTime;
@@ -40,26 +40,25 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("player start");
-
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
         characterData = PlayerManager.Instance.npcDatas[npcID - 100];
         searchCollider.radius = routineData.warRangeToEnemy / 2;
 
-        targetMarkObj = Instantiate(routineData.targetMark);
         GameEventScript.Instance.npcBehaviorRoutines.Add(this);
         defaultSpeed = agent.speed;
         startGoBedTime = routineData.minStartGoBedTime;
 
-        SetNpcStatus(NPC_STATUS.WALK);
+        SetNpcStatus(NPC_STATUS.IS_READY);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.isPlayTheGame == false) return;
         if (characterData.remainStunTime > 0) return;
-        if (gameObject.activeSelf == false) this.enabled = false;
+        if (GameEventScript.Instance.canAction == false) return;
 
+        if (gameObject.activeSelf == false) this.enabled = false;
         if (GameManager.Instance.isPause == false)
         {
             agent.isStopped = false;
@@ -125,7 +124,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
         // BedManager.Instanceに登録されている全ての未使用ベッドから最も近いベッドのインデックス番号を取得する
         for (int i = 0; i < BedManager.Instance.bedColliders.Count; i++)
         {
-            if (BedManager.Instance.bedColliders[i].enabled == false) continue;
+            if (BedManager.Instance.bedColliders[i].gameObject.activeSelf == false) continue;
 
             float distance = Vector3.Distance(transform.position, BedManager.Instance.bedColliders[i].transform.position);
             if (distance < shortestBedPos)
@@ -143,7 +142,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
         else
         {
             Debug.Log("布団見つけられず...");
-            SetNpcStatus(NPC_STATUS.WALK);
             return Vector3.zero;
         }
     }
@@ -155,7 +153,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     /// <returns>指定した入れる番号のBedStatus</returns>
     private BedStatus GetDestinationBedStatus(int index)
     {
-        return BedManager.Instance.bedColliders[index].GetComponent<BedStatus>();
+        return BedManager.Instance.bedColliders[index].GetComponentInParent<BedStatus>();
     }
 
     /// <summary>
@@ -175,7 +173,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
                     Vector3 nextPos = GetNextDestination();
                     agent.destination = nextPos;
-                    targetMarkObj.transform.position = nextPos;
                     break;
                 }
             case NPC_STATUS.GO_ENEMY:
@@ -202,11 +199,8 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     remainEscapeTime = escapeTime;
 
                     // TODO:仮逃走処理！
-                    int x,y;
-                    if(targetData.myBodyTransform.position.x < transform.position.x) x = 1;
-                    else x = -1;
-                    if(targetData.myBodyTransform.position.y < transform.position.y) y = 1;
-                    else y = -1;
+                    int x = targetData.myBodyTransform.position.x < transform.position.x ? 1 : -1;
+                    int y = targetData.myBodyTransform.position.y < transform.position.y ? 1 : -1;
                     agent.destination = new Vector3(7 * x, 0, 7 * y);
 
                     break;
@@ -237,7 +231,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                         Debug.Log("経路無");
                         Vector3 nextPos = GetNextDestination();
                         agent.destination = nextPos;
-                        targetMarkObj.transform.position = nextPos;
                     }
                     break;
                 }
@@ -272,6 +265,13 @@ public class NpcBehaviorRoutine : MonoBehaviour
                 }
             case NPC_STATUS.GO_BED:
                 {
+                    if (characterData.bedStatus == null)
+                    {
+                        Debug.LogWarning("布団消失");
+                        SetNpcStatus(NPC_STATUS.WALK);
+                        break;
+                    }
+
                     if (characterData.bedStatus.canIn == false)
                     {
                         SetNpcStatus(NPC_STATUS.WALK);
@@ -300,6 +300,11 @@ public class NpcBehaviorRoutine : MonoBehaviour
             case NPC_STATUS.STUN:
                 {
                     if (characterData.remainStunTime < 0) SetNpcStatus(NPC_STATUS.WALK);
+                    break;
+                }
+            case NPC_STATUS.IS_READY:
+                {
+                    SetNpcStatus(NPC_STATUS.WALK);
                     break;
                 }
             default:
@@ -367,7 +372,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
         // 座標を取得、目的地に設定
         Vector3 nextPos = GetShortestBedPos();
         agent.destination = nextPos;
-        targetMarkObj.transform.position = nextPos;
 
         SetNpcStatus(NPC_STATUS.GO_BED);
     }
@@ -382,8 +386,12 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
         isOnceGoBed = true;
         Vector3 nextPos = GetShortestBedPos();
+        if(nextPos == Vector3.zero || characterData.bedStatus == null)
+        {
+            SetNpcStatus(NPC_STATUS.WALK);
+            return;
+        }
         agent.destination = nextPos;
-        targetMarkObj.transform.position = nextPos;
 
         SetNpcStatus(NPC_STATUS.GO_BED);
     }
@@ -404,7 +412,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
             if (isInBed)
             {
                 agent.destination = characterData.inBedPos;
-                targetMarkObj.transform.position = characterData.inBedPos;
                 agent.speed = 0;
             }
             else
@@ -421,7 +428,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
     {
         Vector3 nextPos = GetNextDestination();
         agent.destination = nextPos;
-        targetMarkObj.transform.position = nextPos;
         SetNpcStatus(NPC_STATUS.WALK);
 
         if (characterData.isInBed == false) return;

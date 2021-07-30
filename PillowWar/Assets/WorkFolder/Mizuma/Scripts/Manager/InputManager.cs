@@ -50,6 +50,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     public void MoveInputUpdateMethod()
     {
+        if (GameEventScript.Instance.canAction == false) return;
+
         for (int i = 0; i < gameManager.joinPlayers; i++)
         {
             if (characterDatas[i].isDeath == true || characterDatas[i].remainStunTime > 0) continue;
@@ -92,10 +94,10 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 characterMover.Jump(characterDatas[i]);
             }
             // しゃがみ
-            if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].canJump == true)
-            {
-                characterMover.Squat(characterDatas[i], characterDatas[i].isSquat);
-            }
+            //if (Input.GetButtonDown(playerInput[i].Squat) && characterDatas[i].canJump == true)
+            //{
+            //    characterMover.Squat(characterDatas[i], characterDatas[i].isSquat);
+            //}
             // ADS/非ADS
             if (Input.GetAxis(playerInput[i].SwitchToADS) > 0.2f)
             {
@@ -114,11 +116,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
             {
                 characterMover.InteractBed(characterDatas[i], true, characterDatas[i].inBedPos);
-            }
-            // ドア開閉
-            if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInDoor == true)
-            {
-                PlayerManager.Instance.playerDatas[i].doorAnimation.InteractDoor();
             }
         }
 
@@ -164,7 +161,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         // キーボード-ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && c.canJump == true && c.isSquat == false) characterMover.Jump(c);
         // キーボード-しゃがみ
-        if (Input.GetKeyDown(KeyCode.LeftControl) && c.canJump == true) characterMover.Squat(c, c.isSquat);
+        //if (Input.GetKeyDown(KeyCode.LeftControl) && c.canJump == true) characterMover.Squat(c, c.isSquat);
         // キーボード-ADS/非ADS
         if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
         else { characterMover.ToNonADS(c); }
@@ -172,8 +169,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (Input.GetMouseButton(0) && c.isHavePillow && c.remainthrowCT < 0) characterMover.PillowThrow(c, false);
         // キーボード-布団に入る
         if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true && GameEventScript.Instance.canBedIn == true) characterMover.InteractBed(c, true, c.inBedPos);
-        // キーボード-ドア開閉
-        if (Input.GetKeyDown(KeyCode.E) && c.isInDoor == true) PlayerManager.Instance.playerDatas[keyboardMovePlayerId].doorAnimation.InteractDoor();
     }
 
     private void KeyboardInputMove(CharacterData c)

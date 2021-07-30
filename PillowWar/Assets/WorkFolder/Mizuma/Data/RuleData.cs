@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObject/RuleData", order = 3)]
 public class RuleData : ScriptableObject
 {
+    public float gameStartCount;
     public int maxHp;
     public int hitPillowCountOnDamage;
     public float pillowThrowCT;

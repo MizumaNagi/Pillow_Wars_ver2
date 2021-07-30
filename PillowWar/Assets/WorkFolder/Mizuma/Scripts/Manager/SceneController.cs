@@ -15,7 +15,6 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
 {
     private void Start()
     {
-        base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
@@ -31,7 +30,8 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
         }
         else if (name == "Game")
         {
-            GameManager.Instance.GameStart();
+            StartCoroutine(GameManager.Instance.DelayGameStart(3f));
+            //GameManager.Instance.DelayGameStart(3f);
         }
         else if (name == "Result")
         {

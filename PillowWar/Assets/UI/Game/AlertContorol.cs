@@ -11,16 +11,21 @@ public class AlertContorol : MonoBehaviour
 
     public Text timertext;
     private int seconds;
-
     private bool EventTrigger = false;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        AlertPanel.SetActive(false);
+        TimerPanel.SetActive(false);
+    }
+
     void Update()
     {
         if (GameEventScript.Instance.isEventStart == true)
         {
             seconds = (int)GameEventScript.Instance.remainEventActiveTime;
             timertext.text = seconds.ToString();
+
             if (EventTrigger == false)
             {
                 EventTrigger = true;
@@ -28,15 +33,15 @@ public class AlertContorol : MonoBehaviour
                 TimerPanel.SetActive(true);
                 StartCoroutine(Corutine()); 
             }
+
+            if (GameEventScript.Instance.remainEventActiveTime <= 5)
+            {
+                TimerPanel.SetActive(false);
+            }
         }
-        if(GameEventScript.Instance.remainEventActiveTime <= 5)
-        {
-            TimerPanel.SetActive(false);
-        }
-        else if(GameEventScript.Instance.remainEventActiveTime <= 0)
+        if (GameEventScript.Instance.triggerEventEnd == true)
         {
             EventTrigger = false;
-            Debug.Log("aaa");
         }
     }
 

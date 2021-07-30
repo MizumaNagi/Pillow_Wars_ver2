@@ -11,9 +11,16 @@ public class CharacterData
         character = _myObject;
         Transform t = character.transform;
         myBodyTransform = t;
-        meshObjParent = t.GetChild(0).gameObject;
-        myCameraTransform = t.GetChild(1).transform;
-
+        if (_isNpc == false)
+        {
+            meshObjParent = t.GetChild(1).gameObject;
+        }
+        else
+        {
+            meshObjParent = t.GetChild(2).gameObject;
+        }
+        
+        myCameraTransform = t.GetChild(0).transform;
         pillow = myCameraTransform.GetChild(0).gameObject;
         myPillowTransform = pillow.transform;
         myPillowRigidbody = pillow.GetComponent<Rigidbody>();
@@ -24,7 +31,9 @@ public class CharacterData
 
         if (_isNpc == false)
         {
-            myCamera = t.GetChild(1).GetComponent<Camera>();
+            myCamera = myCameraTransform.GetComponent<Camera>();
+            cameraController = myCameraTransform.GetComponent<CameraController>();
+
             GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
             myLoserCameraObj.SetActive(true);
             myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();
@@ -50,8 +59,10 @@ public class CharacterData
 
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;
+    public CameraController cameraController;
 
-    public int HP { get; private set; }
+    //public int HP { get; private set; }
+    public int HP;
     public int hitPillowCount;
     public float remainthrowCT = 0;
     public float remainStunTime = 0;
@@ -63,7 +74,6 @@ public class CharacterData
     public bool isInBedRange = false;
     public bool isInBed = false;
     public bool isDash = false;
-    public bool isInDoor = false;
     public bool isSquat = false;
 
     public Vector3 inBedPos = Vector3.zero;
@@ -101,7 +111,7 @@ public class CharacterData
     {
         if (bedStatus != null)
         {
-            bedStatus.ChangeEnableCollider(true);
+            bedStatus.ChangeEnableCollider(true, this);
             bedStatus = null;
         }
 

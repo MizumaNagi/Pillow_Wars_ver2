@@ -45,7 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDontDestroy: 1
   joinPlayers: 4
-  joinNpcs: 4
+  joinNpcs: 2
   ruleData: {fileID: 11400000, guid: 2080411983f880249bcafb70ae7ab1e3, type: 2}
-  bedManager: {fileID: 8921960362966388383, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
+  remainPlayers: 0
+  remainCharacters: 0
+  isPause: 0
   resultIDs: 

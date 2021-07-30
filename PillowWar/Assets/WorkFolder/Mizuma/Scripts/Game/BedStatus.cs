@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class BedStatus : MonoBehaviour
 {
-    private Collider myCollider;
+    [SerializeField] private GameObject emptyBed;
+    [SerializeField] private GameObject fullBed;
+
+    private Collider myEventCollider;
     public float remainDamagetime;
 
-    public int inCharacterID;
+    public CharacterData data;
     public bool canIn = true;
 
     private void Start()
     {
-        myCollider = GetComponent<BoxCollider>();
+        emptyBed.SetActive(true);
+        fullBed.SetActive(false);
+
+        myEventCollider = GetComponent<BoxCollider>();
         ResetTime();
     }
 
     private void Update()
     {
-        if (myCollider.enabled == true) return;
-        remainDamagetime -= Time.deltaTime;
+        //if (myEventCollider.enabled == true) return;
+        if (emptyBed.activeSelf == true) return;
+
+        if (GameEventScript.Instance.canAction == true) remainDamagetime -= Time.deltaTime;
         if (remainDamagetime < 0) isTimeOver();
     }
 
-    public void ChangeEnableCollider(bool isOut, int ID = -1)
+    public void ChangeEnableCollider(bool isOut, CharacterData data)
     {
-        inCharacterID = ID;
+        //myEventCollider.enabled = isOut;
+        emptyBed.SetActive(isOut);
+        fullBed.SetActive(!isOut);
 
-        myCollider.enabled = isOut;
+        this.data = data;
+
         canIn = isOut;
 
-        if (myCollider == null) Debug.Log(gameObject.name);
+        //if (myEventCollider == null) Debug.Log(gameObject.name);
 
         if (isOut == true)
         {
@@ -40,9 +51,15 @@ public class BedStatus : MonoBehaviour
 
     private void isTimeOver()
     {
-        if (inCharacterID < 100) PlayerManager.Instance.playerDatas[inCharacterID].Damage(true, false);
-        else PlayerManager.Instance.npcDatas[inCharacterID - 100].Damage(true, false);
         ResetTime();
+
+        //CharacterData data;
+        //if (inCharacterID < 100) data = PlayerManager.Instance.playerDatas[inCharacterID];
+        //else data = PlayerManager.Instance.npcDatas[inCharacterID - 100];
+
+        if (data.isInBed == false) return;
+        Debug.Log(data.HP);
+        data.Damage(true, false);
     }
 
     private void ResetTime()

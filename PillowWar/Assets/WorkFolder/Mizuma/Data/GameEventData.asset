@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: GameEventData
   m_EditorClassIdentifier: 
   gameEvents:
-  - stopEventInterval: 15
-    eventActiveTime: 10
+  - stopEventInterval: 20
+    eventActiveTime: 15
     type: 0
-  - stopEventInterval: 15
-    eventActiveTime: 10
+  - stopEventInterval: 30
+    eventActiveTime: 15
     type: 0
-  - stopEventInterval: 15
-    eventActiveTime: 10
+  - stopEventInterval: 30
+    eventActiveTime: 15
     type: 0
   - stopEventInterval: 30
     eventActiveTime: 10
@@ -35,6 +35,6 @@ MonoBehaviour:
     eventActiveTime: 5
     type: 0
   finalEventInfo:
-    stopEventInterval: 15
+    stopEventInterval: 10
     eventActiveTime: 5
     type: 0

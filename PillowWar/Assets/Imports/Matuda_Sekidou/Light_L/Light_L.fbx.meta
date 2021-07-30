@@ -3,25 +3,11 @@ guid: 549a1e369c6a75f43a2da6587ec9b0cf
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: back
-    100002: bottom
-    100004: front1
-    100006: left
-    100008: //RootNode
-    100010: Light_L
-    400000: back
-    400002: bottom
-    400004: front1
-    400006: left
-    400008: //RootNode
-    400010: Light_L
-    2000000: back
-    2000002: bottom
-    2000004: front1
-    2000006: left
+    100000: //RootNode
+    400000: //RootNode
     2100000: MT_Light_L
-    2300000: Light_L
-    3300000: Light_L
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Light_L
   externalObjects: {}
   materials:
