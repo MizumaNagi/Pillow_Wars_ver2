@@ -66,7 +66,6 @@ public class CameraController : MonoBehaviour
 
                 cameraCompo.transform.localPosition = InputManager.Instance.moveData.standingCameraPos;
                 cameraCompo.transform.localRotation = Quaternion.identity;
-                GameEventScript.Instance.canAction = true;
 
                 yield break;
             }

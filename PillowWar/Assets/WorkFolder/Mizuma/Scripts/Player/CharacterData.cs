@@ -85,7 +85,7 @@ public class CharacterData
         if (isDeath) { return; }
         if (isInBed && isPieceDamage == false) { return; }
         hitPillowCount++;
-        if (hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage || isPercentDamage)
+        if ((hitPillowCount >= GameManager.Instance.ruleData.hitPillowCountOnDamage) || isPieceDamage || isPercentDamage)
         {
             HP--;
             hitPillowCount = 0;

@@ -22,6 +22,11 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         gameManager = GameManager.Instance;
     }
 
+    private void Update()
+    {
+        Debug.Log(Time.timeScale);
+    }
+
     public void GeneralInputUpdateMethod()
     {
         // ƒIƒvƒVƒ‡ƒ“‰æ–Ê
