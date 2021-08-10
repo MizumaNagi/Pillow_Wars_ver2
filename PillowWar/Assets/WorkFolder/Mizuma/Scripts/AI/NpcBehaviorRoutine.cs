@@ -228,7 +228,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     // 経路が無ければ新しい目的地を決める
                     if (agent.hasPath == false && agent.pathPending == false)
                     {
-                        Debug.Log("経路無");
                         Vector3 nextPos = GetNextDestination();
                         agent.destination = nextPos;
                     }

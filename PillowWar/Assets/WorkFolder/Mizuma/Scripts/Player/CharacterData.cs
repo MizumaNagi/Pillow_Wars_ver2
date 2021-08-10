@@ -7,8 +7,10 @@ public class CharacterData
 {
     public CharacterData(GameObject _myObject, int _characterID, bool _isNpc)
     {
-        isNpc = _isNpc;
         character = _myObject;
+        characterID = _characterID;
+        isNpc = _isNpc;
+
         Transform t = character.transform;
         myBodyTransform = t;
         if (_isNpc == false)
@@ -33,6 +35,7 @@ public class CharacterData
         {
             myCamera = myCameraTransform.GetComponent<Camera>();
             cameraController = myCameraTransform.GetComponent<CameraController>();
+            cameraController.Init(characterID);
 
             GameObject myLoserCameraObj = GameObject.FindGameObjectWithTag("LoserCamera");
             myLoserCameraObj.SetActive(true);
@@ -40,7 +43,6 @@ public class CharacterData
             myLoserCamera.enabled = false;
         }
 
-        characterID = _characterID;
     }
 
     public GameObject character;

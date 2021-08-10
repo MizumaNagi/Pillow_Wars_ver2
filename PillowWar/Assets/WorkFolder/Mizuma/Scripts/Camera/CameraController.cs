@@ -4,18 +4,23 @@ using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
+    private const int firstNonHudHpUiLayer = 27;
+
     private float arriveTime = 2f;
     private float stayTime = 2.5f;
-
     private Camera cameraCompo;
     private Transform myPillowTransform;
+
     public Transform myCharacterTransform;
 
-    private void Start()
+    public void Init(int charaID)
     {
         cameraCompo = GetComponent<Camera>();
+
         myCharacterTransform = transform.parent.transform;
         myPillowTransform = transform.GetChild(0).transform;
+
+        InitSetLayer(charaID);
     }
 
     void Update()
@@ -77,5 +82,18 @@ public class CameraController : MonoBehaviour
         Vector3 a = Vector3.Lerp(startPos, halfPos, t);
         Vector3 b = Vector3.Lerp(halfPos, endPos, t);
         return Vector3.Lerp(a, b, t);
+    }
+
+    public void InitSetLayer(int charaID)
+    {
+        cameraCompo.cullingMask = -1;
+
+        for(int i = 0; i < 4; i++)
+        {
+            if(i != charaID)
+            {
+                cameraCompo.cullingMask &= ~(1 << firstNonHudHpUiLayer + i);
+            }
+        }
     }
 }

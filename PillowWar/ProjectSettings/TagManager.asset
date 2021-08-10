@@ -38,10 +38,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Npc1HpUI
+  - Npc2HpUI
+  - Npc3HpUI
+  - Npc4HpUI
   - 
   m_SortingLayers:
   - name: Default

@@ -67,6 +67,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\DelayInvisibleUI.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Scene\TestSceneLoader.cs" />
@@ -108,7 +109,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\DelayInvisibleUI.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\NonHUDHpGaugeUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
@@ -706,6 +707,9 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
