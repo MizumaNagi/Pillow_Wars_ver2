@@ -109,6 +109,8 @@ public class CharacterMover
 
     public void InteractBed(CharacterData data, bool isInBed, Vector3 bedPos)
     {
+        Debug.Log("InteractBed");
+
         if (data.bedStatus == null)
         {
             Debug.LogWarning("data.bedStatus == null \nオブジェクトが破棄されているか確認");

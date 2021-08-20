@@ -197,7 +197,6 @@ MonoBehaviour:
     isInBedRange: 0
     isInBed: 0
     isDash: 0
-    isInDoor: 0
     isSquat: 0
     inBedPos: {x: 0, y: 0, z: 0}
   npcStatus: 0

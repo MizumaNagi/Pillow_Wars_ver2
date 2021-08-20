@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStartCount: 3
   maxHp: 10
-  hitPillowCountOnDamage: 3
+  hitPillowCountOnDamage: 1
   pillowThrowCT: 1
   inBedDamageTime: 5
   headShotBorderLocalPosY: 1.3

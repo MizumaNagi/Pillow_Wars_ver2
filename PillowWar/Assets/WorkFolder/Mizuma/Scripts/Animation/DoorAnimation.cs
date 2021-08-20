@@ -19,4 +19,9 @@ public class DoorAnimation : MonoBehaviour
 
         isOpened = !isOpened;
     }
+
+    public void DoorCloseFinish()
+    {
+        GameEventScript.Instance.canAction = true;
+    }
 }

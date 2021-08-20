@@ -58,7 +58,6 @@ public class BedStatus : MonoBehaviour
         //else data = PlayerManager.Instance.npcDatas[inCharacterID - 100];
 
         if (data.isInBed == false) return;
-        Debug.Log(data.HP);
         data.Damage(true, false);
     }
 
