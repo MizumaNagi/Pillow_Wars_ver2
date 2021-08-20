@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37312242, g: 0.3807421, b: 0.35872674, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1524,7 +1524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &87262915
 Transform:
   m_ObjectHideFlags: 0
@@ -3238,6 +3238,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 33515055426384724, guid: c120c9ccf1955d042ab9a51a5a68e01e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c120c9ccf1955d042ab9a51a5a68e01e, type: 3}
 --- !u!4 &201256124 stripped
@@ -3886,6 +3890,10 @@ PrefabInstance:
     - target: {fileID: 7623077350323167883, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623077350953896979, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
@@ -4606,8 +4614,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDontDestroy: 1
   activeBeds: 5
-  beforeArr: 
-  afterArr: 
   bedColliders: []
 --- !u!1 &359643020
 GameObject:
@@ -8976,7 +8982,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 13487226829478840, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1008320680689873964, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9028,11 +9034,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1217133510335938633, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1410113978083080092, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1606566655550217409, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9084,7 +9090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4147127197093417370, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5822935161696556702, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9108,15 +9114,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6523095412340483765, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7258941450361008936, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7441281362324076374, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7596829389799447740, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9140,11 +9146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8256947845698053990, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8759552515544946327, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8765859620617914189, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9224,7 +9230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9153879909563472837, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df248294551dfd47b33b71ba3ae6689, type: 3}
@@ -10153,7 +10159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10704,7 +10710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11930,7 +11936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7623077350953896981, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
@@ -13963,6 +13969,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 33515055426384724, guid: c120c9ccf1955d042ab9a51a5a68e01e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c120c9ccf1955d042ab9a51a5a68e01e, type: 3}
 --- !u!4 &1078411622 stripped
@@ -14428,7 +14438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14707,7 +14717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16455,7 +16465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22610,6 +22620,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7623077350953896979, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
 --- !u!4 &1649836082 stripped
@@ -28610,6 +28624,10 @@ PrefabInstance:
     - target: {fileID: 7623077350323167883, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623077350953896979, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1cb59c8cf44d15419a8b70a5e91464e, type: 3}

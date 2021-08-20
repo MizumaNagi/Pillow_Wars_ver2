@@ -7,8 +7,8 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 {
     [SerializeField] private int activeBeds = 5;
 
-    public List<int> beforeArr = new List<int>();
-    public List<int> afterArr = new List<int>();
+    private List<int> beforeArr = new List<int>();
+    private List<int> afterArr = new List<int>();
 
     public List<BoxCollider> bedColliders = new List<BoxCollider>();
 

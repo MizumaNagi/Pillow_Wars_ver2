@@ -173,7 +173,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     private void KeyboardInputMove(CharacterData c)
     {
-        float spdMulti = (c.isDash == true) ? moveData.dashMovMulti : 1;
+        float spdMulti = c.isDash == true ? moveData.dashMovMulti : 1;
 
         if (Input.GetKey(KeyCode.W)) characterMover.Move(spdMulti * Vector3.forward, c);
         if (Input.GetKey(KeyCode.A)) characterMover.Move(spdMulti * Vector3.left, c);
