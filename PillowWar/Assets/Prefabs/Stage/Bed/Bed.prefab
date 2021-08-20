@@ -75,7 +75,6 @@ MonoBehaviour:
     isInBedRange: 0
     isInBed: 0
     isDash: 0
-    isInDoor: 0
     isSquat: 0
     inBedPos: {x: 0, y: 0, z: 0}
   canIn: 1
@@ -199,6 +198,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 151295035203469183, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691199398543470575, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
