@@ -8,6 +8,8 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private Image[] FutontimagePlayer4;
     [SerializeField] private Image[] FutontimagePlayer2;
+    [SerializeField] private Image[] Futont3imagePlayer2;
+    [SerializeField] private Image[] Futont3imagePlayer4;
     [SerializeField] private Text[] FutontextPlayer4;
     [SerializeField] private Text[] FutontextPlayer2;
     [SerializeField] private Transform[] hpIconParents;
@@ -255,12 +257,14 @@ public class UI : MonoBehaviour
                 FutontimagePlayer4[i].enabled = true;
                 Futont1imagePlayer4[i].enabled = false;
                 Futont2imagePlayer4[i].enabled = false;
+                Futont3imagePlayer4[i].enabled = true;
             }
             else
             {
                 Futon1textPlayer4[i].enabled = false;
                 FutontextPlayer4[i].enabled = false;
                 FutontimagePlayer4[i].enabled = false;
+                Futont3imagePlayer4[i].enabled = false;
             }
         }
     }
@@ -287,12 +291,14 @@ public class UI : MonoBehaviour
                 FutontimagePlayer2[i].enabled = true;
                 Futont1imagePlayer2[i].enabled = false;
                 Futont2imagePlayer2[i].enabled = false;
+                Futont3imagePlayer2[i].enabled = true;
             }
             else
             {
                 Futon1textPlayer2[i].enabled = false;
                 FutontextPlayer2[i].enabled = false;
                 FutontimagePlayer2[i].enabled = false;
+                Futont3imagePlayer2[i].enabled = false;
             }
         }
     }
