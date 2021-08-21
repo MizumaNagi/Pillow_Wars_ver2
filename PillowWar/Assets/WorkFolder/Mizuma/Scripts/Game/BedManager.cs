@@ -12,7 +12,18 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 
     public List<BoxCollider> bedColliders = new List<BoxCollider>();
 
-    public void RandomObjActive()
+    public void Init()
+    {
+        RandomObjActive();
+        AllBedChgActive(true);
+    }
+
+    public void EndReset()
+    {
+        AllBedChgActive(false);
+    }
+
+    private void RandomObjActive()
     {
         int childCount = transform.childCount;
 
@@ -26,12 +37,18 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
             int activeNum = UnityEngine.Random.Range(0, beforeArr.Count);
             afterArr.Add(beforeArr[activeNum]);
             bedColliders.Add(transform.GetChild(afterArr[i]).GetComponentInChildren<BoxCollider>());
+            transform.GetChild(afterArr[i]).GetComponentInChildren<BedStatus>().InitSet(true);
             beforeArr.RemoveAt(activeNum);
             transform.GetChild(afterArr[i]).gameObject.SetActive(true);
         }
+
+        foreach(int disableNum in beforeArr.ToArray())
+        {
+            transform.GetChild(disableNum).GetComponentInChildren<BedStatus>().InitSet(false);
+        }
     }
 
-    public void AllBedChgActive(bool isActive)
+    private void AllBedChgActive(bool isActive)
     {
         for(int i = 0; i < transform.childCount; i++)
         {
@@ -45,5 +62,6 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
     {
         beforeArr.Clear();
         afterArr.Clear();
+        bedColliders.Clear();
     }
 }

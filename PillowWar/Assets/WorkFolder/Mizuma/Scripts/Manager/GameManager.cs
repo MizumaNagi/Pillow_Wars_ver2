@@ -58,7 +58,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         PlayerManager.Instance.Init();
         GameEventScript.Instance.Init();
-        BedManager.Instance.RandomObjActive();
+        BedManager.Instance.Init();
         Init();
         yield return new WaitForSeconds(delayTime);
         isPlayTheGame = true;
@@ -69,7 +69,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         isPlayTheGame = true;
         PlayerManager.Instance.Init();
         GameEventScript.Instance.Init();
-        BedManager.Instance.RandomObjActive();
+        BedManager.Instance.Init();
         Init();
     }
 
@@ -77,7 +77,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         PlayerManager.Instance.DataReset();
         GameEventScript.Instance.StatusReset();
-        BedManager.Instance.AllBedChgActive(false);
+        BedManager.Instance.EndReset();
         isPlayTheGame = false;
         isPause = false;
     }
