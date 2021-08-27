@@ -6,26 +6,22 @@ public class BedStatus : MonoBehaviour
 {
     [SerializeField] private GameObject emptyBed;
     [SerializeField] private GameObject fullBed;
+    [SerializeField] private Collider myEventCollider;
 
-    private Collider myEventCollider;
+    private bool canInteract;
+
     public float remainDamagetime;
-
     public CharacterData data;
     public bool canIn = true;
 
     private void Start()
     {
-        emptyBed.SetActive(true);
-        fullBed.SetActive(false);
-
-        myEventCollider = GetComponent<BoxCollider>();
         ResetTime();
     }
 
     private void Update()
     {
-        //if (myEventCollider.enabled == true) return;
-        if (emptyBed.activeSelf == true) return;
+        if (emptyBed.activeSelf == true || canInteract == false) return;
 
         if (GameEventScript.Instance.canAction == true) remainDamagetime -= Time.deltaTime;
         if (remainDamagetime < 0) isTimeOver();
@@ -64,5 +60,13 @@ public class BedStatus : MonoBehaviour
     private void ResetTime()
     {
         remainDamagetime = GameManager.Instance.ruleData.inBedDamageTime;
+    }
+
+    public void InitSet(bool canInteract)
+    {
+        this.canInteract = canInteract;
+        emptyBed.SetActive(canInteract);
+        fullBed.SetActive(!canInteract);
+        myEventCollider.enabled = canInteract;
     }
 }

@@ -6,6 +6,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 {
     [SerializeField] private GameObject[] playerPrefabs;
     [SerializeField] private GameObject[] npcPrefabs;
+    [SerializeField] private GameObject[] hairs;
 
     private Vector3[] spawnPos = { 
         new Vector3(-6f, 0, -6f),
@@ -53,15 +54,16 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             int modelIndex = i % playerPrefabs.Length;
-            GameObject obj = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
-            obj.name = "Player" + i;
-            obj.GetComponent<HitCharacterController>().objNum = i;
-            obj.transform.SetParent(playersParent, true);
+            GameObject chara = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
+            chara.name = "Player" + i;
+            chara.GetComponent<HitCharacterController>().objNum = i;
+            chara.transform.SetParent(playersParent, true);
+            EquipRandomHair(chara.transform);
 
-            GameObject pillow = obj.transform.GetChild(0).GetChild(0).gameObject;
+            GameObject pillow = chara.transform.GetChild(0).GetChild(0).gameObject;
             pillow.name = i.ToString();
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            playerDatas.Add(new CharacterData(obj, i, false));
+            playerDatas.Add(new CharacterData(chara, i, false));
 
             pillow.GetComponent<PillowController>().characterData = playerDatas[i];
 
@@ -70,19 +72,21 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             if (GameManager.Instance.joinPlayers == 2) playerDatas[i].myCamera.rect = twoDivCameraRect[i];
             else if (GameManager.Instance.joinPlayers == 4) playerDatas[i].myCamera.rect = fourDivCameraRect[i];
         }
+
         // npc
         for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
         {
             int modelIndex = i % playerPrefabs.Length;
-            GameObject obj = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
-            obj.name = "Npc" + (i + 100);
-            obj.GetComponent<HitCharacterController>().objNum = i + 100;
-            obj.transform.SetParent(npcsParent, true);
+            GameObject chara = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
+            chara.name = "Npc" + (i + 100);
+            chara.GetComponent<HitCharacterController>().objNum = i + 100;
+            chara.transform.SetParent(npcsParent, true);
+            EquipRandomHair(chara.transform);
 
-            GameObject pillow = obj.transform.GetChild(0).GetChild(0).gameObject;
+            GameObject pillow = chara.transform.GetChild(0).GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
             pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            npcDatas.Add(new CharacterData(obj, i + 100, true));
+            npcDatas.Add(new CharacterData(chara, i + 100, true));
 
             pillow.GetComponent<PillowController>().characterData = npcDatas[i];
 
@@ -116,5 +120,19 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             npcDatas[i].remainthrowCT -= Time.deltaTime;
             npcDatas[i].remainStunTime -= Time.deltaTime;
         }
+    }
+
+    private void EquipRandomHair(Transform charaObj)
+    {
+        int rndNum = Random.Range(0, hairs.Length + 1);
+
+        // ƒnƒQ
+        if (rndNum == hairs.Length) return;
+
+        // ‚Ó‚³‚Ó‚³
+        GameObject hair = Instantiate(hairs[rndNum]);
+        hair.transform.parent = charaObj;
+        hair.transform.localPosition = Vector3.zero;
+        hair.transform.localRotation = Quaternion.identity;
     }
 }

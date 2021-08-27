@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptyBed: {fileID: 4805475841101100021}
   fullBed: {fileID: 3514758137807463318}
+  myEventCollider: {fileID: 4050054479815016261}
   remainDamagetime: 0
   data:
     character: {fileID: 0}
@@ -75,7 +76,6 @@ MonoBehaviour:
     isInBedRange: 0
     isInBed: 0
     isDash: 0
-    isInDoor: 0
     isSquat: 0
     inBedPos: {x: 0, y: 0, z: 0}
   canIn: 1
@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691199398543470575, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
 --- !u!1 &4805475841101100021 stripped
@@ -211,5 +215,10 @@ GameObject:
 --- !u!4 &4805475841100935125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 151295035203469183, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
+  m_PrefabInstance: {fileID: 4659528901593125034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4050054479815016261 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8691199398543470575, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
   m_PrefabInstance: {fileID: 4659528901593125034}
   m_PrefabAsset: {fileID: 0}
