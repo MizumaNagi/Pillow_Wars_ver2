@@ -57,14 +57,14 @@ public class CharacterMover
 
     public void PillowThrow(CharacterData data, bool isNpc)
     {
-        float angle = 15f;
-        float missVec = 0.2f;
+        float angle = InputManager.Instance.moveData.throwAngle;
+        float missVec = InputManager.Instance.moveData.throwMissVec;
 
         data.isHavePillow = false;
         data.pillowCollider.enabled = true;
-
-        data.myPillowTransform.localPosition = new Vector3(0,0,1);
-        data.myPillowRigidbody.angularVelocity = Vector3.forward;
+        
+        data.myPillowTransform.localPosition = new Vector3(0.2f,0.15f,-0.1f);
+        //data.myPillowRigidbody.angularVelocity = Vector3.forward;
 
         data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;

@@ -48,13 +48,16 @@ public class PillowController : MonoBehaviour
     
     private void ReturnPillow()
     {
+        Debug.Log("Return");
+
         characterData.isHavePillow = true;
         characterData.pillowCollider.enabled = false;
 
-        if (GameEventScript.Instance.canAction == false) transform.SetParent(characterData.myBodyTransform);
-        else transform.SetParent(characterData.myCameraTransform);
-        transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-        transform.localRotation = Quaternion.Euler(InputManager.Instance.moveData.pillowSpawnRot);
+        transform.SetParent(characterData.initAccessorieParentProperty.PillowParent);
+        //if (GameEventScript.Instance.canAction == false) transform.SetParent(characterData.myBodyTransform);
+        //else transform.SetParent(characterData.myCameraTransform);
+        transform.localPosition = characterData.initAccessorieParentProperty.InitPillowPos;
+        transform.localRotation = characterData.initAccessorieParentProperty.InitPillowRot;
 
         characterData.myPillowRigidbody.isKinematic = true;
         characterData.myPillowRigidbody.velocity = Vector3.zero;

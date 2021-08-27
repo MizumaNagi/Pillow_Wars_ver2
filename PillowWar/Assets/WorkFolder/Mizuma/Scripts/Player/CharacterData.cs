@@ -11,6 +11,8 @@ public class CharacterData
         characterID = _characterID;
         isNpc = _isNpc;
 
+        initAccessorieParentProperty = character.GetComponentInChildren<InitAccessorieParentProperty>();
+
         Transform t = character.transform;
         myBodyTransform = t;
         if (_isNpc == false)
@@ -23,7 +25,7 @@ public class CharacterData
         }
         
         myCameraTransform = t.GetChild(0).transform;
-        pillow = myCameraTransform.GetChild(0).gameObject;
+        pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
         myPillowTransform = pillow.transform;
         myPillowRigidbody = pillow.GetComponent<Rigidbody>();
         pillowCollider = pillow.GetComponent<BoxCollider>();
@@ -42,7 +44,6 @@ public class CharacterData
             myLoserCamera = myLoserCameraObj.transform.GetChild(_characterID).GetComponent<Camera>();
             myLoserCamera.enabled = false;
         }
-
     }
 
     public GameObject character;
@@ -62,6 +63,7 @@ public class CharacterData
     public BedStatus bedStatus;
     public DoorAnimation doorAnimation;
     public CameraController cameraController;
+    public InitAccessorieParentProperty initAccessorieParentProperty;
 
     //public int HP { get; private set; }
     public int HP;

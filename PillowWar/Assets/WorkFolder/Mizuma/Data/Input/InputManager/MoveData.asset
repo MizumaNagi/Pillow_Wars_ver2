@@ -19,8 +19,9 @@ MonoBehaviour:
   viewMoveSpd: 250
   jumpForce: 200
   throwForce: 260
-  throwAngle: 15
-  updateVelocityCoeffcient: 1
+  throwAngle: 30
+  throwMissVec: 0.15
+  updateVelocityCoeffcient: 0.99
   pillowSpawnPos: {x: 0.32, y: -0.45, z: 0.8}
   pillowSpawnRot: {x: -45, y: 150, z: -75}
   minFOV: 45
