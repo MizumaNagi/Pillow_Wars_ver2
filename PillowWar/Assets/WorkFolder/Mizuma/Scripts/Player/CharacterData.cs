@@ -64,6 +64,7 @@ public class CharacterData
     public DoorAnimation doorAnimation;
     public CameraController cameraController;
     public InitAccessorieParentProperty initAccessorieParentProperty;
+    public AnimatorManager animatorManager;
 
     //public int HP { get; private set; }
     public int HP;

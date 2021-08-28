@@ -48,8 +48,6 @@ public class PillowController : MonoBehaviour
     
     private void ReturnPillow()
     {
-        Debug.Log("Return");
-
         characterData.isHavePillow = true;
         characterData.pillowCollider.enabled = false;
 

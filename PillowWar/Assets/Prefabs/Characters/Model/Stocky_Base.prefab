@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 178641338976070768}
   - component: {fileID: 3467729045602028386}
   - component: {fileID: 1436586691}
+  - component: {fileID: -647497722739264086}
   m_Layer: 0
   m_Name: Stocky_Base
   m_TagString: Untagged
@@ -258,6 +259,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hairParent: {fileID: 5477601801353907945}
   pillowParent: {fileID: 2922528348952804114}
+--- !u!114 &-647497722739264086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662444715344279242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3778ef8b5995642821776e27253fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &682612259651068864
 GameObject:
   m_ObjectHideFlags: 0

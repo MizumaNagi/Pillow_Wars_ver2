@@ -2519,6 +2519,7 @@ GameObject:
   - component: {fileID: 7156126827925675845}
   - component: {fileID: 1365162714843020976}
   - component: {fileID: 693086256}
+  - component: {fileID: -6270538447197281127}
   m_Layer: 0
   m_Name: Slim_Base
   m_TagString: Untagged
@@ -2576,6 +2577,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hairParent: {fileID: 8094372634140380971}
   pillowParent: {fileID: 2313190119472166240}
+--- !u!114 &-6270538447197281127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495251761336632831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3778ef8b5995642821776e27253fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7791886012730006922
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,6 +75,8 @@ public class CharacterMover
         Vector3 rndVec = new Vector3(Random.Range(-missVec, missVec), Random.Range(-missVec, missVec), Random.Range(-missVec, missVec));
 
         data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
+
+        data.animatorManager.TriggerThrow();
     }
 
     public void ToNonADS(CharacterData data)
