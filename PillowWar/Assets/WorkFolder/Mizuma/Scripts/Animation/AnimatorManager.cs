@@ -49,8 +49,6 @@ public class AnimatorManager : MonoBehaviour
         moveVec = transform.position - latestFramePos;
         latestFramePos = transform.position;
 
-        Debug.Log(moveVec.magnitude);
-
         animator.SetInteger("MoveValue", (int)moveState);
 
         if (moveState == MoveState.Throwing)

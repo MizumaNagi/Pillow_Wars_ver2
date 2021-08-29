@@ -89,7 +89,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
             GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
-            pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
+            //pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
 
             CharacterData npcData = new CharacterData(chara, i + 100, true);
             npcData.initAccessorieParentProperty = initAccessorieParentProperty;
