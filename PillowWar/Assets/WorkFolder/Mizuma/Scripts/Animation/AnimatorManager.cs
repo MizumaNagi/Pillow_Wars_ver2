@@ -57,6 +57,8 @@ public class AnimatorManager : MonoBehaviour
             moveState = MoveState.Null;
         }
         else moveState = SetMoveState();
+
+        Debug.Log($"{transform.parent.gameObject.name}: + {moveState}");
     }
 
     private MoveState SetMoveState()
@@ -86,15 +88,15 @@ public class AnimatorManager : MonoBehaviour
                         if (moveVec.z >= 0)
                         {
                             if (rotY >= 45 && rotY < 135) moveState = MoveState.Left;
-                            else if (rotY >= 135 && rotY < 215) moveState = MoveState.Back;
-                            else if (rotY >= 215 && rotY < 305) moveState = MoveState.Right;
+                            else if (rotY >= 135 && rotY < 225) moveState = MoveState.Back;
+                            else if (rotY >= 225 && rotY < 315) moveState = MoveState.Right;
                             else moveState = MoveState.Forward;
                         }
                         else
                         {
                             if (rotY >= 45 && rotY < 135) moveState = MoveState.Right;
-                            else if (rotY >= 135 && rotY < 215) moveState = MoveState.Forward;
-                            else if (rotY >= 215 && rotY < 305) moveState = MoveState.Left;
+                            else if (rotY >= 135 && rotY < 225) moveState = MoveState.Forward;
+                            else if (rotY >= 225 && rotY < 315) moveState = MoveState.Left;
                             else moveState = MoveState.Back;
                         }
                     }
@@ -104,15 +106,15 @@ public class AnimatorManager : MonoBehaviour
                         if (moveVec.x >= 0)
                         {
                             if (rotY >= 45 && rotY < 135) moveState = MoveState.Forward;
-                            else if (rotY >= 135 && rotY < 215) moveState = MoveState.Left;
-                            else if (rotY >= 215 && rotY < 305) moveState = MoveState.Back;
+                            else if (rotY >= 135 && rotY < 225) moveState = MoveState.Left;
+                            else if (rotY >= 225 && rotY < 315) moveState = MoveState.Back;
                             else moveState = MoveState.Right;
                         }
                         else
                         {
                             if (rotY >= 45 && rotY < 135) moveState = MoveState.Back;
-                            else if (rotY >= 135 && rotY < 215) moveState = MoveState.Right;
-                            else if (rotY >= 215 && rotY < 305) moveState = MoveState.Forward;
+                            else if (rotY >= 135 && rotY < 225) moveState = MoveState.Right;
+                            else if (rotY >= 225 && rotY < 315) moveState = MoveState.Forward;
                             else moveState = MoveState.Left;
                         }
                     }
