@@ -110,7 +110,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             // 枕投げ
             if (Input.GetAxis(playerInput[i].PillowThrow) > 0.2f && characterDatas[i].remainthrowCT < 0 && characterDatas[i].isHavePillow)
             {
-                characterMover.PillowThrow(characterDatas[i], false);
+                characterMover.PillowThrow(characterDatas[i]);
             }
             // 布団に入る
             if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
@@ -166,7 +166,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         if (Input.GetMouseButton(1)) { characterMover.ToADS(c); }
         else { characterMover.ToNonADS(c); }
         // キーボード-枕投げ
-        if (Input.GetMouseButton(0) && c.isHavePillow && c.remainthrowCT < 0) characterMover.PillowThrow(c, false);
+        if (Input.GetMouseButton(0) && c.isHavePillow && c.remainthrowCT < 0) characterMover.PillowThrow(c);
         // キーボード-布団に入る
         if (Input.GetKeyDown(KeyCode.E) && c.isInBedRange == true && GameEventScript.Instance.canBedIn == true) characterMover.InteractBed(c, true, c.inBedPos);
     }

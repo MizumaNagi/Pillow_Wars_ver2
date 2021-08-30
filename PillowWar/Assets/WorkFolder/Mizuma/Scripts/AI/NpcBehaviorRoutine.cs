@@ -257,7 +257,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     // 接敵距離まで接近したら枕を投げる
                     if (agent.remainingDistance <= routineData.warRangeToEnemy)
                     {
-                        if (characterData.remainthrowCT < 0 && characterData.isHavePillow) characterMover.PillowThrow(characterData, true);
+                        if (characterData.remainthrowCT < 0 && characterData.isHavePillow) characterMover.PillowThrow(characterData);
                     }
 
                     break;

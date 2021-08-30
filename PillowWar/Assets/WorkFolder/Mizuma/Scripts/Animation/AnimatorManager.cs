@@ -57,8 +57,6 @@ public class AnimatorManager : MonoBehaviour
             moveState = MoveState.Null;
         }
         else moveState = SetMoveState();
-
-        Debug.Log($"{transform.parent.gameObject.name}: + {moveState}");
     }
 
     private MoveState SetMoveState()

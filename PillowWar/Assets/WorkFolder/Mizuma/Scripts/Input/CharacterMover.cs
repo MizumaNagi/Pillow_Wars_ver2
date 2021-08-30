@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Threading.Tasks;
 
 // キャラクター移動クラス
 public class CharacterMover
@@ -54,18 +55,27 @@ public class CharacterMover
         data.myBodyRigidbody.AddForce(0, InputManager.Instance.moveData.jumpForce, 0);
     }
 
-    public void PillowThrow(CharacterData data, bool isNpc)
+    public async void PillowThrow(CharacterData data)
     {
+        data.animatorManager.TriggerThrow();
+
+        data.isHavePillow = false;
+        await DelayThrow(data);
+    }
+
+    private async Task DelayThrow(CharacterData data, /*Quaternion forwardRotation, Vector3 angleVec, Vector3 rndVec,*/ float delayTime = 0.4f)
+    {
+        await Task.Delay((int)(delayTime * 1000));
+
         float angle = InputManager.Instance.moveData.throwAngle;
         float missVec = InputManager.Instance.moveData.throwMissVec;
 
-        data.isHavePillow = false;
         data.pillowCollider.enabled = true;
-        
-        data.myPillowTransform.localPosition = new Vector3(0.2f,0.15f,-0.1f);
-        //data.myPillowRigidbody.angularVelocity = Vector3.forward;
 
-        data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent);
+        //data.myPillowTransform.localPosition = new Vector3(0.2f, 0.15f, -0.1f);
+        data.myPillowTransform.position = data.myCameraTransform.position + data.myCameraTransform.forward * 0.6f;
+
+        data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent, true);
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
         data.myPillowRigidbody.isKinematic = false;
 
@@ -74,8 +84,6 @@ public class CharacterMover
         Vector3 rndVec = new Vector3(Random.Range(-missVec, missVec), Random.Range(-missVec, missVec), Random.Range(-missVec, missVec));
 
         data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
-
-        data.animatorManager.TriggerThrow();
     }
 
     public void ToNonADS(CharacterData data)

@@ -18,7 +18,7 @@ MonoBehaviour:
   dashMovMulti: 1.5
   viewMoveSpd: 250
   jumpForce: 200
-  throwForce: 260
+  throwForce: 240
   throwAngle: 30
   throwMissVec: 0.15
   updateVelocityCoeffcient: 0.99
