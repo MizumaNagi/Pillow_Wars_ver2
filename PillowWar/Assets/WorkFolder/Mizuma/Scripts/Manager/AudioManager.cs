@@ -9,7 +9,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     [SerializeField] private GameObject bgmObj;
     [SerializeField] private GameObject seObj;
     [SerializeField] private AudioClip[] bgmClips;
+    [SerializeField] private float bgmVolume;
     [SerializeField] private AudioClip[] seClips;
+    [SerializeField] private float seVolume;
     [SerializeField] private int bgmChannelValue;
     [SerializeField] private int seChannelValue;
 
@@ -44,8 +46,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             return false;
         }
 
+        source.volume = bgmVolume;
         source.clip = bgmClips[(int)bgmName];
         source.Play();
+
         return true;
     }
 
@@ -64,8 +68,12 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             return false;
         }
 
+        source.volume = seVolume;
         source.clip = seClips[(int)seName];
         source.Play();
+
+        if (seName == SEName.Run) source.time = 9.2f;
+        else if (seName == SEName.Walk) source.time = 16.7f;
         return true;
     }
 
@@ -184,14 +192,19 @@ public enum AudioType
 
 public enum BGMName
 {
-    Name01,
-    Name02,
-    Name03
+    Title,
+    Select,
+    Main,
+    Result
 }
 
 public enum SEName
 {
-    Name01,
-    Name02,
-    Name03
+    Walk,
+    Run,
+    HitPillow,
+    InBed,
+    TeacherAppears,
+    OpenDoor,
+    CloseDoor
 }

@@ -17,24 +17,30 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
+
+        AudioManager.Instance.BGMPlay(BGMName.Title);
     }
 
     private void OnSceneLoaded(Scene loadScene, LoadSceneMode mode)
     {
         string name = loadScene.name;
+
         if(name == "Title")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Title);
         }
         else if (name == "Select")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Select);
         }
         else if (name == "Game")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Main);
             StartCoroutine(GameManager.Instance.DelayGameStart(3f));
-            //GameManager.Instance.DelayGameStart(3f);
         }
         else if (name == "Result")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Result);
         }
         else
         {

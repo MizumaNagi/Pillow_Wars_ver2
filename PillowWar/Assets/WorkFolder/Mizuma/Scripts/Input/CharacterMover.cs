@@ -130,6 +130,7 @@ public class CharacterMover
         {
             data.bedStatus.ChangeEnableCollider(false, data);
             data.myBodyTransform.localPosition = bedPos;
+            AudioManager.Instance.SEPlay(SEName.InBed);
         }
         else
         {
