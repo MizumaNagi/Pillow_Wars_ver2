@@ -1665,6 +1665,7 @@ GameObject:
   - component: {fileID: 589091175195991331}
   - component: {fileID: 2414292821502338724}
   - component: {fileID: 8634619240426617199}
+  - component: {fileID: -8709501302431695018}
   m_Layer: 0
   m_Name: NewStockyModel
   m_TagString: Untagged
@@ -1737,6 +1738,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hairParent: {fileID: 2568152466376389839}
   pillowParent: {fileID: 7827162031929983546}
+--- !u!114 &-8709501302431695018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557507481386979298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7501c9bbe0b5b74da3d0e3c4652b211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraController: {fileID: 0}
+  headsParts:
+  - {fileID: 1963996002336057823}
+  - {fileID: 8218777019721114132}
+  - {fileID: 3134853140785158457}
+  - {fileID: 8536091405493527266}
+  - {fileID: 6160007330452001842}
+  - {fileID: 126050677110374091}
+  - {fileID: 5643218289681672352}
+  - {fileID: 1931256857353091968}
 --- !u!1 &5577816245813615336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,6 +3099,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6043968261600548152, guid: 025c40da2cd279f49ae96a06f27ac13d, type: 3}
   m_PrefabInstance: {fileID: 3642352180679338850}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &126050677110374091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3689554679930197417, guid: 025c40da2cd279f49ae96a06f27ac13d, type: 3}
+  m_PrefabInstance: {fileID: 3642352180679338850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6160007330452001842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7489629138524192592, guid: 025c40da2cd279f49ae96a06f27ac13d, type: 3}
+  m_PrefabInstance: {fileID: 3642352180679338850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4277614800171300334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3133,9 +3166,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aac3117fce834b64b929b9fabc0acd8b, type: 3}
+--- !u!1 &5643218289681672352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8434572351581936974, guid: aac3117fce834b64b929b9fabc0acd8b, type: 3}
+  m_PrefabInstance: {fileID: 4277614800171300334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &852259305280648684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3499005186120073218, guid: aac3117fce834b64b929b9fabc0acd8b, type: 3}
+  m_PrefabInstance: {fileID: 4277614800171300334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1931256857353091968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2418450721247104622, guid: aac3117fce834b64b929b9fabc0acd8b, type: 3}
   m_PrefabInstance: {fileID: 4277614800171300334}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7608464906303327534

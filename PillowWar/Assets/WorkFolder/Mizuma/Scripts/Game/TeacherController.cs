@@ -24,7 +24,8 @@ public class TeacherController : MonoBehaviour
     public delegate void CallBack();
     public void EventStart()
     {
-        int rnd = Random.Range(0, syojiChildCount - 1);
+        //int rnd = Random.Range(0, syojiChildCount - 1);
+        int rnd = 2;
         var doorAnimation = syoujiParent.GetChild(rnd).GetComponent<DoorAnimation>();
         doorAnimation.InteractDoor();
 

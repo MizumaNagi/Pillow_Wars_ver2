@@ -4,13 +4,16 @@ using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
+    private const int firstHeadPartsLayer = 23;
     private const int firstNonHudHpUiLayer = 27;
+    public int playerID;
 
     private float arriveTime = 2f;
     private float stayTime = 2.5f;
     private Camera cameraCompo;
 
     public Transform myCharacterTransform;
+
 
     public void Init(int charaID)
     {
@@ -37,6 +40,18 @@ public class CameraController : MonoBehaviour
 
     }
 
+    public void VisibilityMyHeadParts(bool isHidden)
+    {
+        if(isHidden == true)
+        {
+            cameraCompo.cullingMask |= (1 << firstHeadPartsLayer + playerID);
+        }
+        else
+        {
+            cameraCompo.cullingMask &= ~(1 << firstHeadPartsLayer + playerID);
+        }
+    }
+
     [SerializeField] private float deltaTime = 0;
     public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot)
     {
@@ -45,7 +60,6 @@ public class CameraController : MonoBehaviour
         Quaternion startRot = cameraCompo.transform.rotation;
 
         // 枕,カメラ パージ
-        //myPillowTransform.SetParent(myCharacterTransform, false);
         cameraCompo.transform.SetParent(PlayerManager.Instance.CameraParent, false);
 
         while (true)

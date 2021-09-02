@@ -20,6 +20,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     };
 
     private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315f, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+
     private Rect[] twoDivCameraRect = { new Rect(0, 0.5f, 1f, 1f), new Rect(0, 0, 1, 0.5f) };
     private Rect[] fourDivCameraRect = { new Rect(-0.5f, 0.5f, 1, 1), new Rect(0.5f, 0.5f, 1, 1), new Rect(-0.5f, -0.5f, 1, 1), new Rect(0.5f, -0.5f, 1, 1) };
 
@@ -60,6 +61,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             chara.transform.SetParent(playersParent, true);
 
             InitAccessorieParentProperty initAccessorieParentProperty = chara.GetComponentInChildren<InitAccessorieParentProperty>();
+            HeadPartsProperty headPartsProperty = chara.GetComponentInChildren<HeadPartsProperty>();
+            headPartsProperty.InitSetTag(i);
+
+            CameraController cameraController = chara.GetComponentInChildren<CameraController>();
+            cameraController.playerID = i;
 
             GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = i.ToString();
@@ -86,6 +92,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             chara.transform.SetParent(npcsParent, true);
 
             InitAccessorieParentProperty initAccessorieParentProperty = chara.GetComponentInChildren<InitAccessorieParentProperty>();
+            HeadPartsProperty headPartsProperty = chara.GetComponentInChildren<HeadPartsProperty>();
+            Destroy(headPartsProperty);
 
             GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
