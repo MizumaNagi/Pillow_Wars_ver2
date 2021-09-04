@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2020.2.5f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\UI\Result\ScoreManegement.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HitCharacterController.cs" />
     <Compile Include="Assets\UI\Game\AlertContorol.cs" />
@@ -97,8 +100,8 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
     <Compile Include="Assets\UI\select\StageScrollRect.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\PauseUI.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Data\NpcRoutineData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\RandomHairActive.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\NpcRoutineData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\TemporaryUiManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\TeacherController.cs" />
     <Compile Include="Assets\UI\select\HOGE.cs" />
@@ -107,8 +110,8 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\MoveData.cs" />
     <Compile Include="Assets\UI\select\ChangeButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\GameEventData.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConAllTypeEnum.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConAxisEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\BedManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
@@ -719,20 +722,20 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.SysrootPackage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    <Reference Include="Unity.SysrootPackage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
