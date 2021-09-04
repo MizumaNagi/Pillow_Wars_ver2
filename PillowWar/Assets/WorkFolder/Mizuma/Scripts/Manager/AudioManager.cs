@@ -74,6 +74,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         if (seName == SEName.Run) source.time = 9.2f;
         else if (seName == SEName.Walk) source.time = 16.7f;
+        else if (seName == SEName.TeacherAppears) source.volume = 0.3f;
         return true;
     }
 

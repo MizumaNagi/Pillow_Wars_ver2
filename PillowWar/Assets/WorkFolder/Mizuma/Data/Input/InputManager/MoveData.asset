@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MoveData
   m_EditorClassIdentifier: 
   moveForce: 650
-  walkMoveSpdLimit: 1.08
+  walkMoveSpdLimit: 1.2
   squatMoveSpdLimit: 3
   dashMovMulti: 2
   viewMoveSpd: 150

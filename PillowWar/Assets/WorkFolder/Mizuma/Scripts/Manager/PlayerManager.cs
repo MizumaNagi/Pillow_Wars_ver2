@@ -63,6 +63,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             InitAccessorieParentProperty initAccessorieParentProperty = chara.GetComponentInChildren<InitAccessorieParentProperty>();
             HeadPartsProperty headPartsProperty = chara.GetComponentInChildren<HeadPartsProperty>();
             headPartsProperty.InitSetTag(i);
+            headPartsProperty.isNpc = false;
 
             CameraController cameraController = chara.GetComponentInChildren<CameraController>();
             cameraController.playerID = i;
@@ -93,7 +94,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
             InitAccessorieParentProperty initAccessorieParentProperty = chara.GetComponentInChildren<InitAccessorieParentProperty>();
             HeadPartsProperty headPartsProperty = chara.GetComponentInChildren<HeadPartsProperty>();
-            Destroy(headPartsProperty);
+            headPartsProperty.isNpc = true;
 
             GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();

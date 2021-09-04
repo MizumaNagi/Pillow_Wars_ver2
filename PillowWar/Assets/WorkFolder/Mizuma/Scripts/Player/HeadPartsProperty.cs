@@ -6,6 +6,7 @@ public class HeadPartsProperty : MonoBehaviour
 {
     [SerializeField] private CameraController cameraController;
     public GameObject[] headsParts;
+    public bool isNpc;
     
     public void InitSetTag(int i)
     {
@@ -17,10 +18,12 @@ public class HeadPartsProperty : MonoBehaviour
 
     public void EnableMyHeadParts()
     {
+        if (isNpc) return;
         cameraController.VisibilityMyHeadParts(true);
     }
     public void DisableMyHeadParts()
     {
+        if (isNpc) return;
         cameraController.VisibilityMyHeadParts(false);
     }
 }
