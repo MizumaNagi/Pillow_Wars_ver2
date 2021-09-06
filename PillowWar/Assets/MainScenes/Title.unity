@@ -268,11 +268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: joinNpcs
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: joinPlayers
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: isDontDestroy
@@ -593,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: isUseKeyboard
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: keyboardMovePlayerId
@@ -761,14 +761,6 @@ PrefabInstance:
     - target: {fileID: 3863913326793618000, guid: f8bea3dbe81fb0a4197889ddae4efa03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3863913326793618001, guid: f8bea3dbe81fb0a4197889ddae4efa03, type: 3}
-      propertyPath: seVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3863913326793618001, guid: f8bea3dbe81fb0a4197889ddae4efa03, type: 3}
-      propertyPath: bgmVolume
-      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3863913326793618351, guid: f8bea3dbe81fb0a4197889ddae4efa03, type: 3}
       propertyPath: m_Name

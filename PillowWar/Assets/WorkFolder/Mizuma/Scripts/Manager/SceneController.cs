@@ -17,8 +17,6 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
-
-        AudioManager.Instance.BGMPlay(BGMName.Title);
     }
 
     private void OnSceneLoaded(Scene loadScene, LoadSceneMode mode)

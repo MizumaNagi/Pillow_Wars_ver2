@@ -20,7 +20,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Awake()
     {
         base.Awake();
+
         Application.targetFrameRate = 60;
+        Cursor.visible = false;
     }
 
     // ‰¼ƒŠƒUƒ‹ƒgî•ñ“ü—Í

@@ -15,8 +15,8 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     [SerializeField] private int bgmChannelValue;
     [SerializeField] private int seChannelValue;
 
-    private List<AudioSource> bgmSources = new List<AudioSource>();
-    private List<AudioSource> seSources = new List<AudioSource>();
+    [SerializeField] private List<AudioSource> bgmSources = new List<AudioSource>();
+    [SerializeField] private List<AudioSource> seSources = new List<AudioSource>();
 
     private void Start()
     {
@@ -40,9 +40,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         AudioSource source = FindNotUseAudioSource(AudioType.BGM, false);
 
-        if (source.isPlaying)
+        if (source == null)
         {
-            Debug.LogError("îÒçƒê∂íÜÇÃAusioSourceéùÇ¡ÇƒÇ´Çƒ");
+            Debug.LogError("AudioSourceñ≥Ç¢Ç∂Ç·ÇÒ");
             return false;
         }
 
@@ -74,7 +74,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         if (seName == SEName.Run) source.time = 9.2f;
         else if (seName == SEName.Walk) source.time = 16.7f;
-        else if (seName == SEName.TeacherAppears) source.volume = 0.3f;
+        //else if (seName == SEName.TeacherAppears) source.volume = 0.3f;
         return true;
     }
 
@@ -90,10 +90,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         {
             foreach (AudioSource source in bgmSources)
             {
-                if (source.isPlaying == false)
-                {
-                    return source;
-                }
+                return source;
             }
 
             if (noHitIsMakeAudioSource)

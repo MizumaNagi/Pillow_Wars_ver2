@@ -70,7 +70,6 @@ public class AnimatorManager : MonoBehaviour
             // ‘–‚Á‚Ä‚é‚©
             if (charaData.isDash == true)
             {
-                Debug.Log("Dash start");
                 moveState = MoveState.Running;
             }
             else
