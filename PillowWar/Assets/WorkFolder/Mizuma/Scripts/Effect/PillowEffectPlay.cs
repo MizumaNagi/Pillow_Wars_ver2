@@ -8,6 +8,5 @@ public class PillowEffectPlay : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(Ke))
     }
 }
