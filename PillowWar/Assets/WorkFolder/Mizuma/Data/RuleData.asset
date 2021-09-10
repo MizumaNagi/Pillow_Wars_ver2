@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa4f9b5f9360e43bd44dc48c820abb, type: 3}
   m_Name: RuleData
   m_EditorClassIdentifier: 
-  gameStartCount: 0
+  gameStartCount: 3
   maxHp: 10
   hitPillowCountOnDamage: 2
   pillowThrowCT: 1
