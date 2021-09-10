@@ -81,6 +81,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\GetBedCollider.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\HP.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\TestThrow.cs" />
+    <Compile Include="Assets\UI\Title\AntButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\PillowController.cs" />
     <Compile Include="Assets\UI\select\SelectMenu.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Player.cs" />
@@ -105,10 +106,11 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\UI\Title\AntButton.cs" />
+    <Compile Include="Assets\Mountain Terrain\Misc\CameraDefault.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
+    <None Include="Assets\laxer tree pkg\README.txt" />
     <None Include="Assets\Imports\Matuda_Sekidou\Dummy.txt" />
     <None Include="Assets\Imports\I_DonJyu\Dummy.txt" />
     <None Include="Assets\Imports\Akiba_Naoya\Dummy.txt" />
