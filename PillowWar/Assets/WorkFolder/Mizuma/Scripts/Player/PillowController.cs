@@ -4,6 +4,8 @@ using System.Text;
 public class PillowController : MonoBehaviour
 {
     public CharacterData characterData;
+
+    [SerializeField] private PillowEffectPlay pillowEffectPlay;
     private int objNum;
     private float returnLimitPosY = -2f;
 
@@ -32,6 +34,7 @@ public class PillowController : MonoBehaviour
     {
         if (collison.gameObject.tag == "Ground")
         {
+            pillowEffectPlay.MakeEffect(transform.position);
             ReturnPillow();
         }
         else if (collison.gameObject.tag == "Player")
@@ -42,7 +45,11 @@ public class PillowController : MonoBehaviour
             int playerNum = int.Parse(sb.ToString());
             sb.Clear();
 
-            if (playerNum != objNum) ReturnPillow();
+            if (playerNum != objNum)
+            {
+                pillowEffectPlay.MakeEffect(transform.position);
+                ReturnPillow();
+            }
         }
     }
     
@@ -52,8 +59,6 @@ public class PillowController : MonoBehaviour
         characterData.pillowCollider.enabled = false;
 
         transform.SetParent(characterData.initAccessorieParentProperty.PillowParent);
-        //if (GameEventScript.Instance.canAction == false) transform.SetParent(characterData.myBodyTransform);
-        //else transform.SetParent(characterData.myCameraTransform);
         transform.localPosition = characterData.initAccessorieParentProperty.InitPillowPos;
         transform.localRotation = characterData.initAccessorieParentProperty.InitPillowRot;
 

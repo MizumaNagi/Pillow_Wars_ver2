@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PillowEffectPlay : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem pillowHitEffect;
+    [SerializeField] private ParticleSystem hitPillowHit;
 
-    private void Update()
+    public void MakeEffect(Vector3 makePos)
     {
+        Instantiate(hitPillowHit, makePos, Quaternion.identity);
     }
 }
