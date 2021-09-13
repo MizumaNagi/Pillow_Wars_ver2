@@ -70,11 +70,41 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         source.volume = seVolume;
         source.clip = seClips[(int)seName];
-        source.Play();
 
-        if (seName == SEName.Run) source.time = 9.2f;
-        else if (seName == SEName.Walk) source.time = 16.7f;
-        //else if (seName == SEName.TeacherAppears) source.volume = 0.3f;
+        switch (seName)
+        {
+            case SEName.Walk:
+                {
+                    break;
+                }
+            case SEName.Run:
+                {
+                    break;
+                }
+            case SEName.HitPillow:
+                {
+                    source.time = 0.5f;
+                    break;
+                }
+            case SEName.InBed:
+                {
+                    break;
+                }
+            case SEName.TeacherAppears:
+                {
+                    break;
+                }
+            case SEName.OpenDoor:
+                {
+                    break;
+                }
+            case SEName.CloseDoor:
+                {
+                    break;
+                }
+        }
+
+        source.Play();
         return true;
     }
 

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+public enum MoveState
+{
+    Standing,
+    Forward,
+    Left,
+    Back,
+    Right,
+    Running,
+    Throwing,
+    Null = -1
+}
+
 public class AnimatorManager : MonoBehaviour
 {
-    public enum MoveState
-    {
-        Standing,
-        Forward,
-        Left,
-        Back,
-        Right,
-        Running,
-        Throwing,
-        Null = -1
-    }
-
     private int objNum;
     private Animator animator;
     private CharacterData charaData;
@@ -75,7 +75,7 @@ public class AnimatorManager : MonoBehaviour
             else
             {
                 // –w‚ÇŽ~‚Ü‚Á‚Ä‚é
-                if (Mathf.Abs(moveVec.magnitude) < Mathf.Epsilon) moveState = MoveState.Standing;
+                if (Mathf.Abs(moveVec.magnitude) < 0.1f) moveState = MoveState.Standing;
                 else
                 {
                     // ¶‰E‚©‘OŒã‚©‚ÅŒ¾‚¤‚È‚ç‘OŒãˆÚ“®

@@ -211,16 +211,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 96712b73b66235e4e9226db4c67cc247, type: 3}
   - {fileID: 8300000, guid: 722860b20dad8ed49914c4bd8a1e6388, type: 3}
   - {fileID: 8300000, guid: 684d259316c17574885a98bd34f27101, type: 3}
-  bgmVolume: 0
+  bgmVolume: 0.5
   seClips:
-  - {fileID: 8300000, guid: 93714adf9e6cf17408873bd496065326, type: 3}
-  - {fileID: 8300000, guid: 73e8f9e79560d6a41aa8d02aefc3fb7c, type: 3}
+  - {fileID: 8300000, guid: dc2c5050c6141894a926fe7eccba3f69, type: 3}
+  - {fileID: 8300000, guid: f0b32dd15ce20f940b0e63460abf9d89, type: 3}
   - {fileID: 8300000, guid: ddeff26d507bf3649b75259aecc7aaea, type: 3}
   - {fileID: 8300000, guid: a3a6fe1235354ec4b8d88f80184d79fe, type: 3}
   - {fileID: 8300000, guid: 54eed8f004f7caa4b90aecfafa2679a0, type: 3}
   - {fileID: 8300000, guid: fe1b06233ba45744b95611d7f95b6534, type: 3}
   - {fileID: 8300000, guid: 3c54d5a01488efd4b8c5fc54eae034ed, type: 3}
-  seVolume: 0
+  seVolume: 0.5
   bgmChannelValue: 0
   seChannelValue: 10
   bgmSources:
