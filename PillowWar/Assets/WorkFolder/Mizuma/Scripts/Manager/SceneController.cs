@@ -8,7 +8,8 @@ public enum SCENE_NAME
     TITLE,
     SELECT,
     GAME,
-    RESULT
+    RESULT,
+    LOADING
 }
 
 public class SceneController : SingletonMonoBehaviour<SceneController>
@@ -43,6 +44,8 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
         else
         {
         }
+
+
     }
 
     private void OnSceneUnloaded(Scene unloadScene)
@@ -63,6 +66,13 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
         else
         {
         }
+    }
+
+    public void LoadLoadingScene(SCENE_NAME currentScene, SCENE_NAME nextScene)
+    {
+        FadeImage.beforeScene = currentScene;
+        FadeImage.afterScene = nextScene;
+        SceneManager.LoadScene("Loading", LoadSceneMode.Additive);
     }
 
     public void LoadScene(SCENE_NAME name)
@@ -87,6 +97,33 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
             case SCENE_NAME.RESULT:
                 {
                     SceneManager.LoadScene("Result");
+                    break;
+                }
+        }
+    }
+
+    public void UnLoadScene(SCENE_NAME name)
+    {
+        switch (name)
+        {
+            case SCENE_NAME.TITLE:
+                {
+                    SceneManager.UnloadSceneAsync("Title");
+                    break;
+                }
+            case SCENE_NAME.SELECT:
+                {
+                    SceneManager.UnloadSceneAsync("Select");
+                    break;
+                }
+            case SCENE_NAME.GAME:
+                {
+                    SceneManager.UnloadSceneAsync("Game");
+                    break;
+                }
+            case SCENE_NAME.RESULT:
+                {
+                    SceneManager.UnloadSceneAsync("Result");
                     break;
                 }
         }

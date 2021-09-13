@@ -553,7 +553,10 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     StringBuilder sb = new StringBuilder(other.gameObject.name);
                     sb.Replace("Player", "");
                     sb.Replace("Npc", "");
-                    if (int.TryParse(sb.ToString(), out int id) == false) Debug.LogError("IDの変換に失敗");
+                    if (int.TryParse(sb.ToString(), out int id) == false)
+                    {
+                        Debug.LogError("IDの変換に失敗 / " + sb.ToString());
+                    }
                     targetData = GetChatacterData(id);
 
                     SetNpcStatus(NPC_STATUS.GO_ENEMY);

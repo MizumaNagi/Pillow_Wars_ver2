@@ -188,7 +188,7 @@ public class UI : MonoBehaviour
         pausePanel.SetActive(false);
         Pausetext.enabled = false;
         GameManager.Instance.GameEnd();
-        SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
+        SceneController.Instance.LoadLoadingScene(SCENE_NAME.GAME, SCENE_NAME.TITLE);
         Time.timeScale = 1;
     }
     private void Futonhpvalue()

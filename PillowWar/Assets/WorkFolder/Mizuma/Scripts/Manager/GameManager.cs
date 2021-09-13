@@ -88,7 +88,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         FindWinCharacterID();
         GameEnd();
-        SceneController.Instance.LoadScene(SCENE_NAME.RESULT);
+        SceneController.Instance.LoadLoadingScene(SCENE_NAME.GAME, SCENE_NAME.RESULT);
     }
 
     private void Init()
