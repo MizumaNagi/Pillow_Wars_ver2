@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class MoveAnimation : MonoBehaviour
 {
-    [SerializeField] AnimatorManager animatorManager;
+    //[SerializeField] AnimatorManager animatorManager;
+    //
+    //public void MoveSEPlay()
+    //{
+    //    Debug.Log("a");
+    //
+    //    if (animatorManager.moveState == MoveState.Running) RunSEPlay();
+    //    else if (animatorManager.moveState == MoveState.Forward ||
+    //        animatorManager.moveState == MoveState.Back ||
+    //        animatorManager.moveState == MoveState.Left ||
+    //        animatorManager.moveState == MoveState.Right) WalkSEPlay();
+    //}
 
-    public void MoveSEPlay()
-    {
-        if (animatorManager.moveState == MoveState.Running) RunSEPlay();
-        else if (animatorManager.moveState == MoveState.Forward ||
-            animatorManager.moveState == MoveState.Back ||
-            animatorManager.moveState == MoveState.Left ||
-            animatorManager.moveState == MoveState.Right) WalkSEPlay();
-    }
-
-    private void WalkSEPlay()
+    public void WalkSEPlay()
     {
         AudioManager.Instance.SEPlay(SEName.Walk);
     }
 
-    private void RunSEPlay()
+    public void RunSEPlay()
     {
         AudioManager.Instance.SEPlay(SEName.Run);
     }

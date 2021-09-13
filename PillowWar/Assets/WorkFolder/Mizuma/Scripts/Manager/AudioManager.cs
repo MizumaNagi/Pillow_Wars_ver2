@@ -104,6 +104,8 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
                 }
         }
 
+        source.minDistance = 5000;
+        source.maxDistance = 30000;
         source.Play();
         return true;
     }

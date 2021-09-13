@@ -28,8 +28,6 @@ public class FadeImage : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Start");
-
         fadeInImg.color = Color.black;
         fadeOutImg.color = Color.clear;
 

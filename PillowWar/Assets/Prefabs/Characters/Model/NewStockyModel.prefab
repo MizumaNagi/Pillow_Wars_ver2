@@ -1666,6 +1666,7 @@ GameObject:
   - component: {fileID: 2414292821502338724}
   - component: {fileID: 8634619240426617199}
   - component: {fileID: -8709501302431695018}
+  - component: {fileID: 7246883562089278711}
   m_Layer: 0
   m_Name: NewStockyModel
   m_TagString: Untagged
@@ -1760,6 +1761,20 @@ MonoBehaviour:
   - {fileID: 126050677110374091}
   - {fileID: 5643218289681672352}
   - {fileID: 1931256857353091968}
+  isNpc: 0
+--- !u!114 &7246883562089278711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557507481386979298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac5391910540184183d1abc9b873ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorManager: {fileID: 2414292821502338724}
 --- !u!1 &5577816245813615336
 GameObject:
   m_ObjectHideFlags: 0

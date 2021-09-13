@@ -79,7 +79,6 @@ public class ChangeButton : MonoBehaviour
         {
             GameManager.Instance.joinPlayers = PlayerjoinNumbers;
             GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
-            Debug.Log("ChangeButton Start");
             SceneController.Instance.LoadLoadingScene(SCENE_NAME.SELECT, SCENE_NAME.GAME);
         }
     }
