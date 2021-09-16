@@ -74,7 +74,6 @@ public class AnimatorManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(Mathf.Abs(moveVec.magnitude) + " / " + gameObject.transform.parent.name);
                 // –w‚ÇŽ~‚Ü‚Á‚Ä‚é
                 if (Mathf.Abs(moveVec.magnitude) < 0.015f) moveState = MoveState.Standing;
                 else

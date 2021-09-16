@@ -12,6 +12,7 @@ public class CharacterData
         isNpc = _isNpc;
 
         initAccessorieParentProperty = character.GetComponentInChildren<InitAccessorieParentProperty>();
+        buffInfo = character.GetComponentInChildren<BuffInfo>();
 
         Transform t = character.transform;
         myBodyTransform = t;
@@ -65,6 +66,7 @@ public class CharacterData
     public CameraController cameraController;
     public InitAccessorieParentProperty initAccessorieParentProperty;
     public AnimatorManager animatorManager;
+    public BuffInfo buffInfo;
 
     //public int HP { get; private set; }
     public int HP;

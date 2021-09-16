@@ -70,6 +70,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         source.volume = seVolume;
         source.clip = seClips[(int)seName];
+        source.time = 0;
 
         switch (seName)
         {
@@ -85,7 +86,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
                 }
             case SEName.HitPillow:
                 {
-                    source.time = 0.5f;
+                    source.time = 0.55f;
                     break;
                 }
             case SEName.InBed:

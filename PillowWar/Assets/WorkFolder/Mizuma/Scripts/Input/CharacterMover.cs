@@ -60,6 +60,7 @@ public class CharacterMover
         data.animatorManager.TriggerThrow();
 
         data.isHavePillow = false;
+        data.buffInfo.remainDoubleDmgCount--;
         await DelayThrow(data);
     }
 

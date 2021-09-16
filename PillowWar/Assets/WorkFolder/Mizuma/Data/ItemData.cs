@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
     public float fastMoveSpdMulti;
     public float bigPillowScale;
     public float upThrowMulti;
+    public float canGetItemCT;
 }
 
 public enum ITEM_NAME
@@ -16,7 +17,8 @@ public enum ITEM_NAME
     MoveFast,
     BigPillow,
     DoubleDmg,
-    ThrowFast
+    ThrowFast,
+    LENGTH
 }
 
 [System.Serializable]

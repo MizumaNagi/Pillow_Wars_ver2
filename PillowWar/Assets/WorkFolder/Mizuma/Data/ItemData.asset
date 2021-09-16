@@ -36,3 +36,4 @@ MonoBehaviour:
   fastMoveSpdMulti: 1.5
   bigPillowScale: 1.2
   upThrowMulti: 1.75
+  canGetItemCT: 10

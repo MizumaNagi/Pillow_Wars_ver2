@@ -120,6 +120,8 @@
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\ItemData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\BuffInfo.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\TriggerGetItem.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\DebugText\BuffCheckText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
