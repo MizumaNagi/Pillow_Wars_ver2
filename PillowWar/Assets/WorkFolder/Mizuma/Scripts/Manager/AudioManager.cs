@@ -75,10 +75,12 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         {
             case SEName.Walk:
                 {
+                    source.pitch = Random.Range(0.9f, 1.1f);
                     break;
                 }
             case SEName.Run:
                 {
+                    source.pitch = Random.Range(0.9f, 1.1f);
                     break;
                 }
             case SEName.HitPillow:

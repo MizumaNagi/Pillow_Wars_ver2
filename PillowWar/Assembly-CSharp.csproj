@@ -70,6 +70,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\CharacterMover.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\MoveAnimation.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\DelayInvisibleUI.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
@@ -117,8 +118,8 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\MainScenes\FindTag.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\MoveAnimation.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\ItemData.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\BuffInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />

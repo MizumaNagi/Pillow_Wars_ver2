@@ -9,6 +9,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField, Range(1,4)] public int joinPlayers;
     [SerializeField, Range(0,4)] public int joinNpcs;
     [SerializeField] public RuleData ruleData;
+    [SerializeField] public ItemData itemData;
 
     public int remainPlayers;
     public int remainCharacters;
