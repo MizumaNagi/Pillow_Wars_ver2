@@ -9,12 +9,14 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     [SerializeField] private GameObject bgmObj;
     [SerializeField] private GameObject seObj;
     [SerializeField] private AudioClip[] bgmClips;
+    [SerializeField] private float bgmVolume;
     [SerializeField] private AudioClip[] seClips;
+    [SerializeField] private float seVolume;
     [SerializeField] private int bgmChannelValue;
     [SerializeField] private int seChannelValue;
 
-    private List<AudioSource> bgmSources = new List<AudioSource>();
-    private List<AudioSource> seSources = new List<AudioSource>();
+    [SerializeField] private List<AudioSource> bgmSources = new List<AudioSource>();
+    [SerializeField] private List<AudioSource> seSources = new List<AudioSource>();
 
     private void Start()
     {
@@ -38,14 +40,16 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         AudioSource source = FindNotUseAudioSource(AudioType.BGM, false);
 
-        if (source.isPlaying)
+        if (source == null)
         {
-            Debug.LogError("îÒçƒê∂íÜÇÃAusioSourceéùÇ¡ÇƒÇ´Çƒ");
+            Debug.LogError("AudioSourceñ≥Ç¢Ç∂Ç·ÇÒ");
             return false;
         }
 
+        source.volume = bgmVolume;
         source.clip = bgmClips[(int)bgmName];
         source.Play();
+
         return true;
     }
 
@@ -64,7 +68,47 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             return false;
         }
 
+        source.volume = seVolume;
         source.clip = seClips[(int)seName];
+        source.time = 0;
+
+        switch (seName)
+        {
+            case SEName.Walk:
+                {
+                    source.pitch = Random.Range(0.9f, 1.1f);
+                    break;
+                }
+            case SEName.Run:
+                {
+                    source.pitch = Random.Range(0.9f, 1.1f);
+                    break;
+                }
+            case SEName.HitPillow:
+                {
+                    source.time = 0.55f;
+                    break;
+                }
+            case SEName.InBed:
+                {
+                    break;
+                }
+            case SEName.TeacherAppears:
+                {
+                    break;
+                }
+            case SEName.OpenDoor:
+                {
+                    break;
+                }
+            case SEName.CloseDoor:
+                {
+                    break;
+                }
+        }
+
+        source.minDistance = 5000;
+        source.maxDistance = 30000;
         source.Play();
         return true;
     }
@@ -81,10 +125,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         {
             foreach (AudioSource source in bgmSources)
             {
-                if (source.isPlaying == false)
-                {
-                    return source;
-                }
+                return source;
             }
 
             if (noHitIsMakeAudioSource)
@@ -184,14 +225,19 @@ public enum AudioType
 
 public enum BGMName
 {
-    Name01,
-    Name02,
-    Name03
+    Title,
+    Select,
+    Main,
+    Result
 }
 
 public enum SEName
 {
-    Name01,
-    Name02,
-    Name03
+    Walk,
+    Run,
+    HitPillow,
+    InBed,
+    TeacherAppears,
+    OpenDoor,
+    CloseDoor
 }

@@ -8,7 +8,8 @@ public enum SCENE_NAME
     TITLE,
     SELECT,
     GAME,
-    RESULT
+    RESULT,
+    LOADING
 }
 
 public class SceneController : SingletonMonoBehaviour<SceneController>
@@ -22,23 +23,29 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
     private void OnSceneLoaded(Scene loadScene, LoadSceneMode mode)
     {
         string name = loadScene.name;
+
         if(name == "Title")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Title);
         }
         else if (name == "Select")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Select);
         }
         else if (name == "Game")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Main);
             StartCoroutine(GameManager.Instance.DelayGameStart(3f));
-            //GameManager.Instance.DelayGameStart(3f);
         }
         else if (name == "Result")
         {
+            AudioManager.Instance.BGMPlay(BGMName.Result);
         }
         else
         {
         }
+
+
     }
 
     private void OnSceneUnloaded(Scene unloadScene)
@@ -59,6 +66,13 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
         else
         {
         }
+    }
+
+    public void LoadLoadingScene(SCENE_NAME currentScene, SCENE_NAME nextScene)
+    {
+        FadeImage.beforeScene = currentScene;
+        FadeImage.afterScene = nextScene;
+        SceneManager.LoadScene("Loading", LoadSceneMode.Additive);
     }
 
     public void LoadScene(SCENE_NAME name)
@@ -83,6 +97,33 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
             case SCENE_NAME.RESULT:
                 {
                     SceneManager.LoadScene("Result");
+                    break;
+                }
+        }
+    }
+
+    public void UnLoadScene(SCENE_NAME name)
+    {
+        switch (name)
+        {
+            case SCENE_NAME.TITLE:
+                {
+                    SceneManager.UnloadSceneAsync("Title");
+                    break;
+                }
+            case SCENE_NAME.SELECT:
+                {
+                    SceneManager.UnloadSceneAsync("Select");
+                    break;
+                }
+            case SCENE_NAME.GAME:
+                {
+                    SceneManager.UnloadSceneAsync("Game");
+                    break;
+                }
+            case SCENE_NAME.RESULT:
+                {
+                    SceneManager.UnloadSceneAsync("Result");
                     break;
                 }
         }

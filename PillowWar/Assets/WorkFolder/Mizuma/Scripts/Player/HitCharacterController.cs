@@ -13,6 +13,8 @@ public class HitCharacterController : MonoBehaviour
             int pillowNum = int.Parse(collison.gameObject.name);
             if (pillowNum == objNum) return;
 
+            AudioManager.Instance.SEPlay(SEName.HitPillow);
+
             CharacterData cd = null;
             if (isNpc == true) cd = PlayerManager.Instance.npcDatas[objNum - 100];
             else cd = PlayerManager.Instance.playerDatas[objNum];

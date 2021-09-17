@@ -34,10 +34,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player1Head
+  - Player2Head
+  - Player3Head
+  - Player4Head
   - Npc1HpUI
   - Npc2HpUI
   - Npc3HpUI

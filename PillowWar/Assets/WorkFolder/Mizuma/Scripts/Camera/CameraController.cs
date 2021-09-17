@@ -4,21 +4,22 @@ using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
+    private const int firstHeadPartsLayer = 23;
     private const int firstNonHudHpUiLayer = 27;
+    public int playerID;
 
     private float arriveTime = 2f;
     private float stayTime = 2.5f;
     private Camera cameraCompo;
-    private Transform myPillowTransform;
 
     public Transform myCharacterTransform;
+
 
     public void Init(int charaID)
     {
         cameraCompo = GetComponent<Camera>();
 
         myCharacterTransform = transform.parent.transform;
-        myPillowTransform = transform.GetChild(0).transform;
 
         InitSetLayer(charaID);
     }
@@ -39,6 +40,18 @@ public class CameraController : MonoBehaviour
 
     }
 
+    public void VisibilityMyHeadParts(bool isHidden)
+    {
+        if(isHidden == true)
+        {
+            cameraCompo.cullingMask |= (1 << firstHeadPartsLayer + playerID);
+        }
+        else
+        {
+            cameraCompo.cullingMask &= ~(1 << firstHeadPartsLayer + playerID);
+        }
+    }
+
     [SerializeField] private float deltaTime = 0;
     public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot)
     {
@@ -47,7 +60,6 @@ public class CameraController : MonoBehaviour
         Quaternion startRot = cameraCompo.transform.rotation;
 
         // 枕,カメラ パージ
-        myPillowTransform.SetParent(myCharacterTransform, false);
         cameraCompo.transform.SetParent(PlayerManager.Instance.CameraParent, false);
 
         while (true)
@@ -67,7 +79,7 @@ public class CameraController : MonoBehaviour
 
                 // 枕,カメラ くっつける
                 cameraCompo.transform.SetParent(myCharacterTransform, false);
-                myPillowTransform.SetParent(transform, false);
+                //myPillowTransform.SetParent(transform, false);
 
                 cameraCompo.transform.localPosition = InputManager.Instance.moveData.standingCameraPos;
                 cameraCompo.transform.localRotation = Quaternion.identity;

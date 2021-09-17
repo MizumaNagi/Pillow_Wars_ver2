@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 808857393410102225}
   - component: {fileID: 6691268229408973189}
   - component: {fileID: 4233222532401920105}
+  - component: {fileID: 9003366111491147416}
   m_Layer: 6
   m_Name: Pillow
   m_TagString: Pillow
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3566193196409468901}
   m_LocalRotation: {x: -0.6218364, y: 0.64769256, z: 0.14769256, w: 0.41472965}
   m_LocalPosition: {x: 0.32, y: -0.445, z: 0.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.9, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -92,7 +93,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3566193196409468901}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.0001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -140,6 +141,10 @@ MonoBehaviour:
     pillowCollider: {fileID: 0}
     bedStatus: {fileID: 0}
     doorAnimation: {fileID: 0}
+    cameraController: {fileID: 0}
+    initAccessorieParentProperty: {fileID: 0}
+    animatorManager: {fileID: 0}
+    HP: 0
     hitPillowCount: 0
     remainthrowCT: 0
     remainStunTime: 0
@@ -150,6 +155,19 @@ MonoBehaviour:
     isInBedRange: 0
     isInBed: 0
     isDash: 0
-    isInDoor: 0
     isSquat: 0
     inBedPos: {x: 0, y: 0, z: 0}
+  pillowEffectPlay: {fileID: 9003366111491147416}
+--- !u!114 &9003366111491147416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566193196409468901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7750629d6440eb142a3c977fca1439dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPillowHit: {fileID: 1153805046271805727, guid: 1167a940815ffae40839d9a4d217f3b6, type: 3}

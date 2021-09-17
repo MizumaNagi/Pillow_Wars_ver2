@@ -20,6 +20,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     };
 
     private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315f, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+
     private Rect[] twoDivCameraRect = { new Rect(0, 0.5f, 1f, 1f), new Rect(0, 0, 1, 0.5f) };
     private Rect[] fourDivCameraRect = { new Rect(-0.5f, 0.5f, 1, 1), new Rect(0.5f, 0.5f, 1, 1), new Rect(-0.5f, -0.5f, 1, 1), new Rect(0.5f, -0.5f, 1, 1) };
 
@@ -58,12 +59,21 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             chara.name = "Player" + i;
             chara.GetComponent<HitCharacterController>().objNum = i;
             chara.transform.SetParent(playersParent, true);
-            EquipRandomHair(chara.transform);
 
-            GameObject pillow = chara.transform.GetChild(0).GetChild(0).gameObject;
+            InitAccessorieParentProperty initAccessorieParentProperty = chara.GetComponentInChildren<InitAccessorieParentProperty>();
+            HeadPartsProperty headPartsProperty = chara.GetComponentInChildren<HeadPartsProperty>();
+            headPartsProperty.InitSetTag(i);
+            headPartsProperty.isNpc = false;
+
+            CameraController cameraController = chara.GetComponentInChildren<CameraController>();
+            cameraController.playerID = i;
+
+            GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = i.ToString();
-            pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            playerDatas.Add(new CharacterData(chara, i, false));
+
+            CharacterData playerData = new CharacterData(chara, i, false);
+            playerData.initAccessorieParentProperty = initAccessorieParentProperty;
+            playerDatas.Add(playerData);
 
             pillow.GetComponent<PillowController>().characterData = playerDatas[i];
 
@@ -81,12 +91,18 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             chara.name = "Npc" + (i + 100);
             chara.GetComponent<HitCharacterController>().objNum = i + 100;
             chara.transform.SetParent(npcsParent, true);
-            EquipRandomHair(chara.transform);
 
-            GameObject pillow = chara.transform.GetChild(0).GetChild(0).gameObject;
+            InitAccessorieParentProperty initAccessorieParentProperty = chara.GetComponentInChildren<InitAccessorieParentProperty>();
+            HeadPartsProperty headPartsProperty = chara.GetComponentInChildren<HeadPartsProperty>();
+            headPartsProperty.isNpc = true;
+
+            GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
-            pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-            npcDatas.Add(new CharacterData(chara, i + 100, true));
+            //pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
+
+            CharacterData npcData = new CharacterData(chara, i + 100, true);
+            npcData.initAccessorieParentProperty = initAccessorieParentProperty;
+            npcDatas.Add(npcData);
 
             pillow.GetComponent<PillowController>().characterData = npcDatas[i];
 
@@ -120,19 +136,5 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             npcDatas[i].remainthrowCT -= Time.deltaTime;
             npcDatas[i].remainStunTime -= Time.deltaTime;
         }
-    }
-
-    private void EquipRandomHair(Transform charaObj)
-    {
-        int rndNum = Random.Range(0, hairs.Length + 1);
-
-        // ƒnƒQ
-        if (rndNum == hairs.Length) return;
-
-        // ‚Ó‚³‚Ó‚³
-        GameObject hair = Instantiate(hairs[rndNum]);
-        hair.transform.parent = charaObj;
-        hair.transform.localPosition = Vector3.zero;
-        hair.transform.localRotation = Quaternion.identity;
     }
 }

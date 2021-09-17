@@ -9,8 +9,8 @@ public class TestSceneLoader : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(InputManager.Instance.playerInput[0].Ok))
         {
-            if (sceneName == "Title") SceneController.Instance.LoadScene(SCENE_NAME.GAME);
-            else if (sceneName == "Result") SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
+            if (sceneName == "Title") SceneController.Instance.LoadLoadingScene(SCENE_NAME.TITLE, SCENE_NAME.GAME);
+            else if (sceneName == "Result") SceneController.Instance.LoadLoadingScene(SCENE_NAME.RESULT, SCENE_NAME.TITLE);
             else Debug.LogError("Title,Resultシーンに配置");
         }
     }

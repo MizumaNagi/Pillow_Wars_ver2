@@ -79,11 +79,8 @@ public class ChangeButton : MonoBehaviour
         {
             GameManager.Instance.joinPlayers = PlayerjoinNumbers;
             GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
-            SceneController.Instance.LoadScene(SCENE_NAME.GAME);
+            SceneController.Instance.LoadLoadingScene(SCENE_NAME.SELECT, SCENE_NAME.GAME);
         }
-
-        // Debug.Log($"moveX: {Input.GetAxis(InputManager.Instance.playerInput[0].MoveX)}\n" +
-        //     $"moveY: {Input.GetAxis(InputManager.Instance.playerInput[0].MoveY)}");
     }
 
     public void OnPlayLeftArrow()

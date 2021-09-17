@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9490726b9cbfc45addafa1eb766c02, type: 3}
   m_Name: MoveData
   m_EditorClassIdentifier: 
-  moveForce: 2000
-  walkMoveSpdLimit: 4
+  moveForce: 650
+  walkMoveSpdLimit: 1.2
   squatMoveSpdLimit: 3
-  dashMovMulti: 1.5
-  viewMoveSpd: 250
+  dashMovMulti: 2
+  viewMoveSpd: 150
   jumpForce: 200
-  throwForce: 260
-  throwAngle: 15
-  updateVelocityCoeffcient: 1
+  throwForce: 360
+  throwAngle: 20
+  throwMissVec: 0.1
+  updateVelocityCoeffcient: 0.99
   pillowSpawnPos: {x: 0.32, y: -0.45, z: 0.8}
   pillowSpawnRot: {x: -45, y: 150, z: -75}
   minFOV: 45

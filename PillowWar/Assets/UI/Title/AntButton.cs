@@ -9,10 +9,10 @@ public class AntButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKey)
+        if (Input.anyKeyDown)
         {
-            if(isSkipSelectScene) UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
-            else UnityEngine.SceneManagement.SceneManager.LoadScene("Select");
+            if (isSkipSelectScene) SceneController.Instance.LoadLoadingScene(SCENE_NAME.TITLE, SCENE_NAME.GAME);
+            else SceneController.Instance.LoadLoadingScene(SCENE_NAME.TITLE, SCENE_NAME.SELECT);
         }
     }
 }

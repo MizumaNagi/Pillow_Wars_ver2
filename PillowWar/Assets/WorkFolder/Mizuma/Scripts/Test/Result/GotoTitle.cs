@@ -8,12 +8,12 @@ public class GotoTitle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
+            SceneController.Instance.LoadLoadingScene(SCENE_NAME.RESULT, SCENE_NAME.TITLE);
         }
 
         for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
-            if(Input.GetButtonDown(InputManager.Instance.playerInput[i].Ok)) SceneController.Instance.LoadScene(SCENE_NAME.TITLE);
+            if(Input.GetButtonDown(InputManager.Instance.playerInput[i].Ok)) SceneController.Instance.LoadLoadingScene(SCENE_NAME.RESULT, SCENE_NAME.TITLE);
         }
     }
 }

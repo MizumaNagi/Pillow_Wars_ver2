@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,10 +53,9 @@
     <UnityVersion>2020.2.5f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\UI\Result\ScoreManegement.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Scene\FadeImage.cs" />
+    <Compile Include="Assets\Mountain Terrain\Misc\CameraDefault.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HitCharacterController.cs" />
     <Compile Include="Assets\UI\Game\AlertContorol.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\Makura.cs" />
@@ -66,15 +65,19 @@
     <Compile Include="Assets\WorkFolder\Sasaki\Script\UI.cs" />
     <Compile Include="Assets\CountChangeText.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\DoorAnimation.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\InitAccessorieParentProperty.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HeadPartsProperty.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\CharacterMover.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\MoveAnimation.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\MyHeavyMethod.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\DelayInvisibleUI.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\CrashTest\CrashTest.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Scene\TestSceneLoader.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\GameEventScript.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Effect\PillowEffectPlay.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\SceneController.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\NonHUDHpGaugeUpdate.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NpcBehaviorRoutine.cs" />
@@ -98,11 +101,13 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\XboxConFireEnum.cs" />
     <Compile Include="Assets\UI\select\StageScrollRect.cs" />
     <Compile Include="Assets\WorkFolder\Sasaki\Script\PauseUI.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\RandomHairActive.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\NpcRoutineData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\TemporaryUiManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\TeacherController.cs" />
     <Compile Include="Assets\UI\select\HOGE.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Result\GotoTitle.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\AnimatorManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\Input\InputManager\MoveData.cs" />
     <Compile Include="Assets\UI\select\ChangeButton.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\GameEventData.cs" />
@@ -113,9 +118,15 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Data\ItemData.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\BuffInfo.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\TriggerGetItem.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\DebugText\BuffCheckText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
+    <None Include="Assets\Musics\SE\先生登場\備考.txt" />
+    <None Include="Assets\laxer tree pkg\README.txt" />
     <None Include="Assets\Imports\Matuda_Sekidou\Dummy.txt" />
     <None Include="Assets\Imports\I_DonJyu\Dummy.txt" />
     <None Include="Assets\Imports\Akiba_Naoya\Dummy.txt" />
@@ -702,6 +713,12 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Sysroot.Linux_x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -722,6 +739,9 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.SysrootPackage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

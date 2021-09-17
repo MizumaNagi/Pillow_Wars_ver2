@@ -9,6 +9,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField, Range(1,4)] public int joinPlayers;
     [SerializeField, Range(0,4)] public int joinNpcs;
     [SerializeField] public RuleData ruleData;
+    [SerializeField] public ItemData itemData;
 
     public int remainPlayers;
     public int remainCharacters;
@@ -20,7 +21,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Awake()
     {
         base.Awake();
+
         Application.targetFrameRate = 60;
+        Cursor.visible = false;
     }
 
     // ‰¼ƒŠƒUƒ‹ƒgî•ñ“ü—Í
@@ -86,7 +89,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         FindWinCharacterID();
         GameEnd();
-        SceneController.Instance.LoadScene(SCENE_NAME.RESULT);
+        SceneController.Instance.LoadLoadingScene(SCENE_NAME.GAME, SCENE_NAME.RESULT);
     }
 
     private void Init()

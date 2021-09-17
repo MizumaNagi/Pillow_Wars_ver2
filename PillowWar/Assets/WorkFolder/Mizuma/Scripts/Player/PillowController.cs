@@ -4,6 +4,8 @@ using System.Text;
 public class PillowController : MonoBehaviour
 {
     public CharacterData characterData;
+
+    [SerializeField] private PillowEffectPlay pillowEffectPlay;
     private int objNum;
     private float returnLimitPosY = -2f;
 
@@ -32,6 +34,7 @@ public class PillowController : MonoBehaviour
     {
         if (collison.gameObject.tag == "Ground")
         {
+            pillowEffectPlay.MakeEffect(transform.position);
             ReturnPillow();
         }
         else if (collison.gameObject.tag == "Player")
@@ -42,7 +45,11 @@ public class PillowController : MonoBehaviour
             int playerNum = int.Parse(sb.ToString());
             sb.Clear();
 
-            if (playerNum != objNum) ReturnPillow();
+            if (playerNum != objNum)
+            {
+                pillowEffectPlay.MakeEffect(transform.position);
+                ReturnPillow();
+            }
         }
     }
     
@@ -51,10 +58,9 @@ public class PillowController : MonoBehaviour
         characterData.isHavePillow = true;
         characterData.pillowCollider.enabled = false;
 
-        if (GameEventScript.Instance.canAction == false) transform.SetParent(characterData.myBodyTransform);
-        else transform.SetParent(characterData.myCameraTransform);
-        transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
-        transform.localRotation = Quaternion.Euler(InputManager.Instance.moveData.pillowSpawnRot);
+        transform.SetParent(characterData.initAccessorieParentProperty.PillowParent);
+        transform.localPosition = characterData.initAccessorieParentProperty.InitPillowPos;
+        transform.localRotation = characterData.initAccessorieParentProperty.InitPillowRot;
 
         characterData.myPillowRigidbody.isKinematic = true;
         characterData.myPillowRigidbody.velocity = Vector3.zero;
