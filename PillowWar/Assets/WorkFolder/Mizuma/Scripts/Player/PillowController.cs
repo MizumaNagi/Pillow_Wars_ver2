@@ -47,6 +47,11 @@ public class PillowController : MonoBehaviour
 
             if (playerNum != objNum)
             {
+                if(characterData.buffInfo.remainDoubleDmgCount > 0)
+                {
+                    if (playerNum >= 100) PlayerManager.Instance.npcDatas[playerNum - 100].Damage(false, false);
+                    else PlayerManager.Instance.playerDatas[playerNum].Damage(false, false);
+                }
                 pillowEffectPlay.MakeEffect(transform.position);
                 ReturnPillow();
             }

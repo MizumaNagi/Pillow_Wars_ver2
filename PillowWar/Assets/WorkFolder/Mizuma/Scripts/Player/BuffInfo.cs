@@ -31,10 +31,13 @@ public class BuffInfo : MonoBehaviour
 
     private void Update()
     {
-        float deltaTime = Time.deltaTime;
-        remainFastSpdTime -= deltaTime;
-        remainBigPillowTime -= deltaTime;
-        remainFastThrowTime -= deltaTime;
-        remainGetItemCT -= deltaTime;
+        if (GameManager.Instance.isPause == false)
+        {
+            float deltaTime = Time.deltaTime;
+            remainFastSpdTime -= deltaTime;
+            remainBigPillowTime -= deltaTime;
+            remainFastThrowTime -= deltaTime;
+            remainGetItemCT -= deltaTime;
+        }
     }
 }

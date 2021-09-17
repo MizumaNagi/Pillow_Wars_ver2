@@ -35,7 +35,6 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     public void UpdateMethod()
     {
-
         if (remainEventStopTime < remainEventActiveTime)
         {
             // イベントスタートトリガー
@@ -52,11 +51,6 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             if (remainEventActiveTime < npcGoBedTriggerRemTime && npcGoBedTrigger == false)
             {
                 npcGoBedTrigger = true;
-                // NPC全員に布団進行トリガー (HP割合=実行確立 方式)
-                // foreach (var npcBehaviorRoutine in npcBehaviorRoutines.ToArray())
-                // {
-                //     if (npcBehaviorRoutine.gameObject.activeSelf == true) npcBehaviorRoutine.TriggerGoBed();
-                // }
             }
 
             if (npcBehaviorRoutines.Count != 0)

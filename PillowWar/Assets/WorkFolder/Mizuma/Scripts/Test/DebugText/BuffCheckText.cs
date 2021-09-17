@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DefaultExecutionOrder(9999)]
+[System.Serializable]
 public class BuffCheckText : MonoBehaviour
 {
     public Text text;
@@ -16,11 +17,11 @@ public class BuffCheckText : MonoBehaviour
 
     private void Update()
     {
-        if (buffInfo.remainBigPillowTime > 0) text.text = "枕サイズUP";
-        else if (buffInfo.remainDoubleDmgCount > 0) text.text = "与ダメージ x2";
-        else if (buffInfo.remainFastSpdTime > 0) text.text = "移動速度UP";
-        else if (buffInfo.remainFastThrowTime > 0) text.text = "枕投擲速度UP";
-        else if (buffInfo.remainGetItemCT > 0) text.text = "アイテム取得CD(*´ε`*)ﾁｭｯﾁｭ";
-        else text.text = "バフ未取得";
+        text.text = $"\n" +
+            $"サイズUP: {buffInfo.remainBigPillowTime}\n" +
+            $"与ダメx2: {buffInfo.remainDoubleDmgCount}\n" +
+            $"移動速度UP: {buffInfo.remainFastSpdTime}\n" +
+            $"投擲速度UP: { buffInfo.remainFastThrowTime}\n" +
+            $"CT: {buffInfo.remainGetItemCT}\n";
     }
 }

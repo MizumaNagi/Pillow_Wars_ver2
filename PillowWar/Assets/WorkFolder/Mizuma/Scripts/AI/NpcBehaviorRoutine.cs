@@ -246,7 +246,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
                     if (agent.hasPath == false)
                     {
-                        Debug.LogWarning("経路なし");
                         break;
                     }
 
@@ -259,7 +258,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     {
                         if (characterData.remainthrowCT < 0 && characterData.isHavePillow) characterMover.PillowThrow(characterData);
                     }
-
                     break;
                 }
             case NPC_STATUS.GO_BED:

@@ -10,13 +10,10 @@ public class CharacterMover
         Transform movTransform = data.myBodyTransform;
         Rigidbody movRb = data.myBodyRigidbody;
 
-        Vector3 movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveForce;
+        Vector3 movVec;
+        if(data.buffInfo.remainFastSpdTime > 0) movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveForce * GameManager.Instance.itemData.fastMoveSpdMulti;
+        else movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveForce;
 
-        //Vector3 movVec;
-        //if(data.isSquat) movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.squatMoveSpdLimit;
-        //else movVec = movTransform.rotation * _movVec * InputManager.Instance.moveData.moveForce;
-
-        //movTransform.position += movVec * Time.deltaTime;
         movRb.AddForce(movVec * Time.deltaTime);
 
         if(data.isSquat)
@@ -33,7 +30,6 @@ public class CharacterMover
                 movRb.velocity /= 1.1f;
             }
         }
-        
     }
 
     public void ViewMove(Vector3 _viewMovVec, CharacterData data)
@@ -64,27 +60,42 @@ public class CharacterMover
         await DelayThrow(data);
     }
 
-    private async Task DelayThrow(CharacterData data, /*Quaternion forwardRotation, Vector3 angleVec, Vector3 rndVec,*/ float delayTime = 0.4f)
+    private async Task DelayThrow(CharacterData data, float delayTime = 0.4f)
     {
+        // 待機
         await Task.Delay((int)(delayTime * 1000));
 
-        float angle = InputManager.Instance.moveData.throwAngle;
-        float missVec = InputManager.Instance.moveData.throwMissVec;
+        // 投射角度 (バフON/OFF)
+        float angle;
+        if (data.buffInfo.remainFastThrowTime > 0) angle = InputManager.Instance.moveData.throwAngleInBuff;
+        else angle = InputManager.Instance.moveData.throwAngle;
 
+        // 誤差範囲 (PL/NPC)
+        float missVec;
+        if (data.isNpc) missVec = InputManager.Instance.moveData.npcThrowMissVec;
+        missVec = InputManager.Instance.moveData.throwMissVec;
+
+        // 枕を有効化
         data.pillowCollider.enabled = true;
 
-        //data.myPillowTransform.localPosition = new Vector3(0.2f, 0.15f, -0.1f);
+        // 枕を視線目前に出す
         data.myPillowTransform.position = data.myCameraTransform.position + data.myCameraTransform.forward * 0.6f;
 
+        // 枕を枕管理オブジェクトの子にする
         data.myPillowTransform.SetParent(PlayerManager.Instance.PillowParent, true);
+        // CT更新
         data.remainthrowCT = GameManager.Instance.ruleData.pillowThrowCT;
+        // 枕固定化解除
         data.myPillowRigidbody.isKinematic = false;
 
+        // 枕を飛ばす向き
         Quaternion forwardRotation = data.myBodyTransform.rotation;
         Vector3 angleVec = new Vector3(0, Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad)).normalized;
         Vector3 rndVec = new Vector3(Random.Range(-missVec, missVec), Random.Range(-missVec, missVec), Random.Range(-missVec, missVec));
 
-        data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
+        // 枕に力を加える
+        if(data.buffInfo.remainFastThrowTime > 0) data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce * GameManager.Instance.itemData.upThrowMulti, ForceMode.Acceleration);
+        else data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
     }
 
     public void ToNonADS(CharacterData data)
@@ -119,8 +130,6 @@ public class CharacterMover
 
     public void InteractBed(CharacterData data, bool isInBed, Vector3 bedPos)
     {
-        Debug.Log("InteractBed");
-
         if (data.bedStatus == null)
         {
             Debug.LogWarning("data.bedStatus == null \nオブジェクトが破棄されているか確認");

@@ -24,7 +24,6 @@ public class HitCharacterController : MonoBehaviour
             if (collison.transform.position.y > transform.position.y + GameManager.Instance.ruleData.headShotBorderLocalPosY
                 && cd.remainStunTime < -GameManager.Instance.ruleData.stunRegistTime)
             {
-                Debug.Log("Head Shot");
                 cd.StunJudge();
             }
         }
