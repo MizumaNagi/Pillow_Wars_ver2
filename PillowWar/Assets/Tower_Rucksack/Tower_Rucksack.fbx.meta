@@ -1,0 +1,337 @@
+fileFormatVersion: 2
+guid: d5ddafdee4ae00c4e8a431e249a1b56b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: pCube1
+    100002: pCube1 1
+    100004: pCube10
+    100006: pCube10 1
+    100008: pCube11
+    100010: pCube11 1
+    100012: pCube12
+    100014: pCube12 1
+    100016: pCube13
+    100018: pCube13 1
+    100020: pCube17
+    100022: pCube17 1
+    100024: pCube18
+    100026: pCube18 1
+    100028: pCube2
+    100030: pCube2 1
+    100032: pCube20
+    100034: pCube20 1
+    100036: pCube21
+    100038: pCube21 1
+    100040: pCube22
+    100042: pCube22 1
+    100044: pCube23
+    100046: pCube23 1
+    100048: pCube24
+    100050: pCube24 1
+    100052: pCube25
+    100054: pCube25 1
+    100056: pCube4
+    100058: pCube4 1
+    100060: pCube5
+    100062: pCube5 1
+    100064: pCube6
+    100066: pCube6 1
+    100068: pCube7
+    100070: pCube7 1
+    100072: pCube8
+    100074: pCube8 1
+    100076: pCube9
+    100078: pCube9 1
+    100080: pPlane1
+    100082: pPlane1 1
+    100084: pPlane3
+    100086: pPlane3 1
+    100088: Ruck1
+    100090: ruck1
+    100092: Ruck1 1
+    100094: ruck2
+    100096: ruck3
+    100098: ruck4
+    100100: //RootNode
+    400000: pCube1
+    400002: pCube1 1
+    400004: pCube10
+    400006: pCube10 1
+    400008: pCube11
+    400010: pCube11 1
+    400012: pCube12
+    400014: pCube12 1
+    400016: pCube13
+    400018: pCube13 1
+    400020: pCube17
+    400022: pCube17 1
+    400024: pCube18
+    400026: pCube18 1
+    400028: pCube2
+    400030: pCube2 1
+    400032: pCube20
+    400034: pCube20 1
+    400036: pCube21
+    400038: pCube21 1
+    400040: pCube22
+    400042: pCube22 1
+    400044: pCube23
+    400046: pCube23 1
+    400048: pCube24
+    400050: pCube24 1
+    400052: pCube25
+    400054: pCube25 1
+    400056: pCube4
+    400058: pCube4 1
+    400060: pCube5
+    400062: pCube5 1
+    400064: pCube6
+    400066: pCube6 1
+    400068: pCube7
+    400070: pCube7 1
+    400072: pCube8
+    400074: pCube8 1
+    400076: pCube9
+    400078: pCube9 1
+    400080: pPlane1
+    400082: pPlane1 1
+    400084: pPlane3
+    400086: pPlane3 1
+    400088: Ruck1
+    400090: ruck1
+    400092: Ruck1 1
+    400094: ruck2
+    400096: ruck3
+    400098: ruck4
+    400100: //RootNode
+    2100000: Ruck
+    2300000: pCube1
+    2300002: pCube1 1
+    2300004: pCube10
+    2300006: pCube10 1
+    2300008: pCube11
+    2300010: pCube11 1
+    2300012: pCube12
+    2300014: pCube12 1
+    2300016: pCube13
+    2300018: pCube13 1
+    2300020: pCube17
+    2300022: pCube17 1
+    2300024: pCube18
+    2300026: pCube18 1
+    2300028: pCube2
+    2300030: pCube2 1
+    2300032: pCube20
+    2300034: pCube20 1
+    2300036: pCube21
+    2300038: pCube21 1
+    2300040: pCube22
+    2300042: pCube22 1
+    2300044: pCube23
+    2300046: pCube23 1
+    2300048: pCube24
+    2300050: pCube24 1
+    2300052: pCube25
+    2300054: pCube25 1
+    2300056: pCube4
+    2300058: pCube4 1
+    2300060: pCube5
+    2300062: pCube5 1
+    2300064: pCube6
+    2300066: pCube6 1
+    2300068: pCube7
+    2300070: pCube7 1
+    2300072: pCube8
+    2300074: pCube8 1
+    2300076: pCube9
+    2300078: pCube9 1
+    2300080: pPlane1
+    2300082: pPlane1 1
+    2300084: pPlane3
+    2300086: pPlane3 1
+    2300088: Ruck1
+    2300090: Ruck1 1
+    3300000: pCube1
+    3300002: pCube1 1
+    3300004: pCube10
+    3300006: pCube10 1
+    3300008: pCube11
+    3300010: pCube11 1
+    3300012: pCube12
+    3300014: pCube12 1
+    3300016: pCube13
+    3300018: pCube13 1
+    3300020: pCube17
+    3300022: pCube17 1
+    3300024: pCube18
+    3300026: pCube18 1
+    3300028: pCube2
+    3300030: pCube2 1
+    3300032: pCube20
+    3300034: pCube20 1
+    3300036: pCube21
+    3300038: pCube21 1
+    3300040: pCube22
+    3300042: pCube22 1
+    3300044: pCube23
+    3300046: pCube23 1
+    3300048: pCube24
+    3300050: pCube24 1
+    3300052: pCube25
+    3300054: pCube25 1
+    3300056: pCube4
+    3300058: pCube4 1
+    3300060: pCube5
+    3300062: pCube5 1
+    3300064: pCube6
+    3300066: pCube6 1
+    3300068: pCube7
+    3300070: pCube7 1
+    3300072: pCube8
+    3300074: pCube8 1
+    3300076: pCube9
+    3300078: pCube9 1
+    3300080: pPlane1
+    3300082: pPlane1 1
+    3300084: pPlane3
+    3300086: pPlane3 1
+    3300088: Ruck1
+    3300090: Ruck1 1
+    4300000: pCube7
+    4300002: Ruck1
+    4300004: pCube4
+    4300006: pCube1
+    4300008: pCube6
+    4300010: pCube8
+    4300012: pPlane1
+    4300014: pCube2
+    4300016: pCube18
+    4300018: pCube5
+    4300020: pCube9
+    4300022: pCube13
+    4300024: pCube12
+    4300026: pCube11
+    4300028: pCube10
+    4300030: pCube17
+    4300032: pCube20
+    4300034: pPlane3
+    4300036: pCube23
+    4300038: pCube21
+    4300040: pCube22
+    4300042: pCube24
+    4300044: pCube25
+    4300046: pCube7
+    4300048: Ruck1
+    4300050: pCube4
+    4300052: pCube1
+    4300054: pCube6
+    4300056: pCube8
+    4300058: pPlane1
+    4300060: pCube2
+    4300062: pCube18
+    4300064: pCube5
+    4300066: pCube9
+    4300068: pCube13
+    4300070: pCube12
+    4300072: pCube11
+    4300074: pCube10
+    4300076: pCube17
+    4300078: pCube20
+    4300080: pPlane3
+    4300082: pCube23
+    4300084: pCube21
+    4300086: pCube22
+    4300088: pCube24
+    4300090: pCube25
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ruck
+    second: {fileID: 2100000, guid: 38b1753041b8e564da1eb26a4c829062, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
