@@ -751,8 +751,7 @@ MonoBehaviour:
   PlayNambertext: {fileID: 1983358435}
   StageImage:
   - {fileID: 21300000, guid: 7f750459a7917a945a747b640bc18886, type: 3}
-  - {fileID: 21300000, guid: 7f750459a7917a945a747b640bc18886, type: 3}
-  - {fileID: 21300000, guid: 7f750459a7917a945a747b640bc18886, type: 3}
+  - {fileID: 21300000, guid: 9a1abd53c147eb64c9f62d01be69242a, type: 3}
   StageSelect_now: 0
   ColumnSelect_now: 0
   Spriteimage: {fileID: 1249507345}

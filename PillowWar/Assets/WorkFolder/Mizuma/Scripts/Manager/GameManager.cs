@@ -11,6 +11,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] public RuleData ruleData;
     [SerializeField] public ItemData itemData;
 
+    public int selectStageNo;
     public int remainPlayers;
     public int remainCharacters;
     public bool isPause = false;

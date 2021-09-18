@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class BedManager : SingletonMonoBehaviour<BedManager>
 {
     [SerializeField] private int activeBeds = 5;
+    [SerializeField] private Transform firstMapBeds;
+    [SerializeField] private Transform secondMapBeds;
 
     private List<int> beforeArr = new List<int>();
     private List<int> afterArr = new List<int>();
@@ -14,18 +16,29 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
 
     public void Init()
     {
-        RandomObjActive();
-        AllBedChgActive(true);
+        if (GameManager.Instance.selectStageNo == 0)
+        {
+            RandomObjActive(firstMapBeds);
+            AllBedChgActive(firstMapBeds, true);
+            AllBedChgActive(secondMapBeds, false);
+        }
+        else
+        {
+            RandomObjActive(secondMapBeds);
+            AllBedChgActive(firstMapBeds, false);
+            AllBedChgActive(secondMapBeds, true);
+        }
     }
 
     public void EndReset()
     {
-        AllBedChgActive(false);
+        AllBedChgActive(firstMapBeds, false);
+        AllBedChgActive(secondMapBeds, false);
     }
 
-    private void RandomObjActive()
+    private void RandomObjActive(Transform beds)
     {
-        int childCount = transform.childCount;
+        int childCount = beds.childCount;
 
         for (int i = 0; i < childCount; i++)
         {
@@ -36,20 +49,25 @@ public class BedManager : SingletonMonoBehaviour<BedManager>
         {
             int activeNum = UnityEngine.Random.Range(0, beforeArr.Count);
             afterArr.Add(beforeArr[activeNum]);
-            bedColliders.Add(transform.GetChild(afterArr[i]).GetComponentInChildren<BoxCollider>());
-            transform.GetChild(afterArr[i]).GetComponentInChildren<BedStatus>().InitSet(true);
+            bedColliders.Add(beds.GetChild(afterArr[i]).GetComponentInChildren<BoxCollider>());
+            beds.GetChild(afterArr[i]).GetComponentInChildren<BedStatus>().InitSet(true);
             beforeArr.RemoveAt(activeNum);
-            transform.GetChild(afterArr[i]).gameObject.SetActive(true);
+            beds.GetChild(afterArr[i]).gameObject.SetActive(true);
         }
 
         foreach(int disableNum in beforeArr.ToArray())
         {
-            transform.GetChild(disableNum).GetComponentInChildren<BedStatus>().InitSet(false);
+            beds.GetChild(disableNum).GetComponentInChildren<BedStatus>().InitSet(false);
         }
     }
 
-    private void AllBedChgActive(bool isActive)
+    private void AllBedChgActive(Transform beds, bool isActive)
     {
+        foreach(Transform bed in beds)
+        {
+            bed.gameObject.SetActive(isActive);
+        }
+
         for(int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(isActive);

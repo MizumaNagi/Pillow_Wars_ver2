@@ -79,6 +79,7 @@ public class ChangeButton : MonoBehaviour
         {
             GameManager.Instance.joinPlayers = PlayerjoinNumbers;
             GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
+            GameManager.Instance.selectStageNo = StageSelect_now;
             SceneController.Instance.LoadLoadingScene(SCENE_NAME.SELECT, SCENE_NAME.GAME);
         }
     }
@@ -106,7 +107,7 @@ public class ChangeButton : MonoBehaviour
 
     public void OnStageRightArrow()
     {
-        if(StageSelect_now < 2)
+        if(StageSelect_now < 1)
         {
             StageSelect_now++;
             SetSprite();
