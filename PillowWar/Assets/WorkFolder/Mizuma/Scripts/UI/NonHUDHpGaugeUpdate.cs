@@ -80,6 +80,7 @@ public class NonHUDHpGaugeUpdate : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerManager.Instance.npcDatas.Count == 0) this.enabled = false;
         if (GameManager.Instance.isPause) return;
 
         for (int i = 0; i < joinNpcs; i++)

@@ -5,14 +5,20 @@ using UnityEngine;
 public class SelectEnableStage : MonoBehaviour
 {
     [SerializeField] private Transform stageParent;
+    [SerializeField] private Transform firstStage;
+    [SerializeField] private Transform secondStage;
 
     void Start()
     {
-        for(int i = 0; i < stageParent.childCount; i++)
+        if(GameManager.Instance.selectStageNo == 0)
         {
-            stageParent.GetChild(i).gameObject.SetActive(false);
+            firstStage.gameObject.SetActive(true);
+            secondStage.gameObject.SetActive(false);
         }
-
-        stageParent.GetChild(GameManager.Instance.selectStageNo).gameObject.SetActive(true);
+        else
+        {
+            firstStage.gameObject.SetActive(false);
+            secondStage.gameObject.SetActive(true);
+        }
     }
 }

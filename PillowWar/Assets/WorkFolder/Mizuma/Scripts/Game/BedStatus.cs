@@ -6,7 +6,7 @@ public class BedStatus : MonoBehaviour
 {
     [SerializeField] private GameObject emptyBed;
     [SerializeField] private GameObject fullBed;
-    [SerializeField] private Collider myEventCollider;
+    [SerializeField] public BoxCollider myEventCollider;
 
     private bool canInteract;
 

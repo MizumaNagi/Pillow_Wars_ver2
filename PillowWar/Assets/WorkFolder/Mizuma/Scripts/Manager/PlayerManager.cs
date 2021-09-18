@@ -88,8 +88,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
             int modelIndex = i % playerPrefabs.Length;
 
             GameObject chara;
-            if(GameManager.Instance.selectStageNo == 0) chara = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
-            else chara = Instantiate(playerPrefabs[modelIndex], spawnPos2[charaIndex], Quaternion.Euler(spawnRot2[i]));
+            if(GameManager.Instance.selectStageNo == 0) chara = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[charaIndex]));
+            else chara = Instantiate(playerPrefabs[modelIndex], spawnPos2[charaIndex], Quaternion.Euler(spawnRot2[charaIndex]));
 
             chara.name = "Player" + i;
             chara.GetComponent<HitCharacterController>().objNum = i;
@@ -123,8 +123,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         {
             int modelIndex = i % playerPrefabs.Length;
             GameObject chara;
-            if(GameManager.Instance.selectStageNo == 0) chara = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
-            else chara = Instantiate(npcPrefabs[modelIndex], spawnPos2[charaIndex], Quaternion.Euler(spawnRot2[i]));
+            if(GameManager.Instance.selectStageNo == 0) chara = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[charaIndex]));
+            else chara = Instantiate(npcPrefabs[modelIndex], spawnPos2[charaIndex], Quaternion.Euler(spawnRot2[charaIndex]));
 
             chara.name = "Npc" + (i + 100);
             chara.GetComponent<HitCharacterController>().objNum = i + 100;
