@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1795377744684597795}
   - component: {fileID: 1668199062079503975}
   - component: {fileID: 7904407893642120422}
+  - component: {fileID: 7884771030324941952}
   m_Layer: 0
   m_Name: husuma01_01
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7884771030324941952
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234863021280155058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08165832, y: 2.05, z: 0.9976854}
+  m_Center: {x: -0.000000057742, y: 0, z: -0.000000029802322}
 --- !u!1 &1948041242142397310
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +169,7 @@ GameObject:
   - component: {fileID: 4785735034882503556}
   - component: {fileID: 8685646140282439192}
   - component: {fileID: 8428694649676393512}
+  - component: {fileID: 5665061934491141250}
   m_Layer: 0
   m_Name: husuma01_01
   m_TagString: Untagged
@@ -225,6 +240,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5665061934491141250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603544050629150458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08165832, y: 2.05, z: 0.9976854}
+  m_Center: {x: -0.000000057742, y: 0, z: -0.000000029802322}
 --- !u!1 &9001101387254805163
 GameObject:
   m_ObjectHideFlags: 0

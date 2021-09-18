@@ -15,11 +15,42 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         new Vector3(6f, 0, -6f),
         new Vector3(3f, 0, -3f),
         new Vector3(-3f, 0, 3f),
-        new Vector3(3f, 0, 3f),
-        new Vector3(-3f, 0, -3f)
+        Vector3.zero,
+        Vector3.zero
     };
 
-    private Vector3[] spawnRot = { new Vector3(0, 45f, 0), new Vector3(0, 225f, 0), new Vector3(0, 135f, 0), new Vector3(0, 315f, 0), Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+    private Vector3[] spawnPos2 = {
+        new Vector3(3.3f, 0, 0),
+        new Vector3(-3.3f, 0, 6f),
+        new Vector3(2.3f, 0, 3.3f),
+        new Vector3(-2.3f, 0, 3.3f),
+        new Vector3(2.3f, 0, -3.3f),
+        new Vector3(-2.3f, 0, -3.3f),
+        Vector3.zero,
+        Vector3.zero
+    };
+
+    private Vector3[] spawnRot = {
+        new Vector3(0, 45f, 0),
+        new Vector3(0, 225f, 0),
+        new Vector3(0, 135f, 0),
+        new Vector3(0, 315f, 0),
+        Vector3.zero,
+        Vector3.zero,
+        Vector3.zero,
+        Vector3.zero
+    };
+
+    private Vector3[] spawnRot2 = {
+        new Vector3(0, 270f, 0),
+        new Vector3(0, 90f, 0),
+        new Vector3(0, 225f, 0),
+        new Vector3(0, 135f, 0),
+        new Vector3(0, 315f, 0),
+        new Vector3(0, 45f, 0),
+        Vector3.zero,
+        Vector3.zero
+    };
 
     private Rect[] twoDivCameraRect = { new Rect(0, 0.5f, 1f, 1f), new Rect(0, 0, 1, 0.5f) };
     private Rect[] fourDivCameraRect = { new Rect(-0.5f, 0.5f, 1, 1), new Rect(0.5f, 0.5f, 1, 1), new Rect(-0.5f, -0.5f, 1, 1), new Rect(0.5f, -0.5f, 1, 1) };
@@ -55,7 +86,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             int modelIndex = i % playerPrefabs.Length;
-            GameObject chara = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
+
+            GameObject chara;
+            if(GameManager.Instance.selectStageNo == 0) chara = Instantiate(playerPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
+            else chara = Instantiate(playerPrefabs[modelIndex], spawnPos2[charaIndex], Quaternion.Euler(spawnRot2[i]));
+
             chara.name = "Player" + i;
             chara.GetComponent<HitCharacterController>().objNum = i;
             chara.transform.SetParent(playersParent, true);
@@ -87,7 +122,10 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
         {
             int modelIndex = i % playerPrefabs.Length;
-            GameObject chara = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
+            GameObject chara;
+            if(GameManager.Instance.selectStageNo == 0) chara = Instantiate(npcPrefabs[modelIndex], spawnPos[charaIndex], Quaternion.Euler(spawnRot[i]));
+            else chara = Instantiate(npcPrefabs[modelIndex], spawnPos2[charaIndex], Quaternion.Euler(spawnRot2[i]));
+
             chara.name = "Npc" + (i + 100);
             chara.GetComponent<HitCharacterController>().objNum = i + 100;
             chara.transform.SetParent(npcsParent, true);
@@ -98,7 +136,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
             GameObject pillow = initAccessorieParentProperty.PillowParent.GetChild(0).gameObject;
             pillow.name = (i + 100).ToString();
-            //pillow.transform.localPosition = InputManager.Instance.moveData.pillowSpawnPos;
 
             CharacterData npcData = new CharacterData(chara, i + 100, true);
             npcData.initAccessorieParentProperty = initAccessorieParentProperty;
