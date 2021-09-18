@@ -4766,7 +4766,7 @@ PrefabInstance:
     - target: {fileID: 8157250637637188659, guid: 0c1d9a5fbbc1d9a43bb1cb72a1e76d9f, type: 3}
       propertyPath: syoujiParent
       value: 
-      objectReference: {fileID: 7785667123897093153}
+      objectReference: {fileID: 2165807664744041852}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c1d9a5fbbc1d9a43bb1cb72a1e76d9f, type: 3}
 --- !u!4 &255614355 stripped
@@ -27653,7 +27653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1638212722
 Transform:
   m_ObjectHideFlags: 0
@@ -36912,6 +36912,11 @@ PrefabInstance:
 --- !u!4 &2165807664744041851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 920371599948111037, guid: cc1634cb1292a7145b382df242505efc, type: 3}
+  m_PrefabInstance: {fileID: 2165807664744041850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2165807664744041852 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9000332322447420210, guid: cc1634cb1292a7145b382df242505efc, type: 3}
   m_PrefabInstance: {fileID: 2165807664744041850}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2682800872982616834
