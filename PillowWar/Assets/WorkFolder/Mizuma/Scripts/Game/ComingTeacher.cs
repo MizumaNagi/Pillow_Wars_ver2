@@ -40,6 +40,7 @@ public class ComingTeacher : MonoBehaviour
 
     private void StartAnimation()
     {
+        Debug.Log("StartAnimation");
         cameraTrans1.eulerAngles = cameraRot;
         cameraTrans2.eulerAngles = cameraRot;
         if (haveCameraCount == 2) return;
@@ -49,8 +50,17 @@ public class ComingTeacher : MonoBehaviour
         isAnimationing = true;
     }
 
-    private void StopAnimation()
+    private void EndAnimation()
     {
+        Debug.Log("StopAnimation");
         isAnimationing = false;
+        GameEventScript.Instance.canAction = true;
+
+        foreach(CharacterData data in PlayerManager.Instance.playerDatas.ToArray())
+        {
+            if (data.isInBed) continue;
+            data.myCameraTransform.localPosition = InputManager.Instance.moveData.standingCameraPos;
+            data.myCameraTransform.localRotation = Quaternion.identity;
+        }
     }
 }

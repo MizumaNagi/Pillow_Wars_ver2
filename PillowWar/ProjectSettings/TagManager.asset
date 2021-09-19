@@ -10,6 +10,7 @@ TagManager:
   - LoserCamera
   - Door
   - EventSearchCollider
+  - Teacher
   layers:
   - Default
   - TransparentFX

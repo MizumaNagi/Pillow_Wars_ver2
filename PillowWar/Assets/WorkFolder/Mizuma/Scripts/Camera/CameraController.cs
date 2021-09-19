@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     private const int firstNonHudHpUiLayer = 27;
     public int playerID;
 
-    private float arriveTime = 2f;
+    public float arriveTime = 2f;
     private float stayTime = 2.5f;
     private Camera cameraCompo;
 
@@ -55,6 +55,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float deltaTime = 0;
     public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot)
     {
+        Debug.Log(endRot.eulerAngles);
         deltaTime = 0;
         Vector3 startPos = cameraCompo.transform.position;
         Quaternion startRot = cameraCompo.transform.rotation;
@@ -71,14 +72,14 @@ public class CameraController : MonoBehaviour
 
             cameraCompo.transform.position = BezierCurve2D(startPos, Vector3.Lerp(startPos, endPos, 0.5f) + new Vector3(0, 3, 0), endPos, completePercent);
 
-            cameraCompo.transform.rotation = Quaternion.Lerp(startRot, endRot, completePercent * completePercent);
+            cameraCompo.transform.localRotation = Quaternion.Lerp(startRot, endRot, completePercent * completePercent);
 
             if (completePercent > 1)
             {
                 if (GameManager.Instance.selectStageNo == 0) yield return new WaitForSeconds(stayTime);
-                else yield return new WaitForSeconds(10f);
+                else yield return new WaitForSeconds(stayTime + 2.5f);
 
-
+                Debug.Log(" ŠeƒJƒƒ‰–ß‚é");
                 // –,ƒJƒƒ‰ ‚­‚Á‚Â‚¯‚é
                 cameraCompo.transform.SetParent(myCharacterTransform, false);
                 //myPillowTransform.SetParent(transform, false);

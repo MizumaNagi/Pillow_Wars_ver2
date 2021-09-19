@@ -5,6 +5,8 @@ using UnityEngine;
 public class TeacherController : MonoBehaviour
 {
     [SerializeField] private Transform syoujiParent;
+    [SerializeField] private Transform roukaViewPoint;
+    [SerializeField] private Animator teacherAnimator;
 
     private int syojiChildCount = 0;
 
@@ -17,12 +19,13 @@ public class TeacherController : MonoBehaviour
     {
         if (GameEventScript.Instance.triggerEventEnd == true)
         {
-            EventStart();
+            if (GameManager.Instance.selectStageNo == 0) DoorEventStart();
+            else StartCoroutine(DelayStartAnimation(PlayerManager.Instance.playerDatas[0].cameraController.arriveTime));
         }
     }
 
     public delegate void CallBack();
-    public void EventStart()
+    public void DoorEventStart()
     {
         //int rnd = Random.Range(0, syojiChildCount - 1);
         int rnd = 2;
@@ -43,6 +46,17 @@ public class TeacherController : MonoBehaviour
         }
 
         StartCoroutine(DelayDoorAnimation(doorAnimation.InteractDoor));
+    }
+
+    private IEnumerator DelayStartAnimation(float waitTime)
+    {
+        foreach (var playerData in PlayerManager.Instance.playerDatas)
+        {
+            if (playerData.isInBed == true) continue;
+            StartCoroutine(playerData.cameraController.StartMoveCorutine(roukaViewPoint.position, roukaViewPoint.rotation));
+        }
+        yield return new WaitForSeconds(waitTime);
+        teacherAnimator.SetTrigger("startEvent");
     }
 
     private IEnumerator DelayDoorAnimation(UnityEngine.Events.UnityAction callBack)
