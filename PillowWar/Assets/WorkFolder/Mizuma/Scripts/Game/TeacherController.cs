@@ -48,6 +48,7 @@ public class TeacherController : MonoBehaviour
     private IEnumerator DelayDoorAnimation(UnityEngine.Events.UnityAction callBack)
     {
         yield return new WaitForSeconds(3);
+
         callBack();
     }
 }
