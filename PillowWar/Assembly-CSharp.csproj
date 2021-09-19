@@ -70,6 +70,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\HeadPartsProperty.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\CharacterMover.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\AudioManager.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\SelectEnableStage.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Data\RuleData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\TriggerGetItem.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Animation\MoveAnimation.cs" />
@@ -122,7 +123,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\SelectEnableStage.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\ComingTeacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />

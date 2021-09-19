@@ -75,7 +75,9 @@ public class CameraController : MonoBehaviour
 
             if (completePercent > 1)
             {
-                yield return new WaitForSeconds(stayTime);
+                if (GameManager.Instance.selectStageNo == 0) yield return new WaitForSeconds(stayTime);
+                else yield return new WaitForSeconds(10f);
+
 
                 // –,ƒJƒƒ‰ ‚­‚Á‚Â‚¯‚é
                 cameraCompo.transform.SetParent(myCharacterTransform, false);
