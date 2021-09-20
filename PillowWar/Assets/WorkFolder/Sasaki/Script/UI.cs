@@ -14,6 +14,10 @@ public class UI : MonoBehaviour
     [SerializeField] private Text[] FutontextPlayer2;
     [SerializeField] private Transform[] hpIconParents;
     [SerializeField] private Transform[] hpIconParents1;
+    [SerializeField] private Transform[] hpIconParents2;
+    [SerializeField] private Transform[] hpIconParents3;
+    [SerializeField] private Transform[] hpIconParents4;
+    [SerializeField] private Transform[] hpIconParents5;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button titleButton;
@@ -44,6 +48,10 @@ public class UI : MonoBehaviour
     float[] futonhp = new float[4];
     private List<List<Image>> hpIcons = new List<List<Image>>();
     private List<List<Image>> hpIcons1 = new List<List<Image>>();
+    private List<List<Image>> hpIcons2 = new List<List<Image>>();
+    private List<List<Image>> hpIcons3 = new List<List<Image>>();
+    private List<List<Image>> hpIcons4 = new List<List<Image>>();
+    private List<List<Image>> hpIcons5 = new List<List<Image>>();
     private GameManager gameManager;
     private GameEventScript gameEventScript;
     [SerializeField] private GameObject Player2;
@@ -73,14 +81,22 @@ public class UI : MonoBehaviour
             Player2.SetActive(true);
             Player4.SetActive(false);
             iconChild = hpIconParents1[0].childCount;
+            iconChild = hpIconParents4[0].childCount;
+            iconChild = hpIconParents5[0].childCount;
             hpicon1();
+            hpicon4();
+            hpicon5();
         }
         else
         {
             Player2.SetActive(false);
             Player4.SetActive(true);
             iconChild = hpIconParents[0].childCount;
+            iconChild = hpIconParents2[0].childCount;
+            iconChild = hpIconParents3[0].childCount;
             hpicon();
+            hpicon3();
+            hpicon2();
         }
     }
 
@@ -104,6 +120,8 @@ public class UI : MonoBehaviour
                     for (int j = 0; j < iconChild; j++)
                     {
                         hpIcons1[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                        hpIcons4[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                        hpIcons5[i][j].fillAmount = playerhp * iconChild - 1 * j;
                     }
 
                     if (PlayerManager.Instance.playerDatas[i].HP == 10)
@@ -147,7 +165,10 @@ public class UI : MonoBehaviour
                     for (int j = 0; j < iconChild; j++)
                     {
                         hpIcons[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                        hpIcons2[i][j].fillAmount = playerhp * iconChild - 1 * j;
+                        hpIcons3[i][j].fillAmount = playerhp * iconChild - 1 * j;
                     }
+                   
                     if (PlayerManager.Instance.playerDatas[i].HP == 10)
                     {
                         hpimagePlayer4[i].enabled = true;
@@ -158,6 +179,7 @@ public class UI : MonoBehaviour
                     }
                     if (PlayerManager.Instance.playerDatas[i].HP < 8)
                     {
+                        hpimage3Player4[i].enabled = true;
                         hpimage1Player4[i].enabled = true;
                         hpimagePlayer4[i].enabled = false;
                     }
@@ -316,6 +338,30 @@ public class UI : MonoBehaviour
             hpIcons.Add(images);
         }
     }
+    private void hpicon2()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            List<Image> images = new List<Image>();
+            for (int j = 0; j < iconChild; j++)
+            {
+                images.Add(hpIconParents2[i].GetChild(j).GetComponent<Image>());
+            }
+            hpIcons2.Add(images);
+        }
+    }
+    private void hpicon3()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            List<Image> images = new List<Image>();
+            for (int j = 0; j < iconChild; j++)
+            {
+                images.Add(hpIconParents3[i].GetChild(j).GetComponent<Image>());
+            }
+            hpIcons3.Add(images);
+        }
+    }
     private void hpicon1()
     {
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
@@ -326,6 +372,30 @@ public class UI : MonoBehaviour
                 images.Add(hpIconParents1[i].GetChild(j).GetComponent<Image>());
             }
             hpIcons1.Add(images);
+        }
+    }
+    private void hpicon4()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            List<Image> images = new List<Image>();
+            for (int j = 0; j < iconChild; j++)
+            {
+                images.Add(hpIconParents4[i].GetChild(j).GetComponent<Image>());
+            }
+            hpIcons4.Add(images);
+        }
+    }
+    private void hpicon5()
+    {
+        for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            List<Image> images = new List<Image>();
+            for (int j = 0; j < iconChild; j++)
+            {
+                images.Add(hpIconParents5[i].GetChild(j).GetComponent<Image>());
+            }
+            hpIcons5.Add(images);
         }
     }
 
