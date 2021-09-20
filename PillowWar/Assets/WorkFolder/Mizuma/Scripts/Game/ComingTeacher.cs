@@ -40,7 +40,6 @@ public class ComingTeacher : MonoBehaviour
 
     private void StartAnimation()
     {
-        Debug.Log("StartAnimation");
         cameraTrans1.eulerAngles = cameraRot;
         cameraTrans2.eulerAngles = cameraRot;
         if (haveCameraCount == 2) return;
@@ -52,7 +51,6 @@ public class ComingTeacher : MonoBehaviour
 
     private void EndAnimation()
     {
-        Debug.Log("StopAnimation");
         isAnimationing = false;
         GameEventScript.Instance.canAction = true;
 

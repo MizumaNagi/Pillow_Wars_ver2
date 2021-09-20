@@ -55,7 +55,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float deltaTime = 0;
     public IEnumerator StartMoveCorutine(Vector3 endPos, Quaternion endRot)
     {
-        Debug.Log(endRot.eulerAngles);
         deltaTime = 0;
         Vector3 startPos = cameraCompo.transform.position;
         Quaternion startRot = cameraCompo.transform.rotation;
@@ -79,7 +78,6 @@ public class CameraController : MonoBehaviour
                 if (GameManager.Instance.selectStageNo == 0) yield return new WaitForSeconds(stayTime);
                 else yield return new WaitForSeconds(stayTime + 2.5f);
 
-                Debug.Log(" äeÉJÉÅÉâñﬂÇÈ");
                 // ñç,ÉJÉÅÉâ Ç≠Ç¡Ç¬ÇØÇÈ
                 cameraCompo.transform.SetParent(myCharacterTransform, false);
                 //myPillowTransform.SetParent(transform, false);

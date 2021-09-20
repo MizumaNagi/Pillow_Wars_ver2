@@ -83,6 +83,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Effect\PillowEffectPlay.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\SceneController.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\NonHUDHpGaugeUpdate.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\ComingTeacher.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\AI\NpcBehaviorRoutine.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Camera\LoserCameraController.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Manager\GameManager.cs" />
@@ -123,7 +124,6 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\ComingTeacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />
@@ -133,6 +133,7 @@
     <None Include="Assets\Imports\I_DonJyu\Dummy.txt" />
     <None Include="Assets\Imports\Akiba_Naoya\Dummy.txt" />
     <None Include="Assets\Imports\Suzuki_Daiki\Dummy.txt" />
+    <None Include="Assets\Musics\SE\アイテム取得\加工元BGM名.txt" />
     <None Include="Assets\Imports\Syudo_Saika\Dummy.txt" />
   </ItemGroup>
   <ItemGroup>
