@@ -5,12 +5,12 @@ using UnityEngine;
 public class CameraZoom : MonoBehaviour
 {
     public GameObject target = null;
-    public Vector3 startPos = new Vector3(0, -2.2f, 12.6f);
-    public Vector3 endPos = new Vector3(0, -1.49f, 12.6f);
+    public Vector3 startPos;
+    public Vector3 endPos;
 
     float startFOV = 69;
     float endFOV = 3.7f;
-    float goalTime = 3.0f;
+    float goalTime = 2.7f;
     float deltaTime;
 
     void Start()
@@ -33,6 +33,6 @@ public class CameraZoom : MonoBehaviour
         float currentX = Mathf.Lerp(startPos.x, endPos.x, fov);
         float currentY = Mathf.Lerp(startPos.y, endPos.y, fov);
         float currentZ = Mathf.Lerp(startPos.z, endPos.z, fov);
-        target.transform.position = new Vector3(0, currentY, 12.6f);
+        target.transform.localPosition = new Vector3(currentX, currentY, currentZ);
     }
 }
