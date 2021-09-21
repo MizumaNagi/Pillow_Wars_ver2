@@ -1,1 +1,3 @@
 GetItem_1.wav ふすまを開ける2(1).mp3
+GetItem_2.wav ふすまを開ける2(1).mp3
+GetItem_3.wav 畳を歩く音

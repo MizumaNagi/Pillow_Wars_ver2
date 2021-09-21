@@ -36,7 +36,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     /// </summary>
     /// <param name="bgmName">çƒê∂Ç∑ÇÈClip</param>
     /// <returns>çƒê∂Ç…ê¨å˜ÇµÇΩÇ©</returns>
-    public bool BGMPlay(BGMName bgmName)
+    public bool BGMPlay(BGMName bgmName, float waitTime = 0f)
     {
         AudioSource source = FindNotUseAudioSource(AudioType.BGM, false);
 
@@ -48,10 +48,19 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         source.volume = bgmVolume;
         source.clip = bgmClips[(int)bgmName];
-        source.Play();
+
+        if (waitTime != 0f) StartCoroutine(DelayBgmPlay(waitTime, source));
+        else source.Play();
 
         return true;
     }
+
+    private IEnumerator DelayBgmPlay(float waitTime, AudioSource source)
+    {
+        yield return new WaitForSeconds(waitTime);
+        source.Play();
+    }
+
 
     /// <summary>
     /// SEÇçƒê∂Ç∑ÇÈ

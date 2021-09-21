@@ -39,13 +39,11 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
         }
         else if (name == "Result")
         {
-            AudioManager.Instance.BGMPlay(BGMName.Result);
+            AudioManager.Instance.BGMPlay(BGMName.Result, 5f);
         }
         else
         {
         }
-
-
     }
 
     private void OnSceneUnloaded(Scene unloadScene)
