@@ -7,12 +7,17 @@ public class BuffInfo : MonoBehaviour
     public void GetItem(ItemInfo itemInfo)
     {
         if (GetCanGetItem() == false) return;
+
+        AudioManager.Instance.SEPlay(SEName.GetItem);
+
+        Debug.Log(itemInfo.itemName);
+
         getItemName = itemInfo.itemName;
         remainFastSpdTime = itemInfo.fastMoveSpdTime;
-        remainFastSpdTime = itemInfo.bigPillowTime;
+        remainBigPillowTime = itemInfo.bigPillowTime;
         remainDoubleDmgCount = itemInfo.doubleDmgCnt;
         remainFastThrowTime = itemInfo.upThrowSpdTime;
-        remainGetItemCT = 4 + GameManager.Instance.itemData.canGetItemCT;
+        remainGetItemCT = GameManager.Instance.itemData.canGetItemCT;
     }
 
     private bool GetCanGetItem()

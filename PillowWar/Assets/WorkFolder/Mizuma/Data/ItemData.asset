@@ -14,26 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInfos:
   - itemName: 0
-    fastMoveSpdTime: 4
+    fastMoveSpdTime: 6
     bigPillowTime: 0
     doubleDmgCnt: 0
     upThrowSpdTime: 0
   - itemName: 1
     fastMoveSpdTime: 0
-    bigPillowTime: 4
+    bigPillowTime: 6
     doubleDmgCnt: 0
     upThrowSpdTime: 0
   - itemName: 2
     fastMoveSpdTime: 0
     bigPillowTime: 0
-    doubleDmgCnt: 1
+    doubleDmgCnt: 2
     upThrowSpdTime: 0
   - itemName: 3
     fastMoveSpdTime: 0
     bigPillowTime: 0
     doubleDmgCnt: 0
-    upThrowSpdTime: 4
+    upThrowSpdTime: 6
   fastMoveSpdMulti: 1.5
-  bigPillowScale: 1.2
+  bigPillowScale: 2
   upThrowMulti: 1.75
-  canGetItemCT: 1
+  canGetItemCT: 5

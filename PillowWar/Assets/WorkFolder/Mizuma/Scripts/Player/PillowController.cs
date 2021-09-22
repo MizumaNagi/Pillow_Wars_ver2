@@ -6,14 +6,17 @@ public class PillowController : MonoBehaviour
     public CharacterData characterData;
 
     [SerializeField] private PillowEffectPlay pillowEffectPlay;
+
     private int objNum;
     private float returnLimitPosY = -2f;
+    private Vector3 defaultScale;
 
     public void Start()
     {
         StringBuilder sb = new StringBuilder(gameObject.name);
         objNum = int.Parse(sb.ToString());
         sb.Clear();
+        defaultScale = transform.localScale;
     }
 
     private void Update()
@@ -69,5 +72,7 @@ public class PillowController : MonoBehaviour
 
         characterData.myPillowRigidbody.isKinematic = true;
         characterData.myPillowRigidbody.velocity = Vector3.zero;
+
+        transform.localScale = defaultScale;
     }
 }

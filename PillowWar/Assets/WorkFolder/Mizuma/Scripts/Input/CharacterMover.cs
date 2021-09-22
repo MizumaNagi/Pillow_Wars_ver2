@@ -96,6 +96,9 @@ public class CharacterMover
         // 枕に力を加える
         if(data.buffInfo.remainFastThrowTime > 0) data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce * GameManager.Instance.itemData.upThrowMulti, ForceMode.Acceleration);
         else data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce, ForceMode.Acceleration);
+
+        // 枕サイズ上昇のバフ効果を反映させる
+        if (data.buffInfo.remainBigPillowTime > 0) data.myPillowTransform.localScale *= 2;
     }
 
     public void ToNonADS(CharacterData data)

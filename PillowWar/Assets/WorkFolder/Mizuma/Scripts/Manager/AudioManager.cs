@@ -114,6 +114,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
                 {
                     break;
                 }
+            case SEName.GetItem:
+                {
+                    break;
+                }
         }
 
         source.minDistance = 5000;
@@ -248,5 +252,6 @@ public enum SEName
     InBed,
     TeacherAppears,
     OpenDoor,
-    CloseDoor
+    CloseDoor,
+    GetItem
 }
