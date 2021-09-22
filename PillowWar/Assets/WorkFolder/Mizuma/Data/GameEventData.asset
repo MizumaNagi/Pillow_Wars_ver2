@@ -19,11 +19,11 @@ MonoBehaviour:
   - stopEventInterval: 10
     eventActiveTime: 5
     type: 0
-  - stopEventInterval: 30
-    eventActiveTime: 15
+  - stopEventInterval: 10
+    eventActiveTime: 5
     type: 0
-  - stopEventInterval: 30
-    eventActiveTime: 10
+  - stopEventInterval: 10
+    eventActiveTime: 5
     type: 0
   - stopEventInterval: 30
     eventActiveTime: 10

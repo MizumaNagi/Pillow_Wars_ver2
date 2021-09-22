@@ -137,7 +137,6 @@ public class CharacterData
             GameManager.Instance.remainPlayers--;
             GameManager.Instance.resultIDs.Add(characterID + 1);
         }
-        //else GameManager.Instance.resultIDs.Add(characterID + 1);
     }
 
     public void HideCharacter(bool enable)
