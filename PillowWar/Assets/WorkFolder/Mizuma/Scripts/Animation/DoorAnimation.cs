@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorAnimation : MonoBehaviour
 {
+    [SerializeField] private DotaEffectVisibilityControll dotaEffectVisibilityControll;
+
     private Animator animator;
     private bool isOpened = false;
 
@@ -27,6 +29,7 @@ public class DoorAnimation : MonoBehaviour
 
     public void OpenDoorPlaySE()
     {
+        dotaEffectVisibilityControll.ChgVisibilityEffect(false);
         AudioManager.Instance.SEPlay(SEName.OpenDoor);
     }
 

@@ -11,6 +11,7 @@ public class ComingTeacher : MonoBehaviour
     [SerializeField] private Transform cameraTrans2;
     [SerializeField] private Transform cameraTrans3;
     [SerializeField] private Transform cameraTrans4;
+    [SerializeField] private SpotDotaEffectVisibility spotDotaEffectVisibility;
 
     private bool isAnimationing;
     private int haveCameraCount;
@@ -40,12 +41,10 @@ public class ComingTeacher : MonoBehaviour
 
     private void StartAnimation()
     {
-        cameraTrans1.eulerAngles = cameraRot;
-        cameraTrans2.eulerAngles = cameraRot;
-        if (haveCameraCount == 2) return;
-        cameraTrans3.eulerAngles = cameraRot;
-        cameraTrans4.eulerAngles = cameraRot;
-
+        for(int i = 0; i < 2; i++)
+        {
+            spotDotaEffectVisibility.ChgVisibilityEffect(false, i);
+        }
         isAnimationing = true;
     }
 

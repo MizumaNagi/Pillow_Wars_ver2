@@ -5,10 +5,11 @@ using UnityEngine;
 public class TeacherController : MonoBehaviour
 {
     [SerializeField] private Transform syoujiParent;
-    [SerializeField] private Transform roukaViewPoint;
+    [SerializeField] private Transform roukaViewPointParent;
     [SerializeField] private Animator teacherAnimator;
 
     private int syojiChildCount = 0;
+    private int nextEventDoorIndex = 0;
 
     private void Start()
     {
@@ -24,24 +25,37 @@ public class TeacherController : MonoBehaviour
         }
     }
 
+    public void ReadyNextEvent()
+    {
+        if(GameManager.Instance.selectStageNo == 0)
+        {
+            nextEventDoorIndex = Random.Range(0, syojiChildCount - 1);
+            var effectControll = syoujiParent.GetChild(nextEventDoorIndex).GetComponent<DotaEffectVisibilityControll>();
+            effectControll.ChgVisibilityEffect(true);
+        }
+        else
+        {
+            nextEventDoorIndex = Random.Range(0, 1);
+            var spotEffectVisibility = GetComponent<SpotDotaEffectVisibility>();
+            spotEffectVisibility.ChgVisibilityEffect(true, nextEventDoorIndex);
+        }
+    }
+
     public delegate void CallBack();
     public void DoorEventStart()
     {
-        //int rnd = Random.Range(0, syojiChildCount - 1);
-        int rnd = 2;
-        var doorAnimation = syoujiParent.GetChild(rnd).GetComponent<DoorAnimation>();
+        var doorAnimation = syoujiParent.GetChild(nextEventDoorIndex).GetComponent<DoorAnimation>();
         doorAnimation.InteractDoor();
 
-        transform.position = syoujiParent.GetChild(rnd).Find("TeacherPoint").gameObject.transform.position;
-        transform.rotation = syoujiParent.GetChild(rnd).Find("TeacherPoint").gameObject.transform.rotation;
+        transform.position = syoujiParent.GetChild(nextEventDoorIndex).Find("TeacherPoint").gameObject.transform.position;
+        transform.rotation = syoujiParent.GetChild(nextEventDoorIndex).Find("TeacherPoint").gameObject.transform.rotation;
 
-        foreach(var playerData in PlayerManager.Instance.playerDatas)
+        Vector3 cameraEndPos = syoujiParent.GetChild(nextEventDoorIndex).Find("CameraPoint").gameObject.transform.position;
+        Quaternion cameraEndRot = syoujiParent.GetChild(nextEventDoorIndex).Find("CameraPoint").gameObject.transform.rotation;
+
+        foreach (var playerData in PlayerManager.Instance.playerDatas)
         {
             if (playerData.isInBed == true) continue;
-
-            Vector3 cameraEndPos = syoujiParent.GetChild(rnd).Find("CameraPoint").gameObject.transform.position;
-            Quaternion cameraEndRot = syoujiParent.GetChild(rnd).Find("CameraPoint").gameObject.transform.rotation;
-
             StartCoroutine(playerData.cameraController.StartMoveCorutine(cameraEndPos, cameraEndRot));
         }
 
@@ -50,12 +64,14 @@ public class TeacherController : MonoBehaviour
 
     private IEnumerator DelayStartAnimation(float waitTime)
     {
+
         foreach (var playerData in PlayerManager.Instance.playerDatas)
         {
             if (playerData.isInBed == true) continue;
-            StartCoroutine(playerData.cameraController.StartMoveCorutine(roukaViewPoint.position, roukaViewPoint.rotation));
+            StartCoroutine(playerData.cameraController.StartMoveCorutine(roukaViewPointParent.GetChild(nextEventDoorIndex).position, roukaViewPointParent.GetChild(nextEventDoorIndex).rotation));
         }
         yield return new WaitForSeconds(waitTime);
+        teacherAnimator.SetInteger("NextRndSpot", nextEventDoorIndex);
         teacherAnimator.SetTrigger("startEvent");
     }
 
