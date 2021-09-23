@@ -26,9 +26,15 @@ public class ScoreManegement : MonoBehaviour
         // GamePlayer2 = GameManager.Instance.resultIDs[2];
         // GamePlayer3 = GameManager.Instance.resultIDs[1];
         // GamePlayer4 = GameManager.Instance.resultIDs[0];
+        foreach(Text text in GetTexts)
+        {
+            text.enabled = false;
+        }
+
         for (int i = 0; i < GameManager.Instance.joinPlayers; i++)
         {
             GamePlayer[i] = GameManager.Instance.resultIDs[GameManager.Instance.joinPlayers - i - 1];
+            GetTexts[i].enabled = true;
         }
 
         string[] rankModifier = { "st", "nd", "rd", "th" };
