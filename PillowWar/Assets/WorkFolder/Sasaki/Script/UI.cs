@@ -204,9 +204,9 @@ public class UI : MonoBehaviour
                     int hp = PlayerManager.Instance.playerDatas[i].HP;
                     for (int j = 0; j < 10; j++)
                     {
-                        if (j > hp) hpIconsP4[i, j].sprite = fullHPSprite;
-                        else if (j == hp && PlayerManager.Instance.playerDatas[i].hitPillowCount == 1) hpIconsP4[i, j].sprite = halfHPSprite;
-                        else hpIconsP4[i, j].sprite = emptyHPSprite;
+                        if (j >= hp) hpIconsP4[i, j].sprite = emptyHPSprite;
+                        else if (j == hp - 1 && PlayerManager.Instance.playerDatas[i].hitPillowCount == 1) hpIconsP4[i, j].sprite = halfHPSprite;
+                        else hpIconsP4[i, j].sprite = fullHPSprite;
                     }
                 }
 
@@ -286,7 +286,7 @@ public class UI : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {

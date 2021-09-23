@@ -36,7 +36,7 @@ public class BuffInfo : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.isPause == false)
+        if (GameManager.Instance.isPause == false && GameEventScript.Instance.canAction == true)
         {
             float deltaTime = Time.deltaTime;
             remainFastSpdTime -= deltaTime;

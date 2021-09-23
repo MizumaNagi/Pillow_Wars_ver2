@@ -12496,7 +12496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &685384649
 Transform:
   m_ObjectHideFlags: 0
@@ -13612,7 +13612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &741583136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15372,29 +15372,29 @@ MonoBehaviour:
   - {fileID: 1240767709}
   hpimagePlayer4:
   - {fileID: 1114504904}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1297088319}
+  - {fileID: 33133618}
+  - {fileID: 654477503}
   hpimage1Player4:
   - {fileID: 363289809}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 692934587}
+  - {fileID: 2005175499}
+  - {fileID: 1579156126}
   hpimage2Player4:
   - {fileID: 483453514}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 211938416}
+  - {fileID: 2049067428}
+  - {fileID: 1131563913}
   hpimage3Player4:
   - {fileID: 128771815}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1092180293}
+  - {fileID: 677732538}
+  - {fileID: 1733326390}
   hpimage4Player4:
   - {fileID: 412891705}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1455243001}
+  - {fileID: 1329719494}
+  - {fileID: 1970800084}
   damageUi2:
   - {fileID: 695189114}
   - {fileID: 359643020}

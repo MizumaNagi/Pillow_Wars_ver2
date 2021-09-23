@@ -268,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: joinPlayers
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder
@@ -589,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: keyboardMovePlayerId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778379, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: m_RootOrder
@@ -965,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9791e1e0b07494449aeaa55a4f8cf710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkipSelectScene: 1
+  isSkipSelectScene: 0
 --- !u!4 &1826912177
 Transform:
   m_ObjectHideFlags: 0

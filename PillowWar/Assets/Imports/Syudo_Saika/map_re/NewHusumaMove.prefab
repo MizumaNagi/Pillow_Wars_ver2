@@ -555,19 +555,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30070576
+      value: -0.29956144
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.083121955
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.953717
+      value: 0.9500878
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.026208246
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -579,11 +579,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8948608834923306704, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_Name
       value: dota_large (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948608834923306704, guid: 4cd17c358c787594b84a97e233696486, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd17c358c787594b84a97e233696486, type: 3}
@@ -617,19 +621,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.30070582
+      value: 0.29956153
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.08312195
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.953717
+      value: 0.9500878
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.02620825
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -641,11 +645,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8948608834923306704, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_Name
       value: dota_large
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948608834923306704, guid: 4cd17c358c787594b84a97e233696486, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd17c358c787594b84a97e233696486, type: 3}
@@ -661,6 +669,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4603724156097407467}
     m_Modifications:
+    - target: {fileID: -6760200230034839053, guid: 4cd17c358c787594b84a97e233696486, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f00ed0c396b813541b4c3a11a8dd161e, type: 2}
     - target: {fileID: 8603011076494640234, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -708,6 +720,10 @@ PrefabInstance:
     - target: {fileID: 8948608834923306704, guid: 4cd17c358c787594b84a97e233696486, type: 3}
       propertyPath: m_Name
       value: dota_large (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948608834923306704, guid: 4cd17c358c787594b84a97e233696486, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd17c358c787594b84a97e233696486, type: 3}
