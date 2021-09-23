@@ -266,6 +266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1784321547039804532, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
+      propertyPath: joinPlayers
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1784321547039804533, guid: 3eac712fdf2cf724bb5c2999d6178fef, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -961,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9791e1e0b07494449aeaa55a4f8cf710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSkipSelectScene: 0
+  isSkipSelectScene: 1
 --- !u!4 &1826912177
 Transform:
   m_ObjectHideFlags: 0
