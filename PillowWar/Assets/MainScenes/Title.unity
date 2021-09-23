@@ -585,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778378, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: keyboardMovePlayerId
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2682800872874778379, guid: 100589b95c147764589ae587109c0ceb, type: 3}
       propertyPath: m_RootOrder

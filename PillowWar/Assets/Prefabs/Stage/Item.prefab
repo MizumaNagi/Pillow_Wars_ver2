@@ -3870,6 +3870,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598783f3edb0e9b438c34570b0af4d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getAfterUIPos2P: {x: 0, y: 0, z: 0}
+  getLaterUIPos2P: {x: 0, y: 0, z: 0}
+  getAfterUIPos4P: {x: 0, y: 0, z: 0}
+  getLaterUIPos4P: {x: 0, y: 0, z: 0}
+  buffUIsP2:
+  - {fileID: 0}
+  - {fileID: 0}
+  buffUIsP4:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  buffTextsP2:
+  - {fileID: 0}
+  - {fileID: 0}
+  buffTextsP4:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2530145200046841749
 GameObject:
   m_ObjectHideFlags: 0
