@@ -13,6 +13,9 @@ public class ComingTeacher : MonoBehaviour
     [SerializeField] private Transform cameraTrans4;
     [SerializeField] private SpotDotaEffectVisibility spotDotaEffectVisibility;
 
+    [SerializeField] private Light[] spotALights;
+    [SerializeField] private Light[] spotBLights;
+
     private bool isAnimationing;
     private int haveCameraCount;
 
@@ -36,6 +39,42 @@ public class ComingTeacher : MonoBehaviour
             if (haveCameraCount == 2) return;
             cameraTrans3.position = cameraPos;
             cameraTrans4.position = cameraPos;
+        }
+    }
+
+    public void VisibilityLightsSpotA(int isActive)
+    {
+        if(isActive == 0)
+        {
+            foreach(Light light in spotALights)
+            {
+                light.enabled = true;
+            }
+        }
+        else
+        {
+            foreach (Light light in spotALights)
+            {
+                light.enabled = false;
+            }
+        }
+    }
+
+    public void VisibilityLightsSpotB(int isActive)
+    {
+        if (isActive == 0)
+        {
+            foreach (Light light in spotBLights)
+            {
+                light.enabled = true;
+            }
+        }
+        else
+        {
+            foreach (Light light in spotBLights)
+            {
+                light.enabled = false;
+            }
         }
     }
 
