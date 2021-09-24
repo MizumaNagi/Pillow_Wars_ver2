@@ -68,6 +68,11 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
 
     public void LoadLoadingScene(SCENE_NAME currentScene, SCENE_NAME nextScene)
     {
+        for(int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name == "Loading") return;
+        }
+
         FadeImage.beforeScene = currentScene;
         FadeImage.afterScene = nextScene;
         SceneManager.LoadScene("Loading", LoadSceneMode.Additive);

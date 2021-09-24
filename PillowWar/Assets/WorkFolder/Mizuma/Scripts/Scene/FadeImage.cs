@@ -15,6 +15,7 @@ public class FadeImage : MonoBehaviour
     [SerializeField] private Image fadeInImg;
     [SerializeField] private Image fadeOutImg;
     [SerializeField] private Text loadingTxt;
+    [SerializeField] private GameObject pillowMovie;
 
     [SerializeField] private float fadeInCompTime;
     [SerializeField] private float fadeOutStartTimeAfterCompFadeIn;
@@ -70,6 +71,7 @@ public class FadeImage : MonoBehaviour
             if (totalDeltaTime > fadeOutCompTime)
             {
                 loadingTxt.enabled = true;
+                pillowMovie.SetActive(true);
                 StartCoroutine(DelayStartFadeIn());
                 SceneController.Instance.UnLoadScene(beforeScene);
                 return true;

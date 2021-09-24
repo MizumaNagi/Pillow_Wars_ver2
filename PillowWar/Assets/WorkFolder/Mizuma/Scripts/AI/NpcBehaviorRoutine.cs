@@ -29,6 +29,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
     private NavMeshAgent agent;
     private CharacterData targetData;
     private float defaultSpeed;
+    private Vector3 beforeFramePos;
 
     public float startGoBedTime;
     public bool isOnceGoBed;
@@ -54,9 +55,15 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.isPlayTheGame == false) return;
-        if (characterData.remainStunTime > 0) return;
-        if (GameEventScript.Instance.canAction == false) return;
+        if (CanMoveing() == true) agent.speed = defaultSpeed;
+        else
+        {
+            transform.position = beforeFramePos;
+            agent.speed = 0;
+            return;
+        }
+
+        beforeFramePos = transform.position;
 
         if (gameObject.activeSelf == false) this.enabled = false;
         if (GameManager.Instance.isPause == false)
@@ -69,6 +76,15 @@ public class NpcBehaviorRoutine : MonoBehaviour
             agent.velocity = Vector3.zero;
             agent.isStopped = true;
         }
+    }
+
+    private bool CanMoveing()
+    {
+        if (GameManager.Instance.isPlayTheGame == false) return false;
+        else if (characterData.remainStunTime > 0) return false;
+        else if (GameEventScript.Instance.canAction == false) return false;
+        else if (GameManager.Instance.isPause == true) return false;
+        else return true;
     }
 
     private IEnumerator ResumeNavmeshAgent()
