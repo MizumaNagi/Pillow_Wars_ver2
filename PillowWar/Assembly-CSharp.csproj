@@ -111,6 +111,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Data\NpcRoutineData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\TemporaryUiManager.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Game\TeacherController.cs" />
+    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\BuffTextUpdate.cs" />
     <Compile Include="Assets\UI\select\HOGE.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Test\Result\GotoTitle.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\BuffInfo.cs" />
@@ -127,7 +128,7 @@
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Player\CharacterData.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\Scripts\Input\InputManagerEnum\PS4ConTriggerEnum.cs" />
     <Compile Include="Assets\WorkFolder\Mizuma\System\SingletonMonobehaviour.cs" />
-    <Compile Include="Assets\WorkFolder\Mizuma\Scripts\UI\BuffTextUpdate.cs" />
+    <Compile Include="Assets\Movies\PlayMovie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\Fan_Gonun\Dummy.txt" />

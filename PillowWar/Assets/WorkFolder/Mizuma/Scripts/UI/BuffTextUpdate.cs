@@ -18,7 +18,11 @@ public class BuffTextUpdate : MonoBehaviour
         new Vector3(230, 436, 0),
         new Vector3(-313, 436, 0),
     };
-    private Vector3 laterTimePosP2 = new Vector3(-485, -220, 0);
+
+    private Vector3[] laterTimePosP2 = {
+        new Vector3(0, -400, 0),
+        new Vector3(0, 130, 0)
+    };
     private Vector3[] laterTimePosP4 ={
         new Vector3(480, -485, 0),
         new Vector3(-480, -485, 0),
@@ -77,8 +81,8 @@ public class BuffTextUpdate : MonoBehaviour
 
         if (GameManager.Instance.joinPlayers == 2)
         {
-            if (characterNum == 0) rect.localPosition = laterTimePosP2 + new Vector3(0, -267f, 0);
-            else rect.localPosition = laterTimePosP2;
+            if (characterNum == 0) rect.localPosition = laterTimePosP2[0];  // + new Vector3(0, -267f, 0);
+            else rect.localPosition = laterTimePosP2[1];
         }
         else
         {

@@ -35,7 +35,7 @@ public class TeacherController : MonoBehaviour
         }
         else
         {
-            nextEventDoorIndex = Random.Range(0, 1);
+            nextEventDoorIndex = Random.Range(0, 2);
             var spotEffectVisibility = GetComponent<SpotDotaEffectVisibility>();
             spotEffectVisibility.ChgVisibilityEffect(true, nextEventDoorIndex);
         }

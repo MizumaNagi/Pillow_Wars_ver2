@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9490726b9cbfc45addafa1eb766c02, type: 3}
   m_Name: MoveData
   m_EditorClassIdentifier: 
-  moveForce: 650
+  moveForce: 800
   walkMoveSpdLimit: 1.2
   squatMoveSpdLimit: 3
   dashMovMulti: 2

@@ -35,5 +35,5 @@ MonoBehaviour:
     upThrowSpdTime: 6
   fastMoveSpdMulti: 1.5
   bigPillowScale: 2
-  upThrowMulti: 1.75
-  canGetItemCT: 6
+  upThrowMulti: 2.25
+  canGetItemCT: 15
