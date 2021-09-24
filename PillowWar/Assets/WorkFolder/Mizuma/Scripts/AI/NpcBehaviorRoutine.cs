@@ -41,6 +41,7 @@ public class NpcBehaviorRoutine : MonoBehaviour
 
     private void Start()
     {
+        beforeFramePos = transform.position;
         agent = GetComponent<NavMeshAgent>();
         GetNpcID();
         characterData = PlayerManager.Instance.npcDatas[npcID - 100];

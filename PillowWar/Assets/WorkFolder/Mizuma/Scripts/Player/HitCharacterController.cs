@@ -15,16 +15,21 @@ public class HitCharacterController : MonoBehaviour
 
             AudioManager.Instance.SEPlay(SEName.HitPillow);
 
-            CharacterData cd = null;
-            if (isNpc == true) cd = PlayerManager.Instance.npcDatas[objNum - 100];
-            else cd = PlayerManager.Instance.playerDatas[objNum];
+            CharacterData damagedCharaData = null;
+            if (isNpc == true) damagedCharaData = PlayerManager.Instance.npcDatas[objNum - 100];
+            else damagedCharaData = PlayerManager.Instance.playerDatas[objNum];
+
+            CharacterData throwCharaData = null;
+            if (pillowNum >= 100) throwCharaData = PlayerManager.Instance.npcDatas[pillowNum - 100];
+            else throwCharaData = PlayerManager.Instance.playerDatas[pillowNum];
+            throwCharaData.buffInfo.remainDoubleDmgCount--;
 
             // ヘッドショット判定
-            cd.Damage(false, false);
+            damagedCharaData.Damage(false, false);
             if (collison.transform.position.y > transform.position.y + GameManager.Instance.ruleData.headShotBorderLocalPosY
-                && cd.remainStunTime < -GameManager.Instance.ruleData.stunRegistTime)
+                && damagedCharaData.remainStunTime < -GameManager.Instance.ruleData.stunRegistTime)
             {
-                cd.StunJudge();
+                damagedCharaData.StunJudge();
             }
         }
 

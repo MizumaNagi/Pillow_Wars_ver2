@@ -56,7 +56,6 @@ public class CharacterMover
         data.animatorManager.TriggerThrow();
 
         data.isHavePillow = false;
-        data.buffInfo.remainDoubleDmgCount--;
         await DelayThrow(data);
     }
 
@@ -73,7 +72,11 @@ public class CharacterMover
         // 誤差範囲 (PL/NPC)
         float missVec;
         if (data.isNpc) missVec = InputManager.Instance.moveData.npcThrowMissVec;
-        missVec = InputManager.Instance.moveData.throwMissVec;
+        else
+        {
+            if(data.isZoom) missVec = InputManager.Instance.moveData.throwMissVec / 3f;
+            else missVec = InputManager.Instance.moveData.throwMissVec;
+        }
 
         // 枕を有効化
         data.pillowCollider.enabled = true;
@@ -91,7 +94,7 @@ public class CharacterMover
         // 枕を飛ばす向き
         Quaternion forwardRotation = data.myBodyTransform.rotation;
         Vector3 angleVec = new Vector3(0, Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad)).normalized;
-        Vector3 rndVec = new Vector3(Random.Range(-missVec, missVec), Random.Range(-missVec, missVec), Random.Range(-missVec, missVec));
+        Vector3 rndVec = new Vector3(Random.Range(-missVec, 0), Random.Range(-missVec, 0), Random.Range(-missVec, 0));
 
         // 枕に力を加える
         if(data.buffInfo.remainFastThrowTime > 0) data.myPillowRigidbody.AddForce(forwardRotation * (angleVec + rndVec) * InputManager.Instance.moveData.throwForce * GameManager.Instance.itemData.upThrowMulti, ForceMode.Acceleration);
@@ -103,6 +106,7 @@ public class CharacterMover
 
     public void ToNonADS(CharacterData data)
     {
+        data.isZoom = false;
         if (data.myCamera.fieldOfView >= InputManager.Instance.moveData.maxFOV) { return; }
 
         float frameChgValueADS = InputManager.Instance.moveData.fovChangeSpd * Time.deltaTime;
@@ -118,6 +122,7 @@ public class CharacterMover
 
     public void ToADS(CharacterData data)
     {
+        data.isZoom = true;
         if (data.myCamera.fieldOfView <= InputManager.Instance.moveData.minFOV) { return; }
 
         float frameChgValueADS = InputManager.Instance.moveData.fovChangeSpd * Time.deltaTime;
