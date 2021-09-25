@@ -5,6 +5,24 @@ public class HitCharacterController : MonoBehaviour
 {
     public int objNum;
     public bool isNpc;
+    public void Update()
+    {
+        for(int i = 0; i < GameManager.Instance.joinPlayers; i++)
+        {
+            if (PlayerManager.Instance.playerDatas[i].isInBed == false)
+            {
+                if (PlayerManager.Instance.playerDatas[i].bedStatus != null)
+                {
+                    if (PlayerManager.Instance.playerDatas[i].bedStatus.canIn == false)
+                    {
+                        Debug.Log("Šù‚É“ü‚Á‚Ä‚¢‚é");
+                        PlayerManager.Instance.playerDatas[i].bedStatus = null;
+                        PlayerManager.Instance.playerDatas[i].isInBedRange = false;
+                    }
+                }
+            }
+        }
+    }
 
     public void OnCollisionEnter(Collision collison)
     {

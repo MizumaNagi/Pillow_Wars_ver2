@@ -166,12 +166,14 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         {
             playerDatas[i].remainthrowCT -= Time.deltaTime;
             playerDatas[i].remainStunTime -= Time.deltaTime;
+            playerDatas[i].remainCanBedInTime -= Time.deltaTime;
         }
 
         for (int i = 0; i < GameManager.Instance.joinNpcs; i++)
         {
             npcDatas[i].remainthrowCT -= Time.deltaTime;
             npcDatas[i].remainStunTime -= Time.deltaTime;
+            npcDatas[i].remainCanBedInTime -= Time.deltaTime;
         }
     }
 }

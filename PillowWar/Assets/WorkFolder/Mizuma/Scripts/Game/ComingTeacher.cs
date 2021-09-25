@@ -34,11 +34,11 @@ public class ComingTeacher : MonoBehaviour
     {
         if(isAnimationing)
         {
-            cameraTrans1.position = cameraPos;
-            cameraTrans2.position = cameraPos;
+            if (PlayerManager.Instance.playerDatas[0].isInBed == false) cameraTrans1.position = cameraPos;
+            if (PlayerManager.Instance.playerDatas[1].isInBed == false) cameraTrans2.position = cameraPos;
             if (haveCameraCount == 2) return;
-            cameraTrans3.position = cameraPos;
-            cameraTrans4.position = cameraPos;
+            if (PlayerManager.Instance.playerDatas[2].isInBed == false) cameraTrans3.position = cameraPos;
+            if (PlayerManager.Instance.playerDatas[3].isInBed == false) cameraTrans4.position = cameraPos;
         }
     }
 

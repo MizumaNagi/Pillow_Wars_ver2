@@ -73,6 +73,7 @@ public class CharacterData
     public int hitPillowCount;
     public float remainthrowCT = 0;
     public float remainStunTime = 0;
+    public float remainCanBedInTime = 0;
 
     public bool isNpc = false;
     public bool canJump = true;

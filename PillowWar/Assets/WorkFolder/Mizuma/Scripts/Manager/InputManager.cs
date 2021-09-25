@@ -63,6 +63,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 if (Input.GetButtonDown(playerInput[i].Interact))
                 {
                     characterMover.InteractBed(characterDatas[i], false, characterDatas[i].inBedPos);
+                    characterDatas[i].remainCanBedInTime = 2;
                 }
                 continue;
             }
@@ -113,7 +114,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 characterMover.PillowThrow(characterDatas[i]);
             }
             // •z’c‚É“ü‚é
-            if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
+            if (Input.GetButtonDown(playerInput[i].Interact) && characterDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true && characterDatas[i].remainCanBedInTime < 0)
             {
                 characterMover.InteractBed(characterDatas[i], true, characterDatas[i].inBedPos);
             }
