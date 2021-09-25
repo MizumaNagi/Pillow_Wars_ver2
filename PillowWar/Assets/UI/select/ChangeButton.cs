@@ -37,50 +37,53 @@ public class ChangeButton : MonoBehaviour
     {
         remainMoveXCT -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || (Input.GetAxis(InputManager.Instance.playerInput[0].MoveX) < -inputThreshold && remainMoveXCT < 0))
+        for (int i = 0; i < 4; i++)
         {
-            if(ColumnSelect_now == 0)
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || (Input.GetAxis(InputManager.Instance.playerInput[i].MoveX) < -inputThreshold && remainMoveXCT < 0))
             {
-                OnPlayLeftArrow();
+                if (ColumnSelect_now == 0)
+                {
+                    OnPlayLeftArrow();
+                }
+                else if (ColumnSelect_now == 1)
+                {
+                    OnStageLeftArrow();
+                }
+                remainMoveXCT = moveXCT;
             }
-            else if(ColumnSelect_now == 1)
+            if (Input.GetKeyDown(KeyCode.RightArrow) || (Input.GetAxis(InputManager.Instance.playerInput[i].MoveX) > inputThreshold && remainMoveXCT < 0))
             {
-                OnStageLeftArrow();
+                if (ColumnSelect_now == 0)
+                {
+                    OnPlayRightArrow();
+                }
+                else if (ColumnSelect_now == 1)
+                {
+                    OnStageRightArrow();
+                }
+                remainMoveXCT = moveXCT;
             }
-            remainMoveXCT = moveXCT;
-        }
-        if(Input.GetKeyDown(KeyCode.RightArrow) || (Input.GetAxis(InputManager.Instance.playerInput[0].MoveX) > inputThreshold && remainMoveXCT < 0))
-        {
-            if (ColumnSelect_now == 0)
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis(InputManager.Instance.playerInput[i].MoveY) < -inputThreshold)
             {
-                OnPlayRightArrow();
+                if (ColumnSelect_now != 0)
+                {
+                    ColumnSelect_now--;
+                }
             }
-            else if (ColumnSelect_now == 1)
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis(InputManager.Instance.playerInput[i].MoveY) > inputThreshold)
             {
-                OnStageRightArrow();
+                if (ColumnSelect_now == 0)
+                {
+                    ColumnSelect_now++;
+                }
             }
-            remainMoveXCT = moveXCT;
-        }
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis(InputManager.Instance.playerInput[0].MoveY) < -inputThreshold)
-        {
-            if (ColumnSelect_now != 0)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(InputManager.Instance.playerInput[i].Start))
             {
-                ColumnSelect_now--;
+                GameManager.Instance.joinPlayers = PlayerjoinNumbers;
+                GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
+                GameManager.Instance.selectStageNo = StageSelect_now;
+                SceneController.Instance.LoadLoadingScene(SCENE_NAME.SELECT, SCENE_NAME.GAME);
             }
-        }
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis(InputManager.Instance.playerInput[0].MoveY) > inputThreshold)
-        {
-            if (ColumnSelect_now == 0)
-            {
-                ColumnSelect_now++;
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown(InputManager.Instance.playerInput[0].Start))
-        {
-            GameManager.Instance.joinPlayers = PlayerjoinNumbers;
-            GameManager.Instance.joinNpcs = 6 - PlayerjoinNumbers;
-            GameManager.Instance.selectStageNo = StageSelect_now;
-            SceneController.Instance.LoadLoadingScene(SCENE_NAME.SELECT, SCENE_NAME.GAME);
         }
     }
 

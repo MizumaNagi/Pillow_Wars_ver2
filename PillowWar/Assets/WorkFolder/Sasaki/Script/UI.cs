@@ -24,8 +24,8 @@ public class UI : MonoBehaviour
     [SerializeField] private Button titleButton;
     [SerializeField] private Image[] Futont1imagePlayer4;
     [SerializeField] private Image[] Futont1imagePlayer2;
-    [SerializeField] private Image[] Futont2imagePlayer4;
-    [SerializeField] private Image[] Futont2imagePlayer2;
+    // [SerializeField] private Image[] Futont2imagePlayer4;
+    // [SerializeField] private Image[] Futont2imagePlayer2;
     [SerializeField] private Text[] Futon1textPlayer2;
     [SerializeField] private Text[] Futon1textPlayer4;
 
@@ -356,12 +356,12 @@ public class UI : MonoBehaviour
             if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
             {
                 Futont1imagePlayer4[i].enabled = true;
-                Futont2imagePlayer4[i].enabled = true;
+                //Futont2imagePlayer4[i].enabled = true;
             }
             else
             {
                 Futont1imagePlayer4[i].enabled = false;
-                Futont2imagePlayer4[i].enabled = false;
+                //Futont2imagePlayer4[i].enabled = false;
             }
             if (PlayerManager.Instance.playerDatas[i].isInBed == true)
             {
@@ -369,7 +369,7 @@ public class UI : MonoBehaviour
                 FutontextPlayer4[i].enabled = true;
                 FutontimagePlayer4[i].enabled = true;
                 Futont1imagePlayer4[i].enabled = false;
-                Futont2imagePlayer4[i].enabled = false;
+                //Futont2imagePlayer4[i].enabled = false;
                 Futont3imagePlayer4[i].enabled = true;
             }
             else
@@ -389,12 +389,12 @@ public class UI : MonoBehaviour
             if (PlayerManager.Instance.playerDatas[i].isInBedRange == true && GameEventScript.Instance.canBedIn == true)
             {
                 Futont1imagePlayer2[i].enabled = true;
-                Futont2imagePlayer2[i].enabled = true;
+                //Futont2imagePlayer2[i].enabled = true;
             }
             else
             {
                 Futont1imagePlayer2[i].enabled = false;
-                Futont2imagePlayer2[i].enabled = false;
+                //Futont2imagePlayer2[i].enabled = false;
             }
             if (PlayerManager.Instance.playerDatas[i].isInBed == true)
             {
@@ -403,7 +403,7 @@ public class UI : MonoBehaviour
                 FutontextPlayer2[i].enabled = true;
                 FutontimagePlayer2[i].enabled = true;
                 Futont1imagePlayer2[i].enabled = false;
-                Futont2imagePlayer2[i].enabled = false;
+                //Futont2imagePlayer2[i].enabled = false;
                 Futont3imagePlayer2[i].enabled = true;
             }
             else

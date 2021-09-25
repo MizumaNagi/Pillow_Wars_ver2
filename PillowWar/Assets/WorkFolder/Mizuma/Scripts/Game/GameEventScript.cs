@@ -96,7 +96,7 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     private void NextEventStart()
     {
-        if (finishEventsNum <= detailEventsNum)
+        if (finishEventsNum < detailEventsNum)
         {
             remainEventStopTime = gameEventData.gameEvents[finishEventsNum].stopEventInterval;
             remainEventActiveTime = gameEventData.gameEvents[finishEventsNum].eventActiveTime;
