@@ -139,7 +139,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.74, z: 0.43}
+  m_Size: {x: 0.6, y: 1.74, z: 0.43}
   m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!114 &5304672041666775854
 MonoBehaviour:
@@ -186,10 +186,13 @@ MonoBehaviour:
     doorAnimation: {fileID: 0}
     cameraController: {fileID: 0}
     initAccessorieParentProperty: {fileID: 0}
+    animatorManager: {fileID: 0}
+    buffInfo: {fileID: 0}
     HP: 0
     hitPillowCount: 0
     remainthrowCT: 0
     remainStunTime: 0
+    remainCanBedInTime: 0
     isNpc: 0
     canJump: 0
     isDeath: 0
@@ -198,6 +201,7 @@ MonoBehaviour:
     isInBed: 0
     isDash: 0
     isSquat: 0
+    isZoom: 0
     inBedPos: {x: 0, y: 0, z: 0}
   npcStatus: 0
   startGoBedTime: 0

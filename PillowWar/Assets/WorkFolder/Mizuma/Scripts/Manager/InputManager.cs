@@ -63,7 +63,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
                 if (Input.GetButtonDown(playerInput[i].Interact))
                 {
                     characterMover.InteractBed(characterDatas[i], false, characterDatas[i].inBedPos);
-                    characterDatas[i].remainCanBedInTime = 2;
+                    characterDatas[i].remainCanBedInTime = 0.33f;
                 }
                 continue;
             }

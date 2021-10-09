@@ -67,10 +67,12 @@ MonoBehaviour:
     cameraController: {fileID: 0}
     initAccessorieParentProperty: {fileID: 0}
     animatorManager: {fileID: 0}
+    buffInfo: {fileID: 0}
     HP: 0
     hitPillowCount: 0
     remainthrowCT: 0
     remainStunTime: 0
+    remainCanBedInTime: 0
     isNpc: 0
     canJump: 0
     isDeath: 0
@@ -79,6 +81,7 @@ MonoBehaviour:
     isInBed: 0
     isDash: 0
     isSquat: 0
+    isZoom: 0
     inBedPos: {x: 0, y: 0, z: 0}
   canIn: 1
 --- !u!1001 &4659528901593125034
@@ -135,6 +138,14 @@ PrefabInstance:
     - target: {fileID: 151295035203469183, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691199398543470575, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691199398543470575, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
+      propertyPath: m_Size.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8691199398543470575, guid: bba35ae3a1005684b85f8b65daf11882, type: 3}
       propertyPath: m_Enabled
