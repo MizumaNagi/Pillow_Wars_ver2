@@ -11,7 +11,7 @@ public class AlertContorol : MonoBehaviour
 
     [SerializeField] TeacherController[] teacherControllersEachStage;
 
-    public Text timertext;
+    public Text[] timertexts;
     private int seconds;
     private bool EventTrigger = false;
 
@@ -19,6 +19,24 @@ public class AlertContorol : MonoBehaviour
     {
         AlertPanel.SetActive(false);
         TimerPanel.SetActive(false);
+
+        foreach(Text timerText in timertexts)
+        {
+            timerText.enabled = false;
+        }
+
+        if(GameManager.Instance.joinPlayers == 2)
+        {
+            timertexts[0].enabled = true;
+            timertexts[1].enabled = true;
+        }
+        else
+        {
+            for(int i = 2; i <= 5; i++)
+            {
+                timertexts[i].enabled = true;
+            }
+        }
     }
 
     void Update()
@@ -26,7 +44,10 @@ public class AlertContorol : MonoBehaviour
         if (GameEventScript.Instance.isEventStart == true)
         {
             seconds = (int)GameEventScript.Instance.remainEventActiveTime;
-            timertext.text = seconds.ToString();
+            foreach(Text timerText in timertexts)
+            {
+                if(timerText.enabled == true) timerText.text = seconds.ToString();
+            }
 
             if (EventTrigger == false)
             {
