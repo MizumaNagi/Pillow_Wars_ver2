@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 {
     [SerializeField] private GameEventData gameEventData;
+    [SerializeField] private int detailEventsNum;
 
-    private int detailEventsNum;
     public int finishEventsNum;
     public bool isEventStart;
     public bool triggerEventEnd = false;
@@ -22,11 +22,6 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
 
     public Vector3 openDoorCameraPos;
     public Quaternion openDoorCamerarot;
-
-    private void Start()
-    {
-        detailEventsNum = gameEventData.gameEvents.Length;
-    }
 
     public void Init()
     {

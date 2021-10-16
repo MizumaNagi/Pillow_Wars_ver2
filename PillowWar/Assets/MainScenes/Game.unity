@@ -46867,6 +46867,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5034557948599832772, guid: 8bcbf180ad7721e4ab564aad561c0080, type: 3}
+      propertyPath: detailEventsNum
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034557948599832772, guid: 8bcbf180ad7721e4ab564aad561c0080, type: 3}
       propertyPath: finishEventsNum
       value: 0
       objectReference: {fileID: 0}
