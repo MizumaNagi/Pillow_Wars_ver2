@@ -23,7 +23,7 @@ public class BedStatus : MonoBehaviour
     {
         if (emptyBed.activeSelf == true || canInteract == false) return;
 
-        if (GameEventScript.Instance.canAction == true) remainDamagetime -= Time.deltaTime;
+        if (GameEventScript.Instance.canAction == true && GameManager.Instance.isPause == false) remainDamagetime -= Time.deltaTime;
         if (remainDamagetime < 0) isTimeOver();
     }
 

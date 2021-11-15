@@ -68,6 +68,8 @@ public class UI : MonoBehaviour
     [SerializeField] private Sprite emptyHPSprite;
     [SerializeField] private Transform[] hpIconParentP2;
     [SerializeField] private Transform[] hpIconParentP4;
+    [SerializeField] private Image[] reticleImageP2;
+    [SerializeField] private Image[] reticleImageP4;
     private Image[,] hpIconsP2 = new Image[2, 10];
     private Image[,] hpIconsP4 = new Image[4, 10];
 
@@ -113,7 +115,6 @@ public class UI : MonoBehaviour
             //hpicon3();
             //hpicon2();
         }
-
     }
 
     // Update is called once per frame
@@ -124,6 +125,7 @@ public class UI : MonoBehaviour
         if (GameManager.Instance.isPlayTheGame == true)
         {
             Futonhpvalue();
+            ChangeReticleUI();
             // Ç‡ÇµéQâ¡êlêîÇ™2êlÇ»ÇÁ...
             if (GameManager.Instance.joinPlayers == 2)
             {
@@ -414,6 +416,63 @@ public class UI : MonoBehaviour
                 Futont3imagePlayer2[i].enabled = false;
             }
         }
+    }
+
+    public void ChangeReticleUI()
+    {
+        if(GameManager.Instance.joinPlayers == 2)
+        {
+            if(GameEventScript.Instance.canAction == false)
+            {
+                foreach(Image reticle in reticleImageP2)
+                {
+                    reticle.enabled = false;
+                }
+            }
+            else
+            {
+                foreach (Image reticle in reticleImageP2)
+                {
+                    reticle.enabled = true;
+                }
+            }
+        }
+        else
+        {
+            if (GameEventScript.Instance.canAction == false)
+            {
+                foreach (Image reticle in reticleImageP4)
+                {
+                    reticle.enabled = false;
+                }
+            }
+            else
+            {
+                foreach (Image reticle in reticleImageP4)
+                {
+                    reticle.enabled = true;
+                }
+            }
+        }
+
+        //if(GameManager.Instance.joinPlayers == 2)
+        //{
+        //    foreach(Image reticle in reticleImageP2)
+        //    {
+        //        reticle.enabled = isEnable;
+        //    }
+        //}
+        //else if (GameManager.Instance.joinPlayers == 4)
+        //{
+        //    foreach (Image reticle in reticleImageP4)
+        //    {
+        //        reticle.enabled = isEnable;
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.LogError("?");
+        //}
     }
 
 

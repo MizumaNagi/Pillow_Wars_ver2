@@ -63,6 +63,8 @@ public class GameEventScript : SingletonMonoBehaviour<GameEventScript>
             // ƒCƒxƒ“ƒg”­¶
             if (remainEventActiveTime < 0)
             {
+                Debug.Log("Teacher Attack Start");
+
                 canAction = false;
                 isEventStart = false;
                 npcGoBedTrigger = false;

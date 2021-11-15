@@ -81,7 +81,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         PlayerManager.Instance.DataReset();
         GameEventScript.Instance.StatusReset();
-        BedManager.Instance.EndReset();
+        //BedManager.Instance.EndReset();
         isPlayTheGame = false;
         isPause = false;
     }

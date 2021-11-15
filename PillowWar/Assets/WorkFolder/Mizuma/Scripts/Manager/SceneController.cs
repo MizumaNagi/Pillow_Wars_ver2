@@ -57,6 +57,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController>
         }
         else if (name == "Game")
         {
+            BedManager.Instance.EndReset();
         }
         else if (name == "Result")
         {

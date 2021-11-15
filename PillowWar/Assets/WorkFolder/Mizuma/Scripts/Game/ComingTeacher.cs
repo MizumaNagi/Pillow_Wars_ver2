@@ -89,6 +89,8 @@ public class ComingTeacher : MonoBehaviour
 
     private void EndAnimation()
     {
+        Debug.Log("Teacher Attack End");
+
         isAnimationing = false;
         GameEventScript.Instance.canAction = true;
 
