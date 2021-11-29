@@ -10,7 +10,7 @@ public class BedStatus : MonoBehaviour
 
     private bool canInteract;
 
-    public float remainDamagetime;
+    public float remainDamageTime;
     public CharacterData data;
     public bool canIn = true;
 
@@ -21,15 +21,21 @@ public class BedStatus : MonoBehaviour
 
     private void Update()
     {
+        // ベッドが使用状態な場場合何もしない
         if (emptyBed.activeSelf == true || canInteract == false) return;
 
-        if (GameEventScript.Instance.canAction == true && GameManager.Instance.isPause == false) remainDamagetime -= Time.deltaTime;
-        if (remainDamagetime < 0) isTimeOver();
+        // 移動可能かつ非ポーズ状態で睡眠ダメージのリキャスト減少
+        if (GameEventScript.Instance.canAction == true && GameManager.Instance.isPause == false) remainDamageTime -= Time.deltaTime;
+        if (remainDamageTime < 0) isTimeOver();
     }
 
-    public void ChangeEnableCollider(bool isOut, CharacterData data)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isOut">布団から出る状態か</param>
+    /// <param name="data">布団に干渉するプレイヤーデータ</param>
+    public void ChangeBedActive(bool isOut, CharacterData data)
     {
-        //myEventCollider.enabled = isOut;
         emptyBed.SetActive(isOut);
         fullBed.SetActive(!isOut);
 
@@ -37,21 +43,18 @@ public class BedStatus : MonoBehaviour
 
         canIn = isOut;
 
-        //if (myEventCollider == null) Debug.Log(gameObject.name);
-
         if (isOut == true)
         {
             ResetTime();
         }
     }
 
+    /// <summary>
+    /// 時間経過による睡眠ダメージ
+    /// </summary>
     private void isTimeOver()
     {
         ResetTime();
-
-        //CharacterData data;
-        //if (inCharacterID < 100) data = PlayerManager.Instance.playerDatas[inCharacterID];
-        //else data = PlayerManager.Instance.npcDatas[inCharacterID - 100];
 
         if (data.isInBed == false) return;
         data.Damage(true, false);
@@ -59,9 +62,13 @@ public class BedStatus : MonoBehaviour
 
     private void ResetTime()
     {
-        remainDamagetime = GameManager.Instance.ruleData.inBedDamageTime;
+        remainDamageTime = GameManager.Instance.ruleData.inBedDamageTime;
     }
 
+    /// <summary>
+    /// 各ステータスのリセット
+    /// </summary>
+    /// <param name="canInteract"></param>
     public void InitSet(bool canInteract)
     {
         this.canInteract = canInteract;

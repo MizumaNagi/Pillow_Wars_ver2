@@ -89,6 +89,11 @@ public class CharacterData
 
     private int characterID;
 
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <param name="isPieceDamage">貫通攻撃か</param>
+    /// <param name="isPercentDamage">割合ダメージか</param>
     public void Damage(bool isPieceDamage, bool isPercentDamage)
     {
         if (isDeath) { return; }
@@ -107,6 +112,9 @@ public class CharacterData
         }
     }
 
+    /// <summary>
+    /// スタン判定
+    /// </summary>
     public void StunJudge()
     {
         int rnd = Random.Range(0, 100);
@@ -116,11 +124,14 @@ public class CharacterData
         }
     }
 
+    /// <summary>
+    /// 死亡処理
+    /// </summary>
     private void Death()
     {
         if (bedStatus != null)
         {
-            bedStatus.ChangeEnableCollider(true, this);
+            bedStatus.ChangeBedActive(true, this);
             bedStatus = null;
         }
 
@@ -141,6 +152,10 @@ public class CharacterData
         }
     }
 
+    /// <summary>
+    /// キャラクターの有効/無効化
+    /// </summary>
+    /// <param name="enable">プレイヤーの状態</param>
     public void HideCharacter(bool enable)
     {
         pillow.SetActive(!enable);

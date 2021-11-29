@@ -24,7 +24,6 @@ public class DoorAnimation : MonoBehaviour
 
     public void DoorCloseFinish()
     {
-        Debug.Log("Teacher Attacker Start 2");
         GameEventScript.Instance.canAction = true;
     }
 

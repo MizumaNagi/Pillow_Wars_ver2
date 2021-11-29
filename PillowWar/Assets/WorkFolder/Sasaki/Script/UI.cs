@@ -314,7 +314,7 @@ public class UI : MonoBehaviour
             {
                 if (PlayerManager.Instance.playerDatas[i].bedStatus == null) continue;
 
-                futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamagetime / GameManager.Instance.ruleData.inBedDamageTime;
+                futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamageTime / GameManager.Instance.ruleData.inBedDamageTime;
                 Futon1textPlayer2[i].text = "–°‹C " + Mathf.Floor((1 - futonhp[i]) * 100) + "%";
             }
         }
@@ -324,7 +324,7 @@ public class UI : MonoBehaviour
             {
                 if (PlayerManager.Instance.playerDatas[i].bedStatus == null) continue;
 
-                futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamagetime / GameManager.Instance.ruleData.inBedDamageTime;
+                futonhp[i] = PlayerManager.Instance.playerDatas[i].bedStatus.remainDamageTime / GameManager.Instance.ruleData.inBedDamageTime;
                 Futon1textPlayer4[i].text = "–°‹C " + Mathf.Floor((1 - futonhp[i]) * 100) + "%";
             }
 
@@ -422,19 +422,22 @@ public class UI : MonoBehaviour
     {
         if(GameManager.Instance.joinPlayers == 2)
         {
-            if(GameEventScript.Instance.canAction == false)
-            {
-                foreach(Image reticle in reticleImageP2)
-                {
-                    reticle.enabled = false;
-                }
-            }
-            else
+            if (GameEventScript.Instance.canAction == false)
             {
                 foreach (Image reticle in reticleImageP2)
                 {
-                    reticle.enabled = true;
+                    reticle.enabled = false;
                 }
+                return;
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                if(PlayerManager.Instance.playerDatas[i].isInBed == true)
+                {
+                    reticleImageP2[i].enabled = false;
+                }
+                else reticleImageP2[i].enabled = true;
             }
         }
         else
@@ -445,13 +448,17 @@ public class UI : MonoBehaviour
                 {
                     reticle.enabled = false;
                 }
+
+                return;
             }
-            else
+
+            for (int i = 0; i < 4; i++)
             {
-                foreach (Image reticle in reticleImageP4)
+                if (PlayerManager.Instance.playerDatas[i].isInBed == true)
                 {
-                    reticle.enabled = true;
+                    reticleImageP4[i].enabled = false;
                 }
+                else reticleImageP4[i].enabled = true;
             }
         }
 

@@ -146,13 +146,13 @@ public class CharacterMover
         data.isInBed = isInBed;
         if (isInBed == true)
         {
-            data.bedStatus.ChangeEnableCollider(false, data);
+            data.bedStatus.ChangeBedActive(false, data);
             data.myBodyTransform.localPosition = bedPos;
             AudioManager.Instance.SEPlay(SEName.InBed);
         }
         else
         {
-            data.bedStatus.ChangeEnableCollider(true, null);
+            data.bedStatus.ChangeBedActive(true, null);
             data.bedStatus = null;
         }
         data.HideCharacter(isInBed);

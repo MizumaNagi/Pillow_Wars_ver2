@@ -57,7 +57,7 @@ public class AlertContorol : MonoBehaviour
                 EventTrigger = true;
                 AlertPanel.SetActive(true);
                 TimerPanel.SetActive(true);
-                StartCoroutine(Corutine()); 
+                StartCoroutine(WaitToPanelDisable()); 
             }
 
             if (GameEventScript.Instance.remainEventActiveTime <= 5)
@@ -71,7 +71,7 @@ public class AlertContorol : MonoBehaviour
         }
     }
 
-    private IEnumerator Corutine()
+    private IEnumerator WaitToPanelDisable()
     {
         yield return new WaitForSeconds(3f);
 
