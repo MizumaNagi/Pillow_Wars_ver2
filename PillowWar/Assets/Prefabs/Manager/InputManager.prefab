@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDontDestroy: 1
-  isUseKeyboard: 1
+  isUseKeyboard: 0
   keyboardMovePlayerId: 1
   playerInput:
   - {fileID: 11400000, guid: 8e59f4318f5ce60448972cecfc5c98f4, type: 2}

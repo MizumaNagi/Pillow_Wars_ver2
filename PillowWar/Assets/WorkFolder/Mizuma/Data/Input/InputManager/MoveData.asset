@@ -22,7 +22,7 @@ MonoBehaviour:
   throwAngle: 20
   throwAngleInBuff: 10
   throwMissVec: 0.15
-  npcThrowMissVec: 0.3
+  npcThrowMissVec: 0.225
   updateVelocityCoeffcient: 0.99
   pillowSpawnPos: {x: 0.32, y: -0.45, z: 0.8}
   pillowSpawnRot: {x: -45, y: 150, z: -75}

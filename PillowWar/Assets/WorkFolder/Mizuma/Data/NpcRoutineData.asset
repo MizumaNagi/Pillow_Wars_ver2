@@ -20,7 +20,7 @@ MonoBehaviour:
   distanceToEnemy: 5
   warRangeToEnemy: 7
   maxSearchAngle: 150
-  failedInBedPercent: 15
+  failedInBedPercent: 0
   startGoBedRemHpPercent: 75
   minStartGoBedPercent: 20
   shootingDamageChgTargetRoutinePercent: 15
