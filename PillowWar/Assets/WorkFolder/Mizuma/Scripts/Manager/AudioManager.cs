@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO:ŽŽ—V‰ï—p
-
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
     [SerializeField] private GameObject bgmObj;

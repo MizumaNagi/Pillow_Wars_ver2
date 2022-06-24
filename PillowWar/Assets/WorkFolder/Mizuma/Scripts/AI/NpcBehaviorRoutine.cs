@@ -215,7 +215,6 @@ public class NpcBehaviorRoutine : MonoBehaviour
                     if (remainEscapeTime < 0) return;
                     remainEscapeTime = escapeTime;
 
-                    // TODO:仮逃走処理！
                     int x = targetData.myBodyTransform.position.x < transform.position.x ? 1 : -1;
                     int y = targetData.myBodyTransform.position.y < transform.position.y ? 1 : -1;
                     agent.destination = new Vector3(7 * x, 0, 7 * y);
